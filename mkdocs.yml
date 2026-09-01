@@ -1,0 +1,106 @@
+site_name: ClaimCase Workshop
+site_url: https://uipath-practice.github.io/ClaimCaseWorkshop/
+site_description: Build an enterprise property-claims solution end-to-end with coding agents
+site_author: Sergey Shumilov
+
+theme:
+  name: material
+  logo: assets/images/Partner Success Logo.png
+  favicon: assets/images/favicon.png
+  font:
+    text: Inter
+  palette:
+    scheme: default
+    primary: deep orange
+    accent: orange
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.integrate
+    - search.highlight
+    - search.suggest
+    - content.code.copy
+    - content.tabs.link
+
+hooks:
+  - hooks/split_cols.py
+
+# main.py provides environment variables (training_url, training_tenant, env_label)
+# driven by the COURSE_ENV env var (staging | prod). See main.py.
+plugins:
+  - search
+  - macros:
+      module_name: main
+  # Localization — see Master/Localization.md. English only for now; add a
+  # locale entry (plus nav_translations) when the first translation starts.
+  - i18n:
+      docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
+      reconfigure_search: true
+      languages:
+        - locale: en
+          name: English
+          build: true
+          default: true
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  # Snippets transclude the seed prompts from the seeds/ submodule at build
+  # time — a lesson includes a prompt, never pastes it. check_paths makes a
+  # missing include fail the build instead of rendering an empty block.
+  - pymdownx.snippets:
+      base_path: ["."]
+      check_paths: true
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+# Published navigation only. Work-in-progress pages (dashboard/) live in mkdocs.local.yml.
+nav:
+  - Home: index.md
+  - Prepare:
+    - Overview: prepare/index.md
+    - 1. Prepare Your Tools: prepare/1-prepare-your-tools.md
+    - 2. How the Workshop Runs: prepare/2-how-the-workshop-runs.md
+    - 3. Get the Seed: prepare/3-get-the-seed.md
+  - Plan:
+    - Overview: plan/index.md
+    - 1. The Property Claims Case: plan/1-the-property-claims-case.md
+    - 2. Read the PDD: plan/2-read-the-pdd.md
+    - 3. Design the Solution: plan/3-design-the-solution.md
+    - 4. Plan the Work: plan/4-plan-the-work.md
+    - 5. Architecture Overview: plan/5-architecture-overview.md
+  - Build:
+    - Overview: build/index.md
+    - 1. Extract the Documents: build/1-extract-the-documents.md
+    - 2. Create the Claim Record: build/2-create-the-claim-record.md
+    - 3. Build the Seven Agents: build/3-build-the-seven-agents.md
+    - 4. Author the Case: build/4-author-the-case.md
+    - 5. Run the Case: build/5-run-the-case.md
+    - 6. Build the Review Screens: build/6-build-the-review-screens.md
+  - Verify:
+    - Overview: verify/index.md
+    - 1. Hunt the Planted Problems: verify/1-hunt-the-planted-problems.md
+    - 2. Hand It Over: verify/2-hand-it-over.md
+  - Next Steps: next-steps.md
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/extra.js
+
+extra:
+  generator: false

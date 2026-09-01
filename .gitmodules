@@ -1,0 +1,3 @@
+[submodule "seeds"]
+	path = seeds
+	url = https://github.com/uipath-practice/PropertyClaimsSeeds
