@@ -8,9 +8,9 @@ Planned content:
 - The generator dials, explained here where aiming matters: scenario, discrepancy id, profile, seed — one aimed run per planted problem
 - The prompt (transcluded from the seed):
 
-```text title="Prompt — block 4 · Verify"
+````markdown title="Prompt — block 4 · Verify"
 --8<-- "seeds/4-verify/prompt.md"
-```
+````
 
 - Read the answer key **by probe** — one standalone generator call per injector — not by running the case
 - The results table: every planted problem caught by its owning component; re-run the clean batch after every rule-tightening fix

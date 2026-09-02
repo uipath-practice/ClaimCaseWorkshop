@@ -8,9 +8,9 @@ Planned content:
 - Register the Action App now: standalone, beside the solution, an empty page plus its schema — and why the app build is worth delegating to a subagent
 - The prompt (transcluded from the seed):
 
-```text title="Prompt — block 3d · The case"
+````markdown title="Prompt — block 3d · The case"
 --8<-- "seeds/3d-case/prompt.md"
-```
+````
 
 - The gates: `check_caseplan.py` (referential integrity) and `uip maestro case validate`; read the rules even when green
 - Proof: the case diagram open in Studio Web

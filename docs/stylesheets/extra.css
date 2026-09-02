@@ -239,3 +239,19 @@ img + em {
 .md-typeset table:not([class]) th {
   background-color: #f0f0f0;
 }
+
+/* Raw-markdown prompt blocks (```` markdown fences) — Pygments tags **bold**
+   as .gs, *emphasis* as .ge and headings as .gh/.gu, but Material only colors
+   them. Style the tokens so a raw prompt reads with its emphasis intact. */
+.md-typeset .highlight .gs {
+  font-weight: 700;
+}
+
+.md-typeset .highlight .ge {
+  font-style: italic;
+}
+
+.md-typeset .highlight .gh,
+.md-typeset .highlight .gu {
+  font-weight: 700;
+}

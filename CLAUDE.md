@@ -26,13 +26,21 @@ technical audience). One exercise, one site: Prepare → Plan → Build → Veri
    for one agent.
 2. **A lesson includes a prompt, never pastes it.** Seed prompts are transcluded
    at build time from the `seeds/` submodule via `pymdownx.snippets` inside a
-   fenced block:
+   **four-backtick** `markdown` fence:
 
-   ````markdown
-   ```text title="Prompt — block 1 · Design"
+   `````markdown
+   ````markdown title="Prompt — block 1 · Design"
    --8<-- "seeds/1-design/prompt.md"
-   ```
    ````
+   `````
+
+   Four backticks because the prompts contain three-backtick code blocks of
+   their own — a three-backtick outer fence is terminated by the first inner
+   one. The `markdown` language makes Pygments tag the prompt's emphasis and
+   headings, which `extra.css` styles bold/italic, so the raw prompt reads
+   with its emphasis intact while the copy button copies the exact raw text.
+   Never render a prompt as page markdown — what participants copy must be
+   byte-for-byte what the seed ships.
 
    Solution-truth (schemas, names, contracts, commands) is cited from `seeds/`,
    never restated in a page. If a page needs a fact the seed holds, link or

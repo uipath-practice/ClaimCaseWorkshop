@@ -8,9 +8,9 @@ Planned content:
 - The default route: adopt the shared extraction project and prove it on two claims
 - The prompt (transcluded from the seed):
 
-```text title="Prompt — block 3a · Extraction"
+````markdown title="Prompt — block 3a · Extraction"
 --8<-- "seeds/3a-extraction/prompt.md"
-```
+````
 
 - The optional route: build your own extraction project (`3a-extraction/prompt-build.md` in the seed) — when and why
 - What to review: keys come from the payload, not from labels; confidence has three states; payload sizes are a design input

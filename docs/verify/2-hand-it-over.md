@@ -7,9 +7,9 @@ Planned content:
 - The last block deploys nothing — shipping is pinning, proving, and writing down
 - The prompt (transcluded from the seed):
 
-```text title="Prompt — block 5 · Ship"
+````markdown title="Prompt — block 5 · Ship"
 --8<-- "seeds/5-ship/prompt.md"
-```
+````
 
 - Pins, not keys: which identifiers are stable and which rotate
 - Bring the SDD to as-built; close every task in `tasks.md`

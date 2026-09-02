@@ -7,9 +7,9 @@ Planned content:
 - The problem: turn the PDD into an architecture an architect could hand over — one `sdd.md`, fixed name
 - The prompt (transcluded from the seed — paste it into your coding agent):
 
-```text title="Prompt — block 1 · Design"
+````markdown title="Prompt — block 1 · Design"
 --8<-- "seeds/1-design/prompt.md"
-```
+````
 
 - What the planner does, and why it asks nothing
 - Review the generated SDD: structure, key sections, what to check by hand
