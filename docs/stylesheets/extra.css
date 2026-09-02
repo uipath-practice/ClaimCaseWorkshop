@@ -242,9 +242,11 @@ img + em {
 
 /* Raw-markdown prompt blocks (```` markdown fences) — Pygments tags **bold**
    as .gs, *emphasis* as .ge and headings as .gh/.gu, but Material only colors
-   them. Style the tokens so a raw prompt reads with its emphasis intact. */
+   them with the greyish code palette. Style the tokens so a raw prompt reads
+   with its emphasis intact, in black rather than code-grey. */
 .md-typeset .highlight .gs {
   font-weight: 700;
+  color: #000;
 }
 
 .md-typeset .highlight .ge {
@@ -254,4 +256,5 @@ img + em {
 .md-typeset .highlight .gh,
 .md-typeset .highlight .gu {
   font-weight: 700;
+  color: #000;
 }
