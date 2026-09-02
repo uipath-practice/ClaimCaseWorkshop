@@ -1227,26 +1227,28 @@
 <li>Register the Action App now: standalone, beside the solution, an empty page plus its schema — and why the app build is worth delegating to a subagent</li>
 <li>The prompt (transcluded from the seed):</li>
 </ul>
-<div class="highlight"><span class="filename">Prompt — block 3d · The case</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># Build — the Maestro Case
+<div class="highlight"><span class="filename">Prompt — block 3d · The case</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the Maestro Case</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Use the **`uipath-maestro-case`** skill and build the case from `sdd.md` — as a project inside your existing solution in Build folder. **Authoring `caseplan.json` here, do not run it** — deploying and testing the case is the next block. Diagram reads as the process: the decision path left to right, Denied below Approved on the right, Missing details below Intake and Awaiting inspection below Eligibility screening, nothing overlapping (`cookbook.md`, *Canvas*). 
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Use the <span class="gs">**`uipath-maestro-case`**</span> skill and build the case from <span class="sb">`sdd.md`</span> — as a project inside your existing solution in Build folder. <span class="gs">**Authoring `caseplan.json` here, do not run it**</span> — deploying and testing the case is the next block. Diagram reads as the process: the decision path left to right, Denied below Approved on the right, Missing details below Intake and Awaiting inspection below Eligibility screening, nothing overlapping (<span class="sb">`cookbook.md`</span>, <span class="ge">*Canvas*</span>). 
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>The app and the case are two separate builds — if your agent can delegate to a subagent, build and register the app there and keep this context for the case; either way, write the app's name, deployment id and folder into `PROGRESS.md` before starting the case.
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>The app and the case are two separate builds — if your agent can delegate to a subagent, build and register the app there and keep this context for the case; either way, write the app's name, deployment id and folder into <span class="sb">`PROGRESS.md`</span> before starting the case.
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Register the Coded Action App first, with the shape of **`contracts/review-task.md`** — the two human gateways are `action` tasks bound to it, and an empty page is enough to wire and prove them. Use `uipath-coded-apps`: scaffold it **standalone, beside the solution** (`create-vite`, `-t Action`), put the contract in `action-schema.json`, `uip codedapp publish -t Action`, `uip codedapp deploy --folder-key &lt;your seat folder&gt;`. Then author the case that binds it by name with that folder as its explicit `folderPath`. Its screens are built at `3f`, after a run has populated the record.
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Register the Coded Action App first, with the shape of <span class="gs">**`contracts/review-task.md`**</span> — the two human gateways are <span class="sb">`action`</span> tasks bound to it, and an empty page is enough to wire and prove them. Use <span class="sb">`uipath-coded-apps`</span>: scaffold it <span class="gs">**standalone, beside the solution**</span> (<span class="sb">`create-vite`</span>, <span class="sb">`-t Action`</span>), put the contract in <span class="sb">`action-schema.json`</span>, <span class="sb">`uip codedapp publish -t Action`</span>, <span class="sb">`uip codedapp deploy --folder-key &lt;your seat folder&gt;`</span>. Then author the case that binds it by name with that folder as its explicit <span class="sb">`folderPath`</span>. Its screens are built at <span class="sb">`3f`</span>, after a run has populated the record.
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Everything the case binds must already exist and be published — the six RPA processes, the Data Fabric entity, the seven Agents, the Action App's contract — which is what your task list ordered.
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Check it before you go any further:
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>```bash
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>python3 3d-case/check_caseplan.py &lt;path-to&gt;/caseplan.json
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="sb">```bash</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>python3<span class="w"> </span>3d-case/check_caseplan.py<span class="w"> </span>&lt;path-to&gt;/caseplan.json
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="sb">```</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>Read the checker's rules even if it passes — each is a shape that packs, deploys and then fails on a live claim.
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="gs">**Done when:**</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">-</span><span class="w"> </span>both gates are green: <span class="sb">`uip maestro case validate`</span> reports <span class="sb">`Valid`</span>, <span class="sb">`check_caseplan.py`</span> reports no referential problems
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">-</span><span class="w"> </span>the plan opens in Studio Web: <span class="sb">`uip solution upload Build/ClaimCase-&lt;seat&gt; --force`</span> has run.
 </code></pre></div>
-<p>Read the checker's rules even if it passes — each is a shape that packs, deploys and then fails on a live claim.</p>
-<p><strong>Done when:</strong>
-- both gates are green: <code>uip maestro case validate</code> reports <code>Valid</code>, <code>check_caseplan.py</code> reports no referential problems
-- the plan opens in Studio Web: <code>uip solution upload Build/ClaimCase-&lt;seat&gt; --force</code> has run.</p>
-<p>```</p>
 <ul>
 <li>The gates: <code>check_caseplan.py</code> (referential integrity) and <code>uip maestro case validate</code>; read the rules even when green</li>
 <li>Proof: the case diagram open in Studio Web</li>

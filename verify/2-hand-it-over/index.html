@@ -1226,34 +1226,34 @@
 <li>The last block deploys nothing — shipping is pinning, proving, and writing down</li>
 <li>The prompt (transcluded from the seed):</li>
 </ul>
-<div class="highlight"><span class="filename">Prompt — block 5 · Ship</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># Hand over
+<div class="highlight"><span class="filename">Prompt — block 5 · Ship</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Hand over</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Everything runs, `4-verify` proved it and the build is done.
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Everything runs, <span class="sb">`4-verify`</span> proved it and the build is done.
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>**Pin what runs:** 
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>- Deployment's version (the package version you last packed and published). Record **the deployment name, package name and version, both folder keys and the case release key** in `PROGRESS.md`. Not the deployment's `Key`. 
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>- The Coded Action App's deployed version. 
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>- Last `uip solution upload Build/ClaimCase-&lt;seat&gt; --force`, so Studio Web shows exactly the solution that runs.
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="gs">**Pin what runs:**</span> 
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">-</span><span class="w"> </span>Deployment's version (the package version you last packed and published). Record <span class="gs">**the deployment name, package name and version, both folder keys and the case release key**</span> in <span class="sb">`PROGRESS.md`</span>. Not the deployment's <span class="sb">`Key`</span>. 
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">-</span><span class="w"> </span>The Coded Action App's deployed version. 
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">-</span><span class="w"> </span>Last <span class="sb">`uip solution upload Build/ClaimCase-&lt;seat&gt; --force`</span>, so Studio Web shows exactly the solution that runs.
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>**Check what travelled.** 
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>- The Maestro case and the seven Agents are inside the `.uipx`; 
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>- The Coded Action App is deployed beside it into the seat folder. 
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>- Nothing you deployed by hand while building is standing in for a project that is not in the package. 
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>- A read of the package and the deployments, not a redeploy.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="gs">**Check what travelled.**</span> 
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>The Maestro case and the seven Agents are inside the <span class="sb">`.uipx`</span>; 
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>The Coded Action App is deployed beside it into the seat folder. 
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">-</span><span class="w"> </span>Nothing you deployed by hand while building is standing in for a project that is not in the package. 
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">-</span><span class="w"> </span>A read of the package and the deployments, not a redeploy.
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>**Bring `sdd.md` to as-built, and mark the work done.** 
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>- The design outlives the build and everything downstream binds to it, so where the build settled something differently — an SME row closed, a binding renamed, a stage reshaped — the SDD says what was built, with the change recorded in *Design Feedback to PDD* when it touches the process. 
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>- **Look hardest at what `4-verify` fixed in the case**: a condition that narrows a rule a business user signed is a design change whether or not anyone wrote it down, so it goes in as a Design Feedback row *and* an Action Required row, first to be signed. 
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>- Add an *As Built* section that states the pins and the known limitations with the change each needs; where it and the design differ, it is right. Every task in `tasks.md` is `[x]` or says why not; `PROGRESS.md` closes with the state of the seat.
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="gs">**Bring `sdd.md` to as-built, and mark the work done.**</span> 
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">-</span><span class="w"> </span>The design outlives the build and everything downstream binds to it, so where the build settled something differently — an SME row closed, a binding renamed, a stage reshaped — the SDD says what was built, with the change recorded in <span class="ge">*Design Feedback to PDD*</span> when it touches the process. 
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Look hardest at what `4-verify` fixed in the case**</span>: a condition that narrows a rule a business user signed is a design change whether or not anyone wrote it down, so it goes in as a Design Feedback row <span class="ge">*and*</span> an Action Required row, first to be signed. 
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">-</span><span class="w"> </span>Add an <span class="ge">*As Built*</span> section that states the pins and the known limitations with the change each needs; where it and the design differ, it is right. Every task in <span class="sb">`tasks.md`</span> is <span class="sb">`[x]`</span> or says why not; <span class="sb">`PROGRESS.md`</span> closes with the state of the seat.
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>**Write the runbook** for a human operating the solution, not the agent that built it: how it is deployed and how it would be promoted, what has to exist first (the six RPA processes, the shared IXP project, the Data Fabric entity, the shared connection), what is known-broken, and what to do when a claim faults. Most of it is already in `PROGRESS.md`; this is a rewrite for a different reader.
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="gs">**Write the runbook**</span> for a human operating the solution, not the agent that built it: how it is deployed and how it would be promoted, what has to exist first (the six RPA processes, the shared IXP project, the Data Fabric entity, the shared connection), what is known-broken, and what to do when a claim faults. Most of it is already in <span class="sb">`PROGRESS.md`</span>; this is a rewrite for a different reader.
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>**Done when** 
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>- `sdd.md` describes what runs
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>- every task is closed
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>- the runbook exists
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>- the deployed version is the one you packed
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>- Studio Web opens the solution that is running.
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="gs">**Done when**</span> 
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">-</span><span class="w"> </span><span class="sb">`sdd.md`</span> describes what runs
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">-</span><span class="w"> </span>every task is closed
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">-</span><span class="w"> </span>the runbook exists
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">-</span><span class="w"> </span>the deployed version is the one you packed
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">-</span><span class="w"> </span>Studio Web opens the solution that is running.
 </code></pre></div>
 <ul>
 <li>Pins, not keys: which identifiers are stable and which rotate</li>

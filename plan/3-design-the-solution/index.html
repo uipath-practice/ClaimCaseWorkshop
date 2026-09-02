@@ -1226,32 +1226,35 @@
 <li>The problem: turn the PDD into an architecture an architect could hand over — one <code>sdd.md</code>, fixed name</li>
 <li>The prompt (transcluded from the seed — paste it into your coding agent):</li>
 </ul>
-<div class="highlight"><span class="filename">Prompt — block 1 · Design</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># Design
+<div class="highlight"><span class="filename">Prompt — block 1 · Design</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Design</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Read:
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>- `PDD.md` — property claims department manager has described how property claims are handled. 
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>- `CONFIG.md` - describes environment and settings.
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>- `contracts/` - some technical specs and description of automation blocks that already exist (use what is deployed instead of designing a replacement for it).
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">-</span><span class="w"> </span><span class="sb">`PDD.md`</span> — property claims department manager has described how property claims are handled. 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">-</span><span class="w"> </span><span class="sb">`CONFIG.md`</span> - describes environment and settings.
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">-</span><span class="w"> </span><span class="sb">`contracts/`</span> - some technical specs and description of automation blocks that already exist (use what is deployed instead of designing a replacement for it).
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Use the **`uipath-planner`** skill and design the solution from the PDD. Run **autonomous** — do not pause for confirmation. **Design only: write the design to `sdd.md` at this folder's root and stop** — with `Tasks file: tasks.md` in its handoff header, which is where `2-plan` writes. No task list, nothing built, nothing deployed — `2-plan` derives the tasks next.
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Use the <span class="gs">**`uipath-planner`**</span> skill and design the solution from the PDD. Run <span class="gs">**autonomous**</span> — do not pause for confirmation. <span class="gs">**Design only: write the design to `sdd.md` at this folder's root and stop**</span> — with <span class="sb">`Tasks file: tasks.md`</span> in its handoff header, which is where <span class="sb">`2-plan`</span> writes. No task list, nothing built, nothing deployed — <span class="sb">`2-plan`</span> derives the tasks next.
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>`sdd.md` describes what the solution **is** when it runs. It outlives the build and everything downstream binds to it.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="sb">`sdd.md`</span> describes what the solution <span class="gs">**is**</span> when it runs. It outlives the build and everything downstream binds to it.
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Three things I care about:
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>- **Take every task's type from the PDD's §5.3 decision-nature column**, not from whatever the tenant happens to hold — and name the step in each task's *Design Rationale* (`PDD step 4.3`), which is how the checker verifies it.
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>- **Build only what `contracts/components.md` lists** — seven agents and one Action app, no tools, no evaluation sets. How you shape the case — stages, ordering, conditions, SLAs — is yours.
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>- **Add the two sections in `method/sdd-addendum.md`** after Section 4, headings as written: the claim entity with its write-ownership matrix, and what the design fed back to the PDD.
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Take every task's type from the PDD's §5.3 decision-nature column**</span>, not from whatever the tenant happens to hold — and name the step in each task's <span class="ge">*Design Rationale*</span> (<span class="sb">`PDD step 4.3`</span>), which is how the checker verifies it.
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Build only what `contracts/components.md` lists**</span> — seven agents and one Action app, no tools, no evaluation sets. How you shape the case — stages, ordering, conditions, SLAs — is yours.
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Add the two sections in `method/sdd-addendum.md`**</span> after Section 4, headings as written: the claim entity with its write-ownership matrix, and what the design fed back to the PDD.
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>Then check your own work and fix what it finds:
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>```bash
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>python3 1-design/check_sdd.py sdd.md --pdd PDD.md
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="sb">```bash</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="sb">```</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>One command, both checks: it runs the planner's shape audit and then checks the design against the process — task types against the PDD, one writer per column, every read variable produced, real argument names, tables that render. Read its rules when a failure is unclear — each one is a shape that built and then failed.
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="gs">**Done when a solution architect could hand this to a developer and walk away**</span> — every stage, task, rule and human decision described well enough to build from, with nothing left to guess. The checker exiting 0 is the floor, not the finish.
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>If a check fires on something you believe is right, say so and leave it — a wrong rule in the checker is worth more to us than a file edited to satisfy it.
 </code></pre></div>
-<p>One command, both checks: it runs the planner's shape audit and then checks the design against the process — task types against the PDD, one writer per column, every read variable produced, real argument names, tables that render. Read its rules when a failure is unclear — each one is a shape that built and then failed.</p>
-<p><strong>Done when a solution architect could hand this to a developer and walk away</strong> — every stage, task, rule and human decision described well enough to build from, with nothing left to guess. The checker exiting 0 is the floor, not the finish.</p>
-<p>If a check fires on something you believe is right, say so and leave it — a wrong rule in the checker is worth more to us than a file edited to satisfy it.</p>
-<p>```</p>
 <ul>
 <li>What the planner does, and why it asks nothing</li>
 <li>Review the generated SDD: structure, key sections, what to check by hand</li>

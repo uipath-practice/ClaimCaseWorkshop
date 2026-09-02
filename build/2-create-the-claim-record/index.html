@@ -1226,17 +1226,17 @@
 <li>The problem: one claim record every component reads and writes — the pinned entity schema</li>
 <li>The prompt (transcluded from the seed):</li>
 </ul>
-<div class="highlight"><span class="filename">Prompt — block 3b · Claim record</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a># Build — the claim entity in Data Fabric
+<div class="highlight"><span class="filename">Prompt — block 3b · Claim record</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the claim entity in Data Fabric</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>`PDD.md` §1.5 P5 asks for a store that outlives any single step and can be read while the claim is in flight. That is a **Data Fabric entity**; build it.
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sb">`PDD.md`</span> §1.5 P5 asks for a store that outlives any single step and can be read while the claim is in flight. That is a <span class="gs">**Data Fabric entity**</span>; build it.
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>The schema is `contracts/claim-entity.md` and it is **pinned** — that file says why, and it is worth reading before you decide to improve a name.
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>The schema is <span class="sb">`contracts/claim-entity.md`</span> and it is <span class="gs">**pinned**</span> — that file says why, and it is worth reading before you decide to improve a name.
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Use the **`uipath-platform`** skill — its Data Fabric section owns `uip df`. The entity goes in **your seat folder**, not at tenant level — `CONFIG.md`, *The claim entity*. Read the contract's five column tables and its casing rule; the rest of that file is for the block that writes the entity (`3d`).
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Use the <span class="gs">**`uipath-platform`**</span> skill — its Data Fabric section owns <span class="sb">`uip df`</span>. The entity goes in <span class="gs">**your seat folder**</span>, not at tenant level — <span class="sb">`CONFIG.md`</span>, <span class="ge">*The claim entity*</span>. Read the contract's five column tables and its casing rule; the rest of that file is for the block that writes the entity (<span class="sb">`3d`</span>).
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>**Get the schema right in one create.** Update takes a different body shape from the one `get` returns, so the natural read-edit-write loop does not work; creating fresh from a file is one call and no repair.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="gs">**Get the schema right in one create.**</span> Update takes a different body shape from the one <span class="sb">`get`</span> returns, so the natural read-edit-write loop does not work; creating fresh from a file is one call and no repair.
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>**Done when** you have written a value with cents and a nine-thousand-character payload into it, read both back unchanged, and deleted the row you used. That round trip validates correct set of limits.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="gs">**Done when**</span> you have written a value with cents and a nine-thousand-character payload into it, read both back unchanged, and deleted the row you used. That round trip validates correct set of limits.
 </code></pre></div>
 <ul>
 <li>What to review: the write-semantics trap (omitted preserves, null destroys, empty destroys silently); JSON column budgets; one name in three casings</li>
