@@ -29,7 +29,7 @@
     
     
       
-        <title>3. Get the Seed - ClaimCase Workshop</title>
+        <title>3. Get the Seed - Property Insurance Claims with Coding Agents</title>
       
     
     
@@ -94,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ClaimCase Workshop" class="md-header__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-header__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
@@ -107,7 +107,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ClaimCase Workshop
+            Property Insurance Claims with Coding Agents
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -326,12 +326,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ClaimCase Workshop" class="md-nav__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-nav__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
     </a>
-    ClaimCase Workshop
+    Property Insurance Claims with Coding Agents
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -520,6 +520,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Get the Seed
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -536,6 +554,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#clone-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clone it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-inside" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What's inside
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#provided-vs-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Provided vs. built
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-surprises-worth-meeting-now" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two surprises worth meeting now
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-will-produce" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you will produce
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pre-flight" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pre-flight
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,15 +1322,115 @@
 
 
 <h1 id="get-the-seed">Get the Seed<a class="headerlink" href="#get-the-seed" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
+<p>The seed is one public repository holding everything the exercise gives you: the requirements, the environment reference, the contracts, and one prompt per block. Every path in it is relative to its root, so the folder you create now is where the whole day happens.</p>
+<h2 id="clone-it">Clone it<a class="headerlink" href="#clone-it" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/uipath-practice/PropertyClaimsSeeds.git<span class="w"> </span>ClaimCase-&lt;seat&gt;
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>ClaimCase-&lt;seat&gt;
+</code></pre></div>
+<p>Name the folder for your seat. If you cannot use git:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-L<span class="w"> </span>https://github.com/uipath-practice/PropertyClaimsSeeds/archive/refs/heads/main.zip<span class="w"> </span>-o<span class="w"> </span>seed.zip
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>unzip<span class="w"> </span>seed.zip<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>mv<span class="w"> </span>PropertyClaimsSeeds-main<span class="w"> </span>ClaimCase-&lt;seat&gt;
+</code></pre></div>
+<p>Prefer the clone. With git, <code>git status</code> answers <em>what did I build</em> and <code>git diff</code> answers <em>what did I change of theirs</em> — the difference between writing up your build from evidence and writing it from memory. The <code>VERSION</code> file records which seed you have; quote it first in any problem report.</p>
+<h2 id="whats-inside">What's inside<a class="headerlink" href="#whats-inside" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Path</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>README.md</code></td>
+<td>The front door: the block sequence and how to work it</td>
+</tr>
+<tr>
+<td><code>PDD.md</code></td>
+<td>The business requirements — the document the whole build answers</td>
+</tr>
+<tr>
+<td><code>CONFIG.md</code></td>
+<td>The environment reference card: tenant, names, what already exists</td>
+</tr>
+<tr>
+<td><code>PROGRESS.md</code></td>
+<td>A skeleton your build fills in — the memory between blocks</td>
+</tr>
+<tr>
+<td><code>contracts/</code></td>
+<td>The pinned interfaces: the claim record schema, the component list, the review-task shape, the provided automations</td>
+</tr>
+<tr>
+<td><code>method/</code></td>
+<td>The delivery method the blocks follow, and the PDD/SDD guides</td>
+</tr>
+<tr>
+<td><code>known-issues/</code></td>
+<td>Platform behaviours worth knowing before they cost you an hour</td>
+</tr>
+<tr>
+<td><code>1-design/</code> … <code>5-ship/</code></td>
+<td>One folder per block: <code>prompt.md</code>, <code>cookbook.md</code>, sometimes a gate script</td>
+</tr>
+<tr>
+<td><code>log-finding.py</code></td>
+<td>How findings get logged</td>
+</tr>
+</tbody>
+</table>
+<p>A block folder ships a prompt, a cookbook and sometimes a gate. Anything else that appears in it is yours.</p>
+<h2 id="provided-vs-built">Provided vs. built<a class="headerlink" href="#provided-vs-built" title="Permanent link">&para;</a></h2>
+<p>The plumbing is provided; you build the thinking.</p>
+<table>
+<thead>
+<tr>
+<th>Provided — bind, don't build</th>
+<th>You build</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Six deployed automations (generator + document/payload plumbing)</td>
+<td>The Data Fabric claim record</td>
+</tr>
+<tr>
+<td>The shared IXP extraction project, published and pinned</td>
+<td>The seven Agents</td>
+</tr>
+<tr>
+<td>The shared app registration for the review screens</td>
+<td>The Maestro case</td>
+</tr>
+<tr>
+<td>The claim generator (its dials are explained in Verify)</td>
+<td>The Coded Action App's two screens</td>
+</tr>
+</tbody>
+</table>
+<p>The instinct on meeting "the policy PDF is in a bucket" is to build a downloader. Don't — whole sessions have been lost that way. If it moves files or payloads, it already exists.</p>
+<h2 id="two-surprises-worth-meeting-now">Two surprises worth meeting now<a class="headerlink" href="#two-surprises-worth-meeting-now" title="Permanent link">&para;</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">A solution folder is not the same folder</p>
+<p>Deploying a solution creates a sub-folder — and it does not inherit its parent's processes or buckets. The resulting failure is the most confusing one in the exercise: a five-second fault naming a process that plainly exists. When you see it, check <em>which</em> folder the case is looking in.</p>
+</div>
+<div class="admonition info">
+<p class="admonition-title">One click no agent can do</p>
+<p>You create the Data Fabric connection yourself, and it needs one OAuth consent in a browser. A coding agent can drive almost everything in this exercise — the exceptions are where a human identity must be asserted. Now it's an expected step, not a blocker.</p>
+</div>
+<h2 id="what-you-will-produce">What you will produce<a class="headerlink" href="#what-you-will-produce" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Get the seed: clone (the taught path) vs zip download</li>
-<li>Map of the seed: <code>README.md</code>, <code>PDD.md</code>, <code>CONFIG.md</code>, <code>contracts/</code>, <code>method/</code>, <code>known-issues/</code>, and the block folders (each = <code>prompt.md</code> + <code>cookbook.md</code>, sometimes a gate script)</li>
-<li>What is provided vs what you build: bind, don't build — seven agents + one app, nothing else; the claim generator is provided (its dials are explained in Verify, where aiming matters)</li>
-<li>Artifacts you will produce: <code>sdd.md</code>, <code>tasks.md</code>, the solution (case + agents), the Action App, a filled <code>PROGRESS.md</code>, and — at the end — a runbook</li>
-<li>Pre-flight checks before block 1</li>
+<li><code>sdd.md</code> — the design (block 1) — and <code>tasks.md</code> — the plan (block 2)</li>
+<li><code>Build/ClaimCase-&lt;seat&gt;/</code> — the solution: the Maestro case and the seven Agents</li>
+<li><code>Build/claim-review-&lt;seat&gt;/</code> — the standalone Coded Action App</li>
+<li>a filled <code>PROGRESS.md</code>, your logged findings, and — at the end — the operator runbook</li>
+</ul>
+<h2 id="pre-flight">Pre-flight<a class="headerlink" href="#pre-flight" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip login status</code> — right tenant, right folder. Nearly every "not found" today is a wrong tenant, wrong folder, or stale cache — build the habit now</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip --version</code> — the CLI self-updates, so knowing which version you ran matters later</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>python3 log-finding.py --identify</code> — declares your agent, model and CLI version once, so results are diagnosable</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Open <code>README.md</code> in the seed and read "The sequence" — five minutes, and the whole day makes sense</li>
 </ul>
 
 

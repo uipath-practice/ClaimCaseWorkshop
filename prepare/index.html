@@ -29,7 +29,7 @@
     
     
       
-        <title>Overview - ClaimCase Workshop</title>
+        <title>Overview - Property Insurance Claims with Coding Agents</title>
       
     
     
@@ -94,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="ClaimCase Workshop" class="md-header__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href=".." title="Property Insurance Claims with Coding Agents" class="md-header__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../assets/images/Partner Success Logo.png" alt="logo">
 
@@ -107,7 +107,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ClaimCase Workshop
+            Property Insurance Claims with Coding Agents
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -326,12 +326,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href=".." title="ClaimCase Workshop" class="md-nav__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href=".." title="Property Insurance Claims with Coding Agents" class="md-nav__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../assets/images/Partner Success Logo.png" alt="logo">
 
     </a>
-    ClaimCase Workshop
+    Property Insurance Claims with Coding Agents
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -436,6 +436,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -452,6 +470,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-exercise-at-a-glance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The exercise at a glance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#audience" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Audience
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#coding-agents" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Coding agents
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-seat" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your seat
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In this section
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,17 +1322,98 @@
 
 
 <h1 id="prepare">Prepare<a class="headerlink" href="#prepare" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The exercise at a glance: property claims from intake to settlement; what you leave with</li>
-<li>Audience and level: technical, level ~300; what is assumed</li>
-<li>Coding agents: required / supported / tested matrix (agent-specific steps always in tabs — no assumed agent)</li>
-<li>The environment: what a seat is; what is already deployed (six provided processes, shared document-extraction project, shared app registration)</li>
-<li>Prerequisites checklist and how-tos pointer</li>
-<li>Step table for this section (framework overview pattern)</li>
+<p>You are about to build an enterprise-grade claims solution in a day, with a coding agent doing the heavy lifting. This section clears everything that would otherwise compete for your attention once the build starts.</p>
+<h2 id="the-exercise-at-a-glance">The exercise at a glance<a class="headerlink" href="#the-exercise-at-a-glance" title="Permanent link">&para;</a></h2>
+<p>An insurance company receives property claims — a claim form, a policy, an assessor's report. Today a team screens them, validates the assessment, calculates settlements and writes to claimants: slowly, and a little differently every time. You automate the whole path. A claim with nothing wrong settles untouched; a claim with a problem stops in front of the right person, with everything they need on one screen.</p>
+<p>You direct, the agent builds, and a gate checks every block. The goal is not this particular solution — it is leaving able to build the next one, on your own process, at your own company.</p>
+<h2 id="audience">Audience<a class="headerlink" href="#audience" title="Permanent link">&para;</a></h2>
+<p>Technical, level 300. You should be comfortable in a terminal and have driven a coding agent at least once before. UiPath product experience helps but is not assumed — each product is explained when the build reaches it.</p>
+<h2 id="coding-agents">Coding agents<a class="headerlink" href="#coding-agents" title="Permanent link">&para;</a></h2>
+<p>Bring the agent you already use — as the official guidance puts it, "the right choice is usually the agent you already use day to day" (<a href="https://docs.uipath.com/coding-agents/standalone/latest/user-guide/choosing-your-agent">choosing your agent</a>).</p>
+<table>
+<thead>
+<tr>
+<th>Agent</th>
+<th>Status in this workshop</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claude Code</strong></td>
+<td>Tested — the workshop prompts are proven with it</td>
+</tr>
+<tr>
+<td><strong>Codex</strong></td>
+<td>Tested — proven with the same prompts</td>
+</tr>
+<tr>
+<td><strong>OpenCode</strong></td>
+<td>Tested — proven with the same prompts</td>
+</tr>
+<tr>
+<td>Other supported agents</td>
+<td>Expected to work; not tested against these prompts</td>
+</tr>
+</tbody>
+</table>
+<p>Where a step differs between agents, the page shows one tab per agent.</p>
+<h2 id="your-seat">Your seat<a class="headerlink" href="#your-seat" title="Permanent link">&para;</a></h2>
+<p>A seat is your own folder in the training tenant. It arrives with the shared infrastructure already in place — you never build any of this:</p>
+<table>
+<thead>
+<tr>
+<th>Already there</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Six deployed automations</td>
+<td>A claim generator, plus the plumbing that moves documents and payloads</td>
+</tr>
+<tr>
+<td>A shared <strong>IXP</strong> project</td>
+<td>The document-extraction model, published and pinned</td>
+</tr>
+<tr>
+<td>A shared app registration</td>
+<td>The identity your review screens will sign in through</td>
+</tr>
+</tbody>
+</table>
+<p>What you build on top: the claim record, the seven Agents, the Maestro case, and the Action App.</p>
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A laptop you have admin rights on</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Node.js LTS and <code>npm</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 3 (the gate scripts run on it)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>git</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A coding agent installed and signed in (one of the tested three, or your own)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> An account on the training tenant — <strong>CodingAgentsPractice</strong> at <a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></li>
 </ul>
+<h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="1-prepare-your-tools/">1. Prepare Your Tools</a></td>
+<td>Check the <code>uip</code> CLI, sign-in and skills; install what's missing</td>
+</tr>
+<tr>
+<td><a href="2-how-the-workshop-runs/">2. How the Workshop Runs</a></td>
+<td>The rhythm you'll follow all day: blocks, gates, context, findings</td>
+</tr>
+<tr>
+<td><a href="3-get-the-seed/">3. Get the Seed</a></td>
+<td>Clone the exercise, see what's inside, run the pre-flight checks</td>
+</tr>
+</tbody>
+</table>
 
 
 

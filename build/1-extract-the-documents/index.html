@@ -29,7 +29,7 @@
     
     
       
-        <title>1. Extract the Documents - ClaimCase Workshop</title>
+        <title>1. Extract the Documents - Property Insurance Claims with Coding Agents</title>
       
     
     
@@ -94,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ClaimCase Workshop" class="md-header__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-header__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
@@ -107,7 +107,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ClaimCase Workshop
+            Property Insurance Claims with Coding Agents
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -326,12 +326,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ClaimCase Workshop" class="md-nav__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-nav__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
     </a>
-    ClaimCase Workshop
+    Property Insurance Claims with Coding Agents
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -1253,6 +1253,16 @@
 <li>What to review: keys come from the payload, not from labels; confidence has three states; payload sizes are a design input</li>
 <li>The gate: <code>check_extraction_keys.py</code> — every extraction path in the design checked against a real payload</li>
 <li>Proof: a payload beside its form</li>
+</ul>
+<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
+<p>Steps:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read <code>contracts/provided-processes.md</code> (payload shape, field keys) and <code>CONFIG.md</code> (the shared IXP project)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Generate two claims and run each through the provided Extract Claim Data (IXP) process</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read a payload beside its form: six field groups present, damage rows repeating one per item</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pin field-key spellings from the live payload; correct <code>sdd.md</code> where any binding differs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 3a-extraction/check_extraction_keys.py &lt;payload.json&gt;</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Record the project name and model version in <code>PROGRESS.md</code></li>
 </ul>
 
 

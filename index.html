@@ -27,7 +27,7 @@
     
     
       
-        <title>ClaimCase Workshop</title>
+        <title>Property Insurance Claims with Coding Agents</title>
       
     
     
@@ -78,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#claimcase-workshop" class="md-skip">
+        <a href="#building-property-insurance-claims-automation-with-coding-agents" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="ClaimCase Workshop" class="md-header__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="." title="Property Insurance Claims with Coding Agents" class="md-header__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="assets/images/Partner Success Logo.png" alt="logo">
 
@@ -105,7 +105,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ClaimCase Workshop
+            Property Insurance Claims with Coding Agents
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -324,12 +324,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="ClaimCase Workshop" class="md-nav__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="." title="Property Insurance Claims with Coding Agents" class="md-nav__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="assets/images/Partner Success Logo.png" alt="logo">
 
     </a>
-    ClaimCase Workshop
+    Property Insurance Claims with Coding Agents
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -350,6 +350,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="." class="md-nav__link md-nav__link--active">
         
   
@@ -366,6 +384,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you'll build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-path" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The path
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-concepts-for-this-course" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key concepts for this course
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1211,17 +1281,65 @@
 
 
 
-<h1 id="claimcase-workshop">ClaimCase Workshop<a class="headerlink" href="#claimcase-workshop" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
+<h1 id="building-property-insurance-claims-automation-with-coding-agents">Building Property Insurance Claims automation with Coding Agents<a class="headerlink" href="#building-property-insurance-claims-automation-with-coding-agents" title="Permanent link">&para;</a></h1>
+<p>Welcome. In this workshop you build a complete insurance back-office solution — document extraction, a shared claim record, seven decision agents, a long-running case with two human gates, and the screens reviewers decide on. You build it by directing a coding agent, not by writing it yourself.</p>
+<p>This is a technical, level-300 exercise. You leave with a working solution in your own folder — and with a process you can reuse: requirements → design → plan → build → verify → hand over, every step checked by something stronger than an opinion.</p>
+<div class="admonition tip">
+<p class="admonition-title">Training Environment</p>
+<p>Log in at <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong> using tenant <strong>CodingAgentsPractice</strong>. Your instructor assigns you a seat — your own folder, where everything you build lives.</p>
+</div>
+<h2 id="what-youll-build">What you'll build<a class="headerlink" href="#what-youll-build" title="Permanent link">&para;</a></h2>
+<p>One claim arrives as three PDF documents. A settled claim — or a decision from the right human — comes out. In between:</p>
 <ul>
-<li>Welcome + what this workshop is: build an enterprise-grade property-claims solution end-to-end with coding agents (level ~300, technical audience)</li>
-<li>Training-environment callout: log in at <code>https://cloud.uipath.com/tpenlabs</code>, tenant <code>CodingAgentsPractice</code> (macros)</li>
-<li>What you'll build in one glance: a Maestro case + seven agents + an Action App + the claim record (+ a dashboard, later)</li>
-<li>The path: Prepare → Plan → Build → Verify — one link per section</li>
-<li>Key-concepts glossary: coding agent, <code>uip</code> CLI, skills, seed, block, gate</li>
+<li>an <strong>IXP</strong> extraction that turns the claim form into typed data</li>
+<li>a <strong>Data Fabric</strong> claim record that every component reads and writes</li>
+<li>seven low-code <strong>Agents</strong>, one per family of business rules</li>
+<li>a <strong>Maestro</strong> case orchestrating the whole lifecycle, with two human gates</li>
+<li>a <strong>Coded Action App</strong> — the two screens a reviewer decides on</li>
+<li>a letter recorded for every decision, and a runbook for whoever runs it after you</li>
 </ul>
+<h2 id="the-path">The path<a class="headerlink" href="#the-path" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong><a href="prepare/">Prepare</a></strong> — check your tools, learn the workshop rhythm, get the exercise seed.</li>
+<li><strong><a href="plan/">Plan</a></strong> — the use case, the requirements document, and the design your agent generates from it.</li>
+<li><strong><a href="build/">Build</a></strong> — six blocks. One prompt each, each proven before the next starts.</li>
+<li><strong><a href="verify/">Verify</a></strong> — hunt the planted problems, then hand the solution over.</li>
+</ol>
+<h2 id="key-concepts-for-this-course">Key concepts for this course<a class="headerlink" href="#key-concepts-for-this-course" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Coding agent</td>
+<td>An AI tool in your terminal that reads, writes and executes code autonomously — you direct it in plain English</td>
+</tr>
+<tr>
+<td><code>uip</code> CLI</td>
+<td>The command-line interface the agent uses to talk to the UiPath platform</td>
+</tr>
+<tr>
+<td>Skills</td>
+<td>Packaged instructions that teach a generic coding agent to build on UiPath well</td>
+</tr>
+<tr>
+<td>The seed</td>
+<td>The exercise repository you clone: the requirements, the contracts, and one prompt per block</td>
+</tr>
+<tr>
+<td>A block</td>
+<td>One unit of the build: one prompt in, one proven component out</td>
+</tr>
+<tr>
+<td>A gate</td>
+<td>A check a block must pass before the next one starts — a script or a platform validation</td>
+</tr>
+</tbody>
+</table>
 
 
 

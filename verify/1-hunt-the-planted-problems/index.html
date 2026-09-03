@@ -29,7 +29,7 @@
     
     
       
-        <title>1. Hunt the Planted Problems - ClaimCase Workshop</title>
+        <title>1. Hunt the Planted Problems - Property Insurance Claims with Coding Agents</title>
       
     
     
@@ -94,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ClaimCase Workshop" class="md-header__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-header__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
@@ -107,7 +107,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ClaimCase Workshop
+            Property Insurance Claims with Coding Agents
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -326,12 +326,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ClaimCase Workshop" class="md-nav__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-nav__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
     </a>
-    ClaimCase Workshop
+    Property Insurance Claims with Coding Agents
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -1260,6 +1260,18 @@
 <li>The results table: every planted problem caught by its owning component; re-run the clean batch after every rule-tightening fix</li>
 <li>The conformance sweep: every SDD element marked Implemented · Missing · Mismatch · Extra</li>
 <li>Proof: your results table beside the answer key</li>
+</ul>
+<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
+<p>Steps:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run three clean claims first — all settle in full, no task ever raised</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read the answer key by probe: one standalone generator call per injector id → owner map</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Aim one run per planted problem: matching fail scenario + pinned discrepancy id; confirm the pin landed before treating the run as evidence</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Record per problem: which Agent caught it, which gate task showed it; fix at the source and re-run</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Re-run the clean batch after every fix that tightens a rule</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Reproducibility: two clean claims with one <code>profileId</code> settle to the same cent</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conformance sweep of <code>sdd.md</code>: Implemented · Missing · Mismatch · Extra</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
 
 

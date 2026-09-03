@@ -29,7 +29,7 @@
     
     
       
-        <title>2. Create the Claim Record - ClaimCase Workshop</title>
+        <title>2. Create the Claim Record - Property Insurance Claims with Coding Agents</title>
       
     
     
@@ -94,7 +94,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="ClaimCase Workshop" class="md-header__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-header__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
@@ -107,7 +107,7 @@
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            ClaimCase Workshop
+            Property Insurance Claims with Coding Agents
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -326,12 +326,12 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="ClaimCase Workshop" class="md-nav__button md-logo" aria-label="ClaimCase Workshop" data-md-component="logo">
+    <a href="../.." title="Property Insurance Claims with Coding Agents" class="md-nav__button md-logo" aria-label="Property Insurance Claims with Coding Agents" data-md-component="logo">
       
   <img src="../../assets/images/Partner Success Logo.png" alt="logo">
 
     </a>
-    ClaimCase Workshop
+    Property Insurance Claims with Coding Agents
   </label>
   
   <ul class="md-nav__list" data-md-scrollfix>
@@ -1242,6 +1242,14 @@
 <li>What to review: the write-semantics trap (omitted preserves, null destroys, empty destroys silently); JSON column budgets; one name in three casings</li>
 <li>Done when: cents survive a round-trip and a 9,000-character payload fits</li>
 <li>Proof: the table and a row in it</li>
+</ul>
+<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
+<p>Steps:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read <code>contracts/claim-entity.md</code> (pinned schema, five column tables, casing rule) and <code>CONFIG.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load the uipath-platform skill (<code>uip df</code>); create the entity in the seat folder from a schema file — one create, no read-edit-write repair loop</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Round-trip: write cents and a 9,000-character payload, read both back unchanged, delete the test row</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Record the entity name and folder in <code>PROGRESS.md</code></li>
 </ul>
 
 
