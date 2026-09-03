@@ -8,3 +8,4 @@ scripts/context/vector_store.json
 docs/**/documentation.cache.json
 Archive/
 mkdocs.local.yml
+.obsidian/
