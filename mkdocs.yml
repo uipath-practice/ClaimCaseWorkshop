@@ -1,4 +1,4 @@
-site_name: ClaimCase Workshop
+site_name: Property Insurance Claims with Coding Agents
 site_url: https://uipath-practice.github.io/ClaimCaseWorkshop/
 site_description: Build an enterprise property-claims solution end-to-end with coding agents
 site_author: Sergey Shumilov
@@ -49,7 +49,15 @@ plugins:
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  # Custom fence renders ```mermaid blocks as diagrams (Material native support).
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  # Renders "- [ ]" lists as checklists (the expected-agent-steps blocks).
+  - pymdownx.tasklist:
+      custom_checkbox: true
   - pymdownx.tabbed:
       alternate_style: true
   - pymdownx.highlight:

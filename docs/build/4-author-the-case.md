@@ -15,3 +15,11 @@ Planned content:
 - The gates: `check_caseplan.py` (referential integrity) and `uip maestro case validate`; read the rules even when green
 - Proof: the case diagram open in Studio Web
 - Knowledge block — *when the task is larger than the context*: this is the largest build in the workshop, so context size matters more than ever. Models differ in window size and in how they behave as the window fills — some compensate for smaller windows remarkably well. The options that fit a large task into a small context: write as you go (compaction preserves only what is already written), names and keys into `PROGRESS.md` the moment they exist, self-contained pieces delegated to a subagent (the app, in this block), clear and resume from files. There are — and will always be — tasks larger than the largest context of the day; the craft is working so the limit doesn't matter.
+
+Steps:
+
+- [ ] Scaffold and deploy the Coded Action App `claim-review-<seat>` (beside the solution, stand-alone)
+- [ ] Build the case plan (`caseplan.json`) from `sdd.md`
+- [ ] Validate the case plan (`uip maestro case validate` + `check_caseplan.py`)
+- [ ] Upload the solution to Studio Web
+- [ ] Update `PROGRESS.md`

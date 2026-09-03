@@ -16,3 +16,15 @@ Planned content:
 - The results table: every planted problem caught by its owning component; re-run the clean batch after every rule-tightening fix
 - The conformance sweep: every SDD element marked Implemented · Missing · Mismatch · Extra
 - Proof: your results table beside the answer key
+
+<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
+Steps:
+
+- [ ] Run three clean claims first — all settle in full, no task ever raised
+- [ ] Read the answer key by probe: one standalone generator call per injector id → owner map
+- [ ] Aim one run per planted problem: matching fail scenario + pinned discrepancy id; confirm the pin landed before treating the run as evidence
+- [ ] Record per problem: which Agent caught it, which gate task showed it; fix at the source and re-run
+- [ ] Re-run the clean batch after every fix that tightens a rule
+- [ ] Reproducibility: two clean claims with one `profileId` settle to the same cent
+- [ ] Conformance sweep of `sdd.md`: Implemented · Missing · Mismatch · Extra
+- [ ] Update `PROGRESS.md`

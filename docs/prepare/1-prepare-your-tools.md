@@ -1,7 +1,5 @@
 # Prepare Your Tools
 
-<!-- Adapted from CodingAgentsCourse getting-started/1-install-the-cli-and-skills.md — reframed as a check-first refresher. Final wording lands in the content pass. -->
-
 !!! tip "Here is our plan for this lesson:"
 
     1. Check what you already have — CLI, sign-in, skills.
@@ -10,14 +8,16 @@
 
 ## Goal
 
-A working setup before the exercise starts: the `uip` CLI installed and authenticated, the UiPath skills added to your coding agent, and a quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents workshop before, this page is a five-minute checkup.
+A working setup before the exercise starts: the `uip` CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.
 
 ## Why a coding agent changes how you build
 
 A coding agent already knows how to write code. What it doesn't know is UiPath — your CLI commands, project structures, and platform conventions. Two pieces fix that:
 
-- **UiPath CLI** is the interface the agent uses to talk to the platform. A command-line interface turned out to be the most token-efficient way to expose UiPath to an agent.
-- **Skills** are how you teach the agent to use that CLI well. They encode the *sequence* of commands for a task, so you can ask for an outcome instead of memorizing commands.
+- **UiPath CLI** (`uip`) is the interface the agent uses to talk to the platform. A command-line interface turned out to be the most token-efficient way to expose UiPath to an agent.
+- **Skills** teach the agent to use that CLI well. Each one packs product context, commands, validation rules and best practices — so you ask for an outcome instead of memorizing command sequences.
+
+Together with your session and permissions, this wrapper around the agent is what *The Work That Remains* calls the **harness** — the controlled environment of context, tools and checkpoints an agent works inside. You are about to assemble one.
 
 ## Steps
 
@@ -49,16 +49,32 @@ uip login
 
 ### 4. Install the UiPath skills
 
-`uip skills install` launches an interactive installer where you pick your agent:
+`uip skills install` adds the skills to the agent you name:
 
-```bash
-uip skills install --agent claude
-```
+=== "Claude Code"
 
-The installer walks you through selecting skill bundles. Pick the bundles this workshop uses — the exact list is in the seed's `CONFIG.md`.
+    ```bash
+    uip skills install --agent claude
+    ```
+
+    Skills install globally for Claude Code (the `--local` flag is for other agents). Restart Claude Code afterwards so it reloads plugins.
+
+=== "Codex"
+
+    ```bash
+    uip skills install --agent codex
+    ```
+
+=== "OpenCode"
+
+    ```bash
+    uip skills install --agent opencode
+    ```
+
+The installer walks you through selecting skill bundles. Pick the ones this workshop uses — the exact list is in the seed's `CONFIG.md`.
 
 !!! info "Good to know"
-    The skills registry is public, so this step needs no login. You also don't need to install platform tools first — your agent auto-installs them on first use. **Claude Code** is global-only for skills; the `--local` flag is for other agents like Cursor.
+    The skills registry is [public on GitHub](https://github.com/UiPath/skills), so this step needs no login. You don't need to install platform tools first either — your agent auto-installs them on first use.
 
 A few commands to keep handy:
 
@@ -85,15 +101,24 @@ A correctly set-up agent will use the tools and give you the answer. If it doesn
 ![A coding agent proposing the uip command sequence after a plain-language request](1-prepare-your-tools.images/verify-agent-proposes-commands.png){ .screenshot }
 ]]]
 
-!!! info "Sessions, identity, and security"
-    The agent inherits your session and acts with your permissions. For a shared or service identity, sign in with an External Application session instead of a personal login.
+## One identity, your identity
 
-    Some agents run commands in isolated environments. In that case, they may not be able to run `uip` with your privileges. If `uip login status` shows you're connected in your terminal but your agent says otherwise, tell it:
+!!! info "Sessions, security, and what the agent may do"
+    Everything the agent does goes through the `uip` CLI, and the CLI is signed in as exactly **one identity — yours**. It cannot reach anything your account cannot reach; there is also no setting that makes it safer than your account. Three habits follow:
 
-    ```text
-    When using the UiPath CLI, prefer escalated execution because sandboxed commands may not reflect my real terminal session
-    ```
+    - **Approve commands as they come.** Avoid a blanket **uip** allow rule — it also covers destructive commands. Read/list prefixes are fine to approve permanently.
+    - **Keep secrets out of prompts and project files.** Credentials belong in a secret store, never in the conversation.
+    - **Review before you deploy.** A coding agent does not validate the compliance of generated code — that stays your job.
 
-    Avoid approving a blanket **uip** rule — that also covers destructive commands. Better to approve read/list prefixes as they come up.
+    Some agents run commands in isolated environments and may not see your real session. If `uip login status` works in your terminal but the agent says otherwise, tell it: *"When using the UiPath CLI, prefer escalated execution because sandboxed commands may not reflect my real terminal session."*
+
+## Read more
+
+| Official page | What it covers |
+|---|---|
+| [Coding agents overview](https://docs.uipath.com/coding-agents/standalone/latest/user-guide/overview) | The mental model: agent + CLI + skills |
+| [Working effectively](https://docs.uipath.com/coding-agents/standalone/latest/user-guide/working-effectively) | Best practices for driving an agent on UiPath |
+| [Governance and trust](https://docs.uipath.com/coding-agents/standalone/latest/user-guide/governance-and-trust) | Identity, permissions, telemetry |
+| [Managing tools and skills](https://docs.uipath.com/uipath-cli/standalone/latest/user-guide/managing-tools-and-skills) | Install, update and pin skills per agent |
 
 Done. Your tools are ready.

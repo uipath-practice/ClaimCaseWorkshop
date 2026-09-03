@@ -16,3 +16,13 @@ Planned content:
 - What to review: keys come from the payload, not from labels; confidence has three states; payload sizes are a design input
 - The gate: `check_extraction_keys.py` — every extraction path in the design checked against a real payload
 - Proof: a payload beside its form
+
+<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
+Steps:
+
+- [ ] Read `contracts/provided-processes.md` (payload shape, field keys) and `CONFIG.md` (the shared IXP project)
+- [ ] Generate two claims and run each through the provided Extract Claim Data (IXP) process
+- [ ] Read a payload beside its form: six field groups present, damage rows repeating one per item
+- [ ] Pin field-key spellings from the live payload; correct `sdd.md` where any binding differs
+- [ ] Run the gate: `python3 3a-extraction/check_extraction_keys.py <payload.json>`
+- [ ] Record the project name and model version in `PROGRESS.md`
