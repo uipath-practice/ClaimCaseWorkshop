@@ -72,6 +72,8 @@ Evidence from a real run of this block — a live extraction of claim `CLM-2026-
 
 Notice what the page has been telling you, now visible in the data: the keys are the **model's** (`RepairOrReplace`, not the form's printed label), the rows **repeat per item** instead of arriving as one blob, and confidence sits on **every field separately** — the structure your design binds to.
 
-<!-- screenshot: the payload JSON beside its claim form PDF, split view — the visual companion to the block above -->
+And here are the same four rows as they sit on the claim form itself — compare `Repair / Replace` on paper with `RepairOrReplace` in the payload:
+
+![The claim form's damage-inventory table — the four rows the payload above was extracted from](1-extract-the-documents.images/claim-form-damage-inventory-W.png){ .screenshot width="900" }
 
 Two claim forms you have never seen come back with every field group populated, the damage rows repeating correctly, and every key your design reads confirmed against a real payload.

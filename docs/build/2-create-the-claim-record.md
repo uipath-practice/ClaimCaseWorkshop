@@ -2,7 +2,7 @@
 
 The PDD asks for a store that outlives any single step and can be read while the claim is in flight. That is a **Data Fabric** entity, and this block builds it — one entity, in your seat folder, on the pinned schema from `contracts/claim-entity.md`.
 
-The schema is pinned for a reason worth reading in the contract itself: every seat builds a compatible record, so one reference screen can read any seat's claim and every seat's letters compare. Resist improving a name.
+The schema is pinned for a reason worth reading in the contract itself: every seat builds a compatible record, so one reference screen can read any seat's claim and every seat's letters compare. 
 
 ## The prompt
 
@@ -13,20 +13,16 @@ The schema is pinned for a reason worth reading in the contract itself: every se
 Steps:
 
 - [x] Read `contracts/claim-entity.md` (pinned schema, five column tables, casing rule) and `CONFIG.md`
-- [x] Load the uipath-platform skill (`uip df`); create the entity in the seat folder from a schema file — one create, no read-edit-write repair loop
+- [x] Load the uipath-platform skill (`uip df`); 
+- [x] Create the entity in the seat folder
 - [x] Round-trip: write cents and a 9,000-character payload, read both back unchanged, delete the test row
-- [x] Record the entity name and folder in `PROGRESS.md`
+- [x] Record the entity name and folder GUID in `PROGRESS.md`
 
-## What to review
+## What agent will review
 
 - **One create, from a file.** Update takes a different body shape from the one `get` returns, so the natural read-edit-write loop does not work here. Creating fresh from a schema file is one call and no repair.
 - **Two budgets, and they are not the same number.** JSON columns hold 10,000 characters, and every producer budgets 8,000 in its prompt — headroom is the contract. Separately, every *consumer's* summed inputs must stay under the platform's cap on serialized arguments. Your SDD already states both as arithmetic; this is where the numbers become real.
-- **The connection is shared, and that's deliberate.** Authorizing a Data Fabric connection is an interactive OAuth consent — the one click from the Prepare section that no agent can perform. One shared connection serves every seat.
-
-!!! warning "The write semantics matter more than the schema"
-    Three ways to write a field, three different outcomes: **omitted preserves** the column, **`null` destroys** it, and an **empty string destroys it silently** — reporting success. An unset case variable resolves to an empty string, so every optional write downstream must coalesce to *omitted*, never to blank. This single rule is behind most "the record lost my value" defects — and it applies to Data Fabric well beyond this exercise.
-
-    One more platform habit: columns come back **PascalCased** — write `eligibilityChecksJson`, read `EligibilityChecksJson`. The contract's casing table is the map.
+- **The connection is shared, and that's deliberate.** Authorizing a Data Fabric connection is an interactive OAuth consent. One shared connection serves every seat.
 
 ## The gate
 

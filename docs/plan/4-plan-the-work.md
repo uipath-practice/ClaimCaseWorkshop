@@ -82,5 +82,7 @@ Evidence from a real run of this block: 33 tasks, every one carrying a `Validate
 
 Read the shape, not just the rows: the extraction and the entity are leaves (`blocked-by: none`), every agent waits on the confirmed keys and the solution shell, and each task ends with the check that proves it. A list that runs top to bottom, from leaves to the case to the screens.
 
-<!-- screenshot: tasks.md open in an editor at the first tasks — optional visual companion to the block above -->
+And the agent's own closing report of the block — the whole plan's shape, routed block by block to the skill that builds it. Note the last words: it stopped at the boundary rather than rolling into 3a:
+
+![The agent's block-2 report: 33 tasks routed by skill per block, stopping before 3a](4-plan-the-work.images/plan-outcome-tasks-by-skill-W.png){ .screenshot width="900" }
 

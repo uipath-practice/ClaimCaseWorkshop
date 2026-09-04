@@ -33,6 +33,36 @@ Prefer the clone. With git, `git status` answers *what did I build* and `git dif
 | `1-design/` … `5-ship/` | One folder per block: `prompt.md`, `cookbook.md`, sometimes a gate script is inside.                                             |
 | `log-finding.py`        | How build findings get logged                                                                                                    |
 
+```text
+ClaimCase-Pro % ls -la 
+total 352 
+drwxr-xr-x@ 26    832    4 Sep 14:17  . 
+drwxr-xr-x 9      288    4 Sep 14:16  .. 
+drwxr-xr-x@ 3     96     4 Sep 14:17  .claude 
+drwxr-xr-x@ 12    384    4 Sep 14:16  .git 
+drwxr-xr-x@ 3     96     4 Sep 14:17  .workshop 
+drwxr-xr-x@ 5     160    4 Sep 14:16  1-design 
+drwxr-xr-x@ 4     128    4 Sep 14:16  2-plan 
+drwxr-xr-x@ 7     224    4 Sep 14:16  3a-extraction 
+drwxr-xr-x@ 4     128    4 Sep 14:16  3b-entity 
+drwxr-xr-x@ 4     128    4 Sep 14:16  3c-agents 
+drwxr-xr-x@ 5     160    4 Sep 14:16  3d-case 
+drwxr-xr-x@ 4     128    4 Sep 14:16  3e-run 
+drwxr-xr-x@ 6     192    4 Sep 14:16  3f-validation 
+drwxr-xr-x@ 4     128    4 Sep 14:16  4-verify 
+drwxr-xr-x@ 4     128    4 Sep 14:16  5-ship 
+-rw-r--r--@ 1     15419  4 Sep 14:16  AGENTS.md 
+-rw-r--r--@ 1     225    4 Sep 14:16  CLAUDE.md 
+-rw-r--r--@ 1     12449  4 Sep 14:16  CONFIG.md 
+drwxr-xr-x@ 6     192    4 Sep 14:16  contracts 
+drwxr-xr-x@ 5     160    4 Sep 14:16  known-issues 
+-rwxr-xr-x@ 1     23540  4 Sep 14:16  log-finding.py 
+drwxr-xr-x@ 7     224    4 Sep 14:16  method 
+-rw-r--r--@ 1     98226  4 Sep 14:16  PDD.md 
+-rw-r--r--@ 1     1154   4 Sep 14:16  PROGRESS.md 
+-rw-r--r--@ 1     9818   4 Sep 14:16  README.md 
+-rw-r--r--@ 1     38     4 Sep 14:16  VERSION
+```
 ## Provided vs. built
 
 Your Orchestrator seat folder comes with few dependencies: mechanical RPA automations, Storage Buckets, reusable IXP project for claims. Tenant also exposes shared resources. Bind those, don't build your own. This way you will focus on build the thinking part and not basic scripts.
