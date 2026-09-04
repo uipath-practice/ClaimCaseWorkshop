@@ -2,37 +2,60 @@
 
 ## The problem worth solving
 
-A household property claim takes the claims team **95 minutes of handling and 15 business days of elapsed time** — most of it re-keying documents, emailing other departments and waiting, with a shared spreadsheet as the only view of what's in flight. The deterministic legwork is already automated: registering the claim, gathering documents, reading the form, fetching the policy and history, sending letters. What's missing is everything that needs *judgement* — and one process that links it all together, from filing to decision letter.
+A household property claim takes the claims team **95 minutes of handling and 15 business days of elapsed time**. Most of it re-keying documents, emailing other departments and waiting, with a shared spreadsheet as the only view of what's in flight. 
+
+The ***deterministic legwork*** is already automated: registering the claim, gathering documents, reading the form, fetching the policy and history, sending letters. What's missing is:
+
+- everything that needs ***judgement*** 
+- one process that ***links it all together***, from filing to decision letter.
 
 That judgement is the real work. As *The Work That Remains* puts it: strip out the exceptions and judgement calls and "you have not automated the work. You have automated a fiction of it."
 
 ## What arrives with a claim
 
-Three documents — and only one of them is a form:
+Three documents. Only one of them is a form:
 
-| Document | Structure | What it carries |
-|---|---|---|
-| **Claim form** | Structured — same layout every time | Claimant, property, policy number, incident date and type, the damage inventory with amounts |
+| Document             | Structure                                                     | What it carries                                                                                                         |
+| -------------------- | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| **Claim form**       | Structured — same layout every time                           | Claimant, property, policy number, incident date and type, the damage inventory with amounts                            |
 | **Insurance policy** | Free-form contract prose, worded differently by every insurer | Limits, sublimits, deductible, exclusions, named perils, endorsements — the *only* authority on what this claim can pay |
-| **Assessor report** | Free-form, written by an external contractor | The cause determination and an independent repair estimate |
+| **Assessor report**  | Free-form, written by an external contractor                  | The cause determination and an independent repair estimate                                                              |
 
 Plus one lookup: the claims already settled against this policy this period. That distinction — one form, two prose documents — will shape the whole architecture: the form is read into fields once; the prose documents are read, clause by clause, by whatever does the judging.
 
 ## How a claim should be handled
 
 ```mermaid
-flowchart LR
-  I["Intake<br/>register · read form<br/>policy · history"] --> E["Eligibility<br/>screening<br/>5 checks"]
-  E -->|a check failed| H1{"H1<br/>Eligibility<br/>reviewer"}
-  E -->|all pass| W
-  H1 -->|proceed| W["Await<br/>assessor report"]
-  H1 -->|refuse| DN
-  W --> A["Analysis<br/>coverage ∥ settlement ∥ credibility"]
-  A --> R["Recommendation<br/>recorded first"]
-  R -->|flagged or over tolerance| H2{"H2<br/>Claims<br/>adjuster"}
-  R -->|clean| AP["Approved<br/>letter · authorise · close"]
-  H2 -->|approve| AP
-  H2 -->|deny| DN["Denied<br/>letter · record · close"]
+flowchart TD
+  I["Intake<br/><i>register · read form · policy · history</i>"]
+  E["Eligibility screening<br/><i>5 checks, all reported</i>"]
+  W["Await assessor report"]
+  A["Analysis<br/><i>coverage ∥ settlement ∥ credibility</i>"]
+  R["Recommendation<br/><i>recorded first</i>"]
+  AP["Approved<br/><i>letter · authorise · close</i>"]
+  H1{"H1<br/>Eligibility reviewer"}
+  H2{"H2<br/>Claims adjuster"}
+  DN["Denied<br/><i>letter · record · close</i>"]
+
+  I ==> E
+  E ==>|all pass| W
+  W ==> A
+  A ==> R
+  R ==>|clean| AP
+
+  E -.->|a check failed| H1
+  H1 -.->|proceed| W
+  H1 -.->|refuse| DN
+  R -.->|flagged or over tolerance| H2
+  H2 -.->|approve| AP
+  H2 -.->|deny| DN
+
+  classDef stage fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20;
+  classDef gate fill:#fff3e0,stroke:#ef6c00,color:#e65100;
+  classDef bad fill:#ffebee,stroke:#c62828,color:#b71c1c;
+  class I,E,W,A,R,AP stage;
+  class H1,H2 gate;
+  class DN bad;
 ```
 
 Two human gates, and both are **skipped when there is nothing to decide**. Five screening checks run before an inspection is paid for; a reviewer sees them only if one failed. Three analyses run when the assessor report lands; an adjuster sees them only if something was flagged or the amount is out of tolerance. A claim with nothing wrong settles end to end with no human touch — that is the point, and it is measured.
