@@ -34,6 +34,53 @@ One more habit this file carries: each later block sets the `Status:` line of th
 
 ## Proof
 
-<!-- screenshot: tasks.md — the first ~10 tasks showing order, skill routing and Validate: lines -->
+Evidence from a real run of this block: 33 tasks, every one carrying a `Validate:` line, and no dependency pointing down the list. The first ten:
 
-A list that runs top to bottom, from leaves to the case to the screens, with a check after every step that creates something.
+??? example "tasks.md — the first ten tasks (expand)"
+
+    ```text
+    Task T1 — uipath-ixp — Adopt the shared IXP project and capture two live extraction payloads
+       blocked-by: none
+       Validate: both payloads carry every field group with the damage rows repeating per item…
+
+    Task T2 — uipath-ixp — Confirm every extraction key the design binds
+       blocked-by: T1
+       Validate: `check_extraction_keys.py` reports every design path resolved…
+
+    Task T3 — uipath-platform — Create the claim entity ClaimCase_<seat> in the seat folder
+       blocked-by: none
+       Validate: the read-back schema matches `sdd.md` *Case Entity* on all 36 columns and their types
+
+    Task T4 — uipath-platform — Prove the claim record round-trips, then delete the probe row
+       blocked-by: T3
+       Validate: all four values read back unchanged and the probe row is gone
+
+    Task T5 — uipath-solution — Initialise the solution before the first project
+       blocked-by: none
+       Validate: `uip solution restore` succeeds against the empty solution
+
+    Task T6 — uipath-agents — Build EligibilityScreening
+       blocked-by: T2, T5
+       Validate: the agent builds and publishes inside the solution, and one invocation on a real claim…
+
+    Task T7 — uipath-agents — Build AssessmentReportValidation
+       blocked-by: T2, T5
+       Validate: the agent builds and publishes inside the solution, and one invocation returns all three…
+
+    Task T8 — uipath-agents — Build CoverageAnalysis
+       blocked-by: T2, T5
+       Validate: the agent builds and publishes inside the solution, and one invocation returns both envelopes…
+
+    Task T9 — uipath-agents — Build SettlementCalculation
+       blocked-by: T2, T5
+       Validate: the agent builds and publishes inside the solution, and the canonical claim in `sdd.md`…
+
+    Task T10 — uipath-agents — Build CredibilityAssessment
+       blocked-by: T2, T5
+       Validate: the agent builds and publishes inside the solution, and one invocation returns four reads…
+    ```
+
+Read the shape, not just the rows: the extraction and the entity are leaves (`blocked-by: none`), every agent waits on the confirmed keys and the solution shell, and each task ends with the check that proves it. A list that runs top to bottom, from leaves to the case to the screens.
+
+<!-- screenshot: tasks.md open in an editor at the first tasks — optional visual companion to the block above -->
+

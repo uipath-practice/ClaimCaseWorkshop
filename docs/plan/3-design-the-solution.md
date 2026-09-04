@@ -51,6 +51,39 @@ This gate is also what makes the exercise model-proof: different models design d
 
 ## Proof
 
-<!-- screenshot: sdd.md open — the stage list and one task with its Design Rationale naming a PDD step; plus the gate exiting 0 -->
+What a passing design looks like — evidence from a real run of this block.
+
+The stage model, answering the PDD's §5.5 exactly:
+
+```text
+| 2 | **Stage model** | Six primary stages (Intake → Eligibility Screening → Awaiting Inspection →
+Analysis → Claim Review → Approved) plus two secondary stages (Denied, Missing Details) | `PDD.md`
+§5.5 fixes the eight stages, their owners and which are required for completion; *Approved* is the
+healthy ending and *Denied* is explicitly the secondary unhappy ending. |
+```
+
+One task's **Design Rationale**, naming its PDD step — and disclosing a substitution instead of making it silently:
+
+```text
+### Case Triggers
+
+**Design Rationale:** `PDD.md` §2.1 says the claim arrives one at a time through Claims Intake, and
+§9 lists *Claim filed* as an inbound event correlated by claim reference. No Claims Intake
+connector is provisioned on this tenant and claim registration is served by the `Retrieve Property
+Claim` automation (`CONFIG.md`, *What already exists*), so the case starts through the platform's
+own start API and registers the claim as its first task. SME Review item 1 records the
+substitution; replacing this row with an event trigger later changes no stage and no task.
+```
+
+And the gate:
+
+```console
+$ python3 1-design/check_sdd.py sdd.md --pdd PDD.md
+0 failure(s), 5 warning(s), 0 note(s)
+$ python3 ~/.agents/skills/uipath-planner/scripts/audit_sdd.py sdd.md
+AUDIT OK: sdd.md template shape is clean
+```
+
+<!-- screenshot: sdd.md open in an editor at the stage list + the gate terminal — optional visual companion to the blocks above -->
 
 A design the checker passes and an architect could hand over: every stage, task, rule and human decision described well enough to build from, with nothing left to guess.
