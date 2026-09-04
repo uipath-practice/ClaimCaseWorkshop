@@ -1376,7 +1376,30 @@
 </div>
 <p>This gate is also what makes the exercise model-proof: different models design differently, and a weaker one will occasionally put arithmetic where judgement belongs — silently. The gate catches that on any model, which is why the answer to design variance is a check downstream, never a thicker requirements document.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<!-- screenshot: sdd.md open — the stage list and one task with its Design Rationale naming a PDD step; plus the gate exiting 0 -->
+<p>What a passing design looks like — evidence from a real run of this block.</p>
+<p>The stage model, answering the PDD's §5.5 exactly:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>| 2 | **Stage model** | Six primary stages (Intake → Eligibility Screening → Awaiting Inspection →
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Analysis → Claim Review → Approved) plus two secondary stages (Denied, Missing Details) | `PDD.md`
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>§5.5 fixes the eight stages, their owners and which are required for completion; *Approved* is the
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>healthy ending and *Denied* is explicitly the secondary unhappy ending. |
+</code></pre></div>
+<p>One task's <strong>Design Rationale</strong>, naming its PDD step — and disclosing a substitution instead of making it silently:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>### Case Triggers
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>**Design Rationale:** `PDD.md` §2.1 says the claim arrives one at a time through Claims Intake, and
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>§9 lists *Claim filed* as an inbound event correlated by claim reference. No Claims Intake
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>connector is provisioned on this tenant and claim registration is served by the `Retrieve Property
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>Claim` automation (`CONFIG.md`, *What already exists*), so the case starts through the platform's
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>own start API and registers the claim as its first task. SME Review item 1 records the
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>substitution; replacing this row with an event trigger later changes no stage and no task.
+</code></pre></div>
+<p>And the gate:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">0 failure(s), 5 warning(s), 0 note(s)</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="gp">$ </span>python3<span class="w"> </span>~/.agents/skills/uipath-planner/scripts/audit_sdd.py<span class="w"> </span>sdd.md
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="go">AUDIT OK: sdd.md template shape is clean</span>
+</code></pre></div>
+<!-- screenshot: sdd.md open in an editor at the stage list + the gate terminal — optional visual companion to the blocks above -->
 
 <p>A design the checker passes and an architect could hand over: every stage, task, rule and human decision described well enough to build from, with nothing left to guess.</p>
 
