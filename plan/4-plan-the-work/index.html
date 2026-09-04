@@ -719,6 +719,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Plan the Work
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -735,6 +753,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-a-good-plan-looks-like" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What a good plan looks like
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-the-plan" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review the plan
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,13 +1300,8 @@
 
 
 <h1 id="plan-the-work">Plan the Work<a class="headerlink" href="#plan-the-work" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
-<ul>
-<li>Why a plan block exists at all (~10 minutes; it catches ordering problems before they cost an hour)</li>
-<li>The prompt (transcluded from the seed):</li>
-</ul>
+<p>Block 2. The design says what the solution <em>is</em>; ten minutes now decide the order it gets built in. This is the cheapest block of the day — and the one place ordering mistakes surface before anything is built, instead of halfway through an afternoon.</p>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 2 · Plan</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Plan</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>You have a design that says what the solution is. Turn it into the order things get built in.
@@ -1243,11 +1319,6 @@
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">-</span><span class="w"> </span>someone could work the list top to bottom without opening the design to find out what comes next
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span>nothing in it is blocked by something further down.
 </code></pre></div>
-<ul>
-<li>Review <code>tasks.md</code>: leaves before consumers; every generation task followed by a check; nothing blocked by something below it</li>
-<li>Proof: the task list as generated (excerpt)</li>
-</ul>
-<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
 <p>Steps:</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load the uipath-planner skill; derive <code>tasks.md</code> from <code>sdd.md</code> at the seed root</li>
@@ -1256,6 +1327,23 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Review top-to-bottom: nothing blocked by something further down</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
+<h2 id="what-a-good-plan-looks-like">What a good plan looks like<a class="headerlink" href="#what-a-good-plan-looks-like" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Leaves before consumers.</strong> Nothing binds to something unbuilt: the claim record before anything writes to it, the seven Agents before the case that calls them. The least obvious leaf is the review app's <em>contract</em> — the case binds it, so the app is registered (empty page and all) before the case exists, and its screens come last of all, after real runs have produced real data. You'll see why when you get there.</li>
+<li><strong>Routing, not re-description.</strong> Each task names which skill builds it and which <code>sdd.md</code> sections to read — nothing more. A task that re-explains the architecture is a second copy of the design; two copies of one fact always end up disagreeing.</li>
+<li><strong>A check after every creation.</strong> Every generating task carries a <code>Validate:</code> step, and a test task sits before anything deploys. The plan carries the discipline the build will be too busy for.</li>
+</ul>
+<h2 id="review-the-plan">Review the plan<a class="headerlink" href="#review-the-plan" title="Permanent link">&para;</a></h2>
+<p>Read it top to bottom once and ask two questions:</p>
+<ol>
+<li>Could someone work this list without opening the design to find out what comes next?</li>
+<li>Does every dependency point <em>up</em> the list? One "blocked by" pointing down means the order is wrong — and it is far cheaper to move a line now than to discover it mid-build.</li>
+</ol>
+<p>One more habit this file carries: each later block sets the <code>Status:</code> line of the tasks it finishes. By the end of the day, a reader scanning the status lines sees exactly what was built and what was consciously skipped — the file degrades into the truth.</p>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: tasks.md — the first ~10 tasks showing order, skill routing and Validate: lines -->
+
+<p>A list that runs top to bottom, from leaves to the case to the screens, with a check after every step that creates something.</p>
 
 
 

@@ -607,6 +607,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -623,6 +641,47 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-method-pdd-sdd-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The method: PDD → SDD → tasks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In this section
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,16 +1278,81 @@
 
 
 <h1 id="plan">Plan<a class="headerlink" href="#plan" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The UiPath delivery method: PDD → SDD → task list — what each document is for and who reads it</li>
-<li>Where the planner skill sits in that method (it authors the SDD and derives the tasks)</li>
-<li>How this maps to today: block 1 produces <code>sdd.md</code>, block 2 produces <code>tasks.md</code></li>
-<li>Forward note: Cartographer — building a PDD from company notes/SOPs (not yet released; add when it ships)</li>
-<li>Step table for this section</li>
-</ul>
+<p>Before anything is built, three documents decide what gets built. This section walks you through them — the one you receive, and the two your agent generates.</p>
+<h2 id="the-method-pdd-sdd-tasks">The method: PDD → SDD → tasks<a class="headerlink" href="#the-method-pdd-sdd-tasks" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>The question it answers</th>
+<th>Written by</th>
+<th>Read by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PDD</strong> — Process Definition Document</td>
+<td><em>What does the business do, and what must stay true?</em></td>
+<td>A business analyst, with the process owner</td>
+<td>The solution architect — and every design decision traces back to it</td>
+</tr>
+<tr>
+<td><strong>SDD</strong> — Solution Design Document</td>
+<td><em>What is the solution, when it runs?</em></td>
+<td>The <strong>uipath-planner</strong> skill, driven by your agent (block 1)</td>
+<td>Every build block — everything downstream binds to it</td>
+</tr>
+<tr>
+<td><strong>tasks.md</strong> — the implementation plan</td>
+<td><em>What gets built, in what order, checked how?</em></td>
+<td>The same skill (block 2)</td>
+<td>You and your agent, top to bottom, all day</td>
+</tr>
+</tbody>
+</table>
+<pre class="mermaid"><code>flowchart LR
+  BA["Business analyst"] --&gt;|writes| PDD["PDD&lt;br/&gt;the business"]
+  PDD --&gt;|"block 1 · uipath-planner"| SDD["SDD&lt;br/&gt;the solution"]
+  SDD --&gt;|"block 2 · uipath-planner"| T["tasks.md&lt;br/&gt;the order"]
+  T --&gt;|"blocks 3a–3f"| BUILD["the build"]
+  BUILD --&gt;|"blocks 4–5"| V["verify · ship"]</code></pre>
+<p>Each document exists so the next one has nothing to guess. The SDD is written once and pays off twice: it is the specification the build follows, and afterwards it is the description of what actually runs — which is why the last block brings it to <em>as-built</em> rather than archiving it.</p>
+<p>The public UiPath docs describe the same journey as a five-phase <a href="https://docs.uipath.com/coding-agents/standalone/latest/user-guide/overview">automation lifecycle</a> — discovery and planning, building, verification, troubleshooting, running. This workshop walks the same path with the documents made explicit.</p>
+<div class="admonition info">
+<p class="admonition-title">Coming: a PDD that writes itself</p>
+<p>In this workshop the PDD is given. In a real engagement, drafting it is real work — and <strong>UiPath Cartographer</strong>, in public preview since August 2026, does exactly that: feed it transcripts, SOPs or recordings, and it drafts the AS-IS and TO-BE process maps and generates the PDD, ready for the flow you are about to practice.</p>
+</div>
+<h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="1-the-property-claims-case/">1. The Property Claims Case</a></td>
+<td>The business problem, the documents, and what can be wrong with a claim</td>
+</tr>
+<tr>
+<td><a href="2-read-the-pdd/">2. Read the PDD</a></td>
+<td>A guided tour: where the load-bearing details live</td>
+</tr>
+<tr>
+<td><a href="3-design-the-solution/">3. Design the Solution</a></td>
+<td>Block 1 — your agent generates the SDD, and a gate checks it</td>
+</tr>
+<tr>
+<td><a href="4-plan-the-work/">4. Plan the Work</a></td>
+<td>Block 2 — the SDD becomes an ordered task list</td>
+</tr>
+<tr>
+<td><a href="5-architecture-overview/">5. Architecture Overview</a></td>
+<td>The whole solution on one diagram, before the build starts</td>
+</tr>
+</tbody>
+</table>
 
 
 

@@ -747,6 +747,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Architecture Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -763,6 +781,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-you-build-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How you build it
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-build-and-how-it-connects" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you build, and how it connects
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-layers-worth-naming" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two layers worth naming
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-this-decomposition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why this decomposition
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,18 +1300,75 @@
 
 
 <h1 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
+<p>You have a design and a plan. Before the build starts, here is the whole solution on one page — what each block adds, and how the pieces talk to each other. As you read, keep your own <code>sdd.md</code> open: everything on this page should be findable in it, and anything that isn't is worth a second look before block 3a.</p>
+<h2 id="how-you-build-it">How you build it<a class="headerlink" href="#how-you-build-it" title="Permanent link">&para;</a></h2>
+<p>One stack runs the whole workshop:</p>
+<pre class="mermaid"><code>flowchart LR
+  Y["You&lt;br/&gt;&lt;i&gt;describe outcomes&lt;/i&gt;"] --&gt; AG["Coding agent&lt;br/&gt;&lt;i&gt;plans, builds, verifies&lt;/i&gt;"] --&gt; CLI["uip CLI + Skills&lt;br/&gt;&lt;i&gt;validates, deploys, manages&lt;/i&gt;"] --&gt; PF["UiPath Platform&lt;br/&gt;&lt;i&gt;runs it, governed&lt;/i&gt;"]</code></pre>
+<p>You never leave this loop: every component below is built by your agent through the CLI, and proven on the platform.</p>
+<h2 id="what-you-build-and-how-it-connects">What you build, and how it connects<a class="headerlink" href="#what-you-build-and-how-it-connects" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart TD
+  DOCS["Three PDFs per claim&lt;br/&gt;&lt;i&gt;form · policy · assessor report&lt;/i&gt;"] --&gt;|"provided plumbing&lt;br/&gt;fetch + extract"| PAY["Extraction payload&lt;br/&gt;&lt;i&gt;typed claim data — 3a&lt;/i&gt;"]
+  PAY --&gt; REC[("Claim record&lt;br/&gt;&lt;i&gt;Data Fabric entity — 3b&lt;/i&gt;")]
+  CASE["Maestro case&lt;br/&gt;&lt;i&gt;the lifecycle — 3d, runs at 3e&lt;/i&gt;"] --&gt;|"runs, one per rule family"| AGENTS["Seven Agents&lt;br/&gt;&lt;i&gt;the judgement — 3c&lt;/i&gt;"]
+  AGENTS --&gt;|"findings, as data"| REC
+  CASE --&gt;|"reads conditions from"| REC
+  CASE --&gt;|"raises a task only when&lt;br/&gt;something needs a person"| APP["Action App&lt;br/&gt;&lt;i&gt;two reviewer screens — 3f&lt;/i&gt;"]
+  APP --&gt;|"decision + reason"| CASE
+  APP --&gt;|"reads the claim by record id"| REC
+  CASE --&gt;|"logs every letter"| CORR[("Correspondence&lt;br/&gt;&lt;i&gt;tenant-level record&lt;/i&gt;")]
+  CASE --&gt;|"authorised amount"| SET["Settlements&lt;br/&gt;&lt;i&gt;handover, out of scope&lt;/i&gt;"]</code></pre>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Produces</th>
+<th>Consumed by</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3a</td>
+<td>The extraction payload and its exact field keys</td>
+<td>The agents' inputs and the case's bindings — a wrong key fails silently, which is why 3a ends with a key check</td>
+</tr>
+<tr>
+<td>3b</td>
+<td>The claim record</td>
+<td>Everything: agents write findings to it, the case routes on it, the screens read it, verify judges by it</td>
+</tr>
+<tr>
+<td>3c</td>
+<td>Seven Agents' typed outputs — flags, risk levels, amounts</td>
+<td>The case's gate conditions, the record, and ultimately the reviewer's screen</td>
+</tr>
+<tr>
+<td>3d</td>
+<td>The case plan — and the app's registered <em>contract</em></td>
+<td>The run block; the contract is what lets the case wire both gates before any screen exists</td>
+</tr>
+<tr>
+<td>3e</td>
+<td>A deployed, proven case; records populated by real runs</td>
+<td>The screens are built against these payloads; verify aims runs at this deployment</td>
+</tr>
+<tr>
+<td>3f</td>
+<td>The two reviewer screens</td>
+<td>The humans at H1 and H2 — the only part of your build anyone will ever see</td>
+</tr>
+</tbody>
+</table>
+<h2 id="two-layers-worth-naming">Two layers worth naming<a class="headerlink" href="#two-layers-worth-naming" title="Permanent link">&para;</a></h2>
+<p>Borrowing <em>The Work That Remains</em>' vocabulary: your <code>sdd.md</code> and the contracts are <strong>the map</strong> — the shared description every component is built against; the deployed case, processes and record are <strong>the rails</strong> — the deterministic layer that actually touches the world. Judgement lives in the seven Agents, and consequence sits behind the two human gates. Everyone reads the same map; only the rails touch the world.</p>
+<p>That split is visible in where each fact lives:</p>
 <ul>
-<li>The full solution diagram: step by step, which build block produces which artifact and which downstream step consumes it<ul>
-<li>document payloads → the claim record (entity) → the agents' findings → the case plan → human tasks → the review screens</li>
+<li><strong>What a finding <em>is</em></strong> — an Agent's prompt and typed output schema (3c)</li>
+<li><strong>What happens <em>because</em> of a finding</strong> — a case condition over that output (3d); routing is never a sentence in a prompt</li>
+<li><strong>What a human <em>sees and decides</em></strong> — the task contract and the screens (3d registers it, 3f fills it)</li>
 </ul>
-</li>
-<li>How components talk and exchange data: payloads, the entity, case variables, task schemas</li>
-<li>Cross-references into the SDD you just generated — the produced document is aligned with this architecture</li>
-<li>Objective: before Build starts, you know what each block is going to add and where its output goes</li>
-</ul>
+<h2 id="why-this-decomposition">Why this decomposition<a class="headerlink" href="#why-this-decomposition" title="Permanent link">&para;</a></h2>
+<p>Each component is the smallest thing that can be built and proven alone: the payload before the record, the record before the agents, the agents before the case that binds them, the case before the screens that render what its runs produced. Six blocks, each one leaving something the next can stand on — which is exactly what your <code>tasks.md</code> already says.</p>
 
 
 

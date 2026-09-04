@@ -663,6 +663,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Read the PDD
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -679,6 +697,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-it-names-no-product" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Why it names no product
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-tour-where-the-detail-lives" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The tour: where the detail lives
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-read-it-today" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to read it today
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,22 +1289,102 @@
 
 
 <h1 id="read-the-pdd">Read the PDD<a class="headerlink" href="#read-the-pdd" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
+<p>The seed's <code>PDD.md</code> is a signed, versioned Process Definition Document — fifteen sections describing how a property claim is handled, written by the business for whoever designs the solution. It is synthetic, but internally consistent and complete: <strong>every figure in it is a real oracle your build will be tested against.</strong></p>
+<h2 id="why-it-names-no-product">Why it names no product<a class="headerlink" href="#why-it-names-no-product" title="Permanent link">&para;</a></h2>
+<p>Search it — you will not find an agent, a case, an entity or any product name. That is deliberate, and it is what makes block 1 a design exercise rather than a transcription. The PDD says what the business does and which decisions need judgement; <em>your design</em> decides what becomes an Agent, what becomes an expression, and what is already deployed and merely bound.</p>
+<p>The single most load-bearing column in the document is <strong>decision nature</strong> in the step table (§5.3): every step is marked <em>rule-expressible</em> (the rule can be written down and applied the same way every time) or <em>judgement</em> (something is being weighed, and what is weighed is named). That column, more than anything else, drives your architecture.</p>
+<h2 id="the-tour-where-the-detail-lives">The tour: where the detail lives<a class="headerlink" href="#the-tour-where-the-detail-lives" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>What it holds</th>
+<th>You'll need it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>§1–§2</td>
+<td>Purpose, success criteria SC1–SC6, scope, assumptions</td>
+<td>Now — it frames everything</td>
+</tr>
+<tr>
+<td>§3</td>
+<td>The five personas and what each must be able to see</td>
+<td>When the review screens are designed</td>
+</tr>
+<tr>
+<td>§4</td>
+<td>The as-is process and its pain points</td>
+<td>Context — what must not be reproduced</td>
+</tr>
+<tr>
+<td><strong>§5.3</strong></td>
+<td>The step table: every step, its actor, its <strong>decision nature</strong></td>
+<td>Now, and at every design review</td>
+</tr>
+<tr>
+<td>§5.4</td>
+<td>Control-flow structure: what forks, what waits, what repeats</td>
+<td>The case block</td>
+</tr>
+<tr>
+<td>§5.5</td>
+<td>Lifecycle stages and SLAs — and which stages are exceptional</td>
+<td>The case block</td>
+</tr>
+<tr>
+<td>§5.6</td>
+<td>The three documents and their structure</td>
+<td>The extraction block</td>
+</tr>
+<tr>
+<td><strong>§5.7</strong></td>
+<td>The two human touchpoints: who decides, what they must see, what happens if nobody acts</td>
+<td>Now, and at the app block</td>
+</tr>
+<tr>
+<td><strong>§7</strong></td>
+<td>The business rules, BR-01 onwards, grouped by family — eligibility, report validation, coverage, settlement, credibility, decision rules, correspondence, overrides</td>
+<td>During the agents block, by rule id</td>
+</tr>
+<tr>
+<td><strong>§7.9</strong></td>
+<td><em>What is not a finding</em> — the rules that keep clean claims clean</td>
+<td>Half the job. Read it twice</td>
+</tr>
+<tr>
+<td>§8–§10</td>
+<td>Exceptions, integrations, compliance controls</td>
+<td>Reference</td>
+</tr>
+<tr>
+<td>§11</td>
+<td>Reporting: what the claims team lead must see</td>
+<td>The dashboard — a later chapter</td>
+</tr>
+<tr>
+<td>§13</td>
+<td>One canonical worked example, and the catalogue of what can be planted</td>
+<td>§13.2 now; §13.1 again at verify</td>
+</tr>
+<tr>
+<td>§14</td>
+<td>Out of scope — nothing here may appear in your component inventory</td>
+<td>At design review</td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-to-read-it-today">How to read it today<a class="headerlink" href="#how-to-read-it-today" title="Permanent link">&para;</a></h2>
 <ul>
-<li>What a PDD is and how this one is shaped (the 15-section standard)</li>
-<li>Where the load-bearing detail lives — a guided tour with document excerpts:<ul>
-<li>the step table and each step's decision nature</li>
-<li>the business rules, including "what is <em>not</em> a finding" (half the job)</li>
-<li>the reporting requirement (the dashboard, later)</li>
-<li>the planted-problem catalogue</li>
-<li>the success criteria</li>
+<li><strong>Read now:</strong> §1–§2, the §5.1 narrative and §5.2 map, §5.7, §13.2. Twenty minutes, and you know the process.</li>
+<li><strong>Reference later:</strong> §7 rule by rule during the build — your agent will cite rule ids like <code>BR-24</code>; §5.4/§5.5 at the case block; §13.1 at verify.</li>
+<li><strong>Mind the vocabulary.</strong> The glossary at the top fixes the business's exact words — <em>claim</em>, never <em>case</em> or <em>ticket</em>; <em>assessor report</em>, never <em>survey</em>. Synonym drift in a design turns into wrong stage and outcome names downstream, so the same discipline applies to everything you and your agent write.</li>
 </ul>
-</li>
-<li>Why the PDD names no product — the design is yours to derive</li>
-<li>What to read now vs what to reference later from the build blocks</li>
-</ul>
+<div class="admonition tip">
+<p class="admonition-title">Documents disagree sometimes — that's a finding</p>
+<p>The seed also ships <code>contracts/</code> — pinned technical interfaces. If the PDD and a contract ever seem to disagree, the contract wins for anything at a component boundary, and the disagreement is worth logging rather than silently resolving. You'll meet this again at the design gate.</p>
+</div>
 
 
 

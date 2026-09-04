@@ -691,6 +691,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Design the Solution
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -707,6 +725,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#before-you-run-the-brief-is-the-skill" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Before you run: the brief is the skill
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#review-the-design" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Review the design
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,13 +1311,11 @@
 
 
 <h1 id="design-the-solution">Design the Solution<a class="headerlink" href="#design-the-solution" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The problem: turn the PDD into an architecture an architect could hand over — one <code>sdd.md</code>, fixed name</li>
-<li>The prompt (transcluded from the seed — paste it into your coding agent):</li>
-</ul>
+<p>Block 1. Your agent reads the PDD and generates the Solution Design Document — one file, <code>sdd.md</code>, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. It has to be good enough that a solution architect could hand it to a developer and walk away.</p>
+<h2 id="before-you-run-the-brief-is-the-skill">Before you run: the brief is the skill<a class="headerlink" href="#before-you-run-the-brief-is-the-skill" title="Permanent link">&para;</a></h2>
+<p>The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. Watch what happens instead: <strong>it asks nothing.</strong> Every answer is already in what it reads — the mode in the prompt, the tenant from your login, the component inventory in <code>contracts/components.md</code>. That is the first lesson of this workshop worth taking home: <em>the way to a quiet, autonomous agent is a complete brief, not a longer conversation.</em></p>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
+<p>Copy it into your coding agent, started in the seed folder:</p>
 <div class="highlight"><span class="filename">Prompt — block 1 · Design</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Design</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Read:
@@ -1255,13 +1345,7 @@
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>If a check fires on something you believe is right, say so and leave it — a wrong rule in the checker is worth more to us than a file edited to satisfy it.
 </code></pre></div>
-<ul>
-<li>What the planner does, and why it asks nothing</li>
-<li>Review the generated SDD: structure, key sections, what to check by hand</li>
-<li>The gate: <code>check_sdd.py</code> — one command runs the planner's own audit and the process cross-check; read its rules even when it passes</li>
-<li>Proof: what a passing design looks like (SDD excerpt screenshot)</li>
-</ul>
-<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
+<p>Note the boundary it sets: <strong>design only, then stop.</strong> The task list comes in the next block. One document answers one question; a design that also explains the build order becomes two documents describing the same thing, and the copy nobody edits is the one that goes stale.</p>
 <p>Steps:</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code>, <code>CONFIG.md</code> and <code>contracts/</code> (components, claim entity, review task, provided processes)</li>
@@ -1271,6 +1355,24 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 1-design/check_sdd.py sdd.md --pdd PDD.md</code> — fix findings, rerun until clean</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
+<h2 id="review-the-design">Review the design<a class="headerlink" href="#review-the-design" title="Permanent link">&para;</a></h2>
+<p>The agent finishes in minutes; your review is where the value is. Four things to check by hand:</p>
+<ul>
+<li><strong>Every step, its nature respected.</strong> Walk the PDD's §5.3 table against the design: judgement steps became Agents, rule-expressible steps became expressions or deterministic tasks. Each design task should name the PDD step it implements.</li>
+<li><strong>Where two sections state the same fact, do they agree?</strong> A long generated document is written section by section, and consistency between distant sections is exactly what a sequential writer is worst at. Find the pairs — a field listed in two tables, an owner named twice — and compare them. That is where design defects live.</li>
+<li><strong>Budgets as numbers.</strong> Every agent's summed inputs against the platform's cap, stated arithmetically — not "should fit".</li>
+<li><strong>Disagreements resolved out loud.</strong> Where a contract and the PDD pull differently, the design follows the contract <em>and says so</em> in its Design Feedback section. A silent resolution is invisible and therefore uncheckable.</li>
+</ul>
+<h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
+</code></pre></div>
+<p>One command, two different checks. The planner's own audit verifies the document's <em>shape</em> — sections present, tables well-formed. The cross-check verifies it against the <em>process</em>: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone.</p>
+<p>This gate is also what makes the exercise model-proof: different models design differently, and a weaker one will occasionally put arithmetic where judgement belongs — silently. The gate catches that on any model, which is why the answer to design variance is a check downstream, never a thicker requirements document.</p>
+<p>If a rule fires on something you believe is right — say so and leave the document alone. A wrong rule is a valuable finding; a file edited to satisfy it is worthless.</p>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: sdd.md open — the stage list and one task with its Design Rationale naming a PDD step; plus the gate exiting 0 -->
+
+<p>A design the checker passes and an architect could hand over: every stage, task, rule and human decision described well enough to build from, with nothing left to guess.</p>
 
 
 

@@ -635,6 +635,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. The Property Claims Case
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -651,6 +669,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-problem-worth-solving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The problem worth solving
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-arrives-with-a-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What arrives with a claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-a-claim-should-be-handled" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How a claim should be handled
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-success-means" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What success means
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-can-be-wrong-with-a-claim" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What can be wrong with a claim
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,21 +1311,133 @@
 
 
 <h1 id="the-property-claims-case">The Property Claims Case<a class="headerlink" href="#the-property-claims-case" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The business problem and why it needs solving (claims intake to settlement, today's pain)</li>
-<li>Input documents: what arrives with a claim (claim form, policy, assessor report, claims history)</li>
-<li>High-level analysis steps: eligibility screening → assessment review → settle or route to a human</li>
-<li>Planted problems, in participant language: what can be wrong with a claim and what your solution must catch<ul>
-<li>screening-level problems (stop at the first human gate): late filing, lapsed policy, identity mismatch, address mismatch, coverage period</li>
-<li>review-level problems: inflated figures, peril mismatch, narrative contradiction, annual-aggregate erosion, unreadable claims history</li>
-</ul>
-</li>
-<li>The counter-rule: about a third of claims carry nothing wrong and must settle in full with no task raised — this is where most solutions fail</li>
-<li>Diagram: the claim's journey with the two human gates</li>
-</ul>
+<h2 id="the-problem-worth-solving">The problem worth solving<a class="headerlink" href="#the-problem-worth-solving" title="Permanent link">&para;</a></h2>
+<p>A household property claim takes the claims team <strong>95 minutes of handling and 15 business days of elapsed time</strong> — most of it re-keying documents, emailing other departments and waiting, with a shared spreadsheet as the only view of what's in flight. The deterministic legwork is already automated: registering the claim, gathering documents, reading the form, fetching the policy and history, sending letters. What's missing is everything that needs <em>judgement</em> — and one process that links it all together, from filing to decision letter.</p>
+<p>That judgement is the real work. As <em>The Work That Remains</em> puts it: strip out the exceptions and judgement calls and "you have not automated the work. You have automated a fiction of it."</p>
+<h2 id="what-arrives-with-a-claim">What arrives with a claim<a class="headerlink" href="#what-arrives-with-a-claim" title="Permanent link">&para;</a></h2>
+<p>Three documents — and only one of them is a form:</p>
+<table>
+<thead>
+<tr>
+<th>Document</th>
+<th>Structure</th>
+<th>What it carries</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Claim form</strong></td>
+<td>Structured — same layout every time</td>
+<td>Claimant, property, policy number, incident date and type, the damage inventory with amounts</td>
+</tr>
+<tr>
+<td><strong>Insurance policy</strong></td>
+<td>Free-form contract prose, worded differently by every insurer</td>
+<td>Limits, sublimits, deductible, exclusions, named perils, endorsements — the <em>only</em> authority on what this claim can pay</td>
+</tr>
+<tr>
+<td><strong>Assessor report</strong></td>
+<td>Free-form, written by an external contractor</td>
+<td>The cause determination and an independent repair estimate</td>
+</tr>
+</tbody>
+</table>
+<p>Plus one lookup: the claims already settled against this policy this period. That distinction — one form, two prose documents — will shape the whole architecture: the form is read into fields once; the prose documents are read, clause by clause, by whatever does the judging.</p>
+<h2 id="how-a-claim-should-be-handled">How a claim should be handled<a class="headerlink" href="#how-a-claim-should-be-handled" title="Permanent link">&para;</a></h2>
+<pre class="mermaid"><code>flowchart LR
+  I["Intake&lt;br/&gt;register · read form&lt;br/&gt;policy · history"] --&gt; E["Eligibility&lt;br/&gt;screening&lt;br/&gt;5 checks"]
+  E --&gt;|a check failed| H1{"H1&lt;br/&gt;Eligibility&lt;br/&gt;reviewer"}
+  E --&gt;|all pass| W
+  H1 --&gt;|proceed| W["Await&lt;br/&gt;assessor report"]
+  H1 --&gt;|refuse| DN
+  W --&gt; A["Analysis&lt;br/&gt;coverage ∥ settlement ∥ credibility"]
+  A --&gt; R["Recommendation&lt;br/&gt;recorded first"]
+  R --&gt;|flagged or over tolerance| H2{"H2&lt;br/&gt;Claims&lt;br/&gt;adjuster"}
+  R --&gt;|clean| AP["Approved&lt;br/&gt;letter · authorise · close"]
+  H2 --&gt;|approve| AP
+  H2 --&gt;|deny| DN["Denied&lt;br/&gt;letter · record · close"]</code></pre>
+<p>Two human gates, and both are <strong>skipped when there is nothing to decide</strong>. Five screening checks run before an inspection is paid for; a reviewer sees them only if one failed. Three analyses run when the assessor report lands; an adjuster sees them only if something was flagged or the amount is out of tolerance. A claim with nothing wrong settles end to end with no human touch — that is the point, and it is measured.</p>
+<h2 id="what-success-means">What success means<a class="headerlink" href="#what-success-means" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th>Measure</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥ 30% of claims fully straight-through</td>
+<td>no human touch at any point</td>
+</tr>
+<tr>
+<td>≤ 2 business days for a clean claim</td>
+<td>receipt to decision letter</td>
+</tr>
+<tr>
+<td>100% detection</td>
+<td>every claim with a known material problem stopped at the right gate, problem named</td>
+</tr>
+<tr>
+<td>≤ 10% false escalation</td>
+<td>clean claims referred to a human anyway</td>
+</tr>
+</tbody>
+</table>
+<p>The last two pull against each other on purpose. Stopping every claim gives perfect detection and a useless process; never stopping one does the reverse. <strong>The measure of your build is meeting both.</strong></p>
+<h2 id="what-can-be-wrong-with-a-claim">What can be wrong with a claim<a class="headerlink" href="#what-can-be-wrong-with-a-claim" title="Permanent link">&para;</a></h2>
+<p>The exercise's test claims are generated, and a generated claim can carry a planted problem — at most one for each gate, each owned by exactly one check:</p>
+<table>
+<thead>
+<tr>
+<th>Caught at</th>
+<th>The problem, as a claim carries it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Screening</td>
+<td>The policy lapsed for non-payment before the loss — only the payment status gives it away</td>
+</tr>
+<tr>
+<td>Screening</td>
+<td>The claimant isn't the policyholder — same surname, same address, different person</td>
+</tr>
+<tr>
+<td>Screening</td>
+<td>The claim and policy addresses differ by a real digit, not by formatting</td>
+</tr>
+<tr>
+<td>Screening</td>
+<td>The loss happened outside the policy period</td>
+</tr>
+<tr>
+<td>Screening</td>
+<td>The claim was filed after the deadline — sometimes with a documented excuse, which is a caveat, not a failure</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>Every figure sits 25–40% above the assessor's independent estimate</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>The incident type on the form isn't the cause the assessor determined — even when both are covered</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>The claimant's own account contradicts the cause they're claiming — nothing missing, nothing malformed, visible only to something that reads both and understands them</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>An earlier claim this period ate most of the annual aggregate — the claim itself is spotless; the problem isn't in its documents at all</td>
+</tr>
+<tr>
+<td>Review</td>
+<td>The claims history is unreadable — which must be flagged, never treated as "no prior claims"</td>
+</tr>
+</tbody>
+</table>
+<p><strong>And roughly a third of claims carry nothing wrong.</strong> Those must settle in full, untouched. In the PDD's own words: a process that finds something on every claim "has learned to always answer <em>yes</em> to <em>'is anything wrong here?'</em> — the easiest way to look thorough and the least useful."</p>
 
 
 
