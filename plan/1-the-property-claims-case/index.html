@@ -1312,10 +1312,15 @@
 
 <h1 id="the-property-claims-case">The Property Claims Case<a class="headerlink" href="#the-property-claims-case" title="Permanent link">&para;</a></h1>
 <h2 id="the-problem-worth-solving">The problem worth solving<a class="headerlink" href="#the-problem-worth-solving" title="Permanent link">&para;</a></h2>
-<p>A household property claim takes the claims team <strong>95 minutes of handling and 15 business days of elapsed time</strong> — most of it re-keying documents, emailing other departments and waiting, with a shared spreadsheet as the only view of what's in flight. The deterministic legwork is already automated: registering the claim, gathering documents, reading the form, fetching the policy and history, sending letters. What's missing is everything that needs <em>judgement</em> — and one process that links it all together, from filing to decision letter.</p>
+<p>A household property claim takes the claims team <strong>95 minutes of handling and 15 business days of elapsed time</strong>. Most of it re-keying documents, emailing other departments and waiting, with a shared spreadsheet as the only view of what's in flight. </p>
+<p>The <strong><em>deterministic legwork</em></strong> is already automated: registering the claim, gathering documents, reading the form, fetching the policy and history, sending letters. What's missing is:</p>
+<ul>
+<li>everything that needs <strong><em>judgement</em></strong> </li>
+<li>one process that <strong><em>links it all together</em></strong>, from filing to decision letter.</li>
+</ul>
 <p>That judgement is the real work. As <em>The Work That Remains</em> puts it: strip out the exceptions and judgement calls and "you have not automated the work. You have automated a fiction of it."</p>
 <h2 id="what-arrives-with-a-claim">What arrives with a claim<a class="headerlink" href="#what-arrives-with-a-claim" title="Permanent link">&para;</a></h2>
-<p>Three documents — and only one of them is a form:</p>
+<p>Three documents. Only one of them is a form:</p>
 <table>
 <thead>
 <tr>
@@ -1344,18 +1349,36 @@
 </table>
 <p>Plus one lookup: the claims already settled against this policy this period. That distinction — one form, two prose documents — will shape the whole architecture: the form is read into fields once; the prose documents are read, clause by clause, by whatever does the judging.</p>
 <h2 id="how-a-claim-should-be-handled">How a claim should be handled<a class="headerlink" href="#how-a-claim-should-be-handled" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart LR
-  I["Intake&lt;br/&gt;register · read form&lt;br/&gt;policy · history"] --&gt; E["Eligibility&lt;br/&gt;screening&lt;br/&gt;5 checks"]
-  E --&gt;|a check failed| H1{"H1&lt;br/&gt;Eligibility&lt;br/&gt;reviewer"}
-  E --&gt;|all pass| W
-  H1 --&gt;|proceed| W["Await&lt;br/&gt;assessor report"]
-  H1 --&gt;|refuse| DN
-  W --&gt; A["Analysis&lt;br/&gt;coverage ∥ settlement ∥ credibility"]
-  A --&gt; R["Recommendation&lt;br/&gt;recorded first"]
-  R --&gt;|flagged or over tolerance| H2{"H2&lt;br/&gt;Claims&lt;br/&gt;adjuster"}
-  R --&gt;|clean| AP["Approved&lt;br/&gt;letter · authorise · close"]
-  H2 --&gt;|approve| AP
-  H2 --&gt;|deny| DN["Denied&lt;br/&gt;letter · record · close"]</code></pre>
+<pre class="mermaid"><code>flowchart TD
+  I["Intake&lt;br/&gt;&lt;i&gt;register · read form · policy · history&lt;/i&gt;"]
+  E["Eligibility screening&lt;br/&gt;&lt;i&gt;5 checks, all reported&lt;/i&gt;"]
+  W["Await assessor report"]
+  A["Analysis&lt;br/&gt;&lt;i&gt;coverage ∥ settlement ∥ credibility&lt;/i&gt;"]
+  R["Recommendation&lt;br/&gt;&lt;i&gt;recorded first&lt;/i&gt;"]
+  AP["Approved&lt;br/&gt;&lt;i&gt;letter · authorise · close&lt;/i&gt;"]
+  H1{"H1&lt;br/&gt;Eligibility reviewer"}
+  H2{"H2&lt;br/&gt;Claims adjuster"}
+  DN["Denied&lt;br/&gt;&lt;i&gt;letter · record · close&lt;/i&gt;"]
+
+  I ==&gt; E
+  E ==&gt;|all pass| W
+  W ==&gt; A
+  A ==&gt; R
+  R ==&gt;|clean| AP
+
+  E -.-&gt;|a check failed| H1
+  H1 -.-&gt;|proceed| W
+  H1 -.-&gt;|refuse| DN
+  R -.-&gt;|flagged or over tolerance| H2
+  H2 -.-&gt;|approve| AP
+  H2 -.-&gt;|deny| DN
+
+  classDef stage fill:#e8f5e9,stroke:#2e7d32,color:#1b5e20;
+  classDef gate fill:#fff3e0,stroke:#ef6c00,color:#e65100;
+  classDef bad fill:#ffebee,stroke:#c62828,color:#b71c1c;
+  class I,E,W,A,R,AP stage;
+  class H1,H2 gate;
+  class DN bad;</code></pre>
 <p>Two human gates, and both are <strong>skipped when there is nothing to decide</strong>. Five screening checks run before an inspection is paid for; a reviewer sees them only if one failed. Three analyses run when the assessor report lands; an adjuster sees them only if something was flagged or the amount is out of tolerance. A claim with nothing wrong settles end to end with no human touch — that is the point, and it is measured.</p>
 <h2 id="what-success-means">What success means<a class="headerlink" href="#what-success-means" title="Permanent link">&para;</a></h2>
 <table>
