@@ -1347,6 +1347,9 @@
 <p>One real invocation per Agent, on a real claim — <code>uip agent debug</code> — checking it returns what its §7 section says, <strong>including nothing at all on a clean claim</strong>. A grader's score is about structure and wording; only a run answers whether the agent does the thing.</p>
 <p>We don't write agent's evaluations tests here, but it's a good idea; specific input claim + payload, results in a specific expected output. Coding agents do it for us here: we will do end-to-end verification later in this workshop, which will directly evaluate every agents's work as part of the claim processing (with planted issues).</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<p>The outcome of this block, open in <strong>Studio Web</strong> — all seven Agents inside the solution, with EligibilityScreening showing what a built one looks like:</p>
+<p><img alt="All seven Agents in the solution in Studio Web — EligibilityScreening open with its stepped system prompt, the Analyze Files tool, and typed inputs" class="screenshot" src="../3-build-the-seven-agents.images/seven-agents-in-studio-W.png" width="900" /></p>
+<p>Worth a close look, because the lesson's rules are visible in the build: the system prompt works in <strong>named steps</strong> and tells the agent to call <em>Analyze Files</em> on the policy <strong>exactly once</strong> — and never on the claim form, "the claim form already reaches you as structured data"; the user prompt carries <strong>typed inputs</strong> (<code>claimData</code>, <code>claimFormDocument</code>), not pasted text.</p>
 <!-- screenshot: one agent's trace — the typed output fields populated, on a real claim -->
 
 <p>Each of the seven runs on a real claim and answers per its rules; the solution is uploaded, and all seven open in <strong>Studio Web</strong>.</p>
