@@ -20,22 +20,23 @@ Three documents. Only one of them is a form:
 | **Claim form**       | Structured — same layout every time                           | Claimant, property, policy number, incident date and type, the damage inventory with amounts                            |
 | **Insurance policy** | Free-form contract prose, worded differently by every insurer | Limits, sublimits, deductible, exclusions, named perils, endorsements — the *only* authority on what this claim can pay |
 | **Assessor report**  | Free-form, written by an external contractor                  | The cause determination and an independent repair estimate                                                              |
+| **Past Claims**      | Look-up returning JSON                                        | The claims already settled against this policy this period                                                              |
 
-Plus one lookup: the claims already settled against this policy this period. That distinction — one form, two prose documents — will shape the whole architecture: the form is read into fields once; the prose documents are read, clause by clause, by whatever does the judging.
+That distinction — one **structured form**, two **prose documents** — will shape the whole architecture: the form is read into fields by IXP extractor; the prose documents are read, clause by clause, by whatever does the judging.
 
 ## How a claim should be handled
-
+[[[
 ```mermaid
 flowchart TD
-  I["Intake<br/><i>register · read form · policy · history</i>"]
-  E["Eligibility screening<br/><i>5 checks, all reported</i>"]
-  W["Await assessor report"]
-  A["Analysis<br/><i>coverage ∥ settlement ∥ credibility</i>"]
-  R["Recommendation<br/><i>recorded first</i>"]
-  AP["Approved<br/><i>letter · authorise · close</i>"]
-  H1{"H1<br/>Eligibility reviewer"}
-  H2{"H2<br/>Claims adjuster"}
-  DN["Denied<br/><i>letter · record · close</i>"]
+  I["<b>Intake</b><br/><i>register · read form · policy · history</i>"]
+  E["<b>Eligibility screening</b><br/><i>5 checks, all reported</i>"]
+  W["Request and await <b>Assessor Report</b>"]
+  A["<b>Analysis</b><br/><i>coverage ∥ settlement ∥ credibility</i>"]
+  R["<b>Decision</b><br>Recommendation <i>recorded first</i>"]
+  AP["<b>Approved</b><br/><i>letter · authorise · close</i>"]
+  H1{"Gate H1<br/><b>Eligibility reviewer</b>"}
+  H2{"Gate H2<br/><b>Claims adjuster</b>"}
+  DN["<b>Denied</b><br/><i>letter · record · close</i>"]
 
   I ==> E
   E ==>|all pass| W
@@ -57,8 +58,13 @@ flowchart TD
   class H1,H2 gate;
   class DN bad;
 ```
+|50|
 
-Two human gates, and both are **skipped when there is nothing to decide**. Five screening checks run before an inspection is paid for; a reviewer sees them only if one failed. Three analyses run when the assessor report lands; an adjuster sees them only if something was flagged or the amount is out of tolerance. A claim with nothing wrong settles end to end with no human touch — that is the point, and it is measured.
+- Two human gates, and both are **skipped when there is nothing to decide**. 
+- Five **screening checks** run before property inspection is paid for; a reviewer sees them only if one failed. 
+- Three analyses run when the assessor report lands; an adjuster sees them **only if something was flagged** or the amount is out of tolerance. 
+- **A claim with nothing wrong settles end to end with no human touch.**
+]]]
 
 ## What success means
 

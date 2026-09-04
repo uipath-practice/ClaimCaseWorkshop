@@ -8,16 +8,39 @@
 
 ## Goal
 
-A working setup before the exercise starts: the `uip` CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.
+A working setup before the exercise starts: the latest `uip` CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.
 
 ## Why a coding agent changes how you build
 
-A coding agent already knows how to write code. What it doesn't know is UiPath — your CLI commands, project structures, and platform conventions. Two pieces fix that:
+A coding agent already knows how to write code, out of the box. What it doesn't know is UiPath platform: CLI commands, components and UiPath code structures, and platform conventions. 
+
+[[[
+Two pieces fix that:
 
 - **UiPath CLI** (`uip`) is the interface the agent uses to talk to the platform. A command-line interface turned out to be the most token-efficient way to expose UiPath to an agent.
 - **Skills** teach the agent to use that CLI well. Each one packs product context, commands, validation rules and best practices — so you ask for an outcome instead of memorizing command sequences.
-
-Together with your session and permissions, this wrapper around the agent is what *The Work That Remains* calls the **harness** — the controlled environment of context, tools and checkpoints an agent works inside. You are about to assemble one.
+- Together with your session and permissions, this wrapper around the agent is the **harness** — the controlled environment of **context**, **tools** and **checkpoints** an agent works inside. You are about to assemble one.
+|50|
+```mermaid
+flowchart TD
+    subgraph YU ["You"]
+        D["Describe your <b>Task</b><br>in plain English"]
+    end
+    subgraph CA ["Coding Agent"]
+        L["Loads <b>UiPath Skills</b><br>Validates <b>UiPath Tools</b>"]
+    end
+    subgraph CL ["UiPath CLI & Skills"]
+        C["Build & Validate<br>Publish & Deploy<br>Monitor & Manage"]
+    end
+    subgraph PL ["UiPath Platform"]
+        P["Orchestrator, Data Fabric, IS Connectors, Maestro, etc."]
+    end
+%% Direct vertical connections between the blocks
+YU --> CA
+CA --> CL
+CL --> PL
+```
+]]]
 
 ## Steps
 
@@ -26,6 +49,7 @@ Together with your session and permissions, this wrapper around the agent is wha
 ```bash
 uip --version
 uip login status
+uip tools list
 uip skills list
 ```
 
@@ -41,7 +65,7 @@ npm install -g @uipath/cli
 
 ### 3. Sign in
 
-Authenticate once. Your coding agent reuses this same session, so it acts as you on the platform.
+Authenticate once in browser. Your coding agent reuses this same session, so it acts as you on the platform.
 
 ```bash
 uip login
@@ -81,6 +105,7 @@ A few commands to keep handy:
 ```bash
 uip login status
 uip --version
+uip update
 uip tools update
 uip skills update
 ```

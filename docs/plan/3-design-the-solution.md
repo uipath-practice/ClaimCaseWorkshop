@@ -1,10 +1,12 @@
-# Design the Solution
+# Design the Solution (Block 1)
 
-Block 1. Your agent reads the PDD and generates the Solution Design Document — one file, `sdd.md`, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. It has to be good enough that a solution architect could hand it to a developer and walk away.
+Your agent reads the PDD and generates the Solution Design Document — one file, `sdd.md`, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. **It has to be good enough that a solution architect could hand it to a developer and walk away.**
 
 ## Before you run: the brief is the skill
 
-The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. Watch what happens instead: **it asks nothing.** Every answer is already in what it reads — the mode in the prompt, the tenant from your login, the component inventory in `contracts/components.md`. That is the first lesson of this workshop worth taking home: *the way to a quiet, autonomous agent is a complete brief, not a longer conversation.*
+The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. You will see it when you build your next project.
+
+In our case agent is instructed to **ask nothing.** It saves time and every answer is already in: the mode in the prompt, the tenant from your login, the component inventory in `contracts/components.md`. That is the first lesson of this workshop worth taking home: ***the way to a quiet, autonomous agent is a complete brief, not a longer conversation.*** If you already know the answer yourself, just give it to your agent.
 
 ## The prompt
 
@@ -18,12 +20,12 @@ Note the boundary it sets: **design only, then stop.** The task list comes in th
 
 Steps:
 
-- [ ] Read `PDD.md`, `CONFIG.md` and `contracts/` (components, claim entity, review task, provided processes)
-- [ ] Load the uipath-planner skill; run autonomous, design only
-- [ ] Write `sdd.md` at the seed root, with `Tasks file: tasks.md` in the handoff header
-- [ ] Add the two sdd-addendum sections (entity write-ownership matrix; design feedback to PDD)
-- [ ] Run the gate: `python3 1-design/check_sdd.py sdd.md --pdd PDD.md` — fix findings, rerun until clean
-- [ ] Update `PROGRESS.md`
+- [x] Read `PDD.md`, `CONFIG.md` and `contracts/` (components, claim entity, review task, provided processes)
+- [x] Load the uipath-planner skill; run autonomous, design only
+- [x] Write `sdd.md` at the seed root, with `Tasks file: tasks.md` in the handoff header
+- [x] Add the two sdd-addendum sections (entity write-ownership matrix; design feedback to PDD)
+- [x] Run the gate: `python3 1-design/check_sdd.py sdd.md --pdd PDD.md` — fix findings, rerun until clean
+- [x] Update `PROGRESS.md`
 
 ## Review the design
 
@@ -40,11 +42,12 @@ The agent finishes in minutes; your review is where the value is. Four things to
 python3 1-design/check_sdd.py sdd.md --pdd PDD.md
 ```
 
-One command, two different checks. The planner's own audit verifies the document's *shape* — sections present, tables well-formed. The cross-check verifies it against the *process*: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone.
+The planner's own audit verifies the document's *shape* — sections present, tables well-formed. The script cross-check verifies it against the *process*: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. 
+
+!!!note "Remember"
+	- Especially for large tasks, agents are often reporting work as done, while they have missed half of the work in between.  For this workshop we know what SDD should contain and can check with a script. For your next project it's your eyes. Never jump to the next step without reviewing and validating work assuming agents are perfect. Not just yet.
 
 This gate is also what makes the exercise model-proof: different models design differently, and a weaker one will occasionally put arithmetic where judgement belongs — silently. The gate catches that on any model, which is why the answer to design variance is a check downstream, never a thicker requirements document.
-
-If a rule fires on something you believe is right — say so and leave the document alone. A wrong rule is a valuable finding; a file edited to satisfy it is worthless.
 
 ## Proof
 
