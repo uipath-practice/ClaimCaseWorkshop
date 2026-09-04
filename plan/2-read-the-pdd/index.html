@@ -1290,9 +1290,102 @@
 
 <h1 id="read-the-pdd">Read the PDD<a class="headerlink" href="#read-the-pdd" title="Permanent link">&para;</a></h1>
 <p>The seed's <code>PDD.md</code> is a signed, versioned Process Definition Document — fifteen sections describing how a property claim is handled, written by the business user and business analyst for whoever designs the solution. It is synthetic, but internally consistent and complete: <strong>every figure in it is a real oracle your build will be tested against.</strong></p>
+<p>You have the document in your cloned seed; every <strong>§ link on this page opens the same document on GitHub</strong> at that exact section, so you can jump back and forth without leaving the course.</p>
 <h2 id="why-it-names-no-product">Why it names no product<a class="headerlink" href="#why-it-names-no-product" title="Permanent link">&para;</a></h2>
 <p>Search it — you will not find an <strong>UiPath Agent</strong>, a <strong>Maestro Case</strong>, a <strong>Data Fabric Entity</strong> or any product name. That is deliberate, and it is what makes block 1 a design exercise rather than a transcription. The <strong>PDD says what the business does</strong> and which decisions need judgement; <em>your design</em> decides what becomes an Agent, what becomes an expression, and what is already deployed and merely bound.</p>
-<p>The single most load-bearing column in the document is <strong>decision nature</strong> in the step table (§5.3): every step is marked <em>rule-expressible</em> (the rule can be written down and applied the same way every time) or <em>judgement</em> (something is being weighed, and what is weighed is named). That column, more than anything else, drives your architecture.</p>
+<p>The single most load-bearing column in the document is <strong>decision nature</strong> in the step table (<a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table">§5.3</a>): every step is marked <em>rule-expressible</em> (the rule can be written down and applied the same way every time) or <em>judgement</em> (something is being weighed, and what is weighed is named). That column, more than anything else, drives your architecture.</p>
+<details class="quote">
+<summary>See it in the original — §5.3, Stage 2: five checks, three of them judgement (verbatim)</summary>
+<p><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table">Open §5.3 in the full document ↗</a> — rule links inside the excerpt point into the full document.</p>
+<p>All five checks run and all five are reported, whatever the result. A failure sets the overall result; it does not stop the other checks.</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Action</th>
+<th>Actor</th>
+<th>System / data touched</th>
+<th>Decision nature</th>
+<th>Expected result</th>
+<th>Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.1</td>
+<td>validate that the policy was in force on the date of loss</td>
+<td>system</td>
+<td>claim data, policy</td>
+<td>Rule-expressible — <a href="#71-eligibility">BR-01</a></td>
+<td>Pass or fail, with the policy's payment status and period quoted</td>
+<td></td>
+</tr>
+<tr>
+<td>2.2</td>
+<td>validate that the claimant and the policyholder are the same person</td>
+<td>system</td>
+<td>claim data, policy</td>
+<td><strong>Judgement</strong> — weighing nicknames, middle names and spelling variation against a genuinely different individual</td>
+<td>Pass or fail, naming who the policy is in</td>
+<td>Two names being similar is not the test; being the same person is</td>
+</tr>
+<tr>
+<td>2.3</td>
+<td>validate that the claim and the policy describe the same property</td>
+<td>system</td>
+<td>claim data, policy</td>
+<td><strong>Judgement</strong> — weighing formatting and abbreviation differences against a real difference of address</td>
+<td>Pass or fail, quoting both addresses</td>
+<td></td>
+</tr>
+<tr>
+<td>2.4</td>
+<td>validate that the incident date falls inside the policy period</td>
+<td>system</td>
+<td>claim data, policy</td>
+<td>Rule-expressible — <a href="#71-eligibility">BR-04</a></td>
+<td>Pass or fail, giving the loss date and the policy period</td>
+<td></td>
+</tr>
+<tr>
+<td>2.5</td>
+<td>validate that the claim was filed within the filing deadline</td>
+<td>system</td>
+<td>claim data</td>
+<td>Rule-expressible with a judgement tail — <a href="#71-eligibility">BR-05</a></td>
+<td>Pass, fail, or <em>late with justification</em></td>
+<td><em>Late with justification</em> is a caveat, not a failure</td>
+</tr>
+<tr>
+<td>2.6</td>
+<td>create the screening result</td>
+<td>system</td>
+<td>claim record</td>
+<td>n/a</td>
+<td>Every check, its result and its reason are on the record <strong>before</strong> any human is asked to look</td>
+<td>A reviewer's screen is built from what has been recorded</td>
+</tr>
+<tr>
+<td>2.7</td>
+<td>review the screening result and decide whether the claim proceeds</td>
+<td><strong>Eligibility reviewer</strong></td>
+<td>claim record, claim form, policy</td>
+<td><strong>Judgement</strong> — whether a failed check is a reason to stop, given anything the claimant has documented</td>
+<td>Proceed or refuse, with a written reason</td>
+<td><strong>Only reached if at least one check failed.</strong> See <a href="#57-human-decision-and-approval-points">§5.7 H1</a></td>
+</tr>
+<tr>
+<td>2.8</td>
+<td>transfer the claim for inspection</td>
+<td>system</td>
+<td>—</td>
+<td>n/a</td>
+<td>The claim is waiting for an assessor report</td>
+<td>Instructing the assessor is <a href="#23-out-of-scope">OS1</a> — this process waits, it does not dispatch</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="the-tour-where-the-detail-lives">The tour: where the detail lives<a class="headerlink" href="#the-tour-where-the-detail-lives" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1304,72 +1397,72 @@
 </thead>
 <tbody>
 <tr>
-<td>§1–§2</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#1-purpose-and-business-case">§1–§2</a></td>
 <td>Purpose, success criteria SC1–SC6, scope, assumptions</td>
 <td>Now — it frames everything</td>
 </tr>
 <tr>
-<td>§3</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#3-personas-and-responsibilities">§3</a></td>
 <td>The five personas and what each must be able to see</td>
 <td>When the review screens are designed</td>
 </tr>
 <tr>
-<td>§4</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#4-as-is-process">§4</a></td>
 <td>The as-is process and its pain points</td>
 <td>Context — what must not be reproduced</td>
 </tr>
 <tr>
-<td><strong>§5.3</strong></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table"><strong>§5.3</strong></a></td>
 <td>The step table: every step, its actor, its <strong>decision nature</strong></td>
 <td>Now, and at every design review</td>
 </tr>
 <tr>
-<td>§5.4</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#54-control-flow-structure">§5.4</a></td>
 <td>Control-flow structure: what forks, what waits, what repeats</td>
 <td>The case block</td>
 </tr>
 <tr>
-<td>§5.5</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#55-lifecycle-stages-and-slas">§5.5</a></td>
 <td>Lifecycle stages and SLAs — and which stages are exceptional</td>
 <td>The case block</td>
 </tr>
 <tr>
-<td>§5.6</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#56-documents-and-unstructured-input">§5.6</a></td>
 <td>The three documents and their structure</td>
 <td>The extraction block</td>
 </tr>
 <tr>
-<td><strong>§5.7</strong></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#57-human-decision-and-approval-points"><strong>§5.7</strong></a></td>
 <td>The two human touchpoints: who decides, what they must see, what happens if nobody acts</td>
 <td>Now, and at the app block</td>
 </tr>
 <tr>
-<td><strong>§7</strong></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#7-business-rules"><strong>§7</strong></a></td>
 <td>The business rules, BR-01 onwards, grouped by family — eligibility, report validation, coverage, settlement, credibility, decision rules, correspondence, overrides</td>
 <td>During the agents block, by rule id</td>
 </tr>
 <tr>
-<td><strong>§7.9</strong></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#79-what-is-not-a-finding"><strong>§7.9</strong></a></td>
 <td><em>What is not a finding</em> — the rules that keep clean claims clean</td>
 <td>Half the job. Read it twice</td>
 </tr>
 <tr>
-<td>§8–§10</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#8-exceptions-and-error-handling">§8–§10</a></td>
 <td>Exceptions, integrations, compliance controls</td>
 <td>Reference</td>
 </tr>
 <tr>
-<td>§11</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#11-reporting-and-monitoring-requirements">§11</a></td>
 <td>Reporting: what the claims team lead must see</td>
 <td>The dashboard — a later chapter</td>
 </tr>
 <tr>
-<td>§13</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#13-test-data-and-canonical-examples">§13</a></td>
 <td>One canonical worked example, and the catalogue of what can be planted</td>
-<td>§13.2 now; §13.1 again at verify</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#132-examples-per-rule-and-exception-path">§13.2</a> now; <a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#131-canonical-case--complete">§13.1</a> again at verify</td>
 </tr>
 <tr>
-<td>§14</td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#14-out-of-scope-for-automation">§14</a></td>
 <td>Out of scope — nothing here may appear in your component inventory</td>
 <td>At design review</td>
 </tr>
@@ -1377,10 +1470,107 @@
 </table>
 <h2 id="how-to-read-it-today">How to read it today<a class="headerlink" href="#how-to-read-it-today" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Read now:</strong> §1–§2, the §5.1 narrative and §5.2 map, §5.7, §13.2. Twenty minutes, and you know the process.</li>
+<li><strong>Read now:</strong> §1–§2, the <a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#51-to-be-narrative">§5.1 narrative</a> and <a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#52-to-be-process-map">§5.2 map</a>, §5.7, §13.2. Twenty minutes, and you know the process.</li>
 <li><strong>Reference later:</strong> §7 rule by rule during the build — your agent will cite rule ids like <code>BR-24</code>; §5.4/§5.5 at the case block; §13.1 at verify.</li>
-<li><strong>Mind the vocabulary.</strong> The glossary at the top fixes the business's exact words — <strong><em>claim</em></strong>, never <em>case</em> or <em>ticket</em>; <strong><em>assessor report</em></strong>, never <em>survey</em>. Synonym drift in a design turns into wrong stage and outcome names downstream, so the same discipline applies to everything you and your agent write.</li>
+<li><strong>Mind the vocabulary.</strong> The <a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#glossary-and-operational-vocabulary">glossary</a> at the top fixes the business's exact words — <strong><em>claim</em></strong>, never <em>case</em> or <em>ticket</em>; <strong><em>assessor report</em></strong>, never <em>survey</em>. Synonym drift in a design turns into wrong stage and outcome names downstream, so the same discipline applies to everything you and your agent write.</li>
 </ul>
+<details class="quote">
+<summary>See it in the original — the glossary and the verbatim labels</summary>
+<p>The business uses these words exactly as spelled here. Synonym drift turns into wrong stage, role and outcome names downstream.</p>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Exact form used by the business</th>
+<th>Meaning</th>
+<th>Never call it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Claim</td>
+<td>claim</td>
+<td>One request for payment under one policy for one incident</td>
+<td>case, ticket, file</td>
+</tr>
+<tr>
+<td>Claim submission form</td>
+<td>claim form</td>
+<td>The document the claimant completes</td>
+<td>application, FNOL form</td>
+</tr>
+<tr>
+<td>Assessor report</td>
+<td>assessor report</td>
+<td>The independent inspection report on the damage</td>
+<td>adjuster report, survey, inspection</td>
+</tr>
+<tr>
+<td>Cause determination</td>
+<td>cause determination</td>
+<td>The assessor's professional finding of what caused the loss</td>
+<td>root cause, incident type</td>
+</tr>
+<tr>
+<td>Deductible</td>
+<td>deductible</td>
+<td>The amount the policyholder bears before the policy pays</td>
+<td>excess, franchise</td>
+</tr>
+<tr>
+<td>Sublimit</td>
+<td>sublimit</td>
+<td>A cap on one category inside a coverage section</td>
+<td>inner limit, category cap</td>
+</tr>
+<tr>
+<td>Annual aggregate</td>
+<td>annual aggregate</td>
+<td>The maximum payable for all property losses in one policy period</td>
+<td>annual cap, total limit</td>
+</tr>
+<tr>
+<td>Named peril</td>
+<td>named peril</td>
+<td>A cause the policy lists as covered; anything unlisted is not covered</td>
+<td>listed risk</td>
+</tr>
+<tr>
+<td>Open peril</td>
+<td>open peril</td>
+<td>Covered unless an exclusion applies</td>
+<td>all-risk</td>
+</tr>
+<tr>
+<td>Endorsement</td>
+<td>endorsement</td>
+<td>A clause added to the policy that changes what it does</td>
+<td>rider, addendum</td>
+</tr>
+<tr>
+<td>Loss of use</td>
+<td>loss of use</td>
+<td>Additional living costs while the property is uninhabitable</td>
+<td>ALE, displacement</td>
+</tr>
+<tr>
+<td>Eligibility screening</td>
+<td>eligibility screening</td>
+<td>The early check on whether the claim is worth investigating</td>
+<td>triage, pre-check</td>
+</tr>
+<tr>
+<td>Claim review</td>
+<td>claim review</td>
+<td>The decision on whether the claim is payable and for how much</td>
+<td>adjudication, final review</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision outcome labels (verbatim):</strong> Approve · Partial approve · Deny · Escalate
+<strong>Role titles (verbatim):</strong> Claimant · Independent assessor · Eligibility reviewer · Claims adjuster · Claims team lead
+<strong>System short names (verbatim):</strong> Claims Intake · Document Store · Policy Administration · Claims History · Correspondence · Settlements</p>
+</details>
 <div class="admonition tip">
 <p class="admonition-title">Documents might disagree sometimes — that's a finding</p>
 <p>The seed also ships <code>contracts/</code> — pinned technical interfaces so that each solutions resides within testable frame specs. If the PDD and a contract ever seem to disagree, the contract wins for anything at a component boundary, and the disagreement is worth logging. You'll meet this again at the design gate.</p>
