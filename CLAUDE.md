@@ -48,6 +48,20 @@ technical audience). One exercise, one site: Prepare → Plan → Build → Veri
 3. **The pinned submodule SHA is the frozen seed version for a cohort.**
    Bumping `seeds/` is a deliberate act, done between cohorts — never as a side
    effect of a content edit.
+
+   **After every `seeds/` bump (or any PDD change): re-verify all line-range
+   includes.** Pages may transclude seed-document excerpts by line range
+   (`--8<-- "seeds/PDD.md:378:389"`). Unlike whole-file includes, a drifted
+   line range does NOT fail the build — it silently renders the wrong lines.
+   Find them all with:
+
+   ```bash
+   grep -rn -- '--8<-- "seeds/.*:[0-9]' docs/
+   ```
+
+   and check each excerpt still shows the section its caption claims. GitHub
+   `#anchor` deep links survive edits unless a heading is reworded — spot-check
+   those in the same pass.
 4. **Environment values are macros.** `{{ training_url }}`, `{{ training_tenant }}`,
    `{{ env_label }}` — defined in `main.py`, switched with `COURSE_ENV`
    (staging | prod). Never hardcode a URL or tenant in a page.
