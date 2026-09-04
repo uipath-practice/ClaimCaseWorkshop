@@ -980,10 +980,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-to-review" class="md-nav__link">
+  <a href="#what-agent-will-review" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What to review
+        What agent will review
       
     </span>
   </a>
@@ -1300,7 +1300,7 @@
 
 
 <h1 id="build-the-seven-agents-block-3c">Build the Seven Agents (Block 3c)<a class="headerlink" href="#build-the-seven-agents-block-3c" title="Permanent link">&para;</a></h1>
-<p>Seven checks in the process need judgement, and each gets exactly one owner: <strong>seven low-code Agents, one per family of business rules</strong>, named in <code>contracts/components.md</code>. Nothing else is built here — the deterministic work is already deployed as the provided processes, or belongs in the case as an expression.</p>
+<p>Seven checks in the process need judgement and it's seven because they are controlled by various departments and business owners. Requirement. <strong>Seven low-code Agents, one per family of business rules</strong>, named in <code>contracts/components.md</code>. Nothing else is built here — the deterministic work is already deployed as the provided processes, or belongs in the downstream case as an expression.</p>
 <p>Why low-code, and why before the case: the exercise is about a process that uses judgement where the business needs it, not about agent frameworks — and Agents are the only component testable in isolation, so building them first means the case block gets one authoring pass against things that already exist and answer.</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3c · Agents</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the seven Agents</span>
@@ -1325,31 +1325,27 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Check <code>uip login status</code> and the solution status</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read the low-code agent reference files from the skill</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the EligibilityScreening agent (BR-01–BR-05)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the AssessmentReportValidation agent (BR-06–BR-09)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the CoverageAnalysis agent (BR-10–BR-16)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the SettlementCalculation agent (BR-20–BR-29)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the CredibilityAssessment agent (BR-30–BR-33)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the DecisionRecommendation agent (BR-40–BR-45, BR-60–BR-62)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the ClaimantCorrespondence agent (BR-50–BR-52)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the <strong>EligibilityScreening</strong> agent (BR-01–BR-05)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the <strong>AssessmentReportValidation</strong> agent (BR-06–BR-09)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the <strong>CoverageAnalysis</strong> agent (BR-10–BR-16)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the <strong>SettlementCalculation</strong> agent (BR-20–BR-29)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the <strong>CredibilityAssessment</strong> agent (BR-30–BR-33)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the <strong>DecisionRecommendation</strong> agent (BR-40–BR-45, BR-60–BR-62)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the <strong>ClaimantCorrespondence</strong> agent (BR-50–BR-52)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Test each agent with <code>uip agent debug</code></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Upload the solution to Studio Web</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
-<h2 id="what-to-review">What to review<a class="headerlink" href="#what-to-review" title="Permanent link">&para;</a></h2>
+<h2 id="what-agent-will-review">What agent will review<a class="headerlink" href="#what-agent-will-review" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>A prompt governs what an agent <em>reports</em>, never what it concludes.</strong> Whether a claim reaches a human is a <strong>case condition</strong> over the scalars these Agents emit — a flag count, a risk level, a net payable — never a sentence in a prompt. If an agent over-flags, the fix is in what <em>consumes</em> its output, not in ever-more-emphatic prompt wording: tuning judgement is unbounded work with no test; a routing rule can be read and asserted.</li>
-<li><strong>A typed output field beats a paragraph of prompt.</strong> When a payload must contain a fact, declare it as a field in the output schema — and give the model a contradiction it can check itself against (<em>"<code>sameEvent: false</code> means this check is not <code>pass</code>"</em>). A model fills a declared field reliably, then reasons from what it wrote; prose asking it to be careful competes with every other sentence.</li>
+<li><strong>A prompt governs what an agent <em>reports</em>, never what it concludes.</strong> Whether a claim reaches a human is a <strong>case condition</strong> over the outputs these Agents emit (a flag count, a risk level, a net payable) never a sentence in a prompt. </li>
+<li><strong>A typed output field beats a paragraph of prompt.</strong> When a payload must contain a fact, we declare it as a field in the output schema. A model fills a declared field reliably; prose asking it to be careful competes with every other sentence.</li>
 <li><strong>One concern, one owner.</strong> An Agent may cite another's finding as evidence; it may never re-raise it as its own. The reviewer sees every finding at once, and one problem reported by three Agents reads as three problems.</li>
-<li><strong>§7.9 is half the job.</strong> <em>What is not a finding</em> is what keeps clean claims clean — an agent that implements only §7.1–§7.8 finds something on every claim, and then nothing can ever settle by itself. Each Agent works a <strong>standing brief</strong>: the rules define exactly what to watch for, and silence on a clean claim is the correct, hardest answer.</li>
-<li><strong>Documents reach an Agent as job attachments, never as extracted text.</strong> A policy's meaning lives in clause wording that flattening loses — four of the seven carry the built-in document reader for exactly this reason. And when checking results, read the <strong>trace</strong>, not the debug print.</li>
+<li><strong>PDF documents reach an Agent as job attachments, never as extracted text.</strong> A policy's meaning lives in clause wording that flattening loses. Agents carry the built-in document reader for exactly this reason. </li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Temperature 0, and what it buys</p>
-<p>Two of the seven — settlement and decision — do rule-expressible work, kept on an Agent as a deliberate trade. The price is reproducibility: temperature 0, the model named once in the SDD, and two claims of the same claimant profile settling to the same cent. You pay that bill at Verify.</p>
-</div>
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
 <p>One real invocation per Agent, on a real claim — <code>uip agent debug</code> — checking it returns what its §7 section says, <strong>including nothing at all on a clean claim</strong>. A grader's score is about structure and wording; only a run answers whether the agent does the thing.</p>
+<p>We don't write agent's evaluations tests here, but it's a good idea; specific input claim + payload, results in a specific expected output. Coding agents do it for us here: we will do end-to-end verification later in this workshop, which will directly evaluate every agents's work as part of the claim processing (with planted issues).</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
 <!-- screenshot: one agent's trace — the typed output fields populated, on a real claim -->
 

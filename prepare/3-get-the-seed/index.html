@@ -1369,6 +1369,35 @@
 </tr>
 </tbody>
 </table>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>ClaimCase-Pro % ls -la 
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>total 352 
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>drwxr-xr-x@ 26    832    4 Sep 14:17  . 
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>drwxr-xr-x 9      288    4 Sep 14:16  .. 
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>drwxr-xr-x@ 3     96     4 Sep 14:17  .claude 
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>drwxr-xr-x@ 12    384    4 Sep 14:16  .git 
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>drwxr-xr-x@ 3     96     4 Sep 14:17  .workshop 
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>drwxr-xr-x@ 5     160    4 Sep 14:16  1-design 
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>drwxr-xr-x@ 4     128    4 Sep 14:16  2-plan 
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>drwxr-xr-x@ 7     224    4 Sep 14:16  3a-extraction 
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>drwxr-xr-x@ 4     128    4 Sep 14:16  3b-entity 
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>drwxr-xr-x@ 4     128    4 Sep 14:16  3c-agents 
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>drwxr-xr-x@ 5     160    4 Sep 14:16  3d-case 
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>drwxr-xr-x@ 4     128    4 Sep 14:16  3e-run 
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>drwxr-xr-x@ 6     192    4 Sep 14:16  3f-validation 
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>drwxr-xr-x@ 4     128    4 Sep 14:16  4-verify 
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>drwxr-xr-x@ 4     128    4 Sep 14:16  5-ship 
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>-rw-r--r--@ 1     15419  4 Sep 14:16  AGENTS.md 
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>-rw-r--r--@ 1     225    4 Sep 14:16  CLAUDE.md 
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>-rw-r--r--@ 1     12449  4 Sep 14:16  CONFIG.md 
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>drwxr-xr-x@ 6     192    4 Sep 14:16  contracts 
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>drwxr-xr-x@ 5     160    4 Sep 14:16  known-issues 
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>-rwxr-xr-x@ 1     23540  4 Sep 14:16  log-finding.py 
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>drwxr-xr-x@ 7     224    4 Sep 14:16  method 
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>-rw-r--r--@ 1     98226  4 Sep 14:16  PDD.md 
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>-rw-r--r--@ 1     1154   4 Sep 14:16  PROGRESS.md 
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>-rw-r--r--@ 1     9818   4 Sep 14:16  README.md 
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>-rw-r--r--@ 1     38     4 Sep 14:16  VERSION
+</code></pre></div>
 <h2 id="provided-vs-built">Provided vs. built<a class="headerlink" href="#provided-vs-built" title="Permanent link">&para;</a></h2>
 <p>Your Orchestrator seat folder comes with few dependencies: mechanical RPA automations, Storage Buckets, reusable IXP project for claims. Tenant also exposes shared resources. Bind those, don't build your own. This way you will focus on build the thinking part and not basic scripts.</p>
 <h2 id="what-you-will-produce">What you will produce<a class="headerlink" href="#what-you-will-produce" title="Permanent link">&para;</a></h2>

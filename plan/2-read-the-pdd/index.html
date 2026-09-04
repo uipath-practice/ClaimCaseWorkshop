@@ -1295,8 +1295,8 @@
 <p>Search it — you will not find an <strong>UiPath Agent</strong>, a <strong>Maestro Case</strong>, a <strong>Data Fabric Entity</strong> or any product name. That is deliberate, and it is what makes block 1 a design exercise rather than a transcription. The <strong>PDD says what the business does</strong> and which decisions need judgement; <em>your design</em> decides what becomes an Agent, what becomes an expression, and what is already deployed and merely bound.</p>
 <p>The single most load-bearing column in the document is <strong>decision nature</strong> in the step table (<a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table">§5.3</a>): every step is marked <em>rule-expressible</em> (the rule can be written down and applied the same way every time) or <em>judgement</em> (something is being weighed, and what is weighed is named). That column, more than anything else, drives your architecture.</p>
 <details class="quote">
-<summary>See it in the original — §5.3, Stage 2: five checks, three of them judgement (verbatim)</summary>
-<p><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table">Open §5.3 in the full document ↗</a> — rule links inside the excerpt point into the full document.</p>
+<summary>PDD §5.3, Stage 2: five checks</summary>
+<p><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table">Open §5.3 in the full document ↗</a> </p>
 <p>All five checks run and all five are reported, whatever the result. A failure sets the overall result; it does not stop the other checks.</p>
 <table>
 <thead>
@@ -1412,7 +1412,7 @@
 <td>Context — what must not be reproduced</td>
 </tr>
 <tr>
-<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table"><strong>§5.3</strong></a></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table">§5.3</a></td>
 <td>The step table: every step, its actor, its <strong>decision nature</strong></td>
 <td>Now, and at every design review</td>
 </tr>
@@ -1432,17 +1432,17 @@
 <td>The extraction block</td>
 </tr>
 <tr>
-<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#57-human-decision-and-approval-points"><strong>§5.7</strong></a></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#57-human-decision-and-approval-points">§5.7</a></td>
 <td>The two human touchpoints: who decides, what they must see, what happens if nobody acts</td>
 <td>Now, and at the app block</td>
 </tr>
 <tr>
-<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#7-business-rules"><strong>§7</strong></a></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#7-business-rules">§7</a></td>
 <td>The business rules, BR-01 onwards, grouped by family — eligibility, report validation, coverage, settlement, credibility, decision rules, correspondence, overrides</td>
 <td>During the agents block, by rule id</td>
 </tr>
 <tr>
-<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#79-what-is-not-a-finding"><strong>§7.9</strong></a></td>
+<td><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#79-what-is-not-a-finding">§7.9</a></td>
 <td><em>What is not a finding</em> — the rules that keep clean claims clean</td>
 <td>Half the job. Read it twice</td>
 </tr>
