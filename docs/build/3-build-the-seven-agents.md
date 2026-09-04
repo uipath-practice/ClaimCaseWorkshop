@@ -40,6 +40,12 @@ We don't write agent's evaluations tests here, but it's a good idea; specific in
 
 ## Proof
 
+The outcome of this block, open in **Studio Web** — all seven Agents inside the solution, with EligibilityScreening showing what a built one looks like:
+
+![All seven Agents in the solution in Studio Web — EligibilityScreening open with its stepped system prompt, the Analyze Files tool, and typed inputs](3-build-the-seven-agents.images/seven-agents-in-studio-W.png){ .screenshot width="900" }
+
+Worth a close look, because the lesson's rules are visible in the build: the system prompt works in **named steps** and tells the agent to call *Analyze Files* on the policy **exactly once** — and never on the claim form, "the claim form already reaches you as structured data"; the user prompt carries **typed inputs** (`claimData`, `claimFormDocument`), not pasted text.
+
 <!-- screenshot: one agent's trace — the typed output fields populated, on a real claim -->
 
 Each of the seven runs on a real claim and answers per its rules; the solution is uploaded, and all seven open in **Studio Web**.
