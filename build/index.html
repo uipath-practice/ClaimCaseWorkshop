@@ -834,6 +834,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -850,6 +868,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-six-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The six blocks
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-every-block-page-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How every block page works
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#done-means-the-next-block-can-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Done means the next block can start
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standing-reminders" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Standing reminders
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,14 +1300,68 @@
 
 
 <h1 id="build">Build<a class="headerlink" href="#build" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
+<p>Six blocks, six prompts, six proven components. Block 3 is deliberately <strong>six separate runs, not one</strong> — each piece is built and proven before the next one binds to it.</p>
+<h2 id="the-six-blocks">The six blocks<a class="headerlink" href="#the-six-blocks" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Block</th>
+<th>Builds</th>
+<th>Done when</th>
+<th>Go and look at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="1-extract-the-documents/">3a · Extraction</a></td>
+<td>The document extraction, adopted and proven</td>
+<td>Two unseen forms come back complete, keys confirmed</td>
+<td>A payload beside its form</td>
+</tr>
+<tr>
+<td><a href="2-create-the-claim-record/">3b · Claim record</a></td>
+<td>The <strong>Data Fabric</strong> entity</td>
+<td>Cents and a 9,000-character payload round-trip</td>
+<td>The table, and a row in it</td>
+</tr>
+<tr>
+<td><a href="3-build-the-seven-agents/">3c · Agents</a></td>
+<td>The seven <strong>Agents</strong></td>
+<td>Each returns what the rules say — including <em>nothing</em> on a clean claim</td>
+<td>One agent's trace</td>
+</tr>
+<tr>
+<td><a href="4-author-the-case/">3d · Case</a></td>
+<td>The <strong>Maestro</strong> case plan, authored and validated — not run</td>
+<td>Both gates green; the plan opens in <strong>Studio Web</strong></td>
+<td>The case diagram</td>
+</tr>
+<tr>
+<td><a href="5-run-the-case/">3e · Run</a></td>
+<td>The case deployed and proven live</td>
+<td>A clean claim settles untouched; four human routes work</td>
+<td>A live instance</td>
+</tr>
+<tr>
+<td><a href="6-build-the-review-screens/">3f · Screens</a></td>
+<td>The <strong>Coded Action App</strong>'s two reviewer screens</td>
+<td>Both gates render; a decision writes back</td>
+<td>The screen in <strong>Action Center</strong></td>
+</tr>
+</tbody>
+</table>
+<h2 id="how-every-block-page-works">How every block page works<a class="headerlink" href="#how-every-block-page-works" title="Permanent link">&para;</a></h2>
+<p>Problem → the prompt → the steps your agent will typically take → what to review → the gate → the proof. The same pipeline sits under every one of them:</p>
+<pre class="mermaid"><code>flowchart LR
+  L["Load the skill"] ==&gt; G["Generate /&lt;br/&gt;implement"] ==&gt; V["Validate&lt;br/&gt;via CLI"] ==&gt; F["Fix what&lt;br/&gt;it found"] ==&gt; D["Review &amp;&lt;br/&gt;deploy"]
+  F -.-&gt; V</code></pre>
+<h2 id="done-means-the-next-block-can-start">Done means the next block can start<a class="headerlink" href="#done-means-the-next-block-can-start" title="Permanent link">&para;</a></h2>
+<p>A block is not finished when its own artifact works — it is finished when the next block can stand on it. That is why every <em>done when</em> has two halves: the component proven, and its names, keys and one real example written into <code>PROGRESS.md</code>. The reader of that file is a fresh session with none of today in mind; hand it what you actually got, never a sample invented to satisfy the habit.</p>
+<h2 id="standing-reminders">Standing reminders<a class="headerlink" href="#standing-reminders" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The six-block table: what each block produces, when it is done, and what to go and look at</li>
-<li>Block 3 is six separate runs, not one — each piece is built and proven before the next</li>
-<li>Standing reminders: upload the solution at the end of every block; clear context at block boundaries; append to <code>PROGRESS.md</code></li>
-<li>The anatomy every build page follows: problem → plan → prompt → review → proof</li>
+<li><strong>Clear context at every block boundary</strong> — each block is designed to start clean.</li>
+<li><strong>Upload the solution at the end of every block</strong> — local work is invisible until then.</li>
+<li><strong>When a document and a tool disagree, that is a finding</strong> — log it, don't silently pick a side.</li>
 </ul>
 
 

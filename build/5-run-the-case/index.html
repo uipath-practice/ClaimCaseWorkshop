@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#run-the-case" class="md-skip">
+        <a href="#run-the-case-block-3e" class="md-skip">
           Skip to content
         </a>
       
@@ -974,6 +974,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Run the Case
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -990,6 +1008,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1218,14 +1288,9 @@
 
 
 
-<h1 id="run-the-case">Run the Case<a class="headerlink" href="#run-the-case" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The problem: deploy the case and prove it moves — one deployment, redeployed in place</li>
-<li>The prompt (transcluded from the seed):</li>
-</ul>
+<h1 id="run-the-case-block-3e">Run the Case (Block 3e)<a class="headerlink" href="#run-the-case-block-3e" title="Permanent link">&para;</a></h1>
+<p>The plan is checked but has never met a real claim. This block deploys it and finds out what it actually does. <strong>Several deploy cycles is the normal shape of this block</strong> — the discipline is that each cycle ends with a named defect and a fix, not with "tried again."</p>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3e · Run it</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Run Maestro Case and test it: the clean claim, then the four possible routes involving human review</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Case Plan is checked, but not tested yet on real claims. Compile, Pack, Publish and Deploy with the <span class="gs">**`uipath-solution`**</span> skill. Run it to find out what the plan actually does. It is normal for it to take several deploy cycles, each one should end with a named defect and fix.
@@ -1241,23 +1306,38 @@
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Five runs in total. The Data Fabric record populated by the end of this block: the next block builds the Action App's screens against these payloads.
 </code></pre></div>
-<ul>
-<li>What to review: the claim number comes from the case; letters are logged, never sent</li>
-<li>Done when: a clean claim settles with <strong>no task raised</strong>, and all four human routes work</li>
-<li>Proof: a live instance</li>
-</ul>
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Compile the case plan to BPMN (<code>uip maestro case pack</code>)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Wire the RPA / Agent / connector task inputs and outputs</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Recompile and validate</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Solution pack, publish, deploy for the first time</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run the auto-settle claim (happy path, no human)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run the four human routes (proceed/refuse at the first gate, approve/deny at the second)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Verify and fix all five routes; check the data landed on the claim record</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Upload the solution</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Compile the case plan to BPMN (<code>uip maestro case pack</code>)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Wire the RPA / Agent / connector task inputs and outputs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Recompile and validate</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Solution pack, publish, deploy for the first time</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run the auto-settle claim (happy path, no human)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run the four human routes (proceed/refuse at the first gate, approve/deny at the second)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Verify and fix all five routes; check the data landed on the claim record</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Upload the solution</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
+<h2 id="what-to-review">What to review<a class="headerlink" href="#what-to-review" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The clean claim is the acceptance run — and zero tasks is the pass.</strong> Only a claim with nothing wrong traverses the whole lifecycle unattended, so it is the one run that proves the case end to end. The first time it works it looks like nothing happened: no task ever appears. Read the <strong>Data Fabric</strong> record and the case instance's timeline instead — the checks, the findings and the letter are all there. A <em>flagged</em> clean claim means the Agents are wrong, not the case.</li>
+<li><strong>Four human routes, answered from the command line.</strong> The app has no screens yet and doesn't need them — the case bound its <em>contract</em> at 3d. A route that misbehaves now is a case defect, and finding it before the screens exist is the point.</li>
+<li><strong>One deployment, redeployed in place.</strong> A second deployment "to prove it runs elsewhere" loses every running instance and proves nothing Verify won't. Promotion is the same package in another tenant with that tenant's config — described at handover, never done here.</li>
+<li><strong>One identity.</strong> The case is created first and hands its id to the generator, so a single claim number spans the case, the three documents, the letters and the record's key.</li>
+<li><strong>Letters are logged, never sent.</strong> No mail leaves the exercise — the notification process records every letter (claim, stage, recipient, subject, body) in a tenant-level entity. The reviewer's screen will show the thread from it, and Verify will read decisions from it.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Remember</p>
+<ul>
+<li><strong>Read the instance, not the job list.</strong> The case's variables and timeline answer what a job status cannot.</li>
+<li><strong>If you know what the output should be, assert it; if you don't, read it.</strong> By the fifth deploy cycle the loop deserves a script — and the script asserts the things that lie: an exit code 0 with a failure payload, a deploy that shipped a stale artifact, a listing that returned only its first page.</li>
+<li><strong>A wait needs a verified wake.</strong> The case runs for minutes and tasks appear on their own time. Before waiting, your agent should state exactly what will wake it and prove that check fires once; after waking, re-check the real state rather than trusting the notification.</li>
+</ul>
+</div>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: a live case instance — the timeline through analysis to Approved, no task raised -->
+
+<p>A clean claim goes in; a settled claim comes out, no human touching it and no task ever raised. Then all four human routes, each proven from the CLI, each landing its data on the record.</p>
 
 
 

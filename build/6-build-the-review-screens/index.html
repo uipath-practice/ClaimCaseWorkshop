@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-the-review-screens" class="md-skip">
+        <a href="#build-the-review-screens-block-3f" class="md-skip">
           Skip to content
         </a>
       
@@ -1002,6 +1002,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Build the Review Screens
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1018,6 +1036,91 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decided-for-you-and-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decided for you, and not
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-localhost-review-pause-here" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The localhost review — pause here
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1218,15 +1321,17 @@
 
 
 
-<h1 id="build-the-review-screens">Build the Review Screens<a class="headerlink" href="#build-the-review-screens" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
+<h1 id="build-the-review-screens-block-3f">Build the Review Screens (Block 3f)<a class="headerlink" href="#build-the-review-screens-block-3f" title="Permanent link">&para;</a></h1>
+<p>Everything so far runs invisibly. This block builds the only part of your solution anyone will ever <em>see</em>: the <strong>Coded Action App</strong>'s two screens — the eligibility review and the claim review — that the <strong>Maestro</strong> case raises its tasks against in <strong>Action Center</strong>.</p>
+<p>Screens come last for a reason: by now your own runs have populated real records, so the screens are built against <strong>payloads your own Agents actually produced</strong>, not against payloads you imagined. Capture fixtures from your Data Fabric records — never invent them, and never capture from <code>uip tasks get</code>, which PascalCases the whole payload for display.</p>
+<h2 id="decided-for-you-and-not">Decided for you, and not<a class="headerlink" href="#decided-for-you-and-not" title="Permanent link">&para;</a></h2>
 <ul>
-<li>The problem: two reviewer screens, built last — against payloads your own agents produced</li>
-<li>Layout is decided (<code>layout.md</code>), styling tokens are given (<code>brand.md</code>); what remains is yours</li>
-<li>The prompt (transcluded from the seed):</li>
+<li><strong>What each reviewer must see</strong> — <code>PDD.md</code> §5.7, and it says <em>not a summary</em>: the stages, every check including the passes, the settlement line by line, the three documents, two outcomes with a written reason.</li>
+<li><strong>The layout</strong> — <code>3f-validation/layout.md</code> fixes the regions of both screens, so every seat's screen is reviewable against one expectation.</li>
+<li><strong>The look</strong> — <code>3f-validation/brand.md</code> carries the palette, type and CSS tokens.</li>
+<li><strong>The rest is yours</strong> — and worth stating to your agent explicitly. Asked for "a screen that shows a claim," an agent produces a correct form generated from a schema. <strong>Taste is a requirement you have to state</strong>: what is visible before scrolling, what opens on demand, how the width is used. Everything else in a spec is checkable; this one it will silently skip.</li>
 </ul>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3f · Action App</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build the Coded Action App</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sb">`PDD.md`</span> §5.7 says what each of the two reviewers must be able to see. Build the <span class="gs">**Coded Action App**</span> the Maestro case raises its <span class="sb">`action`</span> tasks against in Action Center.
@@ -1257,30 +1362,62 @@
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">-</span><span class="w"> </span>a fresh task per gateway, completed from the command line, lands its decision on the Data Fabric record and moves the case on. 
 <a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">-</span><span class="w"> </span>a completed task still carries all its data when read back.
 </code></pre></div>
-<ul>
-<li><strong>The localhost review before the first publish — step by step</strong>: the four gate/state URLs to open, what to look at in each, and how to hand feedback back to the agent before it publishes</li>
-<li>Done when: both gates render in a browser and a decision writes back</li>
-<li>Proof: the screen in Action Center</li>
-</ul>
-<!-- Expected agent steps — drafted from the seed prompt; replace/expand from the seat run when it reaches 3f -->
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code> §5.7, <code>contracts/review-task.md</code>, <code>3f-validation/layout.md</code> and <code>brand.md</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load the uipath-coded-apps skill; replace the registered app's empty page with the two gate screens</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Capture fixtures from your own Data Fabric records (never from <code>uip tasks get</code> — it PascalCases the payload)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Serve locally and pause: human reviews the four states (<code>?gate=eligibility</code> / <code>review</code> × open / decided)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Apply the feedback; pack → <code>publish -t Action</code> → deploy the app alone with the shared client id</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Prove write-back per gateway: fresh claim, complete its task from the CLI, read the record back</li>
-<li class="task-list-item">
-<p><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></p>
-</li>
-<li>
-<p>Sidebar — <em>could this block have run in parallel with the previous one?</em> In this course we go step by step — we are here to learn, not to race — but in real life independent builds run in parallel, and these two barely overlap: the run block redeploys the solution while this block redeploys the app alone, the contract both depend on was pinned back at registration, and the run block completes its tasks from the command line, never waiting for a screen. Two things to note before overlapping them:</p>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code> §5.7, <code>contracts/review-task.md</code>, <code>3f-validation/layout.md</code> and <code>brand.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Load the uipath-coded-apps skill; replace the registered app's empty page with the two gate screens</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Capture fixtures from your own Data Fabric records (never from <code>uip tasks get</code> — it PascalCases the payload)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Serve locally and pause: human reviews the four states (<code>?gate=eligibility</code> / <code>review</code> × open / decided)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Apply the feedback; pack → <code>publish -t Action</code> → deploy the app alone with the shared client id</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Prove write-back per gateway: fresh claim, complete its task from the CLI, read the record back</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
+</ul>
+<h2 id="the-localhost-review-pause-here">The localhost review — pause here<a class="headerlink" href="#the-localhost-review-pause-here" title="Permanent link">&para;</a></h2>
+<p>Every screen fix after a deploy costs a pack → publish → deploy cycle; the same fix on a localhost preview costs a refresh. So the app pauses <strong>before its first publish</strong>, served locally on your captured fixtures, and you review four states:</p>
+<table>
+<thead>
+<tr>
+<th>Open</th>
+<th>What to check</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>http://127.0.0.1:&lt;port&gt;/?gate=eligibility</code></td>
+<td>All five checks visible with results and reasons — passes included; the claim recognizable</td>
+</tr>
+<tr>
+<td><code>…?gate=eligibility&amp;state=decided</code></td>
+<td>A decided task still identifies its claim and shows the decision that survived</td>
+</tr>
+<tr>
+<td><code>…?gate=review</code></td>
+<td>Every finding side by side, the recommendation with its reasons, the settlement line by line, the documents</td>
+</tr>
+<tr>
+<td><code>…?gate=review&amp;state=decided</code></td>
+<td>The confirmed figures — carrying a real settlement override, not just the recommendation</td>
+</tr>
+</tbody>
+</table>
+<p>Hand what you find back to the agent, let it fix, refresh, and approve — <strong>then</strong> it publishes once. Your iteration loop has layers: a label or layout change needs only a reload; a data change needs new fixtures; only a code change needs the redeploy. Iterate on the cheapest layer that shows the truth — and never let the cheap loop be the last thing you ran.</p>
+<h2 id="what-to-review">What to review<a class="headerlink" href="#what-to-review" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>A decision carries a reason, always.</strong> The contract makes <code>reviewerNotes</code> required at both gates — because an inspected decision with a reason teaches the system which pattern failed; "a rubber-stamped click is theater" (<em>The Work That Remains</em>). If the screen makes the reason easy to skip, it built the wrong habit.</li>
+<li><strong>One malformed field must not take down the screen.</strong> Generated data varies — a field arrives as an object where a string stood on every claim before. Pin shapes upstream where you can, and put a boundary around each panel so a white page becomes one panel saying <em>"could not render the policy"</em> with the decision still makeable. Then test on <strong>more than one record</strong> — iterating against a single good example measures how well you handle that example.</li>
+<li><strong>What survives task completion.</strong> Completing a task drops its inputs; only inOuts and outputs survive — and anything that writes task data <em>replaces</em> the payload. Read the current payload, spread it, then write, at every call site. The contract walks through all of it.</li>
+</ul>
+<h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
+<p>Your reviewer approving all four localhost states is the first gate. After the one publish, the write-back proof is the second: <strong>a fresh claim per gateway</strong>, its task completed from the CLI, the decision read back from the record — a task decided before a fix proves nothing, so always prove against a fresh one. Clicking through the deployed screens in Action Center is your own optional third check.</p>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: the claim review screen in Action Center — findings side by side, settlement lines, the two outcome buttons -->
+
+<p>Both gates render in a browser on real data, and a decision — with its reason — lands on the claim record and moves the case on.</p>
+<hr />
+<p><em>Sidebar — could this block have run in parallel with the previous one?</em> In this course we go step by step — we're here to learn, not to race — but in real life independent builds run in parallel, and these two barely overlap: the run block redeploys the solution while this block redeploys <strong>the app alone</strong>, the contract both depend on was pinned back at registration, and the run block completes its tasks from the command line, never waiting for a screen. Two things to note before overlapping them:</p>
 <ul>
 <li><strong>fixtures</strong> — the screens are built against payloads real runs produced, and the first fully populated record exists only once the clean claim has settled; fork there, not at the start of the run block</li>
 <li><strong>the write-back proof</strong> — a task decided before a fix proves nothing, so the fresh-task-per-gateway proof joins after the run block is done and the case is stable</li>
-</ul>
-</li>
 </ul>
 
 

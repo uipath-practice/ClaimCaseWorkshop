@@ -1089,6 +1089,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1105,6 +1123,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#testing-a-long-running-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing a long-running process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-answer-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The answer key
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In this section
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1219,15 +1289,66 @@
 
 
 <h1 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. -->
-
-<p>Planned content:</p>
+<p>Every piece was checked as you built it. This section answers the only question left — <strong>does the whole thing work?</strong> — and then hands the solution over in a state someone else can run.</p>
+<h2 id="testing-a-long-running-process">Testing a long-running process<a class="headerlink" href="#testing-a-long-running-process" title="Permanent link">&para;</a></h2>
+<p>A claims case runs for days and crosses seven agents, a case plan, a data record and two human gates. No single check can see all of that, so the workshop has been layering three kinds all along:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Examples you've used</th>
+<th>What it can see</th>
+<th>What it cannot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Offline gates</strong></td>
+<td><code>check_sdd.py</code>, <code>check_extraction_keys.py</code>, <code>check_caseplan.py</code></td>
+<td>Shape, references, keys — before anything is deployed</td>
+<td>Whether the thing behaves</td>
+</tr>
+<tr>
+<td><strong>Platform gates</strong></td>
+<td><code>uip maestro case validate</code>, agent validation</td>
+<td>What the runtime will refuse to load</td>
+<td>What loads fine and misbehaves live</td>
+</tr>
+<tr>
+<td><strong>Live runs</strong></td>
+<td>The clean claim, the four routes</td>
+<td>Real behaviour, one path at a time</td>
+<td>Whether <em>every</em> path behaves — that's this block</td>
+</tr>
+</tbody>
+</table>
+<p>Two habits carry the section:</p>
 <ul>
-<li>Testing long-running workflows: per-block gates vs end-to-end runs — and why you need both</li>
-<li>The three layers you have used so far: offline gates (scripts, no tenant), platform gates (validate), live runs — and what only end-to-end can prove</li>
-<li>The answer key: why it was off-limits until now</li>
-<li>Step table for this section</li>
+<li><strong>Every gate is a floor.</strong> A schema validator knows the document is well-formed; a grader knows it is well-written; neither has any idea what you are building — both will pass a component that cannot work, with a number that feels like an answer. Run them because they're free, then answer the question no gate can: <em>does it do the thing?</em> — by running the thing.</li>
+<li><strong>The seams need their own checks.</strong> Where one stage produces and the next consumes, neither side is incentivized to check the handover — the producer has finished and the consumer was told to trust. That is why this exercise's gates sit <em>between</em> stages, and why end-to-end runs exist at all: unit-proven pieces can still compose into a wrong whole.</li>
 </ul>
+<p>Two questions from <em>The Work That Remains</em> make a good standing review of any design, this one included: <em>who supplies the checker here?</em> — and <em>what part of the system guarantees correctness when correctness is required?</em> If the answer to the second is "the model," the architecture is unsafe.</p>
+<h2 id="the-answer-key">The answer key<a class="headerlink" href="#the-answer-key" title="Permanent link">&para;</a></h2>
+<p>The generator writes, beside each claim's documents, a record of what it planted and what should happen. It has been off-limits until now for a simple reason: read earlier, it turns the build into copying. Read now, it is the oracle your results table is scored against.</p>
+<h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="1-hunt-the-planted-problems/">1. Hunt the Planted Problems</a></td>
+<td>Block 4 — clean claims first, then one aimed run per problem, scored against the key</td>
+</tr>
+<tr>
+<td><a href="2-hand-it-over/">2. Hand It Over</a></td>
+<td>Block 5 — pins, the as-built design, and a runbook for whoever runs it next</td>
+</tr>
+</tbody>
+</table>
 
 
 

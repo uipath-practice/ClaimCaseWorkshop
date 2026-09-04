@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hunt-the-planted-problems" class="md-skip">
+        <a href="#hunt-the-planted-problems-block-4" class="md-skip">
           Skip to content
         </a>
       
@@ -1117,6 +1117,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hunt the Planted Problems
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1133,6 +1151,102 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#clean-claims-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Clean claims first
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#aiming-a-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aiming a run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#read-the-key-by-probe" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Read the key by probe
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-establish" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to establish
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-conformance-sweep" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The conformance sweep
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1218,15 +1332,9 @@
 
 
 
-<h1 id="hunt-the-planted-problems">Hunt the Planted Problems<a class="headerlink" href="#hunt-the-planted-problems" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
-<ul>
-<li>Clean claims first: three of them must settle in full with no task raised — before you chase any problem</li>
-<li>The generator dials, explained here where aiming matters: scenario, discrepancy id, profile, seed — one aimed run per planted problem</li>
-<li>The prompt (transcluded from the seed):</li>
-</ul>
+<h1 id="hunt-the-planted-problems-block-4">Hunt the Planted Problems (Block 4)<a class="headerlink" href="#hunt-the-planted-problems-block-4" title="Permanent link">&para;</a></h1>
+<p>The PDD's §13.2 lists what can be wrong with a claim; §1.3 says what success means numerically. This block establishes both — and expect to spend most of it <strong>fixing rather than measuring</strong>. A run that finds nothing was probably not aimed.</p>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 4 · Verify</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Verify</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Every piece was checked as you built it. <span class="gs">**Does the whole thing work as expected?**</span>
@@ -1255,24 +1363,64 @@
 <a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">-</span><span class="w"> </span>you can say, per problem, which Agent caught it and which Action Center task showed it to a human.
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">-</span><span class="w"> </span>all claims with nothing wrong have gone in and come out settled, untouched.
 </code></pre></div>
-<ul>
-<li>Read the answer key <strong>by probe</strong> — one standalone generator call per injector — not by running the case</li>
-<li>The results table: every planted problem caught by its owning component; re-run the clean batch after every rule-tightening fix</li>
-<li>The conformance sweep: every SDD element marked Implemented · Missing · Mismatch · Extra</li>
-<li>Proof: your results table beside the answer key</li>
-</ul>
-<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run three clean claims first — all settle in full, no task ever raised</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read the answer key by probe: one standalone generator call per injector id → owner map</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Aim one run per planted problem: matching fail scenario + pinned discrepancy id; confirm the pin landed before treating the run as evidence</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Record per problem: which Agent caught it, which gate task showed it; fix at the source and re-run</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Re-run the clean batch after every fix that tightens a rule</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Reproducibility: two clean claims with one <code>profileId</code> settle to the same cent</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Conformance sweep of <code>sdd.md</code>: Implemented · Missing · Mismatch · Extra</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run three clean claims first — all settle in full, no task ever raised</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read the answer key by probe: one standalone generator call per injector id → owner map</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Aim one run per planted problem: matching fail scenario + pinned discrepancy id; confirm the pin landed before treating the run as evidence</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Record per problem: which Agent caught it, which gate task showed it; fix at the source and re-run</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Re-run the clean batch after every fix that tightens a rule</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Reproducibility: two clean claims with one <code>profileId</code> settle to the same cent</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Conformance sweep of <code>sdd.md</code>: Implemented · Missing · Mismatch · Extra</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
+<h2 id="clean-claims-first">Clean claims first<a class="headerlink" href="#clean-claims-first" title="Permanent link">&para;</a></h2>
+<p>A pinned run proves <strong>detection</strong>; a clean run proves <strong>restraint</strong> — and restraint is the harder half. Three clean claims settle untouched before any problem is chased, and the clean batch re-runs <strong>after every fix that tightens a rule</strong>: over-flagging is the failure that reappears, and one aimed run cannot see the cost of a fix. A tightening that buys no detection and costs a clean claim is reverted, not kept.</p>
+<h2 id="aiming-a-run">Aiming a run<a class="headerlink" href="#aiming-a-run" title="Permanent link">&para;</a></h2>
+<p>The generator takes four dials, and this is where they matter:</p>
+<table>
+<thead>
+<tr>
+<th>Dial</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>scenario</code></td>
+<td>Aims the claim broadly — <code>auto-settle</code>, <code>eligibility-fail</code>, <code>review-fail</code>, <code>both-fail</code>, <code>random</code></td>
+</tr>
+<tr>
+<td><code>discrepancy</code></td>
+<td>Pins <strong>one exact injector id</strong> — the only way to guarantee a problem is present</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td>Repeats a claimant (<code>claims-profile-01</code>…<code>12</code>) — the reproducibility tool</td>
+</tr>
+<tr>
+<td><code>seed</code></td>
+<td>Makes the documents themselves identical between runs</td>
+</tr>
+</tbody>
+</table>
+<p>A scenario does not guarantee a route; a pinned id does — and <code>auto-settle</code> <em>suppresses</em> a pin entirely, so aim with the matching fail scenario plus the exact id. The generator's own fault message on an unknown id lists the valid ones. Then read the claim's own answer key to confirm the pin landed <strong>before</strong> treating the run as evidence.</p>
+<h2 id="read-the-key-by-probe">Read the key by probe<a class="headerlink" href="#read-the-key-by-probe" title="Permanent link">&para;</a></h2>
+<p>Once sanctioned, the cheapest authoritative read is one standalone generator call per injector id — seconds each, no case instance, no Agent spend. That yields the full <em>injector → owning check → gate → letter wording</em> map before any campaign run. Read it as a record of what was <strong>injected</strong>, never of what the arithmetic must produce: a planted problem your rules correctly neutralize reads as a miss and is the build being right; a failure no injector plants is a false positive by construction.</p>
+<h2 id="what-to-establish">What to establish<a class="headerlink" href="#what-to-establish" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Each problem caught by the Agent that owns it</strong>, stopping the claim at the right gate — not caught by something else, and not caught twice. One problem reported by three Agents reads to a reviewer as three problems.</li>
+<li><strong>What the claimant is told matches what happened.</strong> Read the letter from the correspondence entity, never the job log — and read the paid figure from <code>decisionJson.outcome</code> against <code>status</code>, never from <code>settlementJson</code>: that column holds what the settlement <em>computed</em>, and after an override the confirmed figures live elsewhere.</li>
+<li><strong>Two clean claims of one profile settle to the same cent.</strong> Same <code>profileId</code>, compare every figure of both records, never the prose. Same <code>seed</code> too makes the documents identical — which is what separates agent variance from document variance. This is where temperature 0 pays its bill.</li>
+<li><strong>Fix at the source, in the block that owns it.</strong> And mind the reach of a fix: a case-plan change reaches only instances started <em>after</em> the redeploy; an agent change reaches the next call on any instance. Bump, deploy, then start the batch — never deploy into a running one and read half the change.</li>
+</ul>
+<p>Verifying a claim, as <em>The Work That Remains</em> puts it, has two parts: deciding what the checkable pieces are, and checking them — and "the breakdown fails silently… the mistake is not inside any piece; it lives in how the problem was split into pieces." Your results table is that breakdown, made visible and scored.</p>
+<h2 id="the-conformance-sweep">The conformance sweep<a class="headerlink" href="#the-conformance-sweep" title="Permanent link">&para;</a></h2>
+<p>Then check the build against the <strong>design</strong>, not just the process: enumerate every stage, task, rule, SLA and variable in <code>sdd.md</code> and mark each <strong>Implemented · Missing · Mismatch · Extra</strong>. <em>Extra</em> deserves the hardest look — it is what nobody asked for, no tool reports, and every reviewer pays for later.</p>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: the results table — one row per planted problem: injector, owning Agent, gate task, letter — beside the answer key -->
+
+<p>Per problem: which Agent caught it and which task showed it to a human. And every clean claim in, settled, untouched.</p>
 
 
 

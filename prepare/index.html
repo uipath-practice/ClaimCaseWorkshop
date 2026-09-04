@@ -1324,39 +1324,13 @@
 <h1 id="prepare">Prepare<a class="headerlink" href="#prepare" title="Permanent link">&para;</a></h1>
 <p>You are about to build an enterprise-grade claims solution in a day, with a coding agent doing the heavy lifting. This section clears everything that would otherwise compete for your attention once the build starts.</p>
 <h2 id="the-exercise-at-a-glance">The exercise at a glance<a class="headerlink" href="#the-exercise-at-a-glance" title="Permanent link">&para;</a></h2>
-<p>An insurance company receives property claims — a claim form, a policy, an assessor's report. Today a team screens them, validates the assessment, calculates settlements and writes to claimants: slowly, and a little differently every time. You automate the whole path. A claim with nothing wrong settles untouched; a claim with a problem stops in front of the right person, with everything they need on one screen.</p>
-<p>You direct, the agent builds, and a gate checks every block. The goal is not this particular solution — it is leaving able to build the next one, on your own process, at your own company.</p>
+<p>An insurance company receives property claim documents: a claim form, a policy, an assessor's report. </p>
+<p><strong>Today</strong>: a team screens them, validates the assessment, calculates settlements and writes to claimants: slowly, and a little differently every time.  <strong>You automate the whole path</strong>: a claim with nothing wrong settles untouched; a claim with a problem stops in front of the right person, with everything they need on one screen. </p>
+<p>You direct, the agent builds, and a gate checks every block. The <strong>goal</strong> is not this particular solution — it is leaving this workshop able to build the next one, for your own process, at your own company.</p>
 <h2 id="audience">Audience<a class="headerlink" href="#audience" title="Permanent link">&para;</a></h2>
-<p>Technical, level 300. You should be comfortable in a terminal and have driven a coding agent at least once before. UiPath product experience helps but is not assumed — each product is explained when the build reaches it.</p>
+<p>Technical, level 300. You should be comfortable in a terminal and have driven a coding agent at least once before. UiPath product experience helps but is also assumed: not every product is explained when the build reaches it.</p>
 <h2 id="coding-agents">Coding agents<a class="headerlink" href="#coding-agents" title="Permanent link">&para;</a></h2>
-<p>Bring the agent you already use — as the official guidance puts it, "the right choice is usually the agent you already use day to day" (<a href="https://docs.uipath.com/coding-agents/standalone/latest/user-guide/choosing-your-agent">choosing your agent</a>).</p>
-<table>
-<thead>
-<tr>
-<th>Agent</th>
-<th>Status in this workshop</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Claude Code</strong></td>
-<td>Tested — the workshop prompts are proven with it</td>
-</tr>
-<tr>
-<td><strong>Codex</strong></td>
-<td>Tested — proven with the same prompts</td>
-</tr>
-<tr>
-<td><strong>OpenCode</strong></td>
-<td>Tested — proven with the same prompts</td>
-</tr>
-<tr>
-<td>Other supported agents</td>
-<td>Expected to work; not tested against these prompts</td>
-</tr>
-</tbody>
-</table>
-<p>Where a step differs between agents, the page shows one tab per agent.</p>
+<p>Bring the agent you already use — as the official guidance puts it, "the right choice is usually the agent you already use day to day" (<a href="https://docs.uipath.com/coding-agents/standalone/latest/user-guide/choosing-your-agent">choosing your agent</a>). Although the prompts in this exercise were only tested on Claude Code, Codex, OpenCode, it should work on others, maybe with couple of extra steps that your coding agent will help you with.</p>
 <h2 id="your-seat">Your seat<a class="headerlink" href="#your-seat" title="Permanent link">&para;</a></h2>
 <p>A seat is your own folder in the training tenant. It arrives with the shared infrastructure already in place — you never build any of this:</p>
 <table>
@@ -1368,16 +1342,16 @@
 </thead>
 <tbody>
 <tr>
-<td>Six deployed automations</td>
-<td>A claim generator, plus the plumbing that moves documents and payloads</td>
+<td>Six pre-deployed automations</td>
+<td>A claim retriever/generator, plus some existing RPA automations that move documents and payloads, send emails, etc.</td>
 </tr>
 <tr>
 <td>A shared <strong>IXP</strong> project</td>
 <td>The document-extraction model, published and pinned</td>
 </tr>
 <tr>
-<td>A shared app registration</td>
-<td>The identity your review screens will sign in through</td>
+<td>A shared External App registration</td>
+<td>The identity your review screens will sign in through and retrieve data for the web UI</td>
 </tr>
 </tbody>
 </table>
@@ -1386,9 +1360,9 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A laptop you have admin rights on</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Node.js LTS and <code>npm</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 3 (the gate scripts run on it)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Python 3 </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>git</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A coding agent installed and signed in (one of the tested three, or your own)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> A coding agent installed and signed in </li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> An account on the training tenant — <strong>CodingAgentsPractice</strong> at <a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></li>
 </ul>
 <h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>

@@ -1345,20 +1345,27 @@
 <td>Free-form, written by an external contractor</td>
 <td>The cause determination and an independent repair estimate</td>
 </tr>
+<tr>
+<td><strong>Past Claims</strong></td>
+<td>Look-up returning JSON</td>
+<td>The claims already settled against this policy this period</td>
+</tr>
 </tbody>
 </table>
-<p>Plus one lookup: the claims already settled against this policy this period. That distinction — one form, two prose documents — will shape the whole architecture: the form is read into fields once; the prose documents are read, clause by clause, by whatever does the judging.</p>
+<p>That distinction — one <strong>structured form</strong>, two <strong>prose documents</strong> — will shape the whole architecture: the form is read into fields by IXP extractor; the prose documents are read, clause by clause, by whatever does the judging.</p>
 <h2 id="how-a-claim-should-be-handled">How a claim should be handled<a class="headerlink" href="#how-a-claim-should-be-handled" title="Permanent link">&para;</a></h2>
-<pre class="mermaid"><code>flowchart TD
-  I["Intake&lt;br/&gt;&lt;i&gt;register · read form · policy · history&lt;/i&gt;"]
-  E["Eligibility screening&lt;br/&gt;&lt;i&gt;5 checks, all reported&lt;/i&gt;"]
-  W["Await assessor report"]
-  A["Analysis&lt;br/&gt;&lt;i&gt;coverage ∥ settlement ∥ credibility&lt;/i&gt;"]
-  R["Recommendation&lt;br/&gt;&lt;i&gt;recorded first&lt;/i&gt;"]
-  AP["Approved&lt;br/&gt;&lt;i&gt;letter · authorise · close&lt;/i&gt;"]
-  H1{"H1&lt;br/&gt;Eligibility reviewer"}
-  H2{"H2&lt;br/&gt;Claims adjuster"}
-  DN["Denied&lt;br/&gt;&lt;i&gt;letter · record · close&lt;/i&gt;"]
+<div class="img-cols img-cols-50">
+<div>
+<p><pre class="mermaid"><code>flowchart TD
+  I["&lt;b&gt;Intake&lt;/b&gt;&lt;br/&gt;&lt;i&gt;register · read form · policy · history&lt;/i&gt;"]
+  E["&lt;b&gt;Eligibility screening&lt;/b&gt;&lt;br/&gt;&lt;i&gt;5 checks, all reported&lt;/i&gt;"]
+  W["Request and await &lt;b&gt;Assessor Report&lt;/b&gt;"]
+  A["&lt;b&gt;Analysis&lt;/b&gt;&lt;br/&gt;&lt;i&gt;coverage ∥ settlement ∥ credibility&lt;/i&gt;"]
+  R["&lt;b&gt;Decision&lt;/b&gt;&lt;br&gt;Recommendation &lt;i&gt;recorded first&lt;/i&gt;"]
+  AP["&lt;b&gt;Approved&lt;/b&gt;&lt;br/&gt;&lt;i&gt;letter · authorise · close&lt;/i&gt;"]
+  H1{"Gate H1&lt;br/&gt;&lt;b&gt;Eligibility reviewer&lt;/b&gt;"}
+  H2{"Gate H2&lt;br/&gt;&lt;b&gt;Claims adjuster&lt;/b&gt;"}
+  DN["&lt;b&gt;Denied&lt;/b&gt;&lt;br/&gt;&lt;i&gt;letter · record · close&lt;/i&gt;"]
 
   I ==&gt; E
   E ==&gt;|all pass| W
@@ -1379,7 +1386,18 @@
   class I,E,W,A,R,AP stage;
   class H1,H2 gate;
   class DN bad;</code></pre>
-<p>Two human gates, and both are <strong>skipped when there is nothing to decide</strong>. Five screening checks run before an inspection is paid for; a reviewer sees them only if one failed. Three analyses run when the assessor report lands; an adjuster sees them only if something was flagged or the amount is out of tolerance. A claim with nothing wrong settles end to end with no human touch — that is the point, and it is measured.</p>
+  </p>
+</div>
+<div>
+<ul>
+<li>Two human gates, and both are <strong>skipped when there is nothing to decide</strong>. </li>
+<li>Five <strong>screening checks</strong> run before property inspection is paid for; a reviewer sees them only if one failed. </li>
+<li>Three analyses run when the assessor report lands; an adjuster sees them <strong>only if something was flagged</strong> or the amount is out of tolerance. </li>
+<li><strong>A claim with nothing wrong settles end to end with no human touch.</strong>
+  </li>
+</ul>
+</div>
+</div>
 <h2 id="what-success-means">What success means<a class="headerlink" href="#what-success-means" title="Permanent link">&para;</a></h2>
 <table>
 <thead>

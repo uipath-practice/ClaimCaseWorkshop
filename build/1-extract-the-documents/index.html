@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#extract-the-documents" class="md-skip">
+        <a href="#extract-the-documents-block-3a" class="md-skip">
           Skip to content
         </a>
       
@@ -862,6 +862,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Extract the Documents
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -878,6 +896,69 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gate
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1218,15 +1299,10 @@
 
 
 
-<h1 id="extract-the-documents">Extract the Documents<a class="headerlink" href="#extract-the-documents" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The problem: unlabelled claim forms must come back as typed payloads</li>
-<li>The default route: adopt the shared extraction project and prove it on two claims</li>
-<li>The prompt (transcluded from the seed):</li>
-</ul>
+<h1 id="extract-the-documents-block-3a">Extract the Documents (Block 3a)<a class="headerlink" href="#extract-the-documents-block-3a" title="Permanent link">&para;</a></h1>
+<p>The claim form is the one document that arrives as a <strong>structured form</strong>, so it is read into fields with <strong>IXP</strong>. The policy and the assessor report are prose — they stay documents, and the Agents will read them directly. This block proves the reading before anything downstream binds to it.</p>
+<p>Nothing is created here. The shared IXP project already exists, published and pinned, and the provided <em>Extract Claim Data</em> automation is wired to it. Your job is to adopt it and prove it — the extraction is provided infrastructure, like the generator and the retrieval processes: <strong>bind these, never rebuild them.</strong></p>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3a · Extraction</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Reuse — Claim Form IXP extraction</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>The claim form (FNOL) is the one document that arrives as a <span class="gs">**structured form**</span>, so it is read into fields with IXP. The other two — the policy and the assessor's report — are prose and stay documents; the agents read them directly (<span class="sb">`PDD.md`</span> §5.6).
@@ -1248,22 +1324,35 @@
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="gs">**Done when:**</span> 
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">-</span><span class="w"> </span>two claim forms you have never seen come back with every field group populated, the damage rows repeating correctly, and every key your design reads confirmed against a real payload. 
 </code></pre></div>
-<ul>
-<li>The optional route: build your own extraction project (<code>3a-extraction/prompt-build.md</code> in the seed) — when and why</li>
-<li>What to review: keys come from the payload, not from labels; confidence has three states; payload sizes are a design input</li>
-<li>The gate: <code>check_extraction_keys.py</code> — every extraction path in the design checked against a real payload</li>
-<li>Proof: a payload beside its form</li>
-</ul>
-<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read <code>contracts/provided-processes.md</code> (payload shape, field keys) and <code>CONFIG.md</code> (the shared IXP project)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Generate two claims and run each through the provided Extract Claim Data (IXP) process</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read a payload beside its form: six field groups present, damage rows repeating one per item</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pin field-key spellings from the live payload; correct <code>sdd.md</code> where any binding differs</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 3a-extraction/check_extraction_keys.py &lt;payload.json&gt;</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Record the project name and model version in <code>PROGRESS.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>contracts/provided-processes.md</code> (payload shape, field keys) and <code>CONFIG.md</code> (the shared IXP project)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Generate two claims and run each through the provided Extract Claim Data (IXP) process</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read a payload beside its form: six field groups present, damage rows repeating one per item</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pin field-key spellings from the live payload; correct <code>sdd.md</code> where any binding differs</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 3a-extraction/check_extraction_keys.py &lt;payload.json&gt;</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Record the project name and model version in <code>PROGRESS.md</code></li>
 </ul>
+<p>Prefer to train your own extraction model instead? <code>3a-extraction/prompt-build.md</code> in the seed is the supported second route — same output shape, about an hour of labelling.</p>
+<h2 id="what-to-review">What to review<a class="headerlink" href="#what-to-review" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Why two claims.</strong> One claim proves the fields exist; the second proves the key set does not vary and the damage inventory repeats one row per item, not one blob.</li>
+<li><strong>Keys come from the payload, never from the form's labels.</strong> The model emits <code>TypeOfIncident</code>, not the printed <em>Type of Incident</em>. Every extraction binding downstream is optional-chained, so a wrong key never throws — it silently yields nothing, and the first symptom would be an empty field three blocks from now. That is exactly why this block ends with a checker.</li>
+<li><strong>Confidence has three states</strong>, not two: confident, unconfident, and <em>absent</em>. A threshold rule that special-cases only one of them ends up flagging empty optional fields as data problems.</li>
+<li><strong>Payload sizes are a design input.</strong> About 5,000–5,600 characters per claim, ~500 per damage row, five rows maximum — numbers your entity columns and agent input budgets are sized against in the next blocks.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Publishing is not deploying</p>
+<p>The shared model is <em>published</em> and callers pin its version — it needs no deployment into your folder at all. Two different verbs, two different lifecycles; keeping them apart will matter again at the app block.</p>
+</div>
+<h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span>3a-extraction/check_extraction_keys.py<span class="w"> </span>&lt;payload.json&gt;
+</code></pre></div>
+<p>It walks <strong>every extraction path your design reads</strong> against a real payload — the one class of defect that fails silently everywhere else.</p>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: a payload JSON beside its claim form PDF — the damage inventory repeating per row -->
+
+<p>Two claim forms you have never seen come back with every field group populated, the damage rows repeating correctly, and every key your design reads confirmed against a real payload.</p>
 
 
 

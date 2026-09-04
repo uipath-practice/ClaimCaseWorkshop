@@ -1282,22 +1282,32 @@
 
 
 <h1 id="building-property-insurance-claims-automation-with-coding-agents">Building Property Insurance Claims automation with Coding Agents<a class="headerlink" href="#building-property-insurance-claims-automation-with-coding-agents" title="Permanent link">&para;</a></h1>
-<p>Welcome. In this workshop you build a complete insurance back-office solution — document extraction, a shared claim record, seven decision agents, a long-running case with two human gates, and the screens reviewers decide on. You build it by directing a coding agent, not by writing it yourself.</p>
-<p>This is a technical, level-300 exercise. You leave with a working solution in your own folder — and with a process you can reuse: requirements → design → plan → build → verify → hand over, every step checked by something stronger than an opinion.</p>
-<div class="admonition tip">
-<p class="admonition-title">Training Environment</p>
-<p>Log in at <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong> using tenant <strong>CodingAgentsPractice</strong>. Your instructor assigns you a seat — your own folder, where everything you build lives.</p>
-</div>
+<p>Welcome! </p>
+<ul>
+<li>
+<p>Companies around the world are increasingly looking to UiPath not just to automate individual tasks, but to orchestrate complex, long-running, and exception-heavy business processes and help drive their AI transformation. </p>
+</li>
+<li>
+<p>I<strong>n this workshop you build a complete insurance back-office solution</strong> — document extraction, a claim record data storage, seven agents analyzing claim from different angles, a long-running case with two human gates, and the validation app reviewers use to make decisions. </p>
+</li>
+<li>
+<p><strong>Coding agents are now the primary user persona for UiPath platform.</strong> They enable customers to discover, design, build, and operate end-to-end agentic business orchestration &amp; automations at enterprise scale 10x faster.​ You build it by directing a coding agent, not by writing everything yourself. You leave with a working solution in your own folder and with a process you can reuse: requirements → design → plan → build → verify → hand over.</p>
+</li>
+</ul>
 <h2 id="what-youll-build">What you'll build<a class="headerlink" href="#what-youll-build" title="Permanent link">&para;</a></h2>
 <p>One claim arrives as three PDF documents. A settled claim — or a decision from the right human — comes out. In between:</p>
 <ul>
 <li>an <strong>IXP</strong> extraction that turns the claim form into typed data</li>
 <li>a <strong>Data Fabric</strong> claim record that every component reads and writes</li>
-<li>seven low-code <strong>Agents</strong>, one per family of business rules</li>
+<li>seven <strong>low-code Agents</strong>, one per family of business rules</li>
 <li>a <strong>Maestro</strong> case orchestrating the whole lifecycle, with two human gates</li>
 <li>a <strong>Coded Action App</strong> — the two screens a reviewer decides on</li>
-<li>a letter recorded for every decision, and a runbook for whoever runs it after you</li>
+<li>a <strong>Email Correspondence</strong> recorded for every decision, and a <strong>Runbook</strong> for whoever runs it after you</li>
 </ul>
+<div class="admonition tip">
+<p class="admonition-title">Training Environment</p>
+<p>Log in at <strong><a href="https://cloud.uipath.com/tpenlabs">https://cloud.uipath.com/tpenlabs</a></strong> using tenant <strong>CodingAgentsPractice</strong>. Your instructor will invite you and assign you a seat, your own folder where everything you build lives.</p>
+</div>
 <h2 id="the-path">The path<a class="headerlink" href="#the-path" title="Permanent link">&para;</a></h2>
 <ol>
 <li><strong><a href="prepare/">Prepare</a></strong> — check your tools, learn the workshop rhythm, get the exercise seed.</li>
@@ -1319,24 +1329,24 @@
 <td>An AI tool in your terminal that reads, writes and executes code autonomously — you direct it in plain English</td>
 </tr>
 <tr>
-<td><code>uip</code> CLI</td>
+<td>UiPath CLI</td>
 <td>The command-line interface the agent uses to talk to the UiPath platform</td>
 </tr>
 <tr>
-<td>Skills</td>
-<td>Packaged instructions that teach a generic coding agent to build on UiPath well</td>
+<td>UiPath Skills</td>
+<td>Packaged instructions that teach a generic coding agent to build on UiPath platform components</td>
 </tr>
 <tr>
-<td>The seed</td>
-<td>The exercise repository you clone: the requirements, the contracts, and one prompt per block</td>
+<td><strong>Seed</strong></td>
+<td>The exercise repository you clone: the requirements, the contracts, and prompts that instruct coding agents</td>
 </tr>
 <tr>
-<td>A block</td>
+<td><strong>Block</strong></td>
 <td>One unit of the build: one prompt in, one proven component out</td>
 </tr>
 <tr>
-<td>A gate</td>
-<td>A check a block must pass before the next one starts — a script or a platform validation</td>
+<td><strong>Gate</strong></td>
+<td>A check a block must pass before the next one starts, usually a script or a platform validation</td>
 </tr>
 </tbody>
 </table>

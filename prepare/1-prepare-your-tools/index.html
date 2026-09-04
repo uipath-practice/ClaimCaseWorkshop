@@ -1381,19 +1381,46 @@
 </ol>
 </div>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
-<p>A working setup before the exercise starts: the <code>uip</code> CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.</p>
+<p>A working setup before the exercise starts: the latest <code>uip</code> CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.</p>
 <h2 id="why-a-coding-agent-changes-how-you-build">Why a coding agent changes how you build<a class="headerlink" href="#why-a-coding-agent-changes-how-you-build" title="Permanent link">&para;</a></h2>
-<p>A coding agent already knows how to write code. What it doesn't know is UiPath — your CLI commands, project structures, and platform conventions. Two pieces fix that:</p>
+<p>A coding agent already knows how to write code, out of the box. What it doesn't know is UiPath platform: CLI commands, components and UiPath code structures, and platform conventions. </p>
+<div class="img-cols img-cols-50">
+<div>
+<p>Two pieces fix that:</p>
 <ul>
 <li><strong>UiPath CLI</strong> (<code>uip</code>) is the interface the agent uses to talk to the platform. A command-line interface turned out to be the most token-efficient way to expose UiPath to an agent.</li>
 <li><strong>Skills</strong> teach the agent to use that CLI well. Each one packs product context, commands, validation rules and best practices — so you ask for an outcome instead of memorizing command sequences.</li>
+<li>Together with your session and permissions, this wrapper around the agent is the <strong>harness</strong> — the controlled environment of <strong>context</strong>, <strong>tools</strong> and <strong>checkpoints</strong> an agent works inside. You are about to assemble one.
+  </li>
 </ul>
-<p>Together with your session and permissions, this wrapper around the agent is what <em>The Work That Remains</em> calls the <strong>harness</strong> — the controlled environment of context, tools and checkpoints an agent works inside. You are about to assemble one.</p>
+</div>
+<div>
+<p><pre class="mermaid"><code>flowchart TD
+    subgraph YU ["You"]
+        D["Describe your &lt;b&gt;Task&lt;/b&gt;&lt;br&gt;in plain English"]
+    end
+    subgraph CA ["Coding Agent"]
+        L["Loads &lt;b&gt;UiPath Skills&lt;/b&gt;&lt;br&gt;Validates &lt;b&gt;UiPath Tools&lt;/b&gt;"]
+    end
+    subgraph CL ["UiPath CLI &amp; Skills"]
+        C["Build &amp; Validate&lt;br&gt;Publish &amp; Deploy&lt;br&gt;Monitor &amp; Manage"]
+    end
+    subgraph PL ["UiPath Platform"]
+        P["Orchestrator, Data Fabric, IS Connectors, Maestro, etc."]
+    end
+%% Direct vertical connections between the blocks
+YU --&gt; CA
+CA --&gt; CL
+CL --&gt; PL</code></pre>
+  </p>
+</div>
+</div>
 <h2 id="steps">Steps<a class="headerlink" href="#steps" title="Permanent link">&para;</a></h2>
 <h3 id="1-check-what-you-have">1. Check what you have<a class="headerlink" href="#1-check-what-you-have" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>uip<span class="w"> </span>--version
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>uip<span class="w"> </span>login<span class="w"> </span>status
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>uip<span class="w"> </span>skills<span class="w"> </span>list
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>uip<span class="w"> </span>tools<span class="w"> </span>list
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>uip<span class="w"> </span>skills<span class="w"> </span>list
 </code></pre></div>
 <p>If all three answer sensibly, skip to step 5. Otherwise, do only the steps you're missing.</p>
 <h3 id="2-install-the-uipath-cli">2. Install the UiPath CLI<a class="headerlink" href="#2-install-the-uipath-cli" title="Permanent link">&para;</a></h3>
@@ -1401,7 +1428,7 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@uipath/cli
 </code></pre></div>
 <h3 id="3-sign-in">3. Sign in<a class="headerlink" href="#3-sign-in" title="Permanent link">&para;</a></h3>
-<p>Authenticate once. Your coding agent reuses this same session, so it acts as you on the platform.</p>
+<p>Authenticate once in browser. Your coding agent reuses this same session, so it acts as you on the platform.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uip<span class="w"> </span>login
 </code></pre></div>
 <h3 id="4-install-the-uipath-skills">4. Install the UiPath skills<a class="headerlink" href="#4-install-the-uipath-skills" title="Permanent link">&para;</a></h3>
@@ -1431,8 +1458,9 @@
 <p>A few commands to keep handy:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>uip<span class="w"> </span>login<span class="w"> </span>status
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>uip<span class="w"> </span>--version
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>uip<span class="w"> </span>tools<span class="w"> </span>update
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>uip<span class="w"> </span>skills<span class="w"> </span>update
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>uip<span class="w"> </span>update
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>uip<span class="w"> </span>tools<span class="w"> </span>update
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>uip<span class="w"> </span>skills<span class="w"> </span>update
 </code></pre></div>
 <p><code>uip --help</code> and <code>uip &lt;command&gt; --help</code> are your best friends, right after your coding agent.</p>
 <h3 id="5-verify-the-setup">5. Verify the setup<a class="headerlink" href="#5-verify-the-setup" title="Permanent link">&para;</a></h3>

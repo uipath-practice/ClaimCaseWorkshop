@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#author-the-case" class="md-skip">
+        <a href="#author-the-case-block-3d" class="md-skip">
           Skip to content
         </a>
       
@@ -946,6 +946,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Author the Case
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -962,6 +980,80 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#first-register-the-action-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First: register the Action App
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-gates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The gates
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1218,15 +1310,13 @@
 
 
 
-<h1 id="author-the-case">Author the Case<a class="headerlink" href="#author-the-case" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The problem: the case plan that binds everything — authored and validated, deliberately <strong>not run yet</strong> (a plan that won't validate is a design problem; a plan that validates then misbehaves is a binding problem)</li>
-<li>Register the Action App now: standalone, beside the solution, an empty page plus its schema — and why the app build is worth delegating to a subagent</li>
-<li>The prompt (transcluded from the seed):</li>
-</ul>
+<h1 id="author-the-case-block-3d">Author the Case (Block 3d)<a class="headerlink" href="#author-the-case-block-3d" title="Permanent link">&para;</a></h1>
+<p>The <strong>Maestro</strong> case plan binds everything you have built into one lifecycle — and this block deliberately stops at <em>authored and validated</em>, never run. The split matters: a plan that will not validate is a <strong>design</strong> problem; a plan that validates and then misbehaves is a <strong>binding</strong> problem. Kept apart, each is debugged where it lives — merged, the second gets debugged through redeploy cycles at several minutes each.</p>
+<p><em>The Work That Remains</em> describes exactly this shape, with an insurance claim as its own example: the <strong>case</strong> owns the lifecycle (opened, investigating, decided, closed); the stable stretches inside a stage run as declared <strong>workflow</strong> on rails, exact and tokenless; and where a stretch needs judgement, an agent takes one well-defined <strong>goal</strong> and finds the path at runtime. The three nest — you are building all three at once.</p>
+<h2 id="first-register-the-action-app">First: register the Action App<a class="headerlink" href="#first-register-the-action-app" title="Permanent link">&para;</a></h2>
+<p>The two human gates are <code>action</code> tasks bound to the app's <strong>contract</strong> — <code>contracts/review-task.md</code> — not to its screens. So the app is registered <em>now</em>: standalone, beside the solution, an empty page plus its schema. That is enough for the case to wire both gateways and prove every route from the command line; the screens replace the empty page at 3f and the case is never touched again.</p>
+<p>The contract is settled once and not revisited, because changing it after the case binds <strong>clears the bindings at both gateways</strong>. And the app build is a natural piece to delegate: one contract file defines its entire I/O, nothing about it needs this block's context — an agent with subagents builds it there; one without gets the same effect by sequencing app-first.</p>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3d · The case</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the Maestro Case</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Use the <span class="gs">**`uipath-maestro-case`**</span> skill and build the case from <span class="sb">`sdd.md`</span> — as a project inside your existing solution in Build folder. <span class="gs">**Authoring `caseplan.json` here, do not run it**</span> — deploying and testing the case is the next block. Diagram reads as the process: the decision path left to right, Denied below Approved on the right, Missing details below Intake and Awaiting inspection below Eligibility screening, nothing overlapping (<span class="sb">`cookbook.md`</span>, <span class="ge">*Canvas*</span>). 
@@ -1249,19 +1339,34 @@
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">-</span><span class="w"> </span>both gates are green: <span class="sb">`uip maestro case validate`</span> reports <span class="sb">`Valid`</span>, <span class="sb">`check_caseplan.py`</span> reports no referential problems
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">-</span><span class="w"> </span>the plan opens in Studio Web: <span class="sb">`uip solution upload Build/ClaimCase-&lt;seat&gt; --force`</span> has run.
 </code></pre></div>
-<ul>
-<li>The gates: <code>check_caseplan.py</code> (referential integrity) and <code>uip maestro case validate</code>; read the rules even when green</li>
-<li>Proof: the case diagram open in Studio Web</li>
-<li>Knowledge block — <em>when the task is larger than the context</em>: this is the largest build in the workshop, so context size matters more than ever. Models differ in window size and in how they behave as the window fills — some compensate for smaller windows remarkably well. The options that fit a large task into a small context: write as you go (compaction preserves only what is already written), names and keys into <code>PROGRESS.md</code> the moment they exist, self-contained pieces delegated to a subagent (the app, in this block), clear and resume from files. There are — and will always be — tasks larger than the largest context of the day; the craft is working so the limit doesn't matter.</li>
-</ul>
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Scaffold and deploy the Coded Action App <code>claim-review-&lt;seat&gt;</code> (beside the solution, stand-alone)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Build the case plan (<code>caseplan.json</code>) from <code>sdd.md</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Validate the case plan (<code>uip maestro case validate</code> + <code>check_caseplan.py</code>)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Upload the solution to Studio Web</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Scaffold and deploy the Coded Action App <code>claim-review-&lt;seat&gt;</code> (beside the solution, stand-alone)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the case plan (<code>caseplan.json</code>) from <code>sdd.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Validate the case plan (<code>uip maestro case validate</code> + <code>check_caseplan.py</code>)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Upload the solution to Studio Web</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
+<h2 id="what-to-review">What to review<a class="headerlink" href="#what-to-review" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Two outcomes at each gate — never three.</strong> Carry on, or stop. <em>Partial approve</em> is a recommendation and an amount on the record, not a branch: route on what the process does next, not on what the answer was about. Two gates × two answers = the four routes the next block proves.</li>
+<li><strong>A gate opens because something needs a person, never as a formality.</strong> A clean claim raises no task at all — and the skipped path still writes down that it was decided automatically, explicitly. An empty reason field downstream reads as "a reviewer approved everything," and nothing was reviewed.</li>
+<li><strong>Fail towards the human.</strong> Unset, empty and false must all <em>open</em> a gate. A condition that quietly closes one on missing data is the most expensive kind of correct-looking plan.</li>
+<li><strong>One stage does nothing, on purpose.</strong> <em>Missing details</em> is a known future requirement, modelled and deliberately unwired: one required placeholder task, entered on a condition nothing sets.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">When the task is larger than the context</p>
+<p>This is the largest build in the workshop, so context matters more than ever. Models differ in window size and in how they behave as the window fills — some compensate for smaller windows remarkably well. What fits a large task into any window: <strong>write as you go</strong> (compaction preserves only what is already written), names and keys into <code>PROGRESS.md</code> the moment they exist, self-contained pieces delegated to a subagent (the app, in this block), clear and resume from files. There will always be tasks larger than the largest context of the day; the craft is working so the limit doesn't matter.</p>
+</div>
+<h2 id="the-gates">The gates<a class="headerlink" href="#the-gates" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uip<span class="w"> </span>maestro<span class="w"> </span><span class="k">case</span><span class="w"> </span>validate
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python3<span class="w"> </span>3d-case/check_caseplan.py
+</code></pre></div>
+<p>Run <strong>exactly these commands</strong> — the full validator, then the shipped checker. The validator's errors are runtime failures spelled out in advance: a gate you route around does not go away, it fails later at several minutes per deploy cycle. And read the rules even on green — <code>validate</code> accepts several shapes that fail only on a live claim (a <code>skipCondition</code> does not stop a task being raised; two entry conditions are ANDed; <code>runs-sequentially</code> is not an ordering).</p>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: the case diagram open in Studio Web — stages, the two gates, the parallel analysis split -->
+
+<p><strong>The diagram is a deliverable.</strong> A case plan a business reader cannot follow is a case plan nobody signs — open it in <strong>Studio Web</strong> and read it as they would.</p>
 
 
 

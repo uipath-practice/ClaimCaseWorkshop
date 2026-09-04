@@ -576,17 +576,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#trust-but-count" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Trust, but count
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#context-is-a-resource" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -609,10 +598,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#findings-are-part-of-the-deliverable" class="md-nav__link">
+  <a href="#agents-are-instructed-to-log-findings" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Findings are part of the deliverable
+        Agents are instructed to log findings
       
     </span>
   </a>
@@ -1344,64 +1333,65 @@
 
 
 <h1 id="how-the-workshop-runs">How the Workshop Runs<a class="headerlink" href="#how-the-workshop-runs" title="Permanent link">&para;</a></h1>
-<p>One rhythm carries the whole day: a prompt goes in, a component comes out, a gate checks it, and you go look at what was built. This page is that rhythm — read it once now, and the build pages will feel familiar all day.</p>
+<p>One rhythm: a prompt goes in, an action or a component comes out, a gate checks it, and you go look at what was built.</p>
 <h2 id="the-path-through-the-day">The path through the day<a class="headerlink" href="#the-path-through-the-day" title="Permanent link">&para;</a></h2>
 <p>The exercise is ten blocks. The first two design and plan; six build; two verify and ship:</p>
-<pre class="mermaid"><code>flowchart LR
-  subgraph P["Plan"]
-    D["1 · Design&lt;br/&gt;sdd.md"] --&gt; PL["2 · Plan&lt;br/&gt;tasks.md"]
-  end
-  subgraph B["Build"]
-    PL --&gt; A3["3a&lt;br/&gt;Extraction"] --&gt; B3["3b&lt;br/&gt;Claim record"] --&gt; C3["3c&lt;br/&gt;Agents"] --&gt; D3["3d&lt;br/&gt;Case"] --&gt; E3["3e&lt;br/&gt;Run"] --&gt; F3["3f&lt;br/&gt;Screens"]
-  end
-  subgraph V["Verify"]
-    F3 --&gt; V4["4 · Verify"] --&gt; S5["5 · Ship"]
-  end</code></pre>
-<p>The seed numbers the blocks; this site groups them into its sections the same way — blocks 1–2 in <strong>Plan</strong>, 3a–3f in <strong>Build</strong>, 4–5 in <strong>Verify</strong>. Block 3 is six separate runs, not one: each piece is built and proven before the next starts.</p>
+<p><pre class="mermaid"><code>flowchart TD
+    subgraph P ["Plan"]
+        direction LR
+        D["1 · Design &lt;b&gt;sdd.md&lt;/b&gt;"] --&gt; PL["2 · Plan &lt;b&gt;tasks.md&lt;/b&gt;"]
+    end
+
+    subgraph B ["Build"]
+        direction LR
+        A3["3a&lt;br&gt;&lt;b&gt;Extraction&lt;/b&gt;"] --&gt; B3["3b&lt;br&gt;&lt;b&gt;Claim record&lt;/b&gt;"] --&gt; C3["3c&lt;br&gt;&lt;b&gt;Analysis Agents&lt;/b&gt;"] --&gt; D3["3d&lt;br&gt;&lt;b&gt;Case Plan&lt;/b&gt;"] --&gt; E3["3e&lt;br&gt;&lt;b&gt;Run and Test&lt;/b&gt;"] --&gt; F3["3f&lt;br&gt;&lt;b&gt;Validation App&lt;/b&gt;"]
+    end
+
+    subgraph V ["Verify"]
+        direction LR
+        V4["4 · &lt;b&gt;Verify&lt;/b&gt;"] --&gt; S5["5 ·&lt;b&gt;Ship&lt;/b&gt;"]
+    end
+
+    %% Direct vertical connections between the blocks
+    P --&gt; B
+    B --&gt; V</code></pre>
+The seed numbers the blocks and this guide groups them into its sections the same way. Block 3 is six separate runs, not one: each piece is built and proven before the next starts.</p>
 <h2 id="how-a-block-works">How a block works<a class="headerlink" href="#how-a-block-works" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
 <tr>
-<th>Beat</th>
+<th></th>
 <th>What happens</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>The prompt</strong></td>
-<td>Each block page shows the exact prompt — copy it into your agent, in the seed folder</td>
+<td>Each block page shows the exact prompt. Give it to your agent.</td>
 </tr>
 <tr>
 <td><strong>The build</strong></td>
-<td>The agent works; the page's <em>Steps</em> checklist shows what it will typically do</td>
+<td>The agent works. Block page's <em>Steps</em> checklist shows what it will typically do.</td>
 </tr>
 <tr>
 <td><strong>The gate</strong></td>
-<td>A script or platform check the block must pass before you move on</td>
+<td>A script or platform check the block must pass before you move on.</td>
 </tr>
 <tr>
 <td><strong>Go and look</strong></td>
-<td>Open the thing that was built — a payload, a table row, a trace, a diagram, a live instance</td>
+<td>Open the thing that was built: a payload, a table row, a trace, a diagram, a live instance.</td>
 </tr>
 </tbody>
 </table>
 <h2 id="gates-commands-not-opinions">Gates: commands, not opinions<a class="headerlink" href="#gates-commands-not-opinions" title="Permanent link">&para;</a></h2>
 <p>Every block ends with something that passes or does not. That is deliberate — a plausible-looking result is not a result.</p>
 <ul>
-<li><strong>A gate is a floor, not a finish.</strong> An agent's review can grade a broken component an A: grades check structure and wording, not the pipeline. The gate catches the boring half; <em>go and look</em> catches the rest.</li>
-<li><strong>Read the gate's rules even when it passes.</strong> Each rule is a shape that built and then failed — a designer who reads them writes fewer of them.</li>
-<li><strong>Never edit a document just to satisfy a rule you believe is wrong.</strong> Say so and log it — a wrong rule is worth more to the maintainers than a compliant file.</li>
-</ul>
-<h2 id="trust-but-count">Trust, but count<a class="headerlink" href="#trust-but-count" title="Permanent link">&para;</a></h2>
-<p>Your agent will tell you it did something. "Success" is a claim about the <em>request</em>, not about the result — a call can be accepted while half its contents were refused.</p>
-<ul>
-<li>After any operation that matters, ask the system what it now contains: count the rows, list the deployments, open the page.</li>
-<li>Prefer claims you can check: <em>"the table holds 31 findings"</em> beats <em>"logged 31 findings"</em>.</li>
+<li><strong>A gate is a baseline or floor, not a perfect result.</strong> An agent's review can grade a broken component an A: grades check structure and wording. Agents sometimes say "Done" without actually doing task till the end. The gate catches the key deliverables; <em>go and look</em> catches the rest.</li>
 </ul>
 <h2 id="context-is-a-resource">Context is a resource<a class="headerlink" href="#context-is-a-resource" title="Permanent link">&para;</a></h2>
 <p>A coding agent's context window fills, and what was never written down does not survive it.</p>
 <ul>
-<li><strong>Clear context at block boundaries</strong> — <code>/clear</code> in Claude Code; in Codex or OpenCode, start a fresh session. With a very large context window the first two blocks fit in one session; with a smaller one, clear after every block. The seed's <code>README.md</code> carries the exact table.</li>
+<li><strong>Clear context at block boundaries</strong> — <code>/clear</code> or start a fresh session. With a large context window multiple blocks fit in one session; with a smaller one, clear after every block. Below is the exact table.</li>
 <li><strong><code>PROGRESS.md</code> is the memory between sessions.</strong> Every block appends names, keys and decisions the moment they exist — the next session resumes from the file, not from recollection.</li>
 <li><strong>Upload the solution at the end of every block</strong> — everything the agent builds is local until then, and the upload is what lets you <em>go and look</em> in Studio Web.</li>
 </ul>
@@ -1412,10 +1402,10 @@
 <li><strong>Ask for a plan first</strong> on anything non-trivial; redirect before files change, not after.</li>
 <li><strong>Iterate.</strong> The first version is good; the second is usually better. Two or three passes, not ten.</li>
 <li><strong>Course-correct early.</strong> Interrupt the moment you see a wrong turn — waiting costs a rebuild.</li>
-<li><strong>Verify outcomes yourself.</strong> The agent's "done" message is its opinion; the gate and your own eyes are the evidence.</li>
+<li><strong>Verify outcomes yourself.</strong> The agent's "done" message is its opinion; the gate and your own eyes are the evidence. Especially on lighter models.</li>
 </ol>
-<h2 id="findings-are-part-of-the-deliverable">Findings are part of the deliverable<a class="headerlink" href="#findings-are-part-of-the-deliverable" title="Permanent link">&para;</a></h2>
-<p>When something surprises you — a command that lies, a document that contradicts another, a step that only worked the second way — log it with the seed's <code>log-finding.py</code>. It takes a minute, it is what makes the next cohort's seed better, and it is the only record afterwards of what the build actually cost. Logging findings is not homework; it is the work.</p>
+<h2 id="agents-are-instructed-to-log-findings">Agents are instructed to log findings<a class="headerlink" href="#agents-are-instructed-to-log-findings" title="Permanent link">&para;</a></h2>
+<p>When something surprises them — a command that lies, a document that contradicts another, a step that only worked the second way — they log it with <code>log-finding.py</code>. It takes a second but helps to align the prompts with current version of skills and tools.</p>
 <h2 id="how-long-the-blocks-run">How long the blocks run<a class="headerlink" href="#how-long-the-blocks-run" title="Permanent link">&para;</a></h2>
 <p>Expect your coding agent to run roughly this long per block — your own review time comes on top:</p>
 <table>
@@ -1460,7 +1450,7 @@
 <tr>
 <td>3e · Run</td>
 <td>1–2 h</td>
-<td><strong>large</strong> — several deploy cycles is normal</td>
+<td><strong>large</strong> (several deploy cycles is normal)</td>
 </tr>
 <tr>
 <td>3f · Screens</td>
@@ -1470,18 +1460,18 @@
 <tr>
 <td>4 · Verify</td>
 <td>2–4 h</td>
-<td><strong>largest</strong> — most of it is fixing, not measuring</td>
+<td><strong>largest</strong> (most of it is fixing and fine tuning)</td>
 </tr>
 <tr>
 <td>5 · Ship</td>
-<td>30–60 min</td>
+<td>10–20 min</td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>These are expectations, not promises — agents and models differ, and a block that hits a real defect runs longer. The large blocks are where context discipline matters most.</p>
+<p>These are expectations, not promises — agents evolve and models differ, and a block that hits a real defect runs longer.</p>
 </div>
 
 

@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hand-it-over" class="md-skip">
+        <a href="#hand-it-over-block-5" class="md-skip">
           Skip to content
         </a>
       
@@ -1145,6 +1145,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hand It Over
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1161,6 +1179,58 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-to-review" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What to review
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#proof" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Proof
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1218,14 +1288,9 @@
 
 
 
-<h1 id="hand-it-over">Hand It Over<a class="headerlink" href="#hand-it-over" title="Permanent link">&para;</a></h1>
-<!-- DRAFT STUB — structure approved; content pass pending. Bullets below are the planned content of this page. The prompt below is transcluded live from the seed. -->
-
-<p>Planned content:</p>
-<ul>
-<li>The last block deploys nothing — shipping is pinning, proving, and writing down</li>
-<li>The prompt (transcluded from the seed):</li>
-</ul>
+<h1 id="hand-it-over-block-5">Hand It Over (Block 5)<a class="headerlink" href="#hand-it-over-block-5" title="Permanent link">&para;</a></h1>
+<p>Everything runs and block 4 proved it. The last block <strong>deploys nothing</strong> — the deployment you verified is the one that ships. UAT and production are the same package landing in another tenant with that environment's config; that happens in an organization's environments, not in this exercise. What this block does is make the build <em>transferable</em>: pin what runs, true up the design, and write for the person who wasn't here.</p>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 5 · Ship</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Hand over</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Everything runs, <span class="sb">`4-verify`</span> proved it and the build is done.
@@ -1255,23 +1320,30 @@
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">-</span><span class="w"> </span>the deployed version is the one you packed
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">-</span><span class="w"> </span>Studio Web opens the solution that is running.
 </code></pre></div>
-<ul>
-<li>Pins, not keys: which identifiers are stable and which rotate</li>
-<li>Bring the SDD to as-built; close every task in <code>tasks.md</code></li>
-<li>Write the operator runbook — it is for a different reader: prerequisites, deploy and promotion, known-broken, what to do when a claim faults</li>
-<li>Done when: the deployed version equals the packed version</li>
-<li>Proof: the solution in Studio Web</li>
-</ul>
-<!-- Expected agent steps — drafted from the seed prompt; replace/expand from a captured run -->
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Pin in <code>PROGRESS.md</code>: deployment name, package name + version, both folder keys, the case release key (never the rotating operation Key), the app's deployed version</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Check what travelled: case + seven Agents inside the <code>.uipx</code>, app deployed beside it, no hand-deployed stand-ins — a read, not a redeploy</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Bring <code>sdd.md</code> to as-built: an As Built section, Design Feedback + Action Required rows for what verify fixed in the case</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Close every task in <code>tasks.md</code> (done, or says why not); final solution upload</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Write the operator runbook: prerequisites, deploy and promotion, known-broken with the change each needs, what to do when a claim faults</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Close <code>PROGRESS.md</code> with the state of the seat</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pin in <code>PROGRESS.md</code>: deployment name, package name + version, both folder keys, the case release key (never the rotating operation Key), the app's deployed version</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Check what travelled: case + seven Agents inside the <code>.uipx</code>, app deployed beside it, no hand-deployed stand-ins — a read, not a redeploy</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Bring <code>sdd.md</code> to as-built: an As Built section, Design Feedback + Action Required rows for what verify fixed in the case</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Close every task in <code>tasks.md</code> (done, or says why not); final solution upload</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Write the operator runbook: prerequisites, deploy and promotion, known-broken with the change each needs, what to do when a claim faults</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Close <code>PROGRESS.md</code> with the state of the seat</li>
 </ul>
+<h2 id="what-to-review">What to review<a class="headerlink" href="#what-to-review" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Pins, not keys.</strong> A deployment's operation key rotates with every operation; the name, the package name and version, the folder keys and the case release key do not. Pin the stable ones — a runbook full of rotating identifiers is stale before it's read.</li>
+<li><strong>Check what travelled.</strong> The case and the seven Agents belong inside the <code>.uipx</code>; the app is deployed beside it. The thing to catch: something you deployed by hand mid-build silently standing in for a project that never made it into the package. This is a read of the package and the deployments — not a redeploy.</li>
+<li><strong>Look hardest at what block 4 fixed in the case.</strong> A condition that narrows a rule a business user signed is a <strong>design change</strong>, whether or not anyone wrote it down. It goes into the SDD as a Design Feedback row <em>and</em> an Action Required row — first in line to be signed. Where the as-built section and the original design differ, the as-built is right.</li>
+<li><strong>The runbook is for a different reader.</strong> Not the agent that built the solution, and not you tomorrow — a human operating it who was never here: what has to exist first (the provided processes, the shared IXP project, the entity, the shared connection), how it deploys and would be promoted, what is known-broken, and what to do when a claim faults. Most of the facts already sit in <code>PROGRESS.md</code>; this is a rewrite for someone who cannot ask you a question. And a known limitation is written <strong>with the change it needs</strong> — a limitation without one is a complaint.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">What 'done' means</p>
+<p>"The build is done" is a statement about a <strong>pinned version</strong>, an <strong>as-built design</strong> and a <strong>runbook</strong> — never about the last green run. Trust in the solution, like trust in an agent, attaches to evidence per decision, not to a good afternoon.</p>
+</div>
+<h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
+<!-- screenshot: Studio Web showing the solution that is running — version matching the pinned one in PROGRESS.md -->
+
+<p>The deployed version is the one you packed; <code>sdd.md</code> describes what runs; every task is closed; the runbook exists. Someone you have never met could redeploy this tomorrow.</p>
 
 
 

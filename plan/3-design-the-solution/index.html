@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#design-the-solution" class="md-skip">
+        <a href="#design-the-solution-block-1" class="md-skip">
           Skip to content
         </a>
       
@@ -1310,10 +1310,11 @@
 
 
 
-<h1 id="design-the-solution">Design the Solution<a class="headerlink" href="#design-the-solution" title="Permanent link">&para;</a></h1>
-<p>Block 1. Your agent reads the PDD and generates the Solution Design Document — one file, <code>sdd.md</code>, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. It has to be good enough that a solution architect could hand it to a developer and walk away.</p>
+<h1 id="design-the-solution-block-1">Design the Solution (Block 1)<a class="headerlink" href="#design-the-solution-block-1" title="Permanent link">&para;</a></h1>
+<p>Your agent reads the PDD and generates the Solution Design Document — one file, <code>sdd.md</code>, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. <strong>It has to be good enough that a solution architect could hand it to a developer and walk away.</strong></p>
 <h2 id="before-you-run-the-brief-is-the-skill">Before you run: the brief is the skill<a class="headerlink" href="#before-you-run-the-brief-is-the-skill" title="Permanent link">&para;</a></h2>
-<p>The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. Watch what happens instead: <strong>it asks nothing.</strong> Every answer is already in what it reads — the mode in the prompt, the tenant from your login, the component inventory in <code>contracts/components.md</code>. That is the first lesson of this workshop worth taking home: <em>the way to a quiet, autonomous agent is a complete brief, not a longer conversation.</em></p>
+<p>The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. You will see it when you build your next project.</p>
+<p>In our case agent is instructed to <strong>ask nothing.</strong> It saves time and every answer is already in: the mode in the prompt, the tenant from your login, the component inventory in <code>contracts/components.md</code>. That is the first lesson of this workshop worth taking home: <strong><em>the way to a quiet, autonomous agent is a complete brief, not a longer conversation.</em></strong> If you already know the answer yourself, just give it to your agent.</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <p>Copy it into your coding agent, started in the seed folder:</p>
 <div class="highlight"><span class="filename">Prompt — block 1 · Design</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Design</span>
@@ -1348,12 +1349,12 @@
 <p>Note the boundary it sets: <strong>design only, then stop.</strong> The task list comes in the next block. One document answers one question; a design that also explains the build order becomes two documents describing the same thing, and the copy nobody edits is the one that goes stale.</p>
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code>, <code>CONFIG.md</code> and <code>contracts/</code> (components, claim entity, review task, provided processes)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Load the uipath-planner skill; run autonomous, design only</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Write <code>sdd.md</code> at the seed root, with <code>Tasks file: tasks.md</code> in the handoff header</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Add the two sdd-addendum sections (entity write-ownership matrix; design feedback to PDD)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 1-design/check_sdd.py sdd.md --pdd PDD.md</code> — fix findings, rerun until clean</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code>, <code>CONFIG.md</code> and <code>contracts/</code> (components, claim entity, review task, provided processes)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Load the uipath-planner skill; run autonomous, design only</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Write <code>sdd.md</code> at the seed root, with <code>Tasks file: tasks.md</code> in the handoff header</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add the two sdd-addendum sections (entity write-ownership matrix; design feedback to PDD)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 1-design/check_sdd.py sdd.md --pdd PDD.md</code> — fix findings, rerun until clean</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
 <h2 id="review-the-design">Review the design<a class="headerlink" href="#review-the-design" title="Permanent link">&para;</a></h2>
 <p>The agent finishes in minutes; your review is where the value is. Four things to check by hand:</p>
@@ -1366,9 +1367,14 @@
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
 </code></pre></div>
-<p>One command, two different checks. The planner's own audit verifies the document's <em>shape</em> — sections present, tables well-formed. The cross-check verifies it against the <em>process</em>: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone.</p>
+<p>The planner's own audit verifies the document's <em>shape</em> — sections present, tables well-formed. The script cross-check verifies it against the <em>process</em>: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. </p>
+<div class="admonition note">
+<p class="admonition-title">Remember</p>
+<ul>
+<li>Especially for large tasks, agents are often reporting work as done, while they have missed half of the work in between.  For this workshop we know what SDD should contain and can check with a script. For your next project it's your eyes. Never jump to the next step without reviewing and validating work assuming agents are perfect. Not just yet.</li>
+</ul>
+</div>
 <p>This gate is also what makes the exercise model-proof: different models design differently, and a weaker one will occasionally put arithmetic where judgement belongs — silently. The gate catches that on any model, which is why the answer to design variance is a check downstream, never a thicker requirements document.</p>
-<p>If a rule fires on something you believe is right — say so and leave the document alone. A wrong rule is a valuable finding; a file edited to satisfy it is worthless.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
 <!-- screenshot: sdd.md open — the stage list and one task with its Design Rationale naming a PDD step; plus the gate exiting 0 -->
 
