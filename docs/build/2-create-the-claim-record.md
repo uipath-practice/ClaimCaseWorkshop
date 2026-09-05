@@ -30,6 +30,10 @@ The round-trip *is* the gate: a value with cents and a 9,000-character payload w
 
 ## Proof
 
-<!-- screenshot: the entity's column list in Data Fabric, and one row with a JSON payload column populated -->
+The entity as built, in **Data Fabric** — and the contract's numbers are visible on it: the analysis columns as Multi-line Text at max length **10,000**, `reviewerNotes` at 4,000, `reviewRequired` as a typed Yes/No:
+
+![The claim entity's field list in Data Fabric — JSON analysis columns at 10,000, typed decision fields](2-create-the-claim-record.images/claim-entity-fields-W.png){ .screenshot width="900" }
+
+<!-- screenshot: one row with a JSON payload column populated — shoot after a live run has written a record -->
 
 The table exists in your seat folder on the pinned schema, and a real row survived the round-trip.

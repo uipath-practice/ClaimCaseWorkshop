@@ -4,7 +4,7 @@ Everything so far runs invisibly, we can only see traces in Case instances. This
 
 Screens come last for a reason: by now your own runs have populated real records, so the screens are built against **payloads your own Agents actually produced**. Agent will capture fixtures from your Data Fabric records.
 
-## Decided for us:
+## Decided for us
 
 - **What exactly the reviewer must see** — `PDD.md` §5.7: the stages, every check including the passes, the settlement line by line, the three documents, two outcomes with a written reason.
 - **The layout** — `3f-validation/layout.md` fixes the regions of both screens, so every seat's screen is reviewable against one expectation.
@@ -19,14 +19,13 @@ Screens come last for a reason: by now your own runs have populated real records
 
 Steps:
 
-- [x] Read `PDD.md` §5.7, `contracts/review-task.md`, `3f-validation/layout.md` and `brand.md`
-- [x] Load the uipath-coded-apps skill
-- [x] Replace the registered app's empty page with the two gate screens
-- [x] Capture fixtures from your own Data Fabric records
-- [x] Serve locally and pause: human reviews the four states
-- [x] Apply the feedback
-- [x] Pack → `publish -t Action` → deploy the app
-- [x] Prove write-back per gateway: fresh claim, complete its task from the CLI, read the record
+- [x] Read `PDD.md` §5.7, `contracts/review-task.md`, `3f-validation/layout.md` and `brand.md`; load the uipath-coded-apps skill
+- [x] Capture fixtures from the seat's own live records — the decided states verbatim, the waiting states rewound to the columns that exist at that gate — plus the real PDFs for the document overlay
+- [x] Derive the status→stage map from `caseplan.json` (a stage list typed into the app is forbidden — generate it)
+- [x] Build the two gate screens into the app registered at 3d — same name, same schema, contract untouched
+- [x] Serve locally inside an Action Center stand-in and pause: the reviewer walks the four states
+- [x] Apply the feedback; prove the shipped bundle carries no dev fixtures; pack → `publish -t Action` → deploy the app alone
+- [x] Prove write-back per gateway: fresh claim, task completed from the CLI, record read back
 - [x] Update `PROGRESS.md`
 
 ## The localhost review (by you)

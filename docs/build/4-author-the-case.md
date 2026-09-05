@@ -53,6 +53,24 @@ The validator's errors are runtime failures spelled out in advance: a gate you r
 
 ## Proof
 
-<!-- screenshot: the case diagram open in Studio Web — stages, the two gates, the parallel analysis split -->
-
 **The diagram is a deliverable.** A case plan a business user cannot follow is a case plan nobody signs. Open it in **Studio Web** and read it as they would.
+
+Four case plans, four different models, one PDD — the stages and gates the process requires are in every one of them, and everything else differs:
+
+=== "Sonnet 5"
+
+    ![The case diagram in Studio Web, as designed and built by Sonnet 5](4-author-the-case.images/case-plan-sonnet-5-W.png){ .screenshot width="900" }
+
+=== "Opus 5"
+
+    ![The case diagram in Studio Web, as designed and built by Opus 5](4-author-the-case.images/case-plan-opus-5-W.png){ .screenshot width="900" }
+
+=== "GPT-5.5"
+
+    ![The case diagram in Studio Web, as designed and built by GPT-5.5](4-author-the-case.images/case-plan-gpt-5-5-W.png){ .screenshot width="900" }
+
+=== "GPT-5.6 Terra"
+
+    ![The case diagram in Studio Web, as designed and built by GPT-5.6 Terra](4-author-the-case.images/case-plan-gpt-5-6-terra-W.png){ .screenshot width="900" }
+
+The design was each model's own — the PDD names no products and no stages, so the shape is a decision, not a transcription. What makes all four *compatible* solutions is the pinned contracts underneath; what makes them different is everything the contracts deliberately leave to the designer. You'll see the same effect on the app screens at 3f.
