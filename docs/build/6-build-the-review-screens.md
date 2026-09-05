@@ -82,7 +82,7 @@ Your reviewer approving all four localhost states is the first gate. After the o
 
 Both gates render in a browser on real data, and a decision — with its reason — lands on the claim record and moves the case on.
 
-## One layout, three different screens
+## One layout, four different screens
 
 The regions are fixed by `layout.md` and the look by `brand.md` — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. Four builds of this very app:
 
