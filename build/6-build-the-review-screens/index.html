@@ -1118,6 +1118,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#one-layout-three-different-screens" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One layout, three different screens
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1409,6 +1420,23 @@
 <li>Data structure or code change needs new fixtures and rebuild/redeploy</li>
 </ul>
 <p>Iterate on the <strong>cheapest layer</strong> and never let the cheap loop be the last thing you ran.</p>
+<p>Here is that review from a real run — the four states, served on the local Action Center stand-in (note the banner: local fixture, captured from the seat's own records, never shipped):</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">eligibility · open</label><label for="__tabbed_1_2">eligibility · decided</label><label for="__tabbed_1_3">review · open</label><label for="__tabbed_1_4">review · decided</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="Localhost review — the eligibility gate, open: all five checks with results and reasons" class="screenshot" src="../6-build-the-review-screens.images/localhost-eligibility-open-W.png" width="900" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Localhost review — the eligibility gate after a decision: the claim still identified, the decision that survived" class="screenshot" src="../6-build-the-review-screens.images/localhost-eligibility-decided-W.png" width="900" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Localhost review — the claim review gate, open: findings side by side, the recommendation, the settlement line by line" class="screenshot" src="../6-build-the-review-screens.images/localhost-review-open-W.png" width="900" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="Localhost review — the claim review gate after a decision, carrying a real settlement override" class="screenshot" src="../6-build-the-review-screens.images/localhost-review-decided-W.png" width="900" /></p>
+</div>
+</div>
+</div>
 <h2 id="what-agents-will-review">What agents will review<a class="headerlink" href="#what-agents-will-review" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>A decision carries a reason, always.</strong> The contract makes <code>reviewerNotes</code> required at both gates, because an inspected <strong>decision with a reason teaches the system</strong> which pattern failed; "a rubber-stamped click is theater" (<em>The Work That Remains</em>). If the screen makes the reason easy to skip, it built the wrong habit.</li>
@@ -1421,6 +1449,22 @@
 <!-- screenshot: the claim review screen in Action Center — findings side by side, settlement lines, the two outcome buttons -->
 
 <p>Both gates render in a browser on real data, and a decision — with its reason — lands on the claim record and moves the case on.</p>
+<h2 id="one-layout-three-different-screens">One layout, three different screens<a class="headerlink" href="#one-layout-three-different-screens" title="Permanent link">&para;</a></h2>
+<p>The regions are fixed by <code>layout.md</code> and the look by <code>brand.md</code> — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. Three builds of this very app:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Sonnet 5</label><label for="__tabbed_2_2">Opus 5</label><label for="__tabbed_2_3">GPT-5.6 Terra</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="The claim review screen as built by Sonnet 5" class="screenshot" src="../6-build-the-review-screens.images/app-variant-sonnet-5-W.png" width="900" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="The claim review screen as built by Opus 5" class="screenshot" src="../6-build-the-review-screens.images/app-variant-opus-5-W.png" width="900" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="The claim review screen as built by GPT-5.6 Terra" class="screenshot" src="../6-build-the-review-screens.images/app-variant-gpt-5-6-terra-W.png" width="900" /></p>
+</div>
+</div>
+</div>
+<p>That variety is not a defect — it is what "the styling is yours" means when an agent holds the pen. It is also exactly why this block pauses on localhost: guidelines and layout constrain the result, but the builder steers and reviews.</p>
 <hr />
 <div class="admonition note">
 <p class="admonition-title">Could this block have run in parallel with the previous one?</p>

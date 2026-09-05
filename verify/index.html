@@ -1151,17 +1151,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#the-answer-key" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        The answer key
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#in-this-section" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1312,24 +1301,21 @@
 <td><strong>Platform gates</strong></td>
 <td><code>uip maestro case validate</code>, agent validation</td>
 <td>What the runtime will refuse to load</td>
-<td>What loads fine and misbehaves live</td>
+<td>What loads fine but misbehaves</td>
 </tr>
 <tr>
 <td><strong>Live runs</strong></td>
 <td>The clean claim, the four routes</td>
 <td>Real behaviour, one path at a time</td>
-<td>Whether <em>every</em> path behaves — that's this block</td>
+<td>Whether <em>every</em> path behaves. That's <strong>this</strong> block.</td>
 </tr>
 </tbody>
 </table>
-<p>Two habits carry the section:</p>
 <ul>
-<li><strong>Every gate is a floor.</strong> A schema validator knows the document is well-formed; a grader knows it is well-written; neither has any idea what you are building — both will pass a component that cannot work, with a number that feels like an answer. Run them because they're free, then answer the question no gate can: <em>does it do the thing?</em> — by running the thing.</li>
-<li><strong>The seams need their own checks.</strong> Where one stage produces and the next consumes, neither side is incentivized to check the handover — the producer has finished and the consumer was told to trust. That is why this exercise's gates sit <em>between</em> stages, and why end-to-end runs exist at all: unit-proven pieces can still compose into a wrong whole.</li>
+<li><strong>Every gate is a floor.</strong> A schema validator knows the document is well-formed; a grader knows it is well-written; neither has any idea <strong>what you are building</strong> and will pass a component that cannot work. </li>
+<li><strong>The seams need their own checks.</strong> Where one stage produces and the next consumes, neither side is incentivized to check the handover — the producer has finished and the consumer was told to trust. That is why end-to-end runs exist at all: unit-proven pieces can still compose into a wrong whole.</li>
 </ul>
 <p>Two questions from <em>The Work That Remains</em> make a good standing review of any design, this one included: <em>who supplies the checker here?</em> — and <em>what part of the system guarantees correctness when correctness is required?</em> If the answer to the second is "the model," the architecture is unsafe.</p>
-<h2 id="the-answer-key">The answer key<a class="headerlink" href="#the-answer-key" title="Permanent link">&para;</a></h2>
-<p>The generator writes, beside each claim's documents, a record of what it planted and what should happen. It has been off-limits until now for a simple reason: read earlier, it turns the build into copying. Read now, it is the oracle your results table is scored against.</p>
 <h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
