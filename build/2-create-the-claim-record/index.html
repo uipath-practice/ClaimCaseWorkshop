@@ -1332,7 +1332,9 @@
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
 <p>The round-trip <em>is</em> the gate: a value with cents and a 9,000-character payload written, read back unchanged, and the test row deleted. Round-trip before you build on it — a store you have only written to is a store you know half of.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<!-- screenshot: the entity's column list in Data Fabric, and one row with a JSON payload column populated -->
+<p>The entity as built, in <strong>Data Fabric</strong> — and the contract's numbers are visible on it: the analysis columns as Multi-line Text at max length <strong>10,000</strong>, <code>reviewerNotes</code> at 4,000, <code>reviewRequired</code> as a typed Yes/No:</p>
+<p><img alt="The claim entity's field list in Data Fabric — JSON analysis columns at 10,000, typed decision fields" class="screenshot" src="../2-create-the-claim-record.images/claim-entity-fields-W.png" width="900" /></p>
+<!-- screenshot: one row with a JSON payload column populated — shoot after a live run has written a record -->
 
 <p>The table exists in your seat folder on the pinned schema, and a real row survived the round-trip.</p>
 

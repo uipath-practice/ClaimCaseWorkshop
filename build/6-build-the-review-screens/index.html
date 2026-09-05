@@ -1056,7 +1056,7 @@
   <a href="#decided-for-us" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Decided for us:
+        Decided for us
       
     </span>
   </a>
@@ -1335,7 +1335,7 @@
 <h1 id="build-the-review-screens-block-3f">Build the Review Screens (Block 3f)<a class="headerlink" href="#build-the-review-screens-block-3f" title="Permanent link">&para;</a></h1>
 <p>Everything so far runs invisibly, we can only see traces in Case instances. This block builds the part of your solution that humans will <em>see</em> and use: the <strong>Coded Action App</strong>'s two screens — the <strong>Eligibility Review</strong> and the <strong>Claim Review</strong> — that the <strong>Maestro Case</strong> raises its tasks against in <strong>Action Center</strong>.</p>
 <p>Screens come last for a reason: by now your own runs have populated real records, so the screens are built against <strong>payloads your own Agents actually produced</strong>. Agent will capture fixtures from your Data Fabric records.</p>
-<h2 id="decided-for-us">Decided for us:<a class="headerlink" href="#decided-for-us" title="Permanent link">&para;</a></h2>
+<h2 id="decided-for-us">Decided for us<a class="headerlink" href="#decided-for-us" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>What exactly the reviewer must see</strong> — <code>PDD.md</code> §5.7: the stages, every check including the passes, the settlement line by line, the three documents, two outcomes with a written reason.</li>
 <li><strong>The layout</strong> — <code>3f-validation/layout.md</code> fixes the regions of both screens, so every seat's screen is reviewable against one expectation.</li>
@@ -1375,14 +1375,13 @@
 </code></pre></div>
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code> §5.7, <code>contracts/review-task.md</code>, <code>3f-validation/layout.md</code> and <code>brand.md</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Load the uipath-coded-apps skill</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Replace the registered app's empty page with the two gate screens</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Capture fixtures from your own Data Fabric records</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Serve locally and pause: human reviews the four states</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Apply the feedback</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pack → <code>publish -t Action</code> → deploy the app</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Prove write-back per gateway: fresh claim, complete its task from the CLI, read the record</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code> §5.7, <code>contracts/review-task.md</code>, <code>3f-validation/layout.md</code> and <code>brand.md</code>; load the uipath-coded-apps skill</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Capture fixtures from the seat's own live records — the decided states verbatim, the waiting states rewound to the columns that exist at that gate — plus the real PDFs for the document overlay</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Derive the status→stage map from <code>caseplan.json</code> (a stage list typed into the app is forbidden — generate it)</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the two gate screens into the app registered at 3d — same name, same schema, contract untouched</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Serve locally inside an Action Center stand-in and pause: the reviewer walks the four states</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Apply the feedback; prove the shipped bundle carries no dev fixtures; pack → <code>publish -t Action</code> → deploy the app alone</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Prove write-back per gateway: fresh claim, task completed from the CLI, record read back</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
 <h2 id="the-localhost-review-by-you">The localhost review (by you)<a class="headerlink" href="#the-localhost-review-by-you" title="Permanent link">&para;</a></h2>
