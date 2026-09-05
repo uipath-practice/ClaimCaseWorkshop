@@ -84,7 +84,7 @@ Both gates render in a browser on real data, and a decision — with its reason 
 
 ## One layout, three different screens
 
-The regions are fixed by `layout.md` and the look by `brand.md` — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. Three builds of this very app:
+The regions are fixed by `layout.md` and the look by `brand.md` — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. Four builds of this very app:
 
 === "Sonnet 5"
 
@@ -93,6 +93,10 @@ The regions are fixed by `layout.md` and the look by `brand.md` — and still, d
 === "Opus 5"
 
     ![The claim review screen as built by Opus 5](6-build-the-review-screens.images/app-variant-opus-5-W.png){ .screenshot width="900" }
+
+=== "GPT-5.5"
+
+    ![The claim review screen as built by GPT-5.5](6-build-the-review-screens.images/app-variant-gpt-5-5-W.png){ .screenshot width="900" }
 
 === "GPT-5.6 Terra"
 
