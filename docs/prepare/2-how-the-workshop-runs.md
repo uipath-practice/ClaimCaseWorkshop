@@ -48,7 +48,7 @@ Every block ends with something that passes or does not. That is deliberate — 
 A coding agent's context window fills, and what was never written down does not survive it.
 
 - **Clear context at block boundaries** — `/clear` or start a fresh session. With a large context window multiple blocks fit in one session; with a smaller one, clear after every block. Below is the exact table.
-- **`PROGRESS.md` is the memory between sessions.** Every block appends names, keys and decisions the moment they exist — the next session resumes from the file, not from recollection.
+- **`PROGRESS.md` is the memory between sessions.** Every block appends names, keys and decisions the moment they exist — the next session resumes from the file, not from recollection. That's exactly what the write-as-you-go discipline is for.
 - **Upload the solution at the end of every block** — everything the agent builds is local until then, and the upload is what lets you *go and look* in Studio Web.
 
 ## Driving your agent well

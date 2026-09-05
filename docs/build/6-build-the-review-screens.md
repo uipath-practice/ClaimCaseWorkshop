@@ -48,6 +48,24 @@ Hand what you find back to the agent, let it fix, refresh, and approve. **Then**
 
 Iterate on the **cheapest layer** and never let the cheap loop be the last thing you ran.
 
+Here is that review from a real run — the four states, served on the local Action Center stand-in (note the banner: local fixture, captured from the seat's own records, never shipped):
+
+=== "eligibility · open"
+
+    ![Localhost review — the eligibility gate, open: all five checks with results and reasons](6-build-the-review-screens.images/localhost-eligibility-open-W.png){ .screenshot width="900" }
+
+=== "eligibility · decided"
+
+    ![Localhost review — the eligibility gate after a decision: the claim still identified, the decision that survived](6-build-the-review-screens.images/localhost-eligibility-decided-W.png){ .screenshot width="900" }
+
+=== "review · open"
+
+    ![Localhost review — the claim review gate, open: findings side by side, the recommendation, the settlement line by line](6-build-the-review-screens.images/localhost-review-open-W.png){ .screenshot width="900" }
+
+=== "review · decided"
+
+    ![Localhost review — the claim review gate after a decision, carrying a real settlement override](6-build-the-review-screens.images/localhost-review-decided-W.png){ .screenshot width="900" }
+
 ## What agents will review
 
 - **A decision carries a reason, always.** The contract makes `reviewerNotes` required at both gates, because an inspected **decision with a reason teaches the system** which pattern failed; "a rubber-stamped click is theater" (*The Work That Remains*). If the screen makes the reason easy to skip, it built the wrong habit.
@@ -63,6 +81,24 @@ Your reviewer approving all four localhost states is the first gate. After the o
 <!-- screenshot: the claim review screen in Action Center — findings side by side, settlement lines, the two outcome buttons -->
 
 Both gates render in a browser on real data, and a decision — with its reason — lands on the claim record and moves the case on.
+
+## One layout, three different screens
+
+The regions are fixed by `layout.md` and the look by `brand.md` — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. Three builds of this very app:
+
+=== "Sonnet 5"
+
+    ![The claim review screen as built by Sonnet 5](6-build-the-review-screens.images/app-variant-sonnet-5-W.png){ .screenshot width="900" }
+
+=== "Opus 5"
+
+    ![The claim review screen as built by Opus 5](6-build-the-review-screens.images/app-variant-opus-5-W.png){ .screenshot width="900" }
+
+=== "GPT-5.6 Terra"
+
+    ![The claim review screen as built by GPT-5.6 Terra](6-build-the-review-screens.images/app-variant-gpt-5-6-terra-W.png){ .screenshot width="900" }
+
+That variety is not a defect — it is what "the styling is yours" means when an agent holds the pen. It is also exactly why this block pauses on localhost: guidelines and layout constrain the result, but the builder steers and reviews.
 
 ---
 
