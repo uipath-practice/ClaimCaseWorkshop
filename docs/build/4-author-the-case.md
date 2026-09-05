@@ -55,7 +55,15 @@ The validator's errors are runtime failures spelled out in advance: a gate you r
 
 **The diagram is a deliverable.** A case plan a business user cannot follow is a case plan nobody signs. Open it in **Studio Web** and read it as they would.
 
-Four case plans, four different models, one PDD — the stages and gates the process requires are in every one of them, and everything else differs:
+Four case plans, four different models, one PDD — the stages and gates the process requires are in every one of them, and everything else differs. The first tab is what they were all asked for: the seed cookbook's own mock of the diagram.
+
+=== "The spec"
+
+    From `3d-case/cookbook.md` — the picture every model laid its stages against:
+
+    ```text
+    --8<-- "seeds/3d-case/cookbook.md:63:71"
+    ```
 
 === "Sonnet 5"
 

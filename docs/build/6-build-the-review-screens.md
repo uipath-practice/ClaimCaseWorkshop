@@ -83,7 +83,15 @@ Both gates render in a browser on real data, and a decision — with its reason 
 
 ## One layout, four different screens
 
-The regions are fixed by `layout.md` and the look by `brand.md` — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. Four builds of this very app:
+The regions are fixed by `layout.md` and the look by `brand.md` — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. The first tab is the contract itself: the wireframe every build had to honour. Then four builds of this very app:
+
+=== "The spec"
+
+    From `3f-validation/layout.md` — the H2 wireframe, regions fixed, styling free:
+
+    ```text
+    --8<-- "seeds/3f-validation/layout.md:27:52"
+    ```
 
 === "Sonnet 5"
 
