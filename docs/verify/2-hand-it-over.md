@@ -32,3 +32,9 @@ Steps:
 <!-- screenshot: Studio Web showing the solution that is running — version matching the pinned one in PROGRESS.md -->
 
 The deployed version is the one you packed; `sdd.md` describes what runs; every task is closed; the runbook exists. Someone you have never met could redeploy this tomorrow.
+
+??? example "What a finished handover sounds like — an agent's final report, from a real run (expand)"
+
+    Everything this page asks for, in the agent's own closing words. Worth reading closely: the pins table marks which key **does not rotate** — and calls out the one that does as *not pinned*, by name; the package was **read back, never redeployed**, byte-identical to disk; the as-built SDD corrected its own design-stage claim "in place, as a correction"; the runbook is "260 lines for someone who was never here," every command in it executed first; and the task list closes honestly — *"ticking alone would have been dishonest, so eight carry a Deviation line."*
+
+    ![The agent's final block-5 report: the pinned solution version table, the read-back verification, the as-built SDD changes, the runbook and the honestly-closed task list](2-hand-it-over.images/handover-final-report-W.png){ .screenshot width="900" }
