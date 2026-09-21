@@ -288,6 +288,26 @@
   
   
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../app/" class="md-tabs__link">
+          
+  
+  
+  App
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     <li class="md-tabs__item">
       <a href="../../next-steps/" class="md-tabs__link">
         
@@ -1294,6 +1314,121 @@
   
   
   
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    App
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../app/1-build-the-process-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Build the Process App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../next-steps/" class="md-nav__link">
         
@@ -1346,14 +1481,14 @@
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="gs">**Now you may read the answer key.**</span> 
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>It sits beside the documents in the <span class="sb">`Claims`</span> bucket and states what was planted and what should happen — the oracle you have been forbidden until this point. <span class="sb">`contracts/provided-processes.md`</span> names it.
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>Read it as a record of what was <span class="ge">*injected*</span> into the documents, not of what the arithmetic must produce. A failure that no injector plants is a false positive (<span class="sb">`cookbook.md`</span>).
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>Read it as a record of what was <span class="ge">*injected*</span> into the documents, not of what the arithmetic must produce. A failure that no injector plants is a false positive (<span class="sb">`cookbook.md`</span>). Its <span class="sb">`Gateways`</span> names the gates the planted problem opens <span class="gs">**before any human answers**</span> — a screening failure your eligibility reviewer proceeds past must also open claim review, by <span class="sb">`PDD.md`</span> BR-40; the key does not model the reviewer, the PDD does.
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Four things to establish:
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
 <a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Each planted problem is caught by the Agent that owns it, and stops the claim at the right Action Center gate task.**</span> Not caught by something else, and not caught twice: a reviewer seeing one problem reported by three Agents reads three problems.
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">-</span><span class="w"> </span><span class="gs">**A clean claim settles in full with no task ever raised**</span> — not even an Action Center task whose checks are all green and whose recommendation is <span class="ge">*approve*</span>.
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">-</span><span class="w"> </span><span class="gs">**What the claimant is told matches what actually happened.**</span> The letter recorded by <span class="sb">`Client Notification`</span> in the tenant-level <span class="sb">`ClaimCorrespondence`</span> entity (one row per letter keyed by claim id) states the decision and the figures the Data Fabric record holds. Read it from the entity, not from the job log. Read the paid figure from <span class="sb">`decisionJson.outcome`</span> against <span class="sb">`status`</span>, never from <span class="sb">`settlementJson`</span>: that column is what the settlement <span class="ge">*computed*</span>.
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Two clean claims of one claimant profile settle to the same cent.**</span> Start both with the same <span class="sb">`profileId`</span> (<span class="sb">`claims-profile-01`</span> … <span class="sb">`12`</span>) and compare every figure of the two records, not the prose; the same <span class="sb">`seed`</span> as well makes the documents identical, which tells agent variance from document variance (<span class="sb">`cookbook.md`</span>, <span class="ge">*Two runs are not the same as two claims*</span>).
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Two clean claims of one claimant profile settle to the same cent.**</span> Start both with the same <span class="sb">`profileId`</span> (<span class="sb">`claims-profile-01`</span> … <span class="sb">`12`</span>) and compare every figure of the two records, not the prose; the same <span class="sb">`seed`</span> as well makes the documents identical, and <span class="gs">**the answer key records the seed the generator drew even when you passed 0**</span> — so any claim, planted or clean, can be regenerated byte for byte for a before-and-after; the same <span class="sb">`seed`</span> as well makes the documents identical, which tells agent variance from document variance (<span class="sb">`cookbook.md`</span>, <span class="ge">*Two runs are not the same as two claims*</span>).
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>Then check the build against the design rather than against the process: enumerate every stage, task, rule, SLA and variable in <span class="sb">`sdd.md`</span> and mark each <span class="gs">**Implemented · Missing · Mismatch · Extra**</span>. <span class="ge">*Extra*</span> is the one worth looking hardest at — it is what nobody asked for, no tool reports, and every reviewer pays for later.
 <a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>

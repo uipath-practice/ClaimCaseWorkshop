@@ -1,0 +1,1700 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Build an enterprise property-claims solution end-to-end with coding agents">
+      
+      
+        <meta name="author" content="Sergey Shumilov">
+      
+      
+        <link rel="canonical" href="https://uipath-practice.github.io/ClaimCaseWorkshop/app/1-build-the-process-app/">
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../next-steps/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>1. Build the Process App - (WIP) Property Insurance Claims with Coding Agents</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#build-the-process-app-block-6" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="(WIP) Property Insurance Claims with Coding Agents" class="md-header__button md-logo" aria-label="(WIP) Property Insurance Claims with Coding Agents" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            (WIP) Property Insurance Claims with Coding Agents
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              1. Build the Process App
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../prepare/" class="md-tabs__link">
+          
+  
+  
+  Prepare
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../plan/" class="md-tabs__link">
+          
+  
+  
+  Plan
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../build/" class="md-tabs__link">
+          
+  
+  
+  Build
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../verify/" class="md-tabs__link">
+          
+  
+  
+  Verify
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+  App
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../next-steps/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Next Steps
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="(WIP) Property Insurance Claims with Coding Agents" class="md-nav__button md-logo" aria-label="(WIP) Property Insurance Claims with Coding Agents" data-md-component="logo">
+      
+  <img src="../../assets/images/Partner Success Logo.png" alt="logo">
+
+    </a>
+    (WIP) Property Insurance Claims with Coding Agents
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prepare
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prepare
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prepare/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prepare/1-prepare-your-tools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Prepare Your Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prepare/2-how-the-workshop-runs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. How the Workshop Runs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prepare/3-get-the-seed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Get the Seed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Plan
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plan/1-the-property-claims-case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. The Property Claims Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plan/2-read-the-pdd/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Read the PDD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plan/3-design-the-solution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Design the Solution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plan/4-plan-the-work/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Plan the Work
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../plan/5-architecture-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Architecture Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Build
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/1-extract-the-documents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Extract the Documents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/2-create-the-claim-record/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Create the Claim Record
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/3-build-the-seven-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3. Build the Seven Agents
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/4-author-the-case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    4. Author the Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/5-run-the-case/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    5. Run the Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../build/6-build-the-review-screens/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6. Build the Review Screens
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verify
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Verify
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verify/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verify/1-hunt-the-planted-problems/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Hunt the Planted Problems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../verify/2-hand-it-over/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2. Hand It Over
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    App
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Build the Process App
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Build the Process App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#decided-for-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Decided for us
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-prompt" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The prompt
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#your-checks-on-the-deployed-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Your checks, on the deployed URL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-learn-about-driving-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you learn about driving the agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../next-steps/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Next Steps
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="build-the-process-app-block-6">Build the Process App (Block 6)<a class="headerlink" href="#build-the-process-app-block-6" title="Permanent link">&para;</a></h1>
+<p><code>PDD.md</code> §11 asks for the view the claims team lead has never had: every claim, where it is, how long it has been there, and what is waiting on a human — a work queue, an SLA and ageing view, and a per-claim drill-down. Today that view is a shared spreadsheet overwritten daily (§4.4, PP5); nobody can say how many claims are near their deadline. The PDD calls the replacement <strong>a requirement, not a nicety</strong>. This block builds it: a standalone <strong>Coded Web App</strong> with three screens — a portfolio dashboard, a searchable claims list, and one claim in full.</p>
+<p>It comes after the hand-over for a reason. This app <strong>reads what every other block produced</strong> — the claim record, the case's own status words, the gate tasks in <strong>Action Center</strong> and the claim screen you built at 3f — so nothing it needs exists until the solution runs, and the solution it reads is the pinned one. And it ships <strong>beside</strong> the solution with its own publish and deploy, exactly as the <strong>Coded Action App</strong> does: an app provisioned inside the solution deploys as a shell and blocks every later redeploy once it moves on. A change to a chart must never cost a redeploy of the case.</p>
+<details class="quote">
+<summary>PDD §11 — the five views, verbatim</summary>
+<p><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#11-reporting-and-monitoring-requirements">Open §11 in the full document ↗</a></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Report / view</th>
+<th>Frequency</th>
+<th>Content</th>
+<th>Audience</th>
+<th>Where it is viewed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RP1</td>
+<td><strong>Claims in flight</strong></td>
+<td>Real-time</td>
+<td>Every open claim: reference, claimant, stage, how long it has been in that stage, how close it is to the claim deadline, the amount claimed, and the recommended outcome where one exists</td>
+<td>Claims team lead, Claims Operations Manager</td>
+<td>A dashboard</td>
+</tr>
+<tr>
+<td>RP2</td>
+<td><strong>Awaiting a human</strong></td>
+<td>Real-time</td>
+<td>Claims sitting at H1 or H2, and for how long</td>
+<td>Claims team lead</td>
+<td>A dashboard</td>
+</tr>
+<tr>
+<td>RP3</td>
+<td><strong>Closed today</strong></td>
+<td>Daily</td>
+<td>Claims settled and refused, with amounts and outcomes</td>
+<td>Claims Operations Manager</td>
+<td>A dashboard</td>
+</tr>
+<tr>
+<td>RP4</td>
+<td><strong>SLA breaches</strong></td>
+<td>Real-time</td>
+<td>Claims at risk or breached, at claim and stage level</td>
+<td>Claims team lead</td>
+<td>A dashboard</td>
+</tr>
+<tr>
+<td>RP5</td>
+<td><strong>Straight-through rate</strong></td>
+<td>Monthly</td>
+<td>SC1, SC2 and SC5 against target</td>
+<td>Head of Household Claims</td>
+<td>A dashboard</td>
+</tr>
+</tbody>
+</table>
+<p><strong>In-flight visibility needed:</strong> a work queue, an SLA and ageing view, and a per-claim drill-down.</p>
+</details>
+<h2 id="decided-for-us">Decided for us<a class="headerlink" href="#decided-for-us" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>The three screens and the data inventory</strong> — <code>6-process-app/layout.md</code>: a dashboard, a claims list, one claim. It also fixes what each screen may draw on — which columns of the record serve the portfolio, and what the case adds. The two mocks in <code>6-process-app/mocks/</code> fix the <em>intent</em>, not a pixel.</li>
+<li><strong>The record is the single source of the claim.</strong> The case exposes no task payloads, so the record's header columns are the only thing a portfolio can count, filter and sort, and its payload columns are the claim screen. The case adds only what the record cannot know: per-stage status and SLA, and the pre-aggregated instance counts.</li>
+<li><strong>The currency rule</strong> — <code>PDD.md</code> A2. Six countries, six currencies, no conversion anywhere in the process. Count claims freely; sum amounts per currency or not at all. A portfolio total in one currency is a number nobody can act on.</li>
+<li><strong>The vocabulary is your own case's.</strong> Status words, stage names and SLAs are read from the record and the case, never typed into the app. A list typed in drifts the first time either changes.</li>
+<li><strong>A decision goes through the task, never the record.</strong> From the claim page a handler completes the same Action Center task the case raised, with <code>contracts/review-task.md</code>'s payload, and the case writes the record — the same path as a decision made in Action Center. One writer, one shape, one audit trail. That is why the shared registration carries a task scope and <strong>no</strong> record-write scope.</li>
+<li><strong>Re-use the Action App's claim view.</strong> The claim screen is the one you built at 3f, imported from its source — one claim view, two deployables — with the decision controls shown only while a gate task is open for that claim.</li>
+<li><strong>The visuals are yours</strong> — which figures earn a card, which distributions earn a chart, the layout, the refresh. <a href="../../build/6-build-the-review-screens/#decided-for-us">Taste is still a requirement you have to state</a>.</li>
+</ul>
+<h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
+<div class="highlight"><span class="filename">Prompt — block 6 · Process App</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the Process App</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sb">`PDD.md`</span> §11 asks for the view the claims team lead has never had: every claim, where it is, how long it has been there, and what is waiting on a human. Build it as a standalone <span class="gs">**Coded Web App**</span> at <span class="sb">`Build/property-claims-&lt;seat&gt;/`</span> — beside the solution, published and deployed on its own into your seat folder, signed in through the shared registration (<span class="sb">`CONFIG.md`</span>, <span class="ge">*The Coded Action App signs in through a shared registration*</span> — the same client, the scopes it carries and no others).
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Use the <span class="gs">**`uipath-coded-apps`**</span> skill — the web-app path, not the action-app path and not its dashboard generator. Read <span class="sb">`6-process-app/layout.md`</span> first: the three screens, and what the claim record and the case already carry. Decide the visuals yourself from that data.
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="gs">**Re-use the Action App, do not rebuild it.**</span> The claim screen is the one you built at <span class="sb">`3f`</span> — import it from <span class="sb">`Build/claim-review-&lt;seat&gt;/src`</span> (an alias into its source, so there is one claim view and two deployables) and take its stylesheet with it. Show its decision controls only while a gate task is open for that claim, and make completing them complete that Action Center task with <span class="sb">`contracts/review-task.md`</span>'s payload — outcome and outputs, the three identifiers replayed. The case then writes the record; the app never writes the claim record itself.
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Never sum amounts across currencies (<span class="sb">`PDD.md`</span> A2). Read who decided from the gate conditions, not from the decision columns.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Before you build, write <span class="sb">`6-process-app/design.md`</span>: each screen, what it shows, from which column or call, and the map from your record's status words to the labels a handler reads. Ten lines a screen.
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Build against your own records. Serve it locally, sign in, and reconcile the dashboard's counts with <span class="sb">`uip df records list`</span> before the first publish — a signed-in browser is your reviewer's; prove the arithmetic without one by running the app's own aggregation over the rows the CLI read. Then <span class="sb">`npm run build`</span> → <span class="sb">`uip codedapp pack`</span> → <span class="sb">`uip codedapp publish`</span> (a Web app, no <span class="sb">`-t Action`</span>) → <span class="sb">`uip codedapp deploy --folder-key &lt;your seat folder&gt; --client-id &lt;the shared registration&gt;`</span>.
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="gs">**Done when:**</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span>the deployed app opens signed in from your seat folder, and its dashboard counts equal the record counts by status from the command line
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">-</span><span class="w"> </span>one search finds a claim by id, by policy number and by claimant name; the claim page renders a settled claim, a refused claim and one still in flight
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">-</span><span class="w"> </span>a claim with a pending task shows it; completing it from the app shows <span class="sb">`Completed`</span> in <span class="sb">`uip tasks get &lt;id&gt;`</span>, and the case writes the decision on the record and moves the claim on
+</code></pre></div>
+<p>Steps:</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code> §11, <code>6-process-app/layout.md</code>, <code>contracts/claim-entity.md</code>, <code>contracts/review-task.md</code> and <code>CONFIG.md</code>'s shared registration; load the uipath-coded-apps skill — its web-app path</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Write <code>6-process-app/design.md</code> <strong>before building</strong>: each screen, what it shows and from which column or call, and the map from your record's status words to the labels a handler reads</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read the record schema and your own rows: the status vocabulary your case actually wrote, and which columns an in-flight claim does not have yet</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Scaffold the Coded Web App at <code>Build/property-claims-&lt;seat&gt;/</code>; set its scopes to exactly the shared registration's list — no more</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Share the claim view from <code>Build/claim-review-&lt;seat&gt;/src</code> by an alias — one source, two deployables — and take its stylesheet with it</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read the whole record set with a cursor loop; hydrate each pending task and join it to its claim on <code>claimId</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the three screens against your own records; serve locally; reconcile every dashboard figure against <code>uip df records list</code> before the first publish</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Wire the in-app decision: complete the claim's own pending task with the contract's payload — outcome, outputs, the three identifiers replayed</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Prove the bundle ships no fixtures and no localhost; <code>npm run build</code> → <code>uip codedapp pack</code> → <code>publish</code> (a Web app, no <code>-t Action</code>) → <code>deploy --folder-key &lt;your seat folder&gt; --client-id &lt;the shared registration&gt;</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Start a fresh claim per gate so a live task waits for the in-app decision; update <code>PROGRESS.md</code></li>
+</ul>
+<h2 id="your-checks-on-the-deployed-url">Your checks, on the deployed URL<a class="headerlink" href="#your-checks-on-the-deployed-url" title="Permanent link">&para;</a></h2>
+<p>The agent proves the arithmetic without a browser: it runs the app's own aggregation over the rows the CLI read and diffs the two against an independent count. That reconciliation is a gate, and <a href="../../verify/#testing-a-long-running-process">every gate is a floor</a>. What the agent cannot do is sign in — a signed-in browser is a human's. So four checks are yours, and they close the block:</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>What you should see</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Open the URL <code>deploy</code> printed, from your seat folder, signed in</td>
+<td>The dashboard renders on your own records. Its tiles equal the reconciliation the agent wrote — run its check and compare, or count by status with <code>uip df records list</code></td>
+</tr>
+<tr>
+<td>Search one claim three ways — by claim id, by policy number, by claimant name — then once by nonsense</td>
+<td>Each search finds it and says <em>how many of how many</em>; the nonsense search names what it looked for instead of a blank table</td>
+</tr>
+<tr>
+<td>Open a settled claim, a refused claim and one still in flight</td>
+<td>The Action App's screen, unchanged; stages never entered marked as not reached; decision controls present <strong>only</strong> on the in-flight claim whose gate is open, with a link to the same task in Action Center beside them</td>
+</tr>
+<tr>
+<td>Complete a gate task from the claim page — outcome, reason, submit</td>
+<td><code>uip tasks get &lt;id&gt;</code> says <code>Completed</code>; the record carries the decision and the claim has moved on; <em>awaiting a human</em> drops by one on refresh</td>
+</tr>
+</tbody>
+</table>
+<p>The agent left a fresh claim waiting at each gate for exactly this. Decide them from the app, not from the CLI — a task completed from the command line proves nothing about the screen.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Dashboard</label><label for="__tabbed_1_2">Claims</label><label for="__tabbed_1_3">One claim</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><img alt="The portfolio dashboard: four tiles — in flight, awaiting a human, closed today, near the claim deadline — a straight-through meter and a time-to-decision meter with their distributions, amounts claimed per currency with no total row, and ranked bars for the six perils and the six countries" class="screenshot" src="../1-build-the-process-app.images/dashboard-portfolio-W.png" width="900" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="The claims list: one search box over claim id, policy number and claimant, status and stage filters, a waiting-on-a-person toggle with the count of how many of how many, one row per claim with its amount in its own currency, and an Awaiting review mark on the claim whose gate task is open" class="screenshot" src="../1-build-the-process-app.images/claims-list-search-W.png" width="900" /></p>
+</div>
+<div class="tabbed-block">
+<p><img alt="One claim in full on the Action App's own screen — header, stage strip, the four cards — with the claim review gate open, so the two outcomes and the required reason are live and the same task is linked in Action Center" class="screenshot" src="../1-build-the-process-app.images/claim-page-decision-W.png" width="900" /></p>
+</div>
+</div>
+</div>
+<p>Read the screens the way a team lead would:</p>
+<ul>
+<li><strong>Every figure says where it came from or which rule it used.</strong> The time-to-decision card says which calendar it counted; the currency card says why there is no total row. A figure with no source is a guess dressed as a number.</li>
+<li><strong>Who decided comes from the gate conditions, not the decision words.</strong> The case's convergence write fills the decision columns on every claim, human or not. A gate counts as opened when the case's own condition opened it — a failed screening check, the review flag on the record — and the gates opened must equal the tasks ever raised. Ask your agent for that cross-check.</li>
+<li><strong>Where the case would have added something, the screen says so.</strong> A scope not granted means the figure is computed from the record and the card says what is missing — never a blank panel, never sample data standing in for a failed call.</li>
+</ul>
+<h2 id="what-you-learn-about-driving-the-agent">What you learn about driving the agent<a class="headerlink" href="#what-you-learn-about-driving-the-agent" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Three sources, and what each can say.</strong> The record: business fields and the analysis payloads — everything a portfolio can count, filter and drill into. The case: per-stage status and SLA, and the pre-aggregated instance counts — what the record cannot know. The tasks: who is waiting, at which gate, since when. Every figure on the screen has exactly one of these behind it; make the agent name it.</li>
+<li><strong>One scope, one failure.</strong> A scope asked for and not granted fails the <strong>whole</strong> token, silently, on the first call — sign-in bounces straight back, or every service fails at once. Read the registration in <code>CONFIG.md</code> before the code; the app asks for exactly that list. Adding a service means the scope has to exist on the registration first, and that is the operator's job, not the agent's.</li>
+<li><strong>Every list call is one page.</strong> There is no option to ask for all, and a dashboard that reads one page lies confidently — a count looks like a count. The agent loops the cursor until there is no next page, then pages the table itself with <em>showing X–Y of Z</em>.</li>
+<li><strong>Absent is not null.</strong> A column never written is missing from the row, not <code>null</code> — an in-flight claim is mostly absent columns. And the decision column has two shapes over a claim's life: the recommendation while the review gate is open, recommendation plus outcome after it closes. Read every column defensively, and key on the record's own flags, never on which keys happen to be present.</li>
+<li><strong>Completing a task replaces its payload.</strong> Every writer replaces the whole payload, so the outcome, the outputs <em>and</em> the three identifiers go back together — a completed task must still know its claim. <a href="../../build/6-build-the-review-screens/#what-agents-will-review">The same fact shaped the Action App</a>; here it decides what the app sends.</li>
+</ul>
+<p><code>6-process-app/cookbook.md</code> carries the traps behind each of these, in the order an agent meets them.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../" class="md-footer__link md-footer__link--prev" aria-label="Previous: Overview">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Overview
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../next-steps/" class="md-footer__link md-footer__link--next" aria-label="Next: Next Steps">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Next Steps
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+    
+  </body>
+</html>

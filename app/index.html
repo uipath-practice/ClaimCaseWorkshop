@@ -12,9 +12,13 @@
         <meta name="author" content="Sergey Shumilov">
       
       
-        <link rel="canonical" href="https://uipath-practice.github.io/ClaimCaseWorkshop/dashboard/">
+        <link rel="canonical" href="https://uipath-practice.github.io/ClaimCaseWorkshop/app/">
       
       
+        <link rel="prev" href="../verify/2-hand-it-over/">
+      
+      
+        <link rel="next" href="1-build-the-process-app/">
       
       
         
@@ -25,7 +29,7 @@
     
     
       
-        <title>Dashboard - (WIP) Property Insurance Claims with Coding Agents</title>
+        <title>Overview - (WIP) Property Insurance Claims with Coding Agents</title>
       
     
     
@@ -76,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#dashboard" class="md-skip">
+        <a href="#app" class="md-skip">
           Skip to content
         </a>
       
@@ -109,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Dashboard
+              Overview
             
           </span>
         </div>
@@ -270,6 +274,28 @@
   
   
   Verify
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+  App
 
         </a>
       </li>
@@ -1157,6 +1183,195 @@
       
   
   
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    App
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    App
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#two-apps-two-jobs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two apps, two jobs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#in-this-section" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        In this section
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="1-build-the-process-app/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1. Build the Process App
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
   
   
     <li class="md-nav__item">
@@ -1197,16 +1412,62 @@
 
 
 
-<h1 id="dashboard">Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h1>
-<!-- DRAFT — not in published nav (mkdocs.yml); previewable via mkdocs.local.yml. Publish with /publish-exercise once the Process App exercise is tested. -->
-
-<p>Planned content (placeholder — the Process App exercise is not yet tested):</p>
-<ul>
-<li>The reporting requirement from the PDD: live claims, current stage, SLA — replacing the shared spreadsheet</li>
-<li>Why the Action App is not a dashboard — a reviewer's screen with a claims list has built the wrong thing</li>
-<li>Two data sources: the case API (stages, SLA) and the claim record (business fields)</li>
-<li>Build prompt, review, proof — to be written after the exercise is proven</li>
-</ul>
+<h1 id="app">App<a class="headerlink" href="#app" title="Permanent link">&para;</a></h1>
+<p>Everything you have built so far is either invisible — <strong>Agents</strong>, a case plan, rows in a table — or reached only through a task: the <strong>Coded Action App</strong>'s two screens open one claim at a time, when the <strong>Maestro</strong> case raises a gate in <strong>Action Center</strong>. Nobody can go and <em>look</em>. This section builds the surfaces people open on their own, starting with the one <code>PDD.md</code> §11 asks for.</p>
+<h2 id="two-apps-two-jobs">Two apps, two jobs<a class="headerlink" href="#two-apps-two-jobs" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Coded Action App (block 3f)</th>
+<th>Process App (block 6)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who opens it</td>
+<td>A reviewer, when a task lands</td>
+<td>The claims team lead, any time</td>
+</tr>
+<tr>
+<td>How it opens</td>
+<td>Inside Action Center, from the task</td>
+<td>At its own URL, signed in</td>
+</tr>
+<tr>
+<td>What it shows</td>
+<td>One claim, at one gate</td>
+<td>The whole portfolio; every claim; one claim in full</td>
+</tr>
+<tr>
+<td>What it decides</td>
+<td>That task</td>
+<td>The same task, from the claim page — and nothing else</td>
+</tr>
+<tr>
+<td>What it writes</td>
+<td>Completes its task; the case writes the record</td>
+<td>Completes the task; the case writes the record; the app never does</td>
+</tr>
+</tbody>
+</table>
+<p>A reviewer's screen with a claims list bolted on is the wrong thing, and so is a dashboard that lets someone edit a claim. Two apps, one claim view shared between them, one writer of the record — that is the shape this section keeps.</p>
+<h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>What it covers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="1-build-the-process-app/">1. Build the Process App</a></td>
+<td>Block 6 — a standalone <strong>Coded Web App</strong>: the portfolio dashboard, a searchable claims list, and one claim on the Action App's own screen</td>
+</tr>
+</tbody>
+</table>
+<p>This is the section's first lesson. More join it as they are proven.</p>
 
 
 
@@ -1239,6 +1500,44 @@
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../verify/2-hand-it-over/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 2. Hand It Over">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                2. Hand It Over
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="1-build-the-process-app/" class="md-footer__link md-footer__link--next" aria-label="Next: 1. Build the Process App">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                1. Build the Process App
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
