@@ -4,7 +4,7 @@ One rhythm: a prompt goes in, an action or a component comes out, a gate checks 
 
 ## The path through the day
 
-The exercise is ten blocks. The first two design and plan; six build; two verify and ship:
+The exercise is eleven blocks. The first two design and plan; six build; two verify and ship; the last builds the portfolio view:
 
 ```mermaid
 flowchart TD
@@ -23,9 +23,15 @@ flowchart TD
         V4["4 · <b>Verify</b>"] --> S5["5 ·<b>Ship</b>"]
     end
 
+    subgraph AP ["App"]
+        direction LR
+        A6["6 · <b>Process App</b>"]
+    end
+
     %% Direct vertical connections between the blocks
     P --> B
     B --> V
+    V --> AP
 ```    
 The seed numbers the blocks and this guide groups them into its sections the same way. Block 3 is six separate runs, not one: each piece is built and proven before the next starts.
 
@@ -81,6 +87,7 @@ Expect your coding agent to run roughly this long per block — your own review 
 | 3f · Screens      | 1–2 h         | **large**                                          |
 | 4 · Verify        | 2–4 h         | **largest** (most of it is fixing and fine tuning) |
 | 5 · Ship          | 10–20 min     |                                                    |
+| 6 · Process App   | 45–90 min     |                                                    |
 
 !!! note
     These are expectations, not promises — agents evolve and models differ, and a block that hits a real defect runs longer.

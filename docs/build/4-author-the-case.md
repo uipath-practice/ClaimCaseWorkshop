@@ -43,11 +43,12 @@ Steps:
 ## The gates
 
 ```bash
-uip maestro case validate
-python3 3d-case/check_caseplan.py
+uip maestro case validate <path-to>/caseplan.json
+uip maestro case validate <path-to>/caseplan.json --strict --sdd sdd.md
+python3 3d-case/check_caseplan.py <path-to>/caseplan.json
 ```
 
-The full validator, then the shipped checker. 
+The full validator, then the **strict profile** — which compares the plan against your own `sdd.md` and refuses a plain `Valid` — then the shipped checker. Run the script as it ships: reimplementing its rules is not the gate. 
 
 The validator's errors are runtime failures spelled out in advance: a gate you route around does not go away, it fails later at several minutes per deploy cycle. 
 
@@ -62,7 +63,7 @@ Four case plans, four different models, one PDD — the stages and gates the pro
     From `3d-case/cookbook.md` — the picture every model laid its stages against:
 
     ```text
-    --8<-- "seeds/3d-case/cookbook.md:63:71"
+    --8<-- "seeds/3d-case/cookbook.md:69:77"
     ```
 
 === "Sonnet 5"

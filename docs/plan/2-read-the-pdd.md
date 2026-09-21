@@ -13,7 +13,7 @@ The single most load-bearing column in the document is **decision nature** in th
 ??? quote "PDD §5.3, Stage 2: five checks"
     [Open §5.3 in the full document ↗](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table) 
 
-    --8<-- "seeds/PDD.md:378:389"
+    --8<-- "seeds/PDD.md:379:390"
 
 ## The tour: where the detail lives
 
@@ -30,7 +30,7 @@ The single most load-bearing column in the document is **decision nature** in th
 | [§7](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#7-business-rules)                          | The business rules, BR-01 onwards, grouped by family — eligibility, report validation, coverage, settlement, credibility, decision rules, correspondence, overrides | During the agents block, by rule id                                                                                                                                                                                                                          |
 | [§7.9](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#79-what-is-not-a-finding)                | *What is not a finding* — the rules that keep clean claims clean                                                                                                    | Half the job. Read it twice                                                                                                                                                                                                                                  |
 | [§8–§10](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#8-exceptions-and-error-handling)       | Exceptions, integrations, compliance controls                                                                                                                       | Reference                                                                                                                                                                                                                                                    |
-| [§11](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#11-reporting-and-monitoring-requirements) | Reporting: what the claims team lead must see                                                                                                                       | The dashboard — a later chapter                                                                                                                                                                                                                              |
+| [§11](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#11-reporting-and-monitoring-requirements) | Reporting: what the claims team lead must see                                                                                                                       | The process app — [the App section](../app/index.md)                                                                                                                                                                                                                              |
 | [§13](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#13-test-data-and-canonical-examples)      | One canonical worked example, and the catalogue of what can be planted                                                                                              | [§13.2](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#132-examples-per-rule-and-exception-path) now; [§13.1](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#131-canonical-case--complete) again at verify |
 | [§14](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#14-out-of-scope-for-automation)           | Out of scope — nothing here may appear in your component inventory                                                                                                  | At design review                                                                                                                                                                                                                                             |
 
@@ -41,7 +41,7 @@ The single most load-bearing column in the document is **decision nature** in th
 - **Mind the vocabulary.** The [glossary](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#glossary-and-operational-vocabulary) at the top fixes the business's exact words — ***claim***, never *case* or *ticket*; ***assessor report***, never *survey*. Synonym drift in a design turns into wrong stage and outcome names downstream, so the same discipline applies to everything you and your agent write.
 
 ??? quote "See it in the original — the glossary and the verbatim labels"
-    --8<-- "seeds/PDD.md:63:83"
+    --8<-- "seeds/PDD.md:64:84"
 
 !!! tip "Documents might disagree sometimes — that's a finding"
     The seed also ships `contracts/` — pinned technical interfaces so that each solutions resides within testable frame specs. If the PDD and a contract ever seem to disagree, the contract wins for anything at a component boundary, and the disagreement is worth logging. You'll meet this again at the design gate.

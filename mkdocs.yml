@@ -102,6 +102,9 @@ nav:
     - Overview: verify/index.md
     - 1. Hunt the Planted Problems: verify/1-hunt-the-planted-problems.md
     - 2. Hand It Over: verify/2-hand-it-over.md
+  - App:
+    - Overview: app/index.md
+    - 1. Build the Process App: app/1-build-the-process-app.md
   - Next Steps: next-steps.md
 
 extra_css:

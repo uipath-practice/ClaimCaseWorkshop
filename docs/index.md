@@ -19,6 +19,7 @@ One claim arrives as three PDF documents. A settled claim — or a decision from
 - a **Maestro** case orchestrating the whole lifecycle, with two human gates
 - a **Coded Action App** — the two screens a reviewer decides on
 - a **Email Correspondence** recorded for every decision, and a **Runbook** for whoever runs it after you
+- a **Coded Web App** — the portfolio the claims team lead has never had: every claim, its stage, its deadline
 
 !!! tip "Training Environment"
     Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**. Your instructor will invite you and assign you a seat, your own folder where everything you build lives.
@@ -28,6 +29,7 @@ One claim arrives as three PDF documents. A settled claim — or a decision from
 2. **[Plan](plan/index.md)** — the use case, the requirements document, and the design your agent generates from it.
 3. **[Build](build/index.md)** — six blocks. One prompt each, each proven before the next starts.
 4. **[Verify](verify/index.md)** — hunt the planted problems, then hand the solution over.
+5. **[App](app/index.md)** — build the process app: the portfolio view over everything you ran.
 
 
 ## Key concepts for this course
