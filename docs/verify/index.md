@@ -24,7 +24,7 @@ flowchart TD
   H["5 · <b>Hand it over</b>"]
   O -->|"known cases"| V
   V -.->|"the baseline<br>itself"| O
-  V ==>|"every baseline<br>case passes"| H
+  V ==>|"baseline passes,<br>or three cycles run"| H
 ```
 
 - **Format is not meaning.** Each Agent ran on one real claim, and you read its payload. That proves the inputs arrive and the output has the right shape — not that the analysis holds.
@@ -54,7 +54,7 @@ Across those stages you used three kinds of check, each with its own blind spot:
 
 ## Fix, then re-run the whole baseline
 
-The stage does not stop until **every baseline case passes on the same build**. After each fix, re-run all of it, not just the case that failed — fixes mask each other. A claim escalated for the wrong reason still reaches a human; close that reason, and a missed problem goes straight through. Detection and restraint pull against each other (PDD §1.3), so measure both on one batch.
+In a real engagement the stage does not stop until **every baseline case passes on the same build**. In this workshop it runs **three fix cycles** — a whole batch, every fix it shows, one redeploy — then scores one last batch: each planted problem caught by its owner or listed with the fix it still needs, and clean claims inside the PDD's tolerance of one in ten referred to a human. The hand-over opens with that scorecard. After each fix, re-run all of it, not just the case that failed — fixes mask each other. A claim escalated for the wrong reason still reaches a human; close that reason, and a missed problem goes straight through. Detection and restraint pull against each other (PDD §1.3), so measure both on one batch.
 
 Each failure goes back to the layer at fault:
 
