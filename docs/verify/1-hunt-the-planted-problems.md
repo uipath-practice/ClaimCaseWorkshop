@@ -10,7 +10,7 @@ The PDD's §13.2 lists what can be wrong with a claim; §1.3 says what success m
 
 Steps:
 
-- [x] Run **three clean claims** first — all settle in full, no task ever raised
+- [x] Run **six clean claims** first, across claimant profiles — all settle in full, no task ever raised
 - [x] Read the answer key by probe: one standalone generator call per injector id
 - [x] Aim **one run per planted problem**: matching fail scenario + pinned discrepancy id
 - [x] Confirm the pin landed before treating the run as evidence
@@ -22,7 +22,7 @@ Steps:
 
 ## Clean claims first
 
-A pinned run proves **detection**; a clean run proves **restraint** — and restraint is the harder half. Three clean claims settle untouched before any problem is chased, and the clean batch re-runs **after every fix that tightens a rule**: over-flagging is the failure that reappears, and one aimed run cannot see the cost of a fix. 
+A pinned run proves **detection**; a clean run proves **restraint** — and restraint is the harder half. Six clean claims settle untouched before any problem is chased — with fewer, one false referral reads as a third of them against the PDD's one in ten — and every later batch runs whole, clean claims on fresh seeds included: over-flagging is the failure that reappears, and one aimed run cannot see the cost of a fix. The block runs **three fix cycles**, then scores one last batch and hands the rest over. 
 
 ## Aiming a run
 

@@ -75,19 +75,21 @@ When something surprises them — a command that lies, a document that contradic
 
 Expect your coding agent to run roughly this long per block — your own review time comes on top:
 
-| Block             | Agent runtime |                                                    |
-| ----------------- | ------------- | -------------------------------------------------- |
-| 1 · Design        | 15–30 min     |                                                    |
-| 2 · Plan          | 10–15 min     |                                                    |
-| 3a · Extraction   | 15–30 min     |                                                    |
-| 3b · Claim record | 10–20 min     |                                                    |
-| 3c · Agents       | 1–2 h         | **large**                                          |
-| 3d · Case         | 1–2 h         | **large**                                          |
-| 3e · Run          | 1–2 h         | **large** (several deploy cycles is normal)        |
-| 3f · Screens      | 1–2 h         | **large**                                          |
-| 4 · Verify        | 2–4 h         | **largest** (most of it is fixing and fine tuning) |
-| 5 · Ship          | 10–20 min     |                                                    |
-| 6 · Process App   | 45–90 min     |                                                    |
+| Block             | Agent runtime |                                                          |
+| ----------------- | ------------- | -------------------------------------------------------- |
+| 1 · Design        | 20–45 min     |                                                          |
+| 2 · Plan          | 5–15 min      |                                                          |
+| 3a · Extraction   | 5–15 min      |                                                          |
+| 3b · Claim record | 5–15 min      |                                                          |
+| 3c · Agents       | 45–75 min     | **large**                                                |
+| 3d · Case         | 30–60 min     | **large**                                                |
+| 3e · Run          | 30–75 min     | **large** (several deploy cycles is normal)              |
+| 3f · Screens      | 45–75 min     | **large**, plus your review of the local screens         |
+| 4 · Verify        | 1–2 h         | **largest** — three fix cycles, then one scored batch    |
+| 5 · Ship          | 15–30 min     |                                                          |
+| 6 · Process App   | 45–60 min     | plus your signed-in check                                |
 
 !!! note
     These are expectations, not promises — agents evolve and models differ, and a block that hits a real defect runs longer.
+
+    **Reasoning effort:** in the most recent reference runs, a medium effort setting reached the same result as a maximum one on every block, with about 60% of the tokens. Raise it when a block stalls on the same failure twice, not by default.
