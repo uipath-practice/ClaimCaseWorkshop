@@ -13,7 +13,7 @@ The single most load-bearing column in the document is **decision nature** in th
 ??? quote "PDD §5.3, Stage 2: five checks"
     [Open §5.3 in the full document ↗](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table) 
 
-    --8<-- "seeds/PDD.md:379:390"
+    --8<-- "seeds/PDD.md:380:391"
 
 ## The tour: where the detail lives
 
@@ -41,7 +41,7 @@ The single most load-bearing column in the document is **decision nature** in th
 - **Mind the vocabulary.** The [glossary](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#glossary-and-operational-vocabulary) at the top fixes the business's exact words — ***claim***, never *case* or *ticket*; ***assessor report***, never *survey*. Synonym drift in a design turns into wrong stage and outcome names downstream, so the same discipline applies to everything you and your agent write.
 
 ??? quote "See it in the original — the glossary and the verbatim labels"
-    --8<-- "seeds/PDD.md:64:84"
+    --8<-- "seeds/PDD.md:65:85"
 
 !!! tip "Documents might disagree sometimes — that's a finding"
     The seed also ships `contracts/` — pinned technical interfaces so that each solutions resides within testable frame specs. If the PDD and a contract ever seem to disagree, the contract wins for anything at a component boundary, and the disagreement is worth logging. You'll meet this again at the design gate.

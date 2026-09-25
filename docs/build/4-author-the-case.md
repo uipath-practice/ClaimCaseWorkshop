@@ -63,7 +63,7 @@ Four case plans, four different models, one PDD — the stages and gates the pro
     From `3d-case/cookbook.md` — the picture every model laid its stages against:
 
     ```text
-    --8<-- "seeds/3d-case/cookbook.md:69:77"
+    --8<-- "seeds/3d-case/cookbook.md:37:45"
     ```
 
 === "Sonnet 5"

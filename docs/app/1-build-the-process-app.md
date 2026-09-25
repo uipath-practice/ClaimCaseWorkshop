@@ -7,7 +7,7 @@ It comes after the hand-over for a reason. This app **reads what every other blo
 ??? quote "PDD §11 — the five views, verbatim"
     [Open §11 in the full document ↗](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#11-reporting-and-monitoring-requirements)
 
-    --8<-- "seeds/PDD.md:890:898"
+    --8<-- "seeds/PDD.md:903:911"
 
 ## Decided for us
 
