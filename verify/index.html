@@ -1160,10 +1160,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#what-each-stage-proves" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What each stage proves
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#testing-a-long-running-process" class="md-nav__link">
     <span class="md-ellipsis">
       
         Testing a long-running process
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-baseline-comes-from-the-process-owner" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The baseline comes from the process owner
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fix-then-re-run-the-whole-baseline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fix, then re-run the whole baseline
       
     </span>
   </a>
@@ -1414,12 +1447,38 @@
 
 <h1 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h1>
 <p>Every piece was checked as you built it. This section answers the only question left — <strong>does the whole thing work?</strong> — and then hands the solution over in a state someone else can run.</p>
+<h2 id="what-each-stage-proves">What each stage proves<a class="headerlink" href="#what-each-stage-proves" title="Permanent link">&para;</a></h2>
+<p>A claims case runs for days and crosses seven Agents, a case plan, a data record and two human gates. No single test can see all of that, so the build tested in layers: each stage proved one thing, and deliberately not the next.</p>
+<pre class="mermaid"><code>flowchart TD
+  subgraph L ["The loop: fix, then re-run the &lt;b&gt;whole&lt;/b&gt; baseline"]
+    F["3a–3b · &lt;b&gt;Foundations&lt;/b&gt;&lt;br&gt;provided automations,&lt;br&gt;extraction, claim record&lt;br&gt;&lt;i&gt;shape: keys resolve,&lt;br&gt;values round-trip&lt;/i&gt;"]
+    A["3c · &lt;b&gt;Agents&lt;/b&gt;&lt;br&gt;&lt;i&gt;format: inputs arrive,&lt;br&gt;outputs in the right shape&lt;/i&gt;"]
+    C["3d–3e · &lt;b&gt;Case plan&lt;/b&gt;&lt;br&gt;&lt;i&gt;mechanics: order and&lt;br&gt;data flow on the clean&lt;br&gt;claim + four routes&lt;/i&gt;"]
+    P["3f · &lt;b&gt;Action App&lt;/b&gt;&lt;br&gt;&lt;i&gt;representation: shows the&lt;br&gt;claim, writes back&lt;/i&gt;"]
+    V["4 · &lt;b&gt;Verify&lt;/b&gt;&lt;br&gt;&lt;i&gt;judgement: known cases,&lt;br&gt;scored against the key&lt;/i&gt;"]
+    F --&gt; A --&gt; C --&gt; P --&gt; V
+    V -.-&gt;|"agent prompt"| A
+    V -.-&gt;|"case plan:&lt;br&gt;conditions, sequence"| C
+    V -.-&gt;|"app"| P
+    V -.-&gt;|"data contract&lt;br&gt;or extraction"| F
+  end
+  O["Process owner&lt;br&gt;&lt;i&gt;PDD, expected outcomes&lt;/i&gt;"]
+  H["5 · &lt;b&gt;Hand it over&lt;/b&gt;"]
+  O --&gt;|"known cases"| V
+  V -.-&gt;|"the baseline&lt;br&gt;itself"| O
+  V ==&gt;|"baseline passes,&lt;br&gt;or three cycles run"| H</code></pre>
+<ul>
+<li><strong>Format is not meaning.</strong> Each Agent ran on one real claim, and you read its payload. That proves the inputs arrive and the output has the right shape — not that the analysis holds.</li>
+<li><strong>Mechanics are not judgement.</strong> Five steered runs prove the stages fire in order and data flows between them — not that the case picks the right route on its own.</li>
+<li><strong>Representation is not correctness.</strong> A faithful screen shows a wrong finding just as faithfully.</li>
+</ul>
+<p>That is why every earlier block can pass while the judgement is still wrong. Verify is the only stage that looks at the whole.</p>
 <h2 id="testing-a-long-running-process">Testing a long-running process<a class="headerlink" href="#testing-a-long-running-process" title="Permanent link">&para;</a></h2>
-<p>A claims case runs for days and crosses seven agents, a case plan, a data record and two human gates. No single check can see all of that, so the workshop has been layering three kinds all along:</p>
+<p>Across those stages you used three kinds of check, each with its own blind spot:</p>
 <table>
 <thead>
 <tr>
-<th>Layer</th>
+<th>Kind</th>
 <th>Examples you've used</th>
 <th>What it can see</th>
 <th>What it cannot</th>
@@ -1447,10 +1506,54 @@
 </tbody>
 </table>
 <ul>
-<li><strong>Every gate is a floor.</strong> A schema validator knows the document is well-formed; a grader knows it is well-written; neither has any idea <strong>what you are building</strong> and will pass a component that cannot work. </li>
-<li><strong>The seams need their own checks.</strong> Where one stage produces and the next consumes, neither side is incentivized to check the handover — the producer has finished and the consumer was told to trust. That is why end-to-end runs exist at all: unit-proven pieces can still compose into a wrong whole.</li>
+<li><strong>Every gate is a floor.</strong> A schema validator knows the document is well-formed; a grader knows it is well-written. Neither knows <strong>what you are building</strong>, and both will pass a component that cannot work.</li>
+<li><strong>The seams need their own checks.</strong> Where one stage produces and the next consumes, neither side checks the handover — the producer has finished, the consumer was told to trust. Unit-proven pieces can still compose into a wrong whole.</li>
 </ul>
-<p>Two questions from <em>The Work That Remains</em> make a good standing review of any design, this one included: <em>who supplies the checker here?</em> — and <em>what part of the system guarantees correctness when correctness is required?</em> If the answer to the second is "the model," the architecture is unsafe.</p>
+<h2 id="the-baseline-comes-from-the-process-owner">The baseline comes from the process owner<a class="headerlink" href="#the-baseline-comes-from-the-process-owner" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Known cases are the test.</strong> In a real engagement the SME or process owner supplies them: claims with known problems, and the outcome each should reach. That set is your baseline; the PDD's §13.2 is the start of one.</li>
+<li><strong>More samples, more trust.</strong> The baseline keeps growing as production finds cases nobody predicted.</li>
+<li><strong>Here, the claim generator stands in.</strong> Its planted problems are the known cases; its answer key holds the expected outcomes.</li>
+</ul>
+<h2 id="fix-then-re-run-the-whole-baseline">Fix, then re-run the whole baseline<a class="headerlink" href="#fix-then-re-run-the-whole-baseline" title="Permanent link">&para;</a></h2>
+<p>In a real engagement the stage does not stop until <strong>every baseline case passes on the same build</strong>. In this workshop it runs <strong>three fix cycles</strong> — a whole batch, every fix it shows, one redeploy — then scores one last batch: each planted problem caught by its owner or listed with the fix it still needs, and clean claims inside the PDD's tolerance of one in ten referred to a human. The hand-over opens with that scorecard. After each fix, re-run all of it, not just the case that failed — fixes mask each other. A claim escalated for the wrong reason still reaches a human; close that reason, and a missed problem goes straight through. Detection and restraint pull against each other (PDD §1.3), so measure both on one batch.</p>
+<p>Each failure goes back to the layer at fault:</p>
+<table>
+<thead>
+<tr>
+<th>Verify found</th>
+<th>Where the fix lands</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>An Agent judged wrong</td>
+<td>Its prompt — then rebuild and re-run</td>
+</tr>
+<tr>
+<td>A wrong conclusion sends a claim to a human, or past one</td>
+<td>A <strong>case condition</strong>, not more prompt revisions: <em>a prompt governs what an agent reports, not what it concludes</em></td>
+</tr>
+<tr>
+<td>A claim took the wrong path</td>
+<td>The case plan — its conditions or its sequence</td>
+</tr>
+<tr>
+<td>A screen misrepresents the claim</td>
+<td>The app</td>
+</tr>
+<tr>
+<td>A value lost or cut on the way</td>
+<td>The data contract or the extraction</td>
+</tr>
+<tr>
+<td>The test itself is wrong or ambiguous</td>
+<td>Back to the process owner — the PDD rule or the expected outcome</td>
+</tr>
+</tbody>
+</table>
+<p>When the answer key and the PDD disagree, the PDD decides — and sometimes a rule's wording admits two readings. Only the process owner can say which the business meant.</p>
+<p>Two questions from <em>The Work That Remains</em> make a good standing review of any design, this one included: <em>who supplies the checker here?</em> — and <em>what part of the system guarantees correctness when correctness is required?</em> If the answer to the second is "the model," the architecture is unsafe. Here, the process owner's baseline answers the first; case conditions and the human gates answer the second.</p>
 <h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
