@@ -1425,6 +1425,20 @@
 
 <h1 id="build-six-blocks-six-prompts-six-proven-components">Build: six blocks, six prompts, six proven components<a class="headerlink" href="#build-six-blocks-six-prompts-six-proven-components" title="Permanent link">&para;</a></h1>
 <p>Block 3 is deliberately <strong>six separate runs, not one</strong> — each piece is built and proven before the next one binds to it.</p>
+<table>
+<thead>
+<tr>
+<th>Traditional UiPath delivery</th>
+<th>With a coding agent and UiPath Skills</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A developer builds each component in its designer — Studio, Agent Builder, the case designer — configures Orchestrator and Data Fabric by hand, tests at the end, and documents afterwards.</td>
+<td>The agent builds each component through the <code>uip</code> CLI with the product's skill loaded, <strong>validates and fixes before it reports</strong>, and writes names and keys into <code>PROGRESS.md</code> as they appear. You direct and review.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="the-six-blocks">The six blocks<a class="headerlink" href="#the-six-blocks" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1479,6 +1493,7 @@
 <pre class="mermaid"><code>flowchart LR
   L["Load the skill"] ==&gt; G["Generate /&lt;br/&gt;implement"] ==&gt; V["Validate&lt;br/&gt;via CLI"] ==&gt; F["Fix what&lt;br/&gt;it found"] ==&gt; D["Review &amp;&lt;br/&gt;deploy"]
   F -.-&gt; V</code></pre>
+<p>The Validate → Fix loop is what Anthropic's <a href="https://claude.com/blog/the-ai-native-sdlc-playbook">AI-Native SDLC playbook</a> calls giving the agent a way to verify its own work: a target it can check without asking you. Every <em>Done when</em> in the table above is one.</p>
 <h2 id="done-means-the-next-block-can-start">"Done" means the next block can start<a class="headerlink" href="#done-means-the-next-block-can-start" title="Permanent link">&para;</a></h2>
 <p>A block is not finished when its own artifact works — it is finished when the next block can stand on it. That is why every <em>done when</em> has two halves: the component proven, and its names, keys and one real example written into <code>PROGRESS.md</code>. The reader of that file is a fresh session with none of today in mind; agents should hand it what they actually got, never a sample.</p>
 

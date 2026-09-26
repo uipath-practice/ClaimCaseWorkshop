@@ -1447,6 +1447,20 @@
 
 <h1 id="design-the-solution-block-1">Design the Solution (Block 1)<a class="headerlink" href="#design-the-solution-block-1" title="Permanent link">&para;</a></h1>
 <p>Your agent reads the PDD and generates the Solution Design Document — one file, <code>sdd.md</code>, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. <strong>It has to be good enough that a solution architect could hand it to a developer and walk away.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Traditional UiPath delivery</th>
+<th>With a coding agent and UiPath Skills</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A solution architect reads the PDD and writes the SDD by hand, then takes it through review meetings. Platform limits and policy surface in review — or in the build.</td>
+<td>The <strong>uipath-planner</strong> skill writes the SDD from the PDD and the contracts in one session, applying UiPath's design rules as it writes. The architect <strong>reviews it rather than writes it</strong>, and resolves what it flagged.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="before-you-run-the-brief-is-the-skill">Before you run: the brief is the skill<a class="headerlink" href="#before-you-run-the-brief-is-the-skill" title="Permanent link">&para;</a></h2>
 <p>The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. You will see it when you build your next project.</p>
 <p>In our case agent is instructed to <strong>ask nothing.</strong> It saves time and every answer is already in: the mode in the prompt, the tenant from your login, the component inventory in <code>contracts/components.md</code>. That is the first lesson of this workshop worth taking home: <strong><em>the way to a quiet, autonomous agent is a complete brief, not a longer conversation.</em></strong> If you already know the answer yourself, just give it to your agent.</p>

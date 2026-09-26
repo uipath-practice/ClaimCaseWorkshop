@@ -1491,7 +1491,7 @@
 </ul>
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
 <p>One real invocation per Agent, on a real claim — <code>uip agent debug</code> — checking it returns what its §7 section says, <strong>including nothing at all on a clean claim</strong>. A grader's score is about structure and wording; only a run answers whether the agent does the thing.</p>
-<p>We don't write agent's evaluations tests here, but it's a good idea; specific input claim + payload, results in a specific expected output. Coding agents do it for us here: we will do end-to-end verification later in this workshop, which will directly evaluate every agents's work as part of the claim processing (with planted issues).</p>
+<p>This workshop writes no evaluation sets for the Agents; Verify tests all seven end to end, on claims with planted problems. On a real project, give each Agent its own set: real inputs with their accepted outputs, re-run whenever its prompt or its model changes. It is <a href="../../verify/#the-baseline-comes-from-the-process-owner">Verify's baseline</a>, one Agent at a time.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
 <p>The outcome of this block, open in <strong>Studio Web</strong> — all seven Agents inside the solution, with EligibilityScreening showing what a built one looks like:</p>
 <p><img alt="All seven Agents in the solution in Studio Web — EligibilityScreening open with its stepped system prompt, the Analyze Files tool, and typed inputs" class="screenshot" src="../3-build-the-seven-agents.images/seven-agents-in-studio-W.png" width="900" /></p>

@@ -1528,6 +1528,7 @@ The seed numbers the blocks and this guide groups them into its sections the sam
 <p>Every block ends with something that passes or does not. That is deliberate — a plausible-looking result is not a result.</p>
 <ul>
 <li><strong>A gate is a baseline or floor, not a perfect result.</strong> An agent's review can grade a broken component an A: grades check structure and wording. Agents sometimes say "Done" without actually doing task till the end. The gate catches the key deliverables; <em>go and look</em> catches the rest.</li>
+<li><strong>Skills steer; gates check.</strong> Anthropic's <a href="https://claude.com/blog/the-ai-native-sdlc-playbook">AI-Native SDLC playbook</a> draws the same line for any coding agent: a skill is an advisory control that makes a mistake rare, and a deterministic check behind it makes the mistake close to impossible. The UiPath Skills steer your agent; the seed's gate scripts are the check.</li>
 </ul>
 <h2 id="context-is-a-resource">Context is a resource<a class="headerlink" href="#context-is-a-resource" title="Permanent link">&para;</a></h2>
 <p>A coding agent's context window fills, and what was never written down does not survive it.</p>
@@ -1546,7 +1547,7 @@ The seed numbers the blocks and this guide groups them into its sections the sam
 <li><strong>Verify outcomes yourself.</strong> The agent's "done" message is its opinion; the gate and your own eyes are the evidence. Especially on lighter models.</li>
 </ol>
 <h2 id="agents-are-instructed-to-log-findings">Agents are instructed to log findings<a class="headerlink" href="#agents-are-instructed-to-log-findings" title="Permanent link">&para;</a></h2>
-<p>When something surprises them — a command that lies, a document that contradicts another, a step that only worked the second way — they log it with <code>log-finding.py</code>. It takes a second but helps to align the prompts with current version of skills and tools.</p>
+<p>When something surprises them — a command that lies, a document that contradicts another, a step that only worked the second way — they log it with <code>log-finding.py</code>. It takes a second but helps to align the prompts with current version of skills and tools. It is the playbook's working rule — when the agent makes the same mistake twice, the correction goes into the file it reads at the start of every session — applied to the whole seed: every cookbook row is a correction met on a real build.</p>
 <h2 id="how-long-the-blocks-run">How long the blocks run<a class="headerlink" href="#how-long-the-blocks-run" title="Permanent link">&para;</a></h2>
 <p>Expect your coding agent to run roughly this long per block — your own review time comes on top:</p>
 <table>
