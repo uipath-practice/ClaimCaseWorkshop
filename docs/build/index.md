@@ -2,6 +2,10 @@
 
 Block 3 is deliberately **six separate runs, not one** — each piece is built and proven before the next one binds to it.
 
+| Traditional UiPath delivery | With a coding agent and UiPath Skills |
+|---|---|
+| A developer builds each component in its designer — Studio, Agent Builder, the case designer — configures Orchestrator and Data Fabric by hand, tests at the end, and documents afterwards. | The agent builds each component through the `uip` CLI with the product's skill loaded, **validates and fixes before it reports**, and writes names and keys into `PROGRESS.md` as they appear. You direct and review. |
+
 ## The six blocks
 
 | Block                                             | Builds                                                      | Done when                                                             | Go and look at             |
@@ -22,6 +26,8 @@ flowchart LR
   L["Load the skill"] ==> G["Generate /<br/>implement"] ==> V["Validate<br/>via CLI"] ==> F["Fix what<br/>it found"] ==> D["Review &<br/>deploy"]
   F -.-> V
 ```
+
+The Validate → Fix loop is what Anthropic's [AI-Native SDLC playbook](https://claude.com/blog/the-ai-native-sdlc-playbook) calls giving the agent a way to verify its own work: a target it can check without asking you. Every *Done when* in the table above is one.
 
 ## "Done" means the next block can start
 

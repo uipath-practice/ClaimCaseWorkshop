@@ -18,7 +18,7 @@ The claims case was the vehicle. These transfer to whatever you build next:
 
 ## On speed, honestly
 
-You just built in a day what the PDD budgeted at 25 person-days — that first-hand experience is worth more than any statistic. The wider evidence points the same way, with a hedge worth keeping: as UiPath's CEO puts it, coding agents "compress the first 10% of the work — what's left is the hard part," because "writing code is the easy part; running it, durably, safely, at enterprise scale, is where the value accrues." Most developers are already there — the Stack Overflow 2025 survey has 84% using or planning to use AI tools. The operating model you practiced today is the part that makes the speed usable: **AI proposes. Humans decide. Automation executes.**
+You just built in a day what the PDD budgeted at 25 person-days — that first-hand experience is worth more than any statistic. The wider evidence points the same way, with a hedge worth keeping: as UiPath's CEO puts it, coding agents "compress the first 10% of the work — what's left is the hard part," because "writing code is the easy part; running it, durably, safely, at enterprise scale, is where the value accrues." Most developers are already there — the Stack Overflow 2025 survey has 84% using or planning to use AI tools. The operating model you practiced today is the part that makes the speed usable: **AI proposes. Humans decide. Automation executes.** Anthropic's AI-Native SDLC playbook closes on the same note from the other side: "The loop keeps running. Human judgement stays above it." The claims case you built has that shape too: Agents propose, a person decides at the two gates, and the case executes.
 
 ## Keep building
 
@@ -39,7 +39,15 @@ You just built in a day what the PDD budgeted at 25 person-days — that first-h
 | [Coding agents overview](https://docs.uipath.com/coding-agents/standalone/latest/user-guide/overview) | The product docs — start here |
 | [Working effectively](https://docs.uipath.com/coding-agents/standalone/latest/user-guide/working-effectively) | Official best practices |
 | [UiPath skills on GitHub](https://github.com/UiPath/skills) | The registry this workshop ran on |
-| *The Work That Remains* (Daniel Dines) | The operating model behind the two human gates you built |
+
+## References
+
+The works this course quotes, to read in full:
+
+- Daniel Dines, *The Work That Remains: Human Judgment, AI, and the Architecture of the Next Enterprise* (2026) — [download the PDF](https://assets.ctfassets.net/5965pury2lcm/1oCtJzkf5ZXeURDSZjlQ71/f449c1e2cb58e80927c943a6c09a9779/The_Work_That_Remains.pdf) · [UiPath page](https://www.uipath.com/resources/automation-whitepapers/the-work-that-remains). The operating model behind the two human gates you built.
+- Louis Claxton, *The AI-Native SDLC playbook*, Anthropic (August 2026) — [claude.com](https://claude.com/blog/the-ai-native-sdlc-playbook). The stage-by-stage view this workshop follows, and the before/after figure in [Plan](plan/index.md).
+- Daniel Dines, *From AI speed to enterprise reliability: introducing UiPath for Coding Agents*, UiPath blog (May 2026) — [uipath.com](https://www.uipath.com/blog/product-and-updates/introducing-uipath-for-coding-agents). Quoted in *On speed, honestly*.
+- Stack Overflow, *2025 Developer Survey: AI* — [survey.stackoverflow.co](https://survey.stackoverflow.co/2025/ai). The 84% in *On speed, honestly*.
 
 !!! info "Feedback"
     Found something broken, confusing, or worth teaching differently? Tell your instructor — the findings your agent logged during the build are already part of making the next edition better.

@@ -49,10 +49,14 @@ Across those stages you used three kinds of check, each with its own blind spot:
 ## The baseline comes from the process owner
 
 - **Known cases are the test.** In a real engagement the SME or process owner supplies them: claims with known problems, and the outcome each should reach. That set is your baseline; the PDD's §13.2 is the start of one.
-- **More samples, more trust.** The baseline keeps growing as production finds cases nobody predicted.
+- **More samples, more trust.** The baseline keeps growing as production finds cases nobody predicted: every production incident becomes a new case, and the whole set re-runs whenever a prompt, a case condition or the model changes.
 - **Here, the claim generator stands in.** Its planted problems are the known cases; its answer key holds the expected outcomes.
 
 ## Fix, then re-run the whole baseline
+
+| Traditional UiPath delivery | With a coding agent |
+|---|---|
+| Testers write the cases by hand; UAT with the business comes near the end, and a fix is re-tested where it was made. | The process owner's known cases are the baseline. The agent re-runs **the whole batch after every fix**, scored against the expected outcomes. |
 
 In a real engagement the stage does not stop until **every baseline case passes on the same build**. In this workshop it runs **three fix cycles** — a whole batch, every fix it shows, one redeploy — then scores one last batch: each planted problem caught by its owner or listed with the fix it still needs, and clean claims inside the PDD's tolerance of one in ten referred to a human. The hand-over opens with that scorecard. After each fix, re-run all of it, not just the case that failed — fixes mask each other. A claim escalated for the wrong reason still reaches a human; close that reason, and a missed problem goes straight through. Detection and restraint pull against each other (PDD §1.3), so measure both on one batch.
 

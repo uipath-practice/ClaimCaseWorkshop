@@ -2,6 +2,10 @@
 
 Your agent reads the PDD and generates the Solution Design Document — one file, `sdd.md`, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. **It has to be good enough that a solution architect could hand it to a developer and walk away.**
 
+| Traditional UiPath delivery | With a coding agent and UiPath Skills |
+|---|---|
+| A solution architect reads the PDD and writes the SDD by hand, then takes it through review meetings. Platform limits and policy surface in review — or in the build. | The **uipath-planner** skill writes the SDD from the PDD and the contracts in one session, applying UiPath's design rules as it writes. The architect **reviews it rather than writes it**, and resolves what it flagged. |
+
 ## Before you run: the brief is the skill
 
 The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. You will see it when you build your next project.

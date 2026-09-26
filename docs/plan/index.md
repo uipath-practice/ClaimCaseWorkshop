@@ -2,6 +2,15 @@
 
 Before anything is built, three documents decide what gets built and how. This section walks you through them — the one you receive, and the two your agent generates.
 
+## Where the time goes now
+
+<figure markdown="span">
+  ![Two timelines. Before agents, six stages run at human speed and Build is the longest. After agents, Build shrinks to a sliver and the cycle time it frees is reclaimed.](index.images/sdlc-before-after-agents.png){ width="900" }
+  <figcaption>"Build is no longer the constraint — the human-speed steps around it are." Figure: Anthropic, <a href="https://claude.com/blog/the-ai-native-sdlc-playbook"><i>The AI-Native SDLC playbook</i></a> (2026).</figcaption>
+</figure>
+
+When a coding agent builds, the build stops being the long pole. The stages around it — requirements, review, release — still run at human speed, and they decide whether the speed is usable. That is why this workshop spends a whole section on three documents before anything is built, and another on proving the result: **Plan** and **Design** are this section, **Build** is the six blocks, **Test** is Verify, **Deploy** is the hand-over, and **Maintain** starts with the runbook you leave behind.
+
 ## The method: PDD → SDD → Tasks
 
 | Document                               | The question it answers                               | Written by                                                   | Read by                                                              |

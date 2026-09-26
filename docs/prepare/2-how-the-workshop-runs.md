@@ -49,6 +49,8 @@ The seed numbers the blocks and this guide groups them into its sections the sam
 Every block ends with something that passes or does not. That is deliberate — a plausible-looking result is not a result.
 
 - **A gate is a baseline or floor, not a perfect result.** An agent's review can grade a broken component an A: grades check structure and wording. Agents sometimes say "Done" without actually doing task till the end. The gate catches the key deliverables; *go and look* catches the rest.
+- **Skills steer; gates check.** Anthropic's [AI-Native SDLC playbook](https://claude.com/blog/the-ai-native-sdlc-playbook) draws the same line for any coding agent: a skill is an advisory control that makes a mistake rare, and a deterministic check behind it makes the mistake close to impossible. The UiPath Skills steer your agent; the seed's gate scripts are the check.
+
 ## Context is a resource
 
 A coding agent's context window fills, and what was never written down does not survive it.
@@ -69,7 +71,7 @@ Five habits, whatever agent you brought:
 
 ## Agents are instructed to log findings
 
-When something surprises them — a command that lies, a document that contradicts another, a step that only worked the second way — they log it with `log-finding.py`. It takes a second but helps to align the prompts with current version of skills and tools.
+When something surprises them — a command that lies, a document that contradicts another, a step that only worked the second way — they log it with `log-finding.py`. It takes a second but helps to align the prompts with current version of skills and tools. It is the playbook's working rule — when the agent makes the same mistake twice, the correction goes into the file it reads at the start of every session — applied to the whole seed: every cookbook row is a correction met on a real build.
 
 ## How long the blocks run
 

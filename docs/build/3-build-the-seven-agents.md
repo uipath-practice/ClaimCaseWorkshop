@@ -36,7 +36,7 @@ Steps:
 
 One real invocation per Agent, on a real claim — `uip agent debug` — checking it returns what its §7 section says, **including nothing at all on a clean claim**. A grader's score is about structure and wording; only a run answers whether the agent does the thing.
 
-We don't write agent's evaluations tests here, but it's a good idea; specific input claim + payload, results in a specific expected output. Coding agents do it for us here: we will do end-to-end verification later in this workshop, which will directly evaluate every agents's work as part of the claim processing (with planted issues).
+This workshop writes no evaluation sets for the Agents; Verify tests all seven end to end, on claims with planted problems. On a real project, give each Agent its own set: real inputs with their accepted outputs, re-run whenever its prompt or its model changes. It is [Verify's baseline](../verify/index.md#the-baseline-comes-from-the-process-owner), one Agent at a time.
 
 ## Proof
 
