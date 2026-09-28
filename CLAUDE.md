@@ -9,13 +9,15 @@ Apply all rules below to every task involving this site — no reminders needed.
 
 A GitHub Pages–hosted MkDocs site guiding participants through building an
 enterprise property-claims solution end-to-end with coding agents (level ~300,
-technical audience). One exercise, one site: Prepare → Plan → Build → Verify.
+technical audience). One exercise, one site: Prepare → Plan → Build → Verify →
+App → Next Steps.
 
-**Live site:** https://uipath-practice.github.io/ClaimCaseWorkshop/ (Pages not enabled until the first content pass)
+**Live site:** https://uipath-practice.github.io/ClaimCaseWorkshop/
 **Source repo:** https://github.com/uipath-practice/ClaimCaseWorkshop
 **Seed (submodule `seeds/`):** https://github.com/uipath-practice/PropertyClaimsSeeds
 **Theme:** MkDocs Material (`mkdocs.yml`)
-**Deploy:** GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`)
+**Deploy:** GitHub Actions on every push to `main` (`.github/workflows/deploy.yml`),
+built with `COURSE_ENV=prod` and published to `gh-pages`. A push to `main` goes live.
 
 ---
 
@@ -124,15 +126,17 @@ Read the relevant file before creating or reviewing content:
 
 ## Behavioural Rules
 
-- New pages start as **drafts** — not in `nav:` in `mkdocs.yml` (use
-  `mkdocs.local.yml` for preview). `/publish-exercise` promotes when ready.
-  The `dashboard/` section is currently draft.
+- New pages start as **drafts**, not in `nav:` in `mkdocs.yml`. Preview them
+  with your own `mkdocs.local.yml`: it is gitignored, so each maintainer keeps
+  a copy that adds the draft pages to the nav. `/publish-exercise` promotes a
+  page when ready. No section is in draft right now.
 - **Never remove sections, paragraphs, or explanatory text** when editing.
-  Rephrase — don't delete.
+  Rephrase, don't delete. A closer that only restates its paragraph is
+  redundant, not explanatory (`Master/Language.md`).
 - Stub pages carry an HTML draft marker and a "Planned content" bullet list —
   the approved structure. A content pass replaces the bullets, keeps the scope.
-- Run `mkdocs build` before committing. "Page not in navigation" warnings are
-  expected for draft sections.
+- Run `mkdocs build --strict` before committing: a missing include or a broken
+  link fails it. "Page not in navigation" notes are expected for draft pages.
 
 ---
 
@@ -141,6 +145,7 @@ Read the relevant file before creating or reviewing content:
 ```bash
 pip install -r requirements.txt
 git submodule update --init
-mkdocs serve -f mkdocs.local.yml    # includes draft sections
-mkdocs build                        # published nav only — run before committing
+mkdocs serve                        # the published nav
+mkdocs serve -f mkdocs.local.yml    # your untracked copy, with draft pages
+mkdocs build --strict               # run before committing
 ```
