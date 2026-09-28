@@ -1,8 +1,8 @@
 # Build the Seven Agents (Block 3c)
 
-Seven checks in the process need judgement and it's seven because they are controlled by various departments and business owners. Requirement. **Seven low-code Agents, one per family of business rules**, named in `contracts/components.md`. Nothing else is built here — the deterministic work is already deployed as the provided processes, or belongs in the downstream case as an expression.
+Seven checks in the process need judgement, and there are seven because different departments and business owners control them. The contract asks for **seven low-code Agents, one per family of business rules**, named in `contracts/components.md`. Nothing else is built here: the deterministic work is already deployed as the provided processes, or belongs in the downstream case as an expression.
 
-Why low-code, and why before the case: the exercise is about a process that uses judgement where the business needs it, not about agent frameworks — and Agents are the only component testable in isolation, so building them first means the case block gets one authoring pass against things that already exist and answer.
+Why low-code, and why before the case? The exercise is about a process that uses judgement where the business needs it, not about agent frameworks. And Agents are the only component testable in isolation, so building them first gives the case block one authoring pass against things that already exist and answer.
 
 ## The prompt
 
@@ -25,26 +25,26 @@ Steps:
 - [x] Upload the solution to Studio Web
 - [x] Update `PROGRESS.md`
 
-## What agent will review
+## What the agent will review
 
-- **A prompt governs what an agent *reports*, never what it concludes.** Whether a claim reaches a human is a **case condition** over the outputs these Agents emit (a flag count, a risk level, a net payable) never a sentence in a prompt. 
+- **A prompt governs what an agent *reports*, never what it concludes.** Whether a claim reaches a human is a **case condition** over the outputs these Agents emit (a flag count, a risk level, a net payable), never a sentence in a prompt. 
 - **A typed output field beats a paragraph of prompt.** When a payload must contain a fact, we declare it as a field in the output schema. A model fills a declared field reliably; prose asking it to be careful competes with every other sentence.
 - **One concern, one owner.** An Agent may cite another's finding as evidence; it may never re-raise it as its own. The reviewer sees every finding at once, and one problem reported by three Agents reads as three problems.
 - **PDF documents reach an Agent as job attachments, never as extracted text.** A policy's meaning lives in clause wording that flattening loses. Agents carry the built-in document reader for exactly this reason. 
 
 ## The gate
 
-One real invocation per Agent, on a real claim — `uip agent debug` — checking it returns what its §7 section says, **including nothing at all on a clean claim**. A grader's score is about structure and wording; only a run answers whether the agent does the thing.
+One real invocation per Agent, on a real claim, with `uip agent debug`: it must return what its §7 section says, **including nothing at all on a clean claim**. A grader's score is about structure and wording; only a run answers whether the agent does the thing.
 
 This workshop writes no evaluation sets for the Agents; Verify tests all seven end to end, on claims with planted problems. On a real project, give each Agent its own set: real inputs with their accepted outputs, re-run whenever its prompt or its model changes. It is [Verify's baseline](../verify/index.md#the-baseline-comes-from-the-process-owner), one Agent at a time.
 
 ## Proof
 
-The outcome of this block, open in **Studio Web** — all seven Agents inside the solution, with EligibilityScreening showing what a built one looks like:
+The outcome of this block, open in **Studio Web**, with all seven Agents inside the solution and EligibilityScreening showing what a built one looks like:
 
 ![All seven Agents in the solution in Studio Web — EligibilityScreening open with its stepped system prompt, the Analyze Files tool, and typed inputs](3-build-the-seven-agents.images/seven-agents-in-studio-W.png){ .screenshot width="900" }
 
-Worth a close look, because the lesson's rules are visible in the build: the system prompt works in **named steps** and tells the agent to call *Analyze Files* on the policy **exactly once** — and never on the claim form, "the claim form already reaches you as structured data"; the user prompt carries **typed inputs** (`claimData`, `claimFormDocument`), not pasted text.
+The lesson's rules are visible in the build: the system prompt works in **named steps** and tells the agent to call *Analyze Files* on the policy **exactly once**, and never on the claim form ("the claim form already reaches you as structured data"); the user prompt carries **typed inputs** (`claimData`, `claimFormDocument`), not pasted text.
 
 <!-- screenshot: one agent's trace — the typed output fields populated, on a real claim -->
 
@@ -52,11 +52,11 @@ Each of the seven runs on a real claim and answers per its rules; the solution i
 
 ## What an Agent hands back
 
-A typed output field beats a paragraph of prompt — and this is what that means in practice. Three real envelopes from real claims: what the case actually routes on, and what "found nothing" looks like when it is a real, populated answer.
+A typed output field beats a paragraph of prompt, and this is what that means in practice. Here are three real envelopes from real claims: what the case actually routes on, and what "found nothing" looks like when it is a real, populated answer.
 
 === "EligibilityScreening · clean"
 
-    **What to notice:** "found nothing" is not an absence — it is a populated, typed answer. Every rule has a verdict *and* the evidence it read; BR-03 even explains why a blank State field is correct for Singapore, not a data gap. A clean claim never shows a screen, so this envelope is the only place you ever see restraint working.
+    **What to notice:** "found nothing" is not an absence; it is a populated, typed answer. Every rule has a verdict *and* the evidence it read; BR-03 even explains why a blank State field is correct for Singapore, not a data gap. A clean claim never shows a screen, so this envelope is the only place you ever see restraint working.
 
     ```json
     {
@@ -79,7 +79,7 @@ A typed output field beats a paragraph of prompt — and this is what that means
 
 === "SettlementCalculation · flagged"
 
-    **What to notice:** the agent doesn't just say "reduce" — it quotes the arithmetic and names the evidence: the annual aggregate is **Bound**, the remainder and the prior claim that consumed it are stated, and the cap it forces is shown line by line. `aggregateStatus` and the capped `netPayable` are exactly the scalars the **case** routes on.
+    **What to notice:** the agent shows its arithmetic and names the evidence. The annual aggregate is **Bound**, the remainder and the prior claim that consumed it are stated, and the cap it forces is shown line by line. `aggregateStatus` and the capped `netPayable` are exactly the scalars the **case** routes on.
 
     ```js
     // settlementJson — the ledger
@@ -118,7 +118,7 @@ A typed output field beats a paragraph of prompt — and this is what that means
 
 === "AssessmentReportValidation · flagged"
 
-    **What to notice:** the whole discipline in one field. `conclusion: "Escalate"` is the routing scalar, and `contradictions[]` carries **both statements, verbatim** — the human sees exactly what conflicts without re-reading the report. The claim reaches the adjuster with the reason already assembled.
+    **What to notice:** `conclusion: "Escalate"` is the routing scalar, and `contradictions[]` carries **both statements, verbatim**, so the human sees exactly what conflicts without re-reading the report. The claim reaches the adjuster with the reason already assembled.
 
     ```json
     {

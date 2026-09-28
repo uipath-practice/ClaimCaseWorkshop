@@ -1,8 +1,8 @@
 # Extract the Documents (Block 3a)
 
-The claim form is the one document that arrives as a **structured form**, so it is read into fields with **IXP**. The policy and the assessor report are prose — they stay documents, and the Agents will read them directly. This block proves the reading before anything downstream binds to it.
+The claim form is the one document that arrives as a **structured form**, so it is read into fields with **IXP**. The policy and the assessor report are prose: they stay documents, and the Agents read them directly. This block proves the reading before anything downstream binds to it.
 
-Nothing is created here. The shared IXP project already exists, published and pinned, and the provided *Extract Claim Data* automation is wired to it. Your job is to adopt it and prove it — the extraction is provided infrastructure, like the generator and the retrieval processes: **bind these, never rebuild them.**
+Nothing is created here. The shared IXP project already exists, published and pinned, and the provided *Extract Claim Data* automation is wired to it. Your job is to adopt it and prove it. The extraction is provided infrastructure, like the generator and the retrieval processes: **bind these, never rebuild them.**
 
 ## The prompt
 
@@ -20,17 +20,17 @@ Steps:
 - [x] Record the project name and model version in `PROGRESS.md`
 
 !!!note
-	Prefer to train your own extraction model instead? `3a-extraction/prompt-build.md` in the seed is the supported second route — same output shape, about an hour of labelling.
+	Prefer to train your own extraction model instead? `3a-extraction/prompt-build.md` in the seed is the supported second route: same output shape, about an hour of labelling.
 
-## What agent will review
+## What the agent will review
 
 - **Why two claims.** One claim proves the fields exist; the second proves the key set does not vary and the damage inventory repeats one row per item, not one blob.
-- **Keys come from the payload, never from the form's labels.** The model emits `TypeOfIncident`, not the printed *Type of Incident*. Every extraction binding downstream is optional-chained, so a wrong key never throws — it silently yields nothing, and the first symptom would be an empty field three blocks from now. That is exactly why this block ends with a checker.
+- **Keys come from the payload, never from the form's labels.** The model emits `TypeOfIncident`, not the printed *Type of Incident*. Every extraction binding downstream is optional-chained, so a wrong key never throws; it silently yields nothing, and the first symptom would be an empty field three blocks from now. That is why this block ends with a checker.
 - **Confidence has three states**, not two: confident, unconfident, and *absent*. A threshold rule that special-cases only one of them ends up flagging empty optional fields as data problems.
-- **Payload sizes are a design input.** About 5,000–5,600 characters per claim, ~500 per damage row, five rows maximum — numbers your entity columns and agent input budgets are sized against in the next blocks.
+- **Payload sizes are a design input.** About 5,000–5,600 characters per claim, ~500 per damage row, five rows maximum. Your entity columns and agent input budgets are sized against these numbers in the next blocks.
 
 !!! note "Publishing is not deploying"
-    The shared model is *published* and callers pin its version — it needs no deployment into your folder at all. Two different verbs, two different lifecycles; keeping them apart will matter again at the app block.
+    The shared model is *published* and callers pin its version, so it needs no deployment into your folder at all. Two different verbs, two different lifecycles; keeping them apart will matter again at the app block.
 
 ## The gate
 
@@ -38,11 +38,11 @@ Steps:
 python3 3a-extraction/check_extraction_keys.py <payload.json>
 ```
 
-It walks **every extraction path your design reads** against a real payload — the one class of defect that fails silently everywhere else.
+It walks **every extraction path your design reads** against a real payload. A wrong key is the one defect that fails silently everywhere else.
 
 ## Proof
 
-Evidence from a real run of this block — a live extraction of claim `CLM-2026-397530`, all six field groups present, four damage rows. Here is the part the lesson keeps pointing at: the `ClaimDamageInventory` array, **one object per damaged item**, every field carrying its own confidence.
+Evidence from a real run of this block: a live extraction of claim `CLM-2026-397530`, all six field groups present, four damage rows. The part to look at is the `ClaimDamageInventory` array, **one object per damaged item**, every field carrying its own confidence.
 
 ??? example "The damage inventory, as the model returned it (expand)"
 
@@ -70,9 +70,9 @@ Evidence from a real run of this block — a live extraction of claim `CLM-2026-
     ]
     ```
 
-Notice what the page has been telling you, now visible in the data: the keys are the **model's** (`RepairOrReplace`, not the form's printed label), the rows **repeat per item** instead of arriving as one blob, and confidence sits on **every field separately** — the structure your design binds to.
+The keys are the **model's** (`RepairOrReplace`, not the form's printed label), the rows **repeat per item** instead of arriving as one blob, and confidence sits on **every field separately**: the structure your design binds to.
 
-And here are the same four rows as they sit on the claim form itself — compare `Repair / Replace` on paper with `RepairOrReplace` in the payload:
+And here are the same four rows as they sit on the claim form itself; compare `Repair / Replace` on paper with `RepairOrReplace` in the payload:
 
 ![The claim form's damage-inventory table — the four rows the payload above was extracted from](1-extract-the-documents.images/claim-form-damage-inventory-W.png){ .screenshot width="900" }
 

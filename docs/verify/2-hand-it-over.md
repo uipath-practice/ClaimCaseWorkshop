@@ -1,6 +1,6 @@
 # Hand It Over (Block 5)
 
-Everything runs and block 4 proved it. The last block **deploys nothing** — the deployment you verified is the one that ships. UAT and production are the same package landing in another tenant with that environment's config; that happens in an organization's environments, not in this exercise. What this block does is make the build *transferable*: pin what runs, true up the design, and write for the person who wasn't here.
+Everything runs and block 4 proved it. The last block **deploys nothing**: the deployment you verified is the one that ships. UAT and production are the same package landing in another tenant with that environment's config; that happens in an organization's environments, not in this exercise. What this block does is make the build *transferable*: pin what runs, true up the design, and write for the person who wasn't here.
 
 ## The prompt
 
@@ -11,7 +11,7 @@ Everything runs and block 4 proved it. The last block **deploys nothing** — th
 Steps:
 
 - [x] Pin in `PROGRESS.md`: deployment name, package name + version, both folder keys, the case release key (never the rotating operation Key), the app's deployed version
-- [x] Check what travelled: case + seven Agents inside the `.uipx`, app deployed beside it, no hand-deployed stand-ins — a read, not a redeploy
+- [x] Check what travelled: case + seven Agents inside the `.uipx`, app deployed beside it, no hand-deployed stand-ins; a read, not a redeploy
 - [x] Bring `sdd.md` to as-built: an As Built section, Design Feedback + Action Required rows for what verify fixed in the case
 - [x] Close every task in `tasks.md` (done, or says why not); final solution upload
 - [x] Write the operator runbook: prerequisites, deploy and promotion, known-broken with the change each needs, what to do when a claim faults
@@ -19,13 +19,13 @@ Steps:
 
 ## What to review
 
-- **Pins, not keys.** A deployment's operation key rotates with every operation; the name, the package name and version, the folder keys and the case release key do not. Pin the stable ones — a runbook full of rotating identifiers is stale before it's read.
-- **Check what travelled.** The case and the seven Agents belong inside the `.uipx`; the app is deployed beside it. The thing to catch: something you deployed by hand mid-build silently standing in for a project that never made it into the package. This is a read of the package and the deployments — not a redeploy.
-- **Look hardest at what block 4 fixed in the case.** A condition that narrows a rule a business user signed is a **design change**, whether or not anyone wrote it down. It goes into the SDD as a Design Feedback row *and* an Action Required row — first in line to be signed. Where the as-built section and the original design differ, the as-built is right.
-- **The runbook is for a different reader.** Not the agent that built the solution, and not you tomorrow — a human operating it who was never here: what has to exist first (the provided processes, the shared IXP project, the entity, the shared connection), how it deploys and would be promoted, what is known-broken, and what to do when a claim faults. Most of the facts already sit in `PROGRESS.md`; this is a rewrite for someone who cannot ask you a question. And a known limitation is written **with the change it needs** — a limitation without one is a complaint.
+- **Pins, not keys.** A deployment's operation key rotates with every operation; the name, the package name and version, the folder keys and the case release key do not. Pin the stable ones; a runbook full of rotating identifiers is stale before it's read.
+- **Check what travelled.** The case and the seven Agents belong inside the `.uipx`; the app is deployed beside it. Catch anything you deployed by hand mid-build that silently stands in for a project that never made it into the package. This is a read of the package and the deployments, not a redeploy.
+- **Look hardest at what block 4 fixed in the case.** A condition that narrows a rule a business user signed is a **design change**, whether or not anyone wrote it down. It goes into the SDD as a Design Feedback row *and* an Action Required row, first in line to be signed. Where the as-built section and the original design differ, the as-built is right.
+- **The runbook is for a different reader.** It is written for a human who operates the solution and was never here, not for the agent that built it or for you tomorrow. It covers what has to exist first (the provided processes, the shared IXP project, the entity, the shared connection), how it deploys and would be promoted, what is known-broken, and what to do when a claim faults. Most of the facts already sit in `PROGRESS.md`; this is a rewrite for someone who cannot ask you a question. And a known limitation is written **with the change it needs**; a limitation without one is a complaint.
 
 !!! note "What 'done' means"
-    "The build is done" is a statement about a **pinned version**, an **as-built design** and a **runbook** — never about the last green run. Trust in the solution, like trust in an agent, attaches to evidence per decision, not to a good afternoon.
+    "The build is done" is a statement about a **pinned version**, an **as-built design** and a **runbook**, never about the last green run. Trust in the solution, like trust in an agent, attaches to evidence per decision, not to a good afternoon.
 
 ## Proof
 
@@ -33,8 +33,8 @@ Steps:
 
 The deployed version is the one you packed; `sdd.md` describes what runs; every task is closed; the runbook exists. Someone you have never met could redeploy this tomorrow.
 
-??? example "What a finished handover sounds like — an agent's final report, from a real run (expand)"
+??? example "What a finished handover sounds like: an agent's final report, from a real run (expand)"
 
-    Everything this page asks for, in the agent's own closing words. Worth reading closely: the pins table marks which key **does not rotate** — and calls out the one that does as *not pinned*, by name; the package was **read back, never redeployed**, byte-identical to disk; the as-built SDD corrected its own design-stage claim "in place, as a correction"; the runbook is "260 lines for someone who was never here," every command in it executed first; and the task list closes honestly — *"ticking alone would have been dishonest, so eight carry a Deviation line."*
+    Everything this page asks for, in the agent's own closing words. The pins table marks which key **does not rotate** and calls out the one that does as *not pinned*, by name; the package was **read back, never redeployed**, byte-identical to disk; the as-built SDD corrected its own design-stage claim "in place, as a correction"; the runbook is "260 lines for someone who was never here," every command in it executed first; and the task list closes honestly: *"ticking alone would have been dishonest, so eight carry a Deviation line."*
 
     ![The agent's final block-5 report: the pinned solution version table, the read-back verification, the as-built SDD changes, the runbook and the honestly-closed task list](2-hand-it-over.images/handover-final-report-W.png){ .screenshot width="900" }

@@ -1,10 +1,10 @@
 # Build: six blocks, six prompts, six proven components
 
-Block 3 is deliberately **six separate runs, not one** — each piece is built and proven before the next one binds to it.
+Block 3 is deliberately **six separate runs, not one**: each piece is built and proven before the next one binds to it.
 
 | Traditional UiPath delivery | With a coding agent and UiPath Skills |
 |---|---|
-| A developer builds each component in its designer — Studio, Agent Builder, the case designer — configures Orchestrator and Data Fabric by hand, tests at the end, and documents afterwards. | The agent builds each component through the `uip` CLI with the product's skill loaded, **validates and fixes before it reports**, and writes names and keys into `PROGRESS.md` as they appear. You direct and review. |
+| A developer builds each component in its designer (Studio, Agent Builder, the case designer), configures Orchestrator and Data Fabric by hand, tests at the end, and documents afterwards. | The agent builds each component through the `uip` CLI with the product's skill loaded, **validates and fixes before it reports**, and writes names and keys into `PROGRESS.md` as they appear. You direct and review. |
 
 ## The six blocks
 
@@ -31,4 +31,4 @@ The Validate → Fix loop is what Anthropic's [AI-Native SDLC playbook](https://
 
 ## "Done" means the next block can start
 
-A block is not finished when its own artifact works — it is finished when the next block can stand on it. That is why every *done when* has two halves: the component proven, and its names, keys and one real example written into `PROGRESS.md`. The reader of that file is a fresh session with none of today in mind; agents should hand it what they actually got, never a sample.
+A block is not finished when its own artifact works; it is finished when the next block can stand on it. That is why every *done when* has two halves: the component proven, and its names, keys and one real example written into `PROGRESS.md`. The reader of that file is a fresh session with none of today in mind; agents should hand it what they actually got, never a sample.

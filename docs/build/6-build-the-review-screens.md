@@ -1,15 +1,15 @@
 # Build the Review Screens (Block 3f)
 
-Everything so far runs invisibly, we can only see traces in Case instances. This block builds the part of your solution that humans will *see* and use: the **Coded Action App**'s two screens — the **Eligibility Review** and the **Claim Review** — that the **Maestro Case** raises its tasks against in **Action Center**.
+Everything so far runs invisibly; the only view is the traces of case instances. This block builds the part of your solution that humans will *see* and use: the **Coded Action App**'s two screens, the **Eligibility Review** and the **Claim Review**, that the **Maestro Case** raises its tasks against in **Action Center**.
 
-Screens come last for a reason: by now your own runs have populated real records, so the screens are built against **payloads your own Agents actually produced**. Agent will capture fixtures from your Data Fabric records.
+Screens come last for a reason: by now your own runs have populated real records, so the screens are built against **payloads your own Agents actually produced**. The agent captures fixtures from your Data Fabric records.
 
 ## Decided for us
 
-- **What exactly the reviewer must see** — `PDD.md` §5.7: the stages, every check including the passes, the settlement line by line, the three documents, two outcomes with a written reason.
-- **The layout** — `3f-validation/layout.md` fixes the regions of both screens, so every seat's screen is reviewable against one expectation.
-- **The look** — `3f-validation/brand.md` carries the palette, type and CSS tokens.
-- **The rest is yours** — and worth stating to your agent explicitly. Asked for "a screen that shows a claim," an agent produces a correct form generated from a schema. **Taste is a requirement you have to state**: what is visible before scrolling, what opens on demand, how the width is used. Everything else in a spec is checkable; this one it will silently skip.
+- **What exactly the reviewer must see.** `PDD.md` §5.7 lists it: the stages, every check including the passes, the settlement line by line, the three documents, two outcomes with a written reason.
+- **The layout.** `3f-validation/layout.md` fixes the regions of both screens, so every seat's screen is reviewable against one expectation.
+- **The look.** `3f-validation/brand.md` carries the palette, type and CSS tokens.
+- **The rest is yours**, and you have to state it to your agent explicitly. Asked for "a screen that shows a claim," an agent produces a correct form generated from a schema. **Taste is a requirement you have to state**: what is visible before scrolling, what opens on demand, how the width is used. Everything else in a spec is checkable; this one it will silently skip.
 
 ## The prompt
 
@@ -20,9 +20,9 @@ Screens come last for a reason: by now your own runs have populated real records
 Steps:
 
 - [x] Read `PDD.md` §5.7, `contracts/review-task.md`, `3f-validation/layout.md` and `brand.md`; load the uipath-coded-apps skill
-- [x] Capture fixtures from the seat's own live records — the decided states verbatim, the waiting states rewound to the columns that exist at that gate — plus the real PDFs for the document overlay
-- [x] Derive the status→stage map from `caseplan.json` (a stage list typed into the app is forbidden — generate it)
-- [x] Build the two gate screens into the app registered at 3d — same name, same schema, contract untouched
+- [x] Capture fixtures from the seat's own live records (the decided states verbatim, the waiting states rewound to the columns that exist at that gate), plus the real PDFs for the document overlay
+- [x] Derive the status→stage map from `caseplan.json` (a stage list typed into the app is forbidden; generate it)
+- [x] Build the two gate screens into the app registered at 3d: same name, same schema, contract untouched
 - [x] Serve locally inside an Action Center stand-in and pause: the reviewer walks the four states
 - [x] Apply the feedback; prove the shipped bundle carries no dev fixtures; pack → `publish -t Action` → deploy the app alone
 - [x] Prove write-back per gateway: fresh claim, task completed from the CLI, record read back
@@ -30,7 +30,7 @@ Steps:
 
 ## The localhost review (by you)
 
-Coded Apps can be served locally and previewed before publishing to Orchestrator. Every screen fix after a deploy costs a pack → publish → deploy cycle; the same fix on a localhost preview costs a refresh. So the coding agent is instructed to pause **before its first publish**, served locally on your captured fixtures, and you review four states:
+Coded Apps can be served locally and previewed before publishing to Orchestrator. Every screen fix after a deploy costs a pack → publish → deploy cycle; the same fix on a localhost preview costs a refresh. So the coding agent is instructed to pause **before its first publish**, with the app served locally on your captured fixtures, while you review four states:
 
 | Open                                        | What to check                                                                                               |
 | ------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
@@ -41,13 +41,13 @@ Coded Apps can be served locally and previewed before publishing to Orchestrator
 
 Hand what you find back to the agent, let it fix, refresh, and approve. **Then** it publishes once. Your iteration loop has layers: 
 
-- Label or layout change needs only a browser reload
-- Analysis change needs case instance restart
-- Data structure or code change needs new fixtures and rebuild/redeploy
+- A label or layout change needs only a browser reload
+- An analysis change needs a case instance restart
+- A data-structure or code change needs new fixtures and a rebuild or redeploy
 
 Iterate on the **cheapest layer** and never let the cheap loop be the last thing you ran.
 
-Here is that review from a real run — the four states, served on the local Action Center stand-in (note the banner: local fixture, captured from the seat's own records, never shipped):
+Here is that review from a real run: the four states, served on the local Action Center stand-in. The banner marks a local fixture, captured from the seat's own records and never shipped:
 
 === "eligibility · open"
 
@@ -65,29 +65,29 @@ Here is that review from a real run — the four states, served on the local Act
 
     ![Localhost review — the claim review gate after a decision, carrying a real settlement override](6-build-the-review-screens.images/localhost-review-decided-W.png){ .screenshot width="900" }
 
-## What agents will review
+## What the agent will review
 
 - **A decision carries a reason, always.** The contract makes `reviewerNotes` required at both gates, because an inspected **decision with a reason teaches the system** which pattern failed; "a rubber-stamped click is theater" (*The Work That Remains*). If the screen makes the reason easy to skip, it built the wrong habit.
-- **One malformed field must not take down the screen.** Generated data varies. Pin shapes upstream where you can, but handle unexpected data of each panel so a "blank page" becomes one panel saying *"could not render the policy"* with the **decision still makeable**. 
-- **What survives task completion.** Completing a task in Action Center drops its inputs; only inOuts and outputs survive. This is why we have designed App to read data from Data Fabric entity and not from input arguments. This way Action App will render data even after task is completed.
+- **One malformed field must not take down the screen.** Generated data varies. Pin shapes upstream where you can, but handle unexpected data in each panel so a "blank page" becomes one panel saying *"could not render the policy"* with the **decision still makeable**. 
+- **What survives task completion.** Completing a task in Action Center drops its inputs; only inOuts and outputs survive. That is why the app reads the claim from the Data Fabric entity, not from its input arguments: it still renders after the task is completed.
 
 ## The gate
 
-Your reviewer approving all four localhost states is the first gate. After the one publish, the write-back proof is the second: **a fresh claim per gateway**, its task completed from the CLI, the decision read back from the record — a task decided before a fix proves nothing, so always prove against a fresh one. Clicking through the deployed screens in Action Center is your own optional third check.
+Your reviewer approving all four localhost states is the first gate. After the one publish, the write-back proof is the second: **a fresh claim per gateway**, its task completed from the CLI, the decision read back from the record. A task decided before a fix proves nothing, so always prove against a fresh one. Clicking through the deployed screens in Action Center is your own optional third check.
 
 ## Proof
 
 <!-- screenshot: the claim review screen in Action Center — findings side by side, settlement lines, the two outcome buttons -->
 
-Both gates render in a browser on real data, and a decision — with its reason — lands on the claim record and moves the case on.
+Both gates render in a browser on real data, and a decision, with its reason, lands on the claim record and moves the case on.
 
 ## One layout, four different screens
 
-The regions are fixed by `layout.md` and the look by `brand.md` — and still, different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. The first tab is the contract itself: the wireframe every build had to honour. Then four builds of this very app:
+The regions are fixed by `layout.md` and the look by `brand.md`, and still different models hand back visibly different screens from the same prompt, the same layout contract and the same data shapes. The first tab is the contract itself: the wireframe every build had to honour. Then come four builds of this very app:
 
 === "The spec"
 
-    From `3f-validation/layout.md` — the H2 wireframe, regions fixed, styling free:
+    From `3f-validation/layout.md`, the H2 wireframe with its regions fixed and the styling free:
 
     ```text
     --8<-- "seeds/3f-validation/layout.md:27:52"
@@ -109,18 +109,18 @@ The regions are fixed by `layout.md` and the look by `brand.md` — and still, d
 
     ![The claim review screen as built by GPT-5.6 Terra](6-build-the-review-screens.images/app-variant-gpt-5-6-terra-W.png){ .screenshot width="900" }
 
-That variety is not a defect — it is what "the styling is yours" means when an agent holds the pen. It is also exactly why this block pauses on localhost: guidelines and layout constrain the result, but the builder steers and reviews.
+The layout contract fixes the regions and leaves the styling open, so each model styles the screens its own way. The localhost pause is where you review that styling before it ships.
 
 ---
 
 !!!note "Could this block have run in parallel with the previous one?" 
-	In this course we go step by step — we're here to learn, not to race. But in real life independent builds can run in parallel. 
+	In this course we go step by step, because we're here to learn, not to race. In real life, independent builds can run in parallel.
 	
-	Block that tests Case Plan and this one that builds the Coded App barely overlap: 
+	The block that tests the case plan and this one, which builds the Coded App, barely overlap:
 	
-	- Run block **redeploys the solution** while this block redeploys **the app alone**
+	- The run block **redeploys the solution**, while this block redeploys **the app alone**
 	- The contract for both was pinned back at registration
-	- Run block completes its tasks from the command line, never waiting for a action app. 
+	- The run block completes its tasks from the command line and never waits for an Action App.
 	 
-	 However, App screens are built against payloads real runs produced, and the first fully populated record exists as soon as the clean claim has settled; fork there.
+	 However, the app screens are built against payloads real runs produced, and the first fully populated record exists as soon as the clean claim has settled: fork there.
 
