@@ -1435,7 +1435,7 @@
 
 
 <h1 id="plan-the-work-block-2">Plan the Work (Block 2)<a class="headerlink" href="#plan-the-work-block-2" title="Permanent link">&para;</a></h1>
-<p>The design says what the solution <em>is</em>; ten minutes now decide the order it gets built in. This is the cheapest block of the day — and the one place ordering mistakes surface before anything is built, instead of halfway through an afternoon.</p>
+<p>The design says what the solution <em>is</em>; ten minutes now decide the order it gets built in. This is the cheapest block of the day, and the one place ordering mistakes surface before anything is built instead of halfway through an afternoon.</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 2 · Plan</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Plan</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1465,21 +1465,21 @@
 </ul>
 <h2 id="what-a-good-plan-looks-like">What a good plan looks like<a class="headerlink" href="#what-a-good-plan-looks-like" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Leaves before consumers.</strong> Nothing binds to something unbuilt: the Data Fabric Claim Record before anything writes to it, the seven Agents before the Case Plan that calls them. The least obvious leaf is the review app's <em>contract</em> — the case binds it, so the app is registered (empty page and all) before the case exists, and its screens come last of all, after real runs have produced real data. You'll see why when you get there.</li>
-<li><strong>Routing, not re-description.</strong> Each task names which skill builds it and which <code>sdd.md</code> sections to read — nothing more. A task that re-explains the architecture is a second copy of the design; two copies of one fact always end up disagreeing.</li>
+<li><strong>Leaves before consumers.</strong> Nothing binds to something unbuilt: the Data Fabric Claim Record before anything writes to it, the seven Agents before the Case Plan that calls them. The least obvious leaf is the review app's <em>contract</em>: the case binds it, so the app is registered (empty page and all) before the case exists, and its screens come last of all, after real runs have produced real data. You'll see why when you get there.</li>
+<li><strong>Routing, not re-description.</strong> Each task names which skill builds it and which <code>sdd.md</code> sections to read, and nothing more. A task that re-explains the architecture is a second copy of the design; two copies of one fact always end up disagreeing.</li>
 <li><strong>A check after every creation.</strong> Every generating task carries a <code>Validate:</code> step, and a test task sits before anything deploys. The plan carries the discipline the build will be too busy for.</li>
 </ul>
 <h2 id="review-the-plan">Review the plan<a class="headerlink" href="#review-the-plan" title="Permanent link">&para;</a></h2>
 <p>Read it top to bottom once and ask two questions:</p>
 <ol>
 <li>Could someone work this list without opening the design to find out what comes next?</li>
-<li>Does every dependency point <em>up</em> the list? One "blocked by" pointing down means the order is wrong — and it is far cheaper to move a line now than to discover it mid-build.</li>
+<li>Does every dependency point <em>up</em> the list? One "blocked by" pointing down means the order is wrong, and it is far cheaper to move a line now than to discover it mid-build.</li>
 </ol>
-<p>One more habit this file carries: each later block sets the <code>Status:</code> line of the tasks it finishes. By the end of the day, a reader scanning the status lines sees exactly what was built and what was consciously skipped — the file degrades into the truth.</p>
+<p>One more habit this file carries: each later block sets the <code>Status:</code> line of the tasks it finishes. By the end of the day, a reader scanning the status lines sees exactly what was built and what was consciously skipped.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
 <p>Evidence from a real run of this block: 33 tasks, every one carrying a <code>Validate:</code> line, and no dependency pointing down the list. The first ten:</p>
 <details class="example">
-<summary>tasks.md — the first ten tasks (expand)</summary>
+<summary>tasks.md: the first ten tasks (expand)</summary>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Task T1 — uipath-ixp — Adopt the shared IXP project and capture two live extraction payloads
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>   blocked-by: none
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>   Validate: both payloads carry every field group with the damage rows repeating per item…
@@ -1521,8 +1521,8 @@
 <a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>   Validate: the agent builds and publishes inside the solution, and one invocation returns four reads…
 </code></pre></div>
 </details>
-<p>Read the shape, not just the rows: the extraction and the entity are leaves (<code>blocked-by: none</code>), every agent waits on the confirmed keys and the solution shell, and each task ends with the check that proves it. A list that runs top to bottom, from leaves to the case to the screens.</p>
-<p>And the agent's own closing report of the block — the whole plan's shape, routed block by block to the skill that builds it. Note the last words: it stopped at the boundary rather than rolling into 3a:</p>
+<p>In the shape of the list, the extraction and the entity are leaves (<code>blocked-by: none</code>), every agent waits on the confirmed keys and the solution shell, and each task ends with the check that proves it, so the list runs top to bottom, from the leaves to the case to the screens.</p>
+<p>And the agent's own closing report of the block, with the whole plan routed block by block to the skill that builds it. Its last words show it stopped at the boundary rather than rolling into 3a:</p>
 <p><img alt="The agent's block-2 report: 33 tasks routed by skill per block, stopping before 3a" class="screenshot" src="../4-plan-the-work.images/plan-outcome-tasks-by-skill-W.png" width="900" /></p>
 
 

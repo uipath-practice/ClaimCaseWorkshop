@@ -706,10 +706,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-problem-worth-solving" class="md-nav__link">
+  <a href="#the-business-problem" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The problem worth solving
+        The business problem
       
     </span>
   </a>
@@ -1446,16 +1446,16 @@
 
 
 <h1 id="the-property-claims-case">The Property Claims Case<a class="headerlink" href="#the-property-claims-case" title="Permanent link">&para;</a></h1>
-<h2 id="the-problem-worth-solving">The problem worth solving<a class="headerlink" href="#the-problem-worth-solving" title="Permanent link">&para;</a></h2>
-<p>A household property claim takes the claims team <strong>95 minutes of handling and 15 business days of elapsed time</strong>. Most of it re-keying documents, emailing other departments and waiting, with a shared spreadsheet as the only view of what's in flight. </p>
+<h2 id="the-business-problem">The business problem<a class="headerlink" href="#the-business-problem" title="Permanent link">&para;</a></h2>
+<p>A household property claim takes the claims team <strong>95 minutes of handling and 15 business days of elapsed time</strong>. Most of that time goes to re-keying documents, emailing other departments and waiting, with a shared spreadsheet as the only view of what's in flight. </p>
 <p>The <strong><em>deterministic legwork</em></strong> is already automated: registering the claim, gathering documents, reading the form, fetching the policy and history, sending letters. What's missing is:</p>
 <ul>
 <li>everything that needs <strong><em>judgement</em></strong> </li>
 <li>one process that <strong><em>links it all together</em></strong>, from filing to decision letter.</li>
 </ul>
-<p>That judgement is the real work. As <em>The Work That Remains</em> puts it: strip out the exceptions and judgement calls and "you have not automated the work. You have automated a fiction of it."</p>
+<p>As <em>The Work That Remains</em> puts it, strip out the exceptions and judgement calls and "you have not automated the work. You have automated a fiction of it."</p>
 <h2 id="what-arrives-with-a-claim">What arrives with a claim<a class="headerlink" href="#what-arrives-with-a-claim" title="Permanent link">&para;</a></h2>
-<p>Three documents. Only one of them is a form:</p>
+<p>There are three documents, and only one of them is a form:</p>
 <table>
 <thead>
 <tr>
@@ -1467,13 +1467,13 @@
 <tbody>
 <tr>
 <td><strong>Claim form</strong></td>
-<td>Structured — same layout every time</td>
+<td>Structured, same layout every time</td>
 <td>Claimant, property, policy number, incident date and type, the damage inventory with amounts</td>
 </tr>
 <tr>
 <td><strong>Insurance policy</strong></td>
 <td>Free-form contract prose, worded differently by every insurer</td>
-<td>Limits, sublimits, deductible, exclusions, named perils, endorsements — the <em>only</em> authority on what this claim can pay</td>
+<td>Limits, sublimits, deductible, exclusions, named perils, endorsements: the <em>only</em> authority on what this claim can pay</td>
 </tr>
 <tr>
 <td><strong>Assessor report</strong></td>
@@ -1487,7 +1487,7 @@
 </tr>
 </tbody>
 </table>
-<p>That distinction — one <strong>structured form</strong>, two <strong>prose documents</strong> — will shape the whole architecture: the form is read into fields by IXP extractor; the prose documents are read, clause by clause, by whatever does the judging.</p>
+<p>That distinction, one <strong>structured form</strong> and two <strong>prose documents</strong>, shapes the whole architecture: the form is read into fields by the IXP extractor, and the prose documents are read, clause by clause, by whatever does the judging.</p>
 <h2 id="how-a-claim-should-be-handled">How a claim should be handled<a class="headerlink" href="#how-a-claim-should-be-handled" title="Permanent link">&para;</a></h2>
 <div class="img-cols img-cols-50">
 <div>
@@ -1560,9 +1560,9 @@
 </tr>
 </tbody>
 </table>
-<p>The last two pull against each other on purpose. Stopping every claim gives perfect detection and a useless process; never stopping one does the reverse. <strong>The measure of your build is meeting both.</strong></p>
+<p>The last two pull against each other on purpose. Stopping every claim gives perfect detection and a useless process; never stopping one does the reverse. <strong>Your build has to meet both.</strong></p>
 <h2 id="what-can-be-wrong-with-a-claim">What can be wrong with a claim<a class="headerlink" href="#what-can-be-wrong-with-a-claim" title="Permanent link">&para;</a></h2>
-<p>The exercise's test claims are generated, and a generated claim can carry a planted problem — at most one for each gate, each owned by exactly one check:</p>
+<p>The exercise's test claims are generated, and a generated claim can carry a planted problem, at most one for each gate, each owned by exactly one check:</p>
 <table>
 <thead>
 <tr>
@@ -1573,11 +1573,11 @@
 <tbody>
 <tr>
 <td>Screening</td>
-<td>The policy lapsed for non-payment before the loss — only the payment status gives it away</td>
+<td>The policy lapsed for non-payment before the loss; only the payment status gives it away</td>
 </tr>
 <tr>
 <td>Screening</td>
-<td>The claimant isn't the policyholder — same surname, same address, different person</td>
+<td>The claimant isn't the policyholder: same surname, same address, different person</td>
 </tr>
 <tr>
 <td>Screening</td>
@@ -1589,27 +1589,27 @@
 </tr>
 <tr>
 <td>Screening</td>
-<td>The claim was filed after the deadline — sometimes with a documented excuse, which is a caveat, not a failure</td>
+<td>The claim was filed after the deadline, sometimes with a documented excuse, which is a caveat, not a failure</td>
 </tr>
 <tr>
 <td>Review</td>
-<td>Every figure sits 25–40% above the assessor's independent estimate</td>
+<td>Every figure sits 30–45% above the assessor's independent estimate</td>
 </tr>
 <tr>
 <td>Review</td>
-<td>The incident type on the form isn't the cause the assessor determined — even when both are covered</td>
+<td>The incident type on the form isn't the cause the assessor determined, even when both are covered</td>
 </tr>
 <tr>
 <td>Review</td>
-<td>The claimant's own account contradicts the cause they're claiming — nothing missing, nothing malformed, visible only to something that reads both and understands them</td>
+<td>The claimant's own account contradicts the cause they're claiming. Nothing is missing or malformed; only something that reads both and understands them can see it</td>
 </tr>
 <tr>
 <td>Review</td>
-<td>An earlier claim this period ate most of the annual aggregate — the claim itself is spotless; the problem isn't in its documents at all</td>
+<td>An earlier claim this period ate most of the annual aggregate. The claim itself is spotless; the problem isn't in its documents at all</td>
 </tr>
 <tr>
 <td>Review</td>
-<td>The claims history is unreadable — which must be flagged, never treated as "no prior claims"</td>
+<td>The claims history is unreadable, and that must be flagged, never treated as "no prior claims"</td>
 </tr>
 </tbody>
 </table>

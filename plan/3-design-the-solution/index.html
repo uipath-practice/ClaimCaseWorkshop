@@ -762,10 +762,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#before-you-run-the-brief-is-the-skill" class="md-nav__link">
+  <a href="#before-you-run-why-the-agent-asks-nothing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Before you run: the brief is the skill
+        Before you run: why the agent asks nothing
       
     </span>
   </a>
@@ -1446,7 +1446,7 @@
 
 
 <h1 id="design-the-solution-block-1">Design the Solution (Block 1)<a class="headerlink" href="#design-the-solution-block-1" title="Permanent link">&para;</a></h1>
-<p>Your agent reads the PDD and generates the Solution Design Document — one file, <code>sdd.md</code>, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. <strong>It has to be good enough that a solution architect could hand it to a developer and walk away.</strong></p>
+<p>Your agent reads the PDD and generates the Solution Design Document: one file, <code>sdd.md</code>, at a fixed name at the seed root. Everything downstream binds to it: the plan derives from it, the build follows it, verify checks against it, and handover brings it to as-built. <strong>It has to be good enough that a solution architect could hand it to a developer and walk away.</strong></p>
 <table>
 <thead>
 <tr>
@@ -1456,14 +1456,14 @@
 </thead>
 <tbody>
 <tr>
-<td>A solution architect reads the PDD and writes the SDD by hand, then takes it through review meetings. Platform limits and policy surface in review — or in the build.</td>
+<td>A solution architect reads the PDD and writes the SDD by hand, then takes it through review meetings. Platform limits and policy surface in review, or only in the build.</td>
 <td>The <strong>uipath-planner</strong> skill writes the SDD from the PDD and the contracts in one session, applying UiPath's design rules as it writes. The architect <strong>reviews it rather than writes it</strong>, and resolves what it flagged.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="before-you-run-the-brief-is-the-skill">Before you run: the brief is the skill<a class="headerlink" href="#before-you-run-the-brief-is-the-skill" title="Permanent link">&para;</a></h2>
-<p>The planner normally asks its questions before designing — execution mode, delivery model, what components exist, what app type. You will see it when you build your next project.</p>
-<p>In our case agent is instructed to <strong>ask nothing.</strong> It saves time and every answer is already in: the mode in the prompt, the tenant from your login, the component inventory in <code>contracts/components.md</code>. That is the first lesson of this workshop worth taking home: <strong><em>the way to a quiet, autonomous agent is a complete brief, not a longer conversation.</em></strong> If you already know the answer yourself, just give it to your agent.</p>
+<h2 id="before-you-run-why-the-agent-asks-nothing">Before you run: why the agent asks nothing<a class="headerlink" href="#before-you-run-why-the-agent-asks-nothing" title="Permanent link">&para;</a></h2>
+<p>The planner normally asks its questions before designing: execution mode, delivery model, which components exist, which app type. You will see them when you build your next project.</p>
+<p>Here the agent is instructed to <strong>ask nothing.</strong> That saves time, and every answer is already written down: the mode in the prompt, the tenant from your login, the component inventory in <code>contracts/components.md</code>. <strong>An agent works on its own only when the brief already answers its questions.</strong> If you know an answer yourself, put it in the prompt.</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <p>Copy it into your coding agent, started in the seed folder:</p>
 <div class="highlight"><span class="filename">Prompt — block 1 · Design</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Design</span>
@@ -1495,44 +1495,44 @@
 <a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
 <a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>If a check fires on something you believe is right, say so and leave it — a wrong rule in the checker is worth more to us than a file edited to satisfy it.
 </code></pre></div>
-<p>Note the boundary it sets: <strong>design only, then stop.</strong> The task list comes in the next block. One document answers one question; a design that also explains the build order becomes two documents describing the same thing, and the copy nobody edits is the one that goes stale.</p>
+<p>The prompt stops the agent after the design, and the task list comes in the next block. One document answers one question; a design that also explains the build order becomes two documents describing the same thing, and the copy nobody edits is the one that goes stale.</p>
 <p>Steps:</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code>, <code>CONFIG.md</code> and <code>contracts/</code> (components, claim entity, review task, provided processes)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Load the uipath-planner skill; run autonomous, design only</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Write <code>sdd.md</code> at the seed root, with <code>Tasks file: tasks.md</code> in the handoff header</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Add the two sdd-addendum sections (entity write-ownership matrix; design feedback to PDD)</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 1-design/check_sdd.py sdd.md --pdd PDD.md</code> — fix findings, rerun until clean</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 1-design/check_sdd.py sdd.md --pdd PDD.md</code>; fix findings and rerun until clean</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
 <h2 id="review-the-design">Review the design<a class="headerlink" href="#review-the-design" title="Permanent link">&para;</a></h2>
-<p>The agent finishes in minutes; your review is where the value is. Four things to check by hand:</p>
+<p>The agent finishes in minutes; your review is what catches the defects. Four things to check by hand:</p>
 <ul>
 <li><strong>Every step, its nature respected.</strong> Walk the PDD's §5.3 table against the design: judgement steps became Agents, rule-expressible steps became expressions or deterministic tasks. Each design task should name the PDD step it implements.</li>
-<li><strong>Where two sections state the same fact, do they agree?</strong> A long generated document is written section by section, and consistency between distant sections is exactly what a sequential writer is worst at. Find the pairs — a field listed in two tables, an owner named twice — and compare them. That is where design defects live.</li>
-<li><strong>Budgets as numbers.</strong> Every agent's summed inputs against the platform's cap, stated arithmetically — not "should fit".</li>
+<li><strong>Where two sections state the same fact, do they agree?</strong> A long generated document is written section by section, and consistency between distant sections is exactly what a sequential writer is worst at. Find the pairs (a field listed in two tables, an owner named twice) and compare them; that is where design defects live.</li>
+<li><strong>Budgets as numbers.</strong> Every agent's summed inputs against the platform's cap, stated arithmetically, not as "should fit".</li>
 <li><strong>Disagreements resolved out loud.</strong> Where a contract and the PDD pull differently, the design follows the contract <em>and says so</em> in its Design Feedback section. A silent resolution is invisible and therefore uncheckable.</li>
 </ul>
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
 </code></pre></div>
-<p>The planner's own audit verifies the document's <em>shape</em> — sections present, tables well-formed. The script cross-check verifies it against the <em>process</em>: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. </p>
+<p>The planner's own audit verifies the document's <em>shape</em>: sections present, tables well-formed. The script cross-check verifies it against the <em>process</em>: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. </p>
 <div class="admonition note">
 <p class="admonition-title">Remember</p>
 <ul>
-<li>Especially for large tasks, agents are often reporting work as done, while they have missed half of the work in between.  For this workshop we know what SDD should contain and can check with a script. For your next project it's your eyes. Never jump to the next step without reviewing and validating work assuming agents are perfect. Not just yet.</li>
+<li>Especially on large tasks, agents often report work as done after missing half of it. In this workshop we know what the SDD should contain and can check it with a script; on your next project, it's your eyes. Never jump to the next step assuming agents are perfect. Not just yet.</li>
 </ul>
 </div>
-<p>This gate is also what makes the exercise model-proof: different models design differently, and a weaker one will occasionally put arithmetic where judgement belongs — silently. The gate catches that on any model, which is why the answer to design variance is a check downstream, never a thicker requirements document.</p>
+<p>This gate is also what makes the exercise model-proof: different models design differently, and a weaker one will occasionally, and silently, put arithmetic where judgement belongs. The gate catches that on any model, which is why the answer to design variance is a check downstream, never a thicker requirements document.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<p>What a passing design looks like — evidence from a real run of this block.</p>
+<p>What a passing design looks like, from a real run of this block.</p>
 <p>The stage model, answering the PDD's §5.5 exactly:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>| 2 | **Stage model** | Six primary stages (Intake → Eligibility Screening → Awaiting Inspection →
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>Analysis → Claim Review → Approved) plus two secondary stages (Denied, Missing Details) | `PDD.md`
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>§5.5 fixes the eight stages, their owners and which are required for completion; *Approved* is the
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>healthy ending and *Denied* is explicitly the secondary unhappy ending. |
 </code></pre></div>
-<p>One task's <strong>Design Rationale</strong>, naming its PDD step — and disclosing a substitution instead of making it silently:</p>
+<p>One task's <strong>Design Rationale</strong>, naming its PDD step and disclosing a substitution instead of making it silently:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>### Case Triggers
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>**Design Rationale:** `PDD.md` §2.1 says the claim arrives one at a time through Claims Intake, and

@@ -840,10 +840,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#two-layers-worth-naming" class="md-nav__link">
+  <a href="#the-map-and-the-rails" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Two layers worth naming
+        The map and the rails
       
     </span>
   </a>
@@ -1435,7 +1435,7 @@
 
 
 <h1 id="architecture-overview">Architecture Overview<a class="headerlink" href="#architecture-overview" title="Permanent link">&para;</a></h1>
-<p>You have a design and a plan. Before the build starts, here is the whole solution on one page — what each block adds, and how the pieces talk to each other. As you read, keep your own <code>sdd.md</code> open: everything on this page should be findable in it, and anything that isn't is worth a second look before block 3a.</p>
+<p>You have a design and a plan. Before the build starts, here is the whole solution on one page: what each block adds, and how the pieces talk to each other. As you read, keep your own <code>sdd.md</code> open: everything on this page should be findable in it, and anything that isn't is worth a second look before block 3a.</p>
 <h2 id="how-you-build-it">How you build it<a class="headerlink" href="#how-you-build-it" title="Permanent link">&para;</a></h2>
 <p>One chain runs the whole workshop:</p>
 <pre class="mermaid"><code>flowchart LR
@@ -1485,19 +1485,19 @@
 <tr>
 <td>3e</td>
 <td>A deployed, proven case and <strong>payloads</strong> populated by real runs</td>
-<td>The <strong>Action App screens</strong> are built against these payloads produced by your deployment</td>
+<td>The <strong>Action App screens</strong>, built against the payloads your deployment produced</td>
 </tr>
 <tr>
 <td>3f</td>
 <td>The reviewer Action App screens</td>
-<td>The <strong>humans</strong> at H1 and H2. The key part of your build that you will see and validate</td>
+<td>The <strong>humans</strong> at H1 and H2; the part of your build you will see and validate yourself</td>
 </tr>
 </tbody>
 </table>
-<h2 id="two-layers-worth-naming">Two layers worth naming<a class="headerlink" href="#two-layers-worth-naming" title="Permanent link">&para;</a></h2>
-<p>Your <code>sdd.md</code> and the contracts are <strong>the map</strong> — the shared description every component is built against; the deployed case, processes and record are <strong>the rails</strong> — the deterministic layer that actually touches the world. Judgement lives in the seven Agents, and decision sits behind the two human gates. Everyone reads the same map.</p>
+<h2 id="the-map-and-the-rails">The map and the rails<a class="headerlink" href="#the-map-and-the-rails" title="Permanent link">&para;</a></h2>
+<p>Your <code>sdd.md</code> and the contracts are <strong>the map</strong>: the shared description every component is built against. The deployed case, processes and record are <strong>the rails</strong>: the deterministic layer that actually touches the world. Judgement lives in the seven Agents, and decisions sit behind the two human gates. Everyone reads the same map.</p>
 <h2 id="why-this-decomposition">Why this decomposition<a class="headerlink" href="#why-this-decomposition" title="Permanent link">&para;</a></h2>
-<p>Each component is the smallest thing that can be built and proven alone: the payload before the record, the record before the agents, the agents before the case that binds them, the case before the screens that render what its runs produced. Six blocks, each one leaving something the next can stand on — which is exactly what your <code>tasks.md</code> already says.</p>
+<p>Each component is the smallest thing that can be built and proven alone: the payload before the record, the record before the agents, the agents before the case that binds them, the case before the screens that render what its runs produced. That makes six blocks, each leaving something the next can stand on, in the order your <code>tasks.md</code> already lists.</p>
 
 
 
