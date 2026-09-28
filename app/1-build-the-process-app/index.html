@@ -1435,10 +1435,10 @@
 
 
 <h1 id="build-the-process-app-block-6">Build the Process App (Block 6)<a class="headerlink" href="#build-the-process-app-block-6" title="Permanent link">&para;</a></h1>
-<p><code>PDD.md</code> §11 asks for the view the claims team lead has never had: every claim, where it is, how long it has been there, and what is waiting on a human — a work queue, an SLA and ageing view, and a per-claim drill-down. Today that view is a shared spreadsheet overwritten daily (§4.4, PP5); nobody can say how many claims are near their deadline. The PDD calls the replacement <strong>a requirement, not a nicety</strong>. This block builds it: a standalone <strong>Coded Web App</strong> with three screens — a portfolio dashboard, a searchable claims list, and one claim in full.</p>
-<p>It comes after the hand-over for a reason. This app <strong>reads what every other block produced</strong> — the claim record, the case's own status words, the gate tasks in <strong>Action Center</strong> and the claim screen you built at 3f — so nothing it needs exists until the solution runs, and the solution it reads is the pinned one. And it ships <strong>beside</strong> the solution with its own publish and deploy, exactly as the <strong>Coded Action App</strong> does: an app provisioned inside the solution deploys as a shell and blocks every later redeploy once it moves on. A change to a chart must never cost a redeploy of the case.</p>
+<p><code>PDD.md</code> §11 asks for the view the claims team lead has never had: every claim, where it is, how long it has been there, and what is waiting on a human (a work queue, an SLA and ageing view, and a per-claim drill-down). Today that view is a shared spreadsheet overwritten daily (§4.4, PP5); nobody can say how many claims are near their deadline. The PDD calls the replacement <strong>a requirement, not a nicety</strong>. This block builds it: a standalone <strong>Coded Web App</strong> with three screens: a portfolio dashboard, a searchable claims list, and one claim in full.</p>
+<p>It comes after the hand-over for a reason. This app <strong>reads what every other block produced</strong> (the claim record, the case's own status words, the gate tasks in <strong>Action Center</strong> and the claim screen you built at 3f), so nothing it needs exists until the solution runs, and the solution it reads is the pinned one. And it ships <strong>beside</strong> the solution with its own publish and deploy, exactly as the <strong>Coded Action App</strong> does: an app provisioned inside the solution deploys as a shell and blocks every later redeploy once it moves on. A change to a chart must never cost a redeploy of the case.</p>
 <details class="quote">
-<summary>PDD §11 — the five views, verbatim</summary>
+<summary>PDD §11: the five views, verbatim</summary>
 <p><a href="https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#11-reporting-and-monitoring-requirements">Open §11 in the full document ↗</a></p>
 <table>
 <thead>
@@ -1498,13 +1498,13 @@
 </details>
 <h2 id="decided-for-us">Decided for us<a class="headerlink" href="#decided-for-us" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>The three screens and the data inventory</strong> — <code>6-process-app/layout.md</code>: a dashboard, a claims list, one claim. It also fixes what each screen may draw on — which columns of the record serve the portfolio, and what the case adds. The two mocks in <code>6-process-app/mocks/</code> fix the <em>intent</em>, not a pixel.</li>
-<li><strong>The record is the single source of the claim.</strong> The case exposes no task payloads, so the record's header columns are the only thing a portfolio can count, filter and sort, and its payload columns are the claim screen. The case adds only what the record cannot know: per-stage status and SLA, and the pre-aggregated instance counts.</li>
-<li><strong>The currency rule</strong> — <code>PDD.md</code> A2. Six countries, six currencies, no conversion anywhere in the process. Count claims freely; sum amounts per currency or not at all. A portfolio total in one currency is a number nobody can act on.</li>
+<li><strong>The three screens and the data inventory</strong>: <code>6-process-app/layout.md</code> fixes a dashboard, a claims list and one claim. It also fixes what each screen may draw on: which columns of the record serve the portfolio, and what the case adds. The two mocks in <code>6-process-app/mocks/</code> fix the <em>intent</em>, not a pixel.</li>
+<li><strong>The record is the single source of the claim.</strong> The case exposes no task payloads, so the record's header columns are the only thing a portfolio can count, filter and sort, and its payload columns are the claim screen. The case adds only what the record cannot know: each stage's status and SLA. Its pre-aggregated instance counts need scopes the shared registration does not carry, so those are computed from the record.</li>
+<li><strong>The currency rule</strong> (<code>PDD.md</code> A2). Six countries, six currencies, no conversion anywhere in the process. Count claims freely; sum amounts per currency or not at all. A portfolio total in one currency is a number nobody can act on.</li>
 <li><strong>The vocabulary is your own case's.</strong> Status words, stage names and SLAs are read from the record and the case, never typed into the app. A list typed in drifts the first time either changes.</li>
-<li><strong>A decision goes through the task, never the record.</strong> From the claim page a handler completes the same Action Center task the case raised, with <code>contracts/review-task.md</code>'s payload, and the case writes the record — the same path as a decision made in Action Center. One writer, one shape, one audit trail. That is why the shared registration carries a task scope and <strong>no</strong> record-write scope.</li>
-<li><strong>Re-use the Action App's claim view.</strong> The claim screen is the one you built at 3f, imported from its source — one claim view, two deployables — with the decision controls shown only while a gate task is open for that claim.</li>
-<li><strong>The visuals are yours</strong> — which figures earn a card, which distributions earn a chart, the layout, the refresh. <a href="../../build/6-build-the-review-screens/#decided-for-us">Taste is still a requirement you have to state</a>.</li>
+<li><strong>A decision goes through the task, never the record.</strong> From the claim page a handler completes the same Action Center task the case raised, with <code>contracts/review-task.md</code>'s payload, and the case writes the record, the same path as a decision made in Action Center. That keeps one writer, one shape and one audit trail, which is why the shared registration carries a task scope and <strong>no</strong> record-write scope.</li>
+<li><strong>Re-use the Action App's claim view.</strong> The claim screen is the one you built at 3f, imported from its source (one claim view, two deployables), with the decision controls shown only while a gate task is open for that claim.</li>
+<li><strong>The visuals are yours</strong>: which figures earn a card, which distributions earn a chart, the layout, the refresh. <a href="../../build/6-build-the-review-screens/#decided-for-us">Taste is still a requirement you have to state</a>.</li>
 </ul>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 6 · Process App</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the Process App</span>
@@ -1528,19 +1528,19 @@
 </code></pre></div>
 <p>Steps:</p>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code> §11, <code>6-process-app/layout.md</code>, <code>contracts/claim-entity.md</code>, <code>contracts/review-task.md</code> and <code>CONFIG.md</code>'s shared registration; load the uipath-coded-apps skill — its web-app path</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>PDD.md</code> §11, <code>6-process-app/layout.md</code>, <code>contracts/claim-entity.md</code>, <code>contracts/review-task.md</code> and <code>CONFIG.md</code>'s shared registration; load the uipath-coded-apps skill (its web-app path)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Write <code>6-process-app/design.md</code> <strong>before building</strong>: each screen, what it shows and from which column or call, and the map from your record's status words to the labels a handler reads</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read the record schema and your own rows: the status vocabulary your case actually wrote, and which columns an in-flight claim does not have yet</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Scaffold the Coded Web App at <code>Build/property-claims-&lt;seat&gt;/</code>; set its scopes to exactly the shared registration's list — no more</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Share the claim view from <code>Build/claim-review-&lt;seat&gt;/src</code> by an alias — one source, two deployables — and take its stylesheet with it</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Scaffold the Coded Web App at <code>Build/property-claims-&lt;seat&gt;/</code>; set its scopes to exactly the shared registration's list, no more</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Share the claim view from <code>Build/claim-review-&lt;seat&gt;/src</code> by an alias (one source, two deployables) and take its stylesheet with it</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read the whole record set with a cursor loop; hydrate each pending task and join it to its claim on <code>claimId</code></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Build the three screens against your own records; serve locally; reconcile every dashboard figure against <code>uip df records list</code> before the first publish</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Wire the in-app decision: complete the claim's own pending task with the contract's payload — outcome, outputs, the three identifiers replayed</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Wire the in-app decision: complete the claim's own pending task with the contract's payload: outcome, outputs, the three identifiers replayed</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Prove the bundle ships no fixtures and no localhost; <code>npm run build</code> → <code>uip codedapp pack</code> → <code>publish</code> (a Web app, no <code>-t Action</code>) → <code>deploy --folder-key &lt;your seat folder&gt; --client-id &lt;the shared registration&gt;</code></li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Start a fresh claim per gate so a live task waits for the in-app decision; update <code>PROGRESS.md</code></li>
 </ul>
 <h2 id="your-checks-on-the-deployed-url">Your checks, on the deployed URL<a class="headerlink" href="#your-checks-on-the-deployed-url" title="Permanent link">&para;</a></h2>
-<p>The agent proves the arithmetic without a browser: it runs the app's own aggregation over the rows the CLI read and diffs the two against an independent count. That reconciliation is a gate, and <a href="../../verify/#testing-a-long-running-process">every gate is a floor</a>. What the agent cannot do is sign in — a signed-in browser is a human's. So four checks are yours, and they close the block:</p>
+<p>The agent proves the arithmetic without a browser: it runs the app's own aggregation over the rows the CLI read and diffs the two against an independent count. That reconciliation is a gate, and <a href="../../verify/#testing-a-long-running-process">every gate is a floor</a>. What the agent cannot do is sign in; a signed-in browser is a human's. So four checks are yours, and they close the block:</p>
 <table>
 <thead>
 <tr>
@@ -1551,10 +1551,10 @@
 <tbody>
 <tr>
 <td>Open the URL <code>deploy</code> printed, from your seat folder, signed in</td>
-<td>The dashboard renders on your own records. Its tiles equal the reconciliation the agent wrote — run its check and compare, or count by status with <code>uip df records list</code></td>
+<td>The dashboard renders on your own records. Its tiles equal the reconciliation the agent wrote: run its check and compare, or count by status with <code>uip df records list</code></td>
 </tr>
 <tr>
-<td>Search one claim three ways — by claim id, by policy number, by claimant name — then once by nonsense</td>
+<td>Search one claim three ways (by claim id, by policy number, by claimant name), then once by nonsense</td>
 <td>Each search finds it and says <em>how many of how many</em>; the nonsense search names what it looked for instead of a blank table</td>
 </tr>
 <tr>
@@ -1562,12 +1562,12 @@
 <td>The Action App's screen, unchanged; stages never entered marked as not reached; decision controls present <strong>only</strong> on the in-flight claim whose gate is open, with a link to the same task in Action Center beside them</td>
 </tr>
 <tr>
-<td>Complete a gate task from the claim page — outcome, reason, submit</td>
+<td>Complete a gate task from the claim page: outcome, reason, submit</td>
 <td><code>uip tasks get &lt;id&gt;</code> says <code>Completed</code>; the record carries the decision and the claim has moved on; <em>awaiting a human</em> drops by one on refresh</td>
 </tr>
 </tbody>
 </table>
-<p>The agent left a fresh claim waiting at each gate for exactly this. Decide them from the app, not from the CLI — a task completed from the command line proves nothing about the screen.</p>
+<p>The agent left a fresh claim waiting at each gate for exactly this. Decide them from the app, not from the CLI: a task completed from the command line proves nothing about the screen.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Dashboard</label><label for="__tabbed_1_2">Claims</label><label for="__tabbed_1_3">One claim</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -1584,16 +1584,16 @@
 <p>Read the screens the way a team lead would:</p>
 <ul>
 <li><strong>Every figure says where it came from or which rule it used.</strong> The time-to-decision card says which calendar it counted; the currency card says why there is no total row. A figure with no source is a guess dressed as a number.</li>
-<li><strong>Who decided comes from the gate conditions, not the decision words.</strong> The case's convergence write fills the decision columns on every claim, human or not. A gate counts as opened when the case's own condition opened it — a failed screening check, the review flag on the record — and the gates opened must equal the tasks ever raised. Ask your agent for that cross-check.</li>
-<li><strong>Where the case would have added something, the screen says so.</strong> A scope not granted means the figure is computed from the record and the card says what is missing — never a blank panel, never sample data standing in for a failed call.</li>
+<li><strong>Who decided comes from the gate conditions, not the decision words.</strong> The case's convergence write fills the decision columns on every claim, human or not. A gate counts as opened when the case's own condition opened it (a failed screening check, the review flag on the record), and the gates opened must equal the tasks ever raised. Ask your agent for that cross-check.</li>
+<li><strong>Where the case would have added something, the screen says so.</strong> A scope not granted means the figure is computed from the record and the card says what is missing, never a blank panel and never sample data standing in for a failed call.</li>
 </ul>
 <h2 id="what-you-learn-about-driving-the-agent">What you learn about driving the agent<a class="headerlink" href="#what-you-learn-about-driving-the-agent" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Three sources, and what each can say.</strong> The record: business fields and the analysis payloads — everything a portfolio can count, filter and drill into. The case: per-stage status and SLA, and the pre-aggregated instance counts — what the record cannot know. The tasks: who is waiting, at which gate, since when. Every figure on the screen has exactly one of these behind it; make the agent name it.</li>
-<li><strong>One scope, one failure.</strong> A scope asked for and not granted fails the <strong>whole</strong> token, silently, on the first call — sign-in bounces straight back, or every service fails at once. Read the registration in <code>CONFIG.md</code> before the code; the app asks for exactly that list. Adding a service means the scope has to exist on the registration first, and that is the operator's job, not the agent's.</li>
-<li><strong>Every list call is one page.</strong> There is no option to ask for all, and a dashboard that reads one page lies confidently — a count looks like a count. The agent loops the cursor until there is no next page, then pages the table itself with <em>showing X–Y of Z</em>.</li>
-<li><strong>Absent is not null.</strong> A column never written is missing from the row, not <code>null</code> — an in-flight claim is mostly absent columns. And the decision column has two shapes over a claim's life: the recommendation while the review gate is open, recommendation plus outcome after it closes. Read every column defensively, and key on the record's own flags, never on which keys happen to be present.</li>
-<li><strong>Completing a task replaces its payload.</strong> Every writer replaces the whole payload, so the outcome, the outputs <em>and</em> the three identifiers go back together — a completed task must still know its claim. <a href="../../build/6-build-the-review-screens/#what-agents-will-review">The same fact shaped the Action App</a>; here it decides what the app sends.</li>
+<li><strong>Three sources, and what each can say.</strong> The record: business fields and the analysis payloads, everything a portfolio can count, filter and drill into. The case: each stage's status and SLA, which the record cannot know (its pre-aggregated instance counts need scopes the shared registration does not carry). The tasks: who is waiting, at which gate, since when. Every figure on the screen has exactly one of these behind it; make the agent name it.</li>
+<li><strong>One scope, one failure.</strong> A scope asked for and not granted fails the <strong>whole</strong> token, silently, on the first call: sign-in bounces straight back, or every service fails at once. Read the registration in <code>CONFIG.md</code> before the code; the app asks for exactly that list. Adding a service means the scope has to exist on the registration first, and that is the operator's job, not the agent's.</li>
+<li><strong>Every list call is one page.</strong> There is no option to ask for all, and a dashboard that reads one page lies confidently, because a partial count still looks like a count. The agent loops the cursor until there is no next page, then pages the table itself with <em>showing X–Y of Z</em>.</li>
+<li><strong>Absent is not null.</strong> A column never written is missing from the row, not <code>null</code>, and an in-flight claim is mostly absent columns. And the decision column has two shapes over a claim's life: the recommendation while the review gate is open, recommendation plus outcome after it closes. Read every column defensively, and key on the record's own flags, never on which keys happen to be present.</li>
+<li><strong>Completing a task replaces its payload.</strong> Every writer replaces the whole payload, so the outcome, the outputs <em>and</em> the three identifiers go back together, because a completed task must still know its claim. <a href="../../build/6-build-the-review-screens/#what-the-agent-will-review">The same fact shaped the Action App</a>; here it decides what the app sends.</li>
 </ul>
 <p><code>6-process-app/cookbook.md</code> carries the traps behind each of these, in the order an agent meets them.</p>
 

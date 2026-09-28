@@ -1000,10 +1000,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-agent-will-review" class="md-nav__link">
+  <a href="#what-the-agent-will-review" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What agent will review
+        What the agent will review
       
     </span>
   </a>
@@ -1446,8 +1446,8 @@
 
 
 <h1 id="build-the-seven-agents-block-3c">Build the Seven Agents (Block 3c)<a class="headerlink" href="#build-the-seven-agents-block-3c" title="Permanent link">&para;</a></h1>
-<p>Seven checks in the process need judgement and it's seven because they are controlled by various departments and business owners. Requirement. <strong>Seven low-code Agents, one per family of business rules</strong>, named in <code>contracts/components.md</code>. Nothing else is built here — the deterministic work is already deployed as the provided processes, or belongs in the downstream case as an expression.</p>
-<p>Why low-code, and why before the case: the exercise is about a process that uses judgement where the business needs it, not about agent frameworks — and Agents are the only component testable in isolation, so building them first means the case block gets one authoring pass against things that already exist and answer.</p>
+<p>Seven checks in the process need judgement, and there are seven because different departments and business owners control them. The contract asks for <strong>seven low-code Agents, one per family of business rules</strong>, named in <code>contracts/components.md</code>. Nothing else is built here: the deterministic work is already deployed as the provided processes, or belongs in the downstream case as an expression.</p>
+<p>Why low-code, and why before the case? The exercise is about a process that uses judgement where the business needs it, not about agent frameworks. And Agents are the only component testable in isolation, so building them first gives the case block one authoring pass against things that already exist and answer.</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3c · Agents</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the seven Agents</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1482,29 +1482,29 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Upload the solution to Studio Web</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
-<h2 id="what-agent-will-review">What agent will review<a class="headerlink" href="#what-agent-will-review" title="Permanent link">&para;</a></h2>
+<h2 id="what-the-agent-will-review">What the agent will review<a class="headerlink" href="#what-the-agent-will-review" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>A prompt governs what an agent <em>reports</em>, never what it concludes.</strong> Whether a claim reaches a human is a <strong>case condition</strong> over the outputs these Agents emit (a flag count, a risk level, a net payable) never a sentence in a prompt. </li>
+<li><strong>A prompt governs what an agent <em>reports</em>, never what it concludes.</strong> Whether a claim reaches a human is a <strong>case condition</strong> over the outputs these Agents emit (a flag count, a risk level, a net payable), never a sentence in a prompt. </li>
 <li><strong>A typed output field beats a paragraph of prompt.</strong> When a payload must contain a fact, we declare it as a field in the output schema. A model fills a declared field reliably; prose asking it to be careful competes with every other sentence.</li>
 <li><strong>One concern, one owner.</strong> An Agent may cite another's finding as evidence; it may never re-raise it as its own. The reviewer sees every finding at once, and one problem reported by three Agents reads as three problems.</li>
 <li><strong>PDF documents reach an Agent as job attachments, never as extracted text.</strong> A policy's meaning lives in clause wording that flattening loses. Agents carry the built-in document reader for exactly this reason. </li>
 </ul>
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
-<p>One real invocation per Agent, on a real claim — <code>uip agent debug</code> — checking it returns what its §7 section says, <strong>including nothing at all on a clean claim</strong>. A grader's score is about structure and wording; only a run answers whether the agent does the thing.</p>
+<p>One real invocation per Agent, on a real claim, with <code>uip agent debug</code>: it must return what its §7 section says, <strong>including nothing at all on a clean claim</strong>. A grader's score is about structure and wording; only a run answers whether the agent does the thing.</p>
 <p>This workshop writes no evaluation sets for the Agents; Verify tests all seven end to end, on claims with planted problems. On a real project, give each Agent its own set: real inputs with their accepted outputs, re-run whenever its prompt or its model changes. It is <a href="../../verify/#the-baseline-comes-from-the-process-owner">Verify's baseline</a>, one Agent at a time.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<p>The outcome of this block, open in <strong>Studio Web</strong> — all seven Agents inside the solution, with EligibilityScreening showing what a built one looks like:</p>
+<p>The outcome of this block, open in <strong>Studio Web</strong>, with all seven Agents inside the solution and EligibilityScreening showing what a built one looks like:</p>
 <p><img alt="All seven Agents in the solution in Studio Web — EligibilityScreening open with its stepped system prompt, the Analyze Files tool, and typed inputs" class="screenshot" src="../3-build-the-seven-agents.images/seven-agents-in-studio-W.png" width="900" /></p>
-<p>Worth a close look, because the lesson's rules are visible in the build: the system prompt works in <strong>named steps</strong> and tells the agent to call <em>Analyze Files</em> on the policy <strong>exactly once</strong> — and never on the claim form, "the claim form already reaches you as structured data"; the user prompt carries <strong>typed inputs</strong> (<code>claimData</code>, <code>claimFormDocument</code>), not pasted text.</p>
+<p>The lesson's rules are visible in the build: the system prompt works in <strong>named steps</strong> and tells the agent to call <em>Analyze Files</em> on the policy <strong>exactly once</strong>, and never on the claim form ("the claim form already reaches you as structured data"); the user prompt carries <strong>typed inputs</strong> (<code>claimData</code>, <code>claimFormDocument</code>), not pasted text.</p>
 <!-- screenshot: one agent's trace — the typed output fields populated, on a real claim -->
 
 <p>Each of the seven runs on a real claim and answers per its rules; the solution is uploaded, and all seven open in <strong>Studio Web</strong>.</p>
 <h2 id="what-an-agent-hands-back">What an Agent hands back<a class="headerlink" href="#what-an-agent-hands-back" title="Permanent link">&para;</a></h2>
-<p>A typed output field beats a paragraph of prompt — and this is what that means in practice. Three real envelopes from real claims: what the case actually routes on, and what "found nothing" looks like when it is a real, populated answer.</p>
+<p>A typed output field beats a paragraph of prompt, and this is what that means in practice. Here are three real envelopes from real claims: what the case actually routes on, and what "found nothing" looks like when it is a real, populated answer.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">EligibilityScreening · clean</label><label for="__tabbed_1_2">SettlementCalculation · flagged</label><label for="__tabbed_1_3">AssessmentReportValidation · flagged</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><strong>What to notice:</strong> "found nothing" is not an absence — it is a populated, typed answer. Every rule has a verdict <em>and</em> the evidence it read; BR-03 even explains why a blank State field is correct for Singapore, not a data gap. A clean claim never shows a screen, so this envelope is the only place you ever see restraint working.</p>
+<p><strong>What to notice:</strong> "found nothing" is not an absence; it is a populated, typed answer. Every rule has a verdict <em>and</em> the evidence it read; BR-03 even explains why a blank State field is correct for Singapore, not a data gap. A clean claim never shows a screen, so this envelope is the only place you ever see restraint working.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Pass"</span><span class="p">,</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span><span class="nt">"failed"</span><span class="p">:</span><span class="w"> </span><span class="p">[],</span>
@@ -1524,7 +1524,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><strong>What to notice:</strong> the agent doesn't just say "reduce" — it quotes the arithmetic and names the evidence: the annual aggregate is <strong>Bound</strong>, the remainder and the prior claim that consumed it are stated, and the cap it forces is shown line by line. <code>aggregateStatus</code> and the capped <code>netPayable</code> are exactly the scalars the <strong>case</strong> routes on.</p>
+<p><strong>What to notice:</strong> the agent shows its arithmetic and names the evidence. The annual aggregate is <strong>Bound</strong>, the remainder and the prior claim that consumed it are stated, and the cap it forces is shown line by line. <code>aggregateStatus</code> and the capped <code>netPayable</code> are exactly the scalars the <strong>case</strong> routes on.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">// settlementJson — the ledger</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="p">{</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span><span class="s2">"currency"</span><span class="o">:</span><span class="w"> </span><span class="s2">"AUD"</span><span class="p">,</span>
@@ -1560,7 +1560,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><strong>What to notice:</strong> the whole discipline in one field. <code>conclusion: "Escalate"</code> is the routing scalar, and <code>contradictions[]</code> carries <strong>both statements, verbatim</strong> — the human sees exactly what conflicts without re-reading the report. The claim reaches the adjuster with the reason already assembled.</p>
+<p><strong>What to notice:</strong> <code>conclusion: "Escalate"</code> is the routing scalar, and <code>contradictions[]</code> carries <strong>both statements, verbatim</strong>, so the human sees exactly what conflicts without re-reading the report. The claim reaches the adjuster with the reason already assembled.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">{</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">"conclusion"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Escalate"</span><span class="p">,</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="nt">"belongsToThisClaim"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span>

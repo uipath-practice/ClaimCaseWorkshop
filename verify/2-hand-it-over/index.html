@@ -1424,7 +1424,7 @@
 
 
 <h1 id="hand-it-over-block-5">Hand It Over (Block 5)<a class="headerlink" href="#hand-it-over-block-5" title="Permanent link">&para;</a></h1>
-<p>Everything runs and block 4 proved it. The last block <strong>deploys nothing</strong> — the deployment you verified is the one that ships. UAT and production are the same package landing in another tenant with that environment's config; that happens in an organization's environments, not in this exercise. What this block does is make the build <em>transferable</em>: pin what runs, true up the design, and write for the person who wasn't here.</p>
+<p>Everything runs and block 4 proved it. The last block <strong>deploys nothing</strong>: the deployment you verified is the one that ships. UAT and production are the same package landing in another tenant with that environment's config; that happens in an organization's environments, not in this exercise. What this block does is make the build <em>transferable</em>: pin what runs, true up the design, and write for the person who wasn't here.</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 5 · Ship</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Hand over</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1458,7 +1458,7 @@
 <p>Steps:</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pin in <code>PROGRESS.md</code>: deployment name, package name + version, both folder keys, the case release key (never the rotating operation Key), the app's deployed version</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Check what travelled: case + seven Agents inside the <code>.uipx</code>, app deployed beside it, no hand-deployed stand-ins — a read, not a redeploy</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Check what travelled: case + seven Agents inside the <code>.uipx</code>, app deployed beside it, no hand-deployed stand-ins; a read, not a redeploy</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Bring <code>sdd.md</code> to as-built: an As Built section, Design Feedback + Action Required rows for what verify fixed in the case</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Close every task in <code>tasks.md</code> (done, or says why not); final solution upload</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Write the operator runbook: prerequisites, deploy and promotion, known-broken with the change each needs, what to do when a claim faults</li>
@@ -1466,22 +1466,22 @@
 </ul>
 <h2 id="what-to-review">What to review<a class="headerlink" href="#what-to-review" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>Pins, not keys.</strong> A deployment's operation key rotates with every operation; the name, the package name and version, the folder keys and the case release key do not. Pin the stable ones — a runbook full of rotating identifiers is stale before it's read.</li>
-<li><strong>Check what travelled.</strong> The case and the seven Agents belong inside the <code>.uipx</code>; the app is deployed beside it. The thing to catch: something you deployed by hand mid-build silently standing in for a project that never made it into the package. This is a read of the package and the deployments — not a redeploy.</li>
-<li><strong>Look hardest at what block 4 fixed in the case.</strong> A condition that narrows a rule a business user signed is a <strong>design change</strong>, whether or not anyone wrote it down. It goes into the SDD as a Design Feedback row <em>and</em> an Action Required row — first in line to be signed. Where the as-built section and the original design differ, the as-built is right.</li>
-<li><strong>The runbook is for a different reader.</strong> Not the agent that built the solution, and not you tomorrow — a human operating it who was never here: what has to exist first (the provided processes, the shared IXP project, the entity, the shared connection), how it deploys and would be promoted, what is known-broken, and what to do when a claim faults. Most of the facts already sit in <code>PROGRESS.md</code>; this is a rewrite for someone who cannot ask you a question. And a known limitation is written <strong>with the change it needs</strong> — a limitation without one is a complaint.</li>
+<li><strong>Pins, not keys.</strong> A deployment's operation key rotates with every operation; the name, the package name and version, the folder keys and the case release key do not. Pin the stable ones; a runbook full of rotating identifiers is stale before it's read.</li>
+<li><strong>Check what travelled.</strong> The case and the seven Agents belong inside the <code>.uipx</code>; the app is deployed beside it. Catch anything you deployed by hand mid-build that silently stands in for a project that never made it into the package. This is a read of the package and the deployments, not a redeploy.</li>
+<li><strong>Look hardest at what block 4 fixed in the case.</strong> A condition that narrows a rule a business user signed is a <strong>design change</strong>, whether or not anyone wrote it down. It goes into the SDD as a Design Feedback row <em>and</em> an Action Required row, first in line to be signed. Where the as-built section and the original design differ, the as-built is right.</li>
+<li><strong>The runbook is for a different reader.</strong> It is written for a human who operates the solution and was never here, not for the agent that built it or for you tomorrow. It covers what has to exist first (the provided processes, the shared IXP project, the entity, the shared connection), how it deploys and would be promoted, what is known-broken, and what to do when a claim faults. Most of the facts already sit in <code>PROGRESS.md</code>; this is a rewrite for someone who cannot ask you a question. And a known limitation is written <strong>with the change it needs</strong>; a limitation without one is a complaint.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">What 'done' means</p>
-<p>"The build is done" is a statement about a <strong>pinned version</strong>, an <strong>as-built design</strong> and a <strong>runbook</strong> — never about the last green run. Trust in the solution, like trust in an agent, attaches to evidence per decision, not to a good afternoon.</p>
+<p>"The build is done" is a statement about a <strong>pinned version</strong>, an <strong>as-built design</strong> and a <strong>runbook</strong>, never about the last green run. Trust in the solution, like trust in an agent, attaches to evidence per decision, not to a good afternoon.</p>
 </div>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
 <!-- screenshot: Studio Web showing the solution that is running — version matching the pinned one in PROGRESS.md -->
 
 <p>The deployed version is the one you packed; <code>sdd.md</code> describes what runs; every task is closed; the runbook exists. Someone you have never met could redeploy this tomorrow.</p>
 <details class="example">
-<summary>What a finished handover sounds like — an agent's final report, from a real run (expand)</summary>
-<p>Everything this page asks for, in the agent's own closing words. Worth reading closely: the pins table marks which key <strong>does not rotate</strong> — and calls out the one that does as <em>not pinned</em>, by name; the package was <strong>read back, never redeployed</strong>, byte-identical to disk; the as-built SDD corrected its own design-stage claim "in place, as a correction"; the runbook is "260 lines for someone who was never here," every command in it executed first; and the task list closes honestly — <em>"ticking alone would have been dishonest, so eight carry a Deviation line."</em></p>
+<summary>What a finished handover sounds like: an agent's final report, from a real run (expand)</summary>
+<p>Everything this page asks for, in the agent's own closing words. The pins table marks which key <strong>does not rotate</strong> and calls out the one that does as <em>not pinned</em>, by name; the package was <strong>read back, never redeployed</strong>, byte-identical to disk; the as-built SDD corrected its own design-stage claim "in place, as a correction"; the runbook is "260 lines for someone who was never here," every command in it executed first; and the task list closes honestly: <em>"ticking alone would have been dishonest, so eight carry a Deviation line."</em></p>
 <p><img alt="The agent's final block-5 report: the pinned solution version table, the read-back verification, the as-built SDD changes, the runbook and the honestly-closed task list" class="screenshot" src="../2-hand-it-over.images/handover-final-report-W.png" width="900" /></p>
 </details>
 

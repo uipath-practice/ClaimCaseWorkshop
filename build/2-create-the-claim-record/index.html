@@ -972,10 +972,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-agent-will-review" class="md-nav__link">
+  <a href="#what-the-agent-will-review" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What agent will review
+        What the agent will review
       
     </span>
   </a>
@@ -1435,8 +1435,8 @@
 
 
 <h1 id="create-the-claim-record-block-3b">Create the Claim Record (Block 3b)<a class="headerlink" href="#create-the-claim-record-block-3b" title="Permanent link">&para;</a></h1>
-<p>The PDD asks for a store that outlives any single step and can be read while the claim is in flight. That is a <strong>Data Fabric</strong> entity, and this block builds it — one entity, in your seat folder, on the pinned schema from <code>contracts/claim-entity.md</code>.</p>
-<p>The schema is pinned for a reason worth reading in the contract itself: every seat builds a compatible record, so one reference screen can read any seat's claim and every seat's letters compare. </p>
+<p>The PDD asks for a store that outlives any single step and can be read while the claim is in flight. That is a <strong>Data Fabric</strong> entity, and this block builds it: one entity, in your seat folder, on the pinned schema from <code>contracts/claim-entity.md</code>.</p>
+<p>The schema is pinned, and the contract itself explains why: every seat builds a compatible record, so one reference screen can read any seat's claim and letters compare across seats. </p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3b · Claim record</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the claim entity in Data Fabric</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1453,21 +1453,21 @@
 <p>Steps:</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read <code>contracts/claim-entity.md</code> (pinned schema, five column tables, casing rule) and <code>CONFIG.md</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Load the uipath-platform skill (<code>uip df</code>); </li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Load the uipath-platform skill (<code>uip df</code>)</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Create the entity in the seat folder</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Round-trip: write cents and a 9,000-character payload, read both back unchanged, delete the test row</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Record the entity name and folder GUID in <code>PROGRESS.md</code></li>
 </ul>
-<h2 id="what-agent-will-review">What agent will review<a class="headerlink" href="#what-agent-will-review" title="Permanent link">&para;</a></h2>
+<h2 id="what-the-agent-will-review">What the agent will review<a class="headerlink" href="#what-the-agent-will-review" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>One create, from a file.</strong> Update takes a different body shape from the one <code>get</code> returns, so the natural read-edit-write loop does not work here. Creating fresh from a schema file is one call and no repair.</li>
-<li><strong>Two budgets, and they are not the same number.</strong> JSON columns hold 10,000 characters, and every producer budgets 8,000 in its prompt — headroom is the contract. Separately, every <em>consumer's</em> summed inputs must stay under the platform's cap on serialized arguments. Your SDD already states both as arithmetic; this is where the numbers become real.</li>
+<li><strong>Two budgets, and they are not the same number.</strong> JSON columns hold 10,000 characters, and every producer budgets 8,000 in its prompt; that headroom is part of the contract. Separately, every <em>consumer's</em> summed inputs must stay under the platform's cap on serialized arguments. Your SDD already states both as arithmetic; this is where the numbers become real.</li>
 <li><strong>The connection is shared, and that's deliberate.</strong> Authorizing a Data Fabric connection is an interactive OAuth consent. One shared connection serves every seat.</li>
 </ul>
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
-<p>The round-trip <em>is</em> the gate: a value with cents and a 9,000-character payload written, read back unchanged, and the test row deleted. Round-trip before you build on it — a store you have only written to is a store you know half of.</p>
+<p>The round-trip <em>is</em> the gate: a value with cents and a 9,000-character payload written, read back unchanged, and the test row deleted. Round-trip before you build on it: a store you have only written to is a store you know half of.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<p>The entity as built, in <strong>Data Fabric</strong> — and the contract's numbers are visible on it: the analysis columns as Multi-line Text at max length <strong>10,000</strong>, <code>reviewerNotes</code> at 4,000, <code>reviewRequired</code> as a typed Yes/No:</p>
+<p>The entity as built, in <strong>Data Fabric</strong>, with the contract's numbers visible on it: the analysis columns as Multi-line Text at max length <strong>10,000</strong>, <code>reviewerNotes</code> at 4,000, <code>reviewRequired</code> as a typed Yes/No:</p>
 <p><img alt="The claim entity's field list in Data Fabric — JSON analysis columns at 10,000, typed decision fields" class="screenshot" src="../2-create-the-claim-record.images/claim-entity-fields-W.png" width="900" /></p>
 <!-- screenshot: one row with a JSON payload column populated — shoot after a live run has written a record -->
 

@@ -1446,7 +1446,7 @@
 
 
 <h1 id="verify">Verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h1>
-<p>Every piece was checked as you built it. This section answers the only question left — <strong>does the whole thing work?</strong> — and then hands the solution over in a state someone else can run.</p>
+<p>Every piece was checked as you built it. One question is left: <strong>does the whole thing work?</strong> This section answers it, then hands the solution over in a state someone else can run.</p>
 <h2 id="what-each-stage-proves">What each stage proves<a class="headerlink" href="#what-each-stage-proves" title="Permanent link">&para;</a></h2>
 <p>A claims case runs for days and crosses seven Agents, a case plan, a data record and two human gates. No single test can see all of that, so the build tested in layers: each stage proved one thing, and deliberately not the next.</p>
 <pre class="mermaid"><code>flowchart TD
@@ -1468,8 +1468,8 @@
   V -.-&gt;|"the baseline&lt;br&gt;itself"| O
   V ==&gt;|"baseline passes,&lt;br&gt;or three cycles run"| H</code></pre>
 <ul>
-<li><strong>Format is not meaning.</strong> Each Agent ran on one real claim, and you read its payload. That proves the inputs arrive and the output has the right shape — not that the analysis holds.</li>
-<li><strong>Mechanics are not judgement.</strong> Five steered runs prove the stages fire in order and data flows between them — not that the case picks the right route on its own.</li>
+<li><strong>Format is not meaning.</strong> Each Agent ran on one real claim, and you read its payload. That proves the inputs arrive and the output has the right shape, not that the analysis holds.</li>
+<li><strong>Mechanics are not judgement.</strong> Five steered runs prove the stages fire in order and data flows between them, not that the case picks the right route on its own.</li>
 <li><strong>Representation is not correctness.</strong> A faithful screen shows a wrong finding just as faithfully.</li>
 </ul>
 <p>That is why every earlier block can pass while the judgement is still wrong. Verify is the only stage that looks at the whole.</p>
@@ -1488,7 +1488,7 @@
 <tr>
 <td><strong>Offline gates</strong></td>
 <td><code>check_sdd.py</code>, <code>check_extraction_keys.py</code>, <code>check_caseplan.py</code></td>
-<td>Shape, references, keys — before anything is deployed</td>
+<td>Shape, references and keys, before anything is deployed</td>
 <td>Whether the thing behaves</td>
 </tr>
 <tr>
@@ -1507,7 +1507,7 @@
 </table>
 <ul>
 <li><strong>Every gate is a floor.</strong> A schema validator knows the document is well-formed; a grader knows it is well-written. Neither knows <strong>what you are building</strong>, and both will pass a component that cannot work.</li>
-<li><strong>The seams need their own checks.</strong> Where one stage produces and the next consumes, neither side checks the handover — the producer has finished, the consumer was told to trust. Unit-proven pieces can still compose into a wrong whole.</li>
+<li><strong>The seams need their own checks.</strong> Where one stage produces and the next consumes, neither side checks the handover: the producer has finished, and the consumer was told to trust it. Unit-proven pieces can still compose into a wrong whole.</li>
 </ul>
 <h2 id="the-baseline-comes-from-the-process-owner">The baseline comes from the process owner<a class="headerlink" href="#the-baseline-comes-from-the-process-owner" title="Permanent link">&para;</a></h2>
 <ul>
@@ -1530,7 +1530,7 @@
 </tr>
 </tbody>
 </table>
-<p>In a real engagement the stage does not stop until <strong>every baseline case passes on the same build</strong>. In this workshop it runs <strong>three fix cycles</strong> — a whole batch, every fix it shows, one redeploy — then scores one last batch: each planted problem caught by its owner or listed with the fix it still needs, and clean claims inside the PDD's tolerance of one in ten referred to a human. The hand-over opens with that scorecard. After each fix, re-run all of it, not just the case that failed — fixes mask each other. A claim escalated for the wrong reason still reaches a human; close that reason, and a missed problem goes straight through. Detection and restraint pull against each other (PDD §1.3), so measure both on one batch.</p>
+<p>In a real engagement the stage does not stop until <strong>every baseline case passes on the same build</strong>. In this workshop it runs <strong>three fix cycles</strong> (a whole batch, every fix it shows, one redeploy), then scores one last batch: each planted problem caught by its owner or listed with the fix it still needs, and clean claims inside the PDD's tolerance of one in ten referred to a human. The hand-over opens with that scorecard. After each fix, re-run all of it, not just the case that failed, because fixes mask each other. A claim escalated for the wrong reason still reaches a human; close that reason, and a missed problem goes straight through. Detection and restraint pull against each other (PDD §1.3), so measure both on one batch.</p>
 <p>Each failure goes back to the layer at fault:</p>
 <table>
 <thead>
@@ -1542,7 +1542,7 @@
 <tbody>
 <tr>
 <td>An Agent judged wrong</td>
-<td>Its prompt — then rebuild and re-run</td>
+<td>Its prompt, then rebuild and re-run</td>
 </tr>
 <tr>
 <td>A wrong conclusion sends a claim to a human, or past one</td>
@@ -1550,7 +1550,7 @@
 </tr>
 <tr>
 <td>A claim took the wrong path</td>
-<td>The case plan — its conditions or its sequence</td>
+<td>The case plan: its conditions or its sequence</td>
 </tr>
 <tr>
 <td>A screen misrepresents the claim</td>
@@ -1562,12 +1562,12 @@
 </tr>
 <tr>
 <td>The test itself is wrong or ambiguous</td>
-<td>Back to the process owner — the PDD rule or the expected outcome</td>
+<td>Back to the process owner: the PDD rule or the expected outcome</td>
 </tr>
 </tbody>
 </table>
-<p>When the answer key and the PDD disagree, the PDD decides — and sometimes a rule's wording admits two readings. Only the process owner can say which the business meant.</p>
-<p>Two questions from <em>The Work That Remains</em> make a good standing review of any design, this one included: <em>who supplies the checker here?</em> — and <em>what part of the system guarantees correctness when correctness is required?</em> If the answer to the second is "the model," the architecture is unsafe. Here, the process owner's baseline answers the first; case conditions and the human gates answer the second.</p>
+<p>When the answer key and the PDD disagree, the PDD decides. Sometimes a rule's wording admits two readings, and only the process owner can say which the business meant.</p>
+<p>Two questions from <em>The Work That Remains</em> make a good standing review of any design, this one included: <em>who supplies the checker here?</em> and <em>what part of the system guarantees correctness when correctness is required?</em> If the answer to the second is "the model," the architecture is unsafe. Here, the process owner's baseline answers the first; case conditions and the human gates answer the second.</p>
 <h2 id="in-this-section">In this section<a class="headerlink" href="#in-this-section" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1579,11 +1579,11 @@
 <tbody>
 <tr>
 <td><a href="1-hunt-the-planted-problems/">1. Hunt the Planted Problems</a></td>
-<td>Block 4 — clean claims first, then one aimed run per problem, scored against the key</td>
+<td>Block 4: clean claims first, then one aimed run per problem, scored against the key</td>
 </tr>
 <tr>
 <td><a href="2-hand-it-over/">2. Hand It Over</a></td>
-<td>Block 5 — pins, the as-built design, and a runbook for whoever runs it next</td>
+<td>Block 5: pins, the as-built design, and a runbook for whoever runs it next</td>
 </tr>
 </tbody>
 </table>

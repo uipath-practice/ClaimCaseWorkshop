@@ -1056,10 +1056,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-agent-will-review" class="md-nav__link">
+  <a href="#what-the-agent-will-review" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What agent will review
+        What the agent will review
       
     </span>
   </a>
@@ -1424,7 +1424,7 @@
 
 
 <h1 id="run-the-case-block-3e">Run the Case (Block 3e)<a class="headerlink" href="#run-the-case-block-3e" title="Permanent link">&para;</a></h1>
-<p>The plan is checked but has never met a real claim. This block deploys it and finds out what it actually does. <strong>Several deploy cycles is the normal shape of this block</strong> — the discipline is that each cycle ends with a named defect and a fix, not with "tried again."</p>
+<p>The plan is checked but has never met a real claim. This block deploys it and finds out what it actually does. <strong>Several deploy cycles are the normal shape of this block.</strong> The discipline is that each cycle ends with a named defect and a fix, not with "tried again."</p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3e · Run it</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Run Maestro Case and test it: the clean claim, then the four possible routes involving human review</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1453,17 +1453,17 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Upload the solution to Studio Web</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Update <code>PROGRESS.md</code></li>
 </ul>
-<h2 id="what-agent-will-review">What agent will review<a class="headerlink" href="#what-agent-will-review" title="Permanent link">&para;</a></h2>
+<h2 id="what-the-agent-will-review">What the agent will review<a class="headerlink" href="#what-the-agent-will-review" title="Permanent link">&para;</a></h2>
 <ul>
-<li><strong>The clean claim is the acceptance run.</strong> A claim with nothing wrong traverses the whole lifecycle unattended. No task ever appears. Read the <strong>Data Fabric</strong> record and the case instance's trace instead — the checks, the findings and the letter should be all there. A <em>flagged</em> clean claim means the Agents are wrong, not the case.</li>
+<li><strong>The clean claim is the acceptance run.</strong> A claim with nothing wrong traverses the whole lifecycle unattended. No task ever appears. Read the <strong>Data Fabric</strong> record and the case instance's trace instead: the checks, the findings and the letter should all be there. A <em>flagged</em> clean claim means the Agents are wrong, not the case.</li>
 <li><strong>Four human routes, answered from the command line.</strong> The app has no screens yet and doesn't need them. A route that misbehaves now is a case defect, and finding it before the screens exist is the objective.</li>
-<li><strong>One identity.</strong> Single claim number spans the case, the three documents, the letters and the record's key.</li>
-<li><strong>Letters are logged, never sent.</strong> No mail leaves the exercise — the notification process records every letter (claim, stage, recipient, subject, body) in a tenant-level entity. The reviewer's screen later will show the thread from it, and Verify will read decisions from it.</li>
+<li><strong>One identity.</strong> A single claim number spans the case, the three documents, the letters and the record's key.</li>
+<li><strong>Letters are logged, never sent.</strong> No mail leaves the exercise: the notification process records every letter (claim, stage, recipient, subject, body) in a tenant-level entity. The reviewer's screen will later show the thread from it, and Verify will read decisions from it.</li>
 </ul>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
 <!-- screenshot: a live case instance — the timeline through analysis to Approved, no task raised -->
 
-<p>A clean claim goes in; a settled claim comes out, no human touching it and no task ever raised. Then all four human routes, each proven from the CLI, each landing its data on the record.</p>
+<p>A clean claim goes in; a settled claim comes out, no human touching it and no task ever raised. Then all four human routes pass, each proven from the CLI and each landing its data on the record.</p>
 
 
 

@@ -944,10 +944,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-agent-will-review" class="md-nav__link">
+  <a href="#what-the-agent-will-review" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What agent will review
+        What the agent will review
       
     </span>
   </a>
@@ -1435,8 +1435,8 @@
 
 
 <h1 id="extract-the-documents-block-3a">Extract the Documents (Block 3a)<a class="headerlink" href="#extract-the-documents-block-3a" title="Permanent link">&para;</a></h1>
-<p>The claim form is the one document that arrives as a <strong>structured form</strong>, so it is read into fields with <strong>IXP</strong>. The policy and the assessor report are prose — they stay documents, and the Agents will read them directly. This block proves the reading before anything downstream binds to it.</p>
-<p>Nothing is created here. The shared IXP project already exists, published and pinned, and the provided <em>Extract Claim Data</em> automation is wired to it. Your job is to adopt it and prove it — the extraction is provided infrastructure, like the generator and the retrieval processes: <strong>bind these, never rebuild them.</strong></p>
+<p>The claim form is the one document that arrives as a <strong>structured form</strong>, so it is read into fields with <strong>IXP</strong>. The policy and the assessor report are prose: they stay documents, and the Agents read them directly. This block proves the reading before anything downstream binds to it.</p>
+<p>Nothing is created here. The shared IXP project already exists, published and pinned, and the provided <em>Extract Claim Data</em> automation is wired to it. Your job is to adopt it and prove it. The extraction is provided infrastructure, like the generator and the retrieval processes: <strong>bind these, never rebuild them.</strong></p>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3a · Extraction</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Reuse — Claim Form IXP extraction</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
@@ -1470,25 +1470,25 @@
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Prefer to train your own extraction model instead? <code>3a-extraction/prompt-build.md</code> in the seed is the supported second route — same output shape, about an hour of labelling.</p>
+<p>Prefer to train your own extraction model instead? <code>3a-extraction/prompt-build.md</code> in the seed is the supported second route: same output shape, about an hour of labelling.</p>
 </div>
-<h2 id="what-agent-will-review">What agent will review<a class="headerlink" href="#what-agent-will-review" title="Permanent link">&para;</a></h2>
+<h2 id="what-the-agent-will-review">What the agent will review<a class="headerlink" href="#what-the-agent-will-review" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Why two claims.</strong> One claim proves the fields exist; the second proves the key set does not vary and the damage inventory repeats one row per item, not one blob.</li>
-<li><strong>Keys come from the payload, never from the form's labels.</strong> The model emits <code>TypeOfIncident</code>, not the printed <em>Type of Incident</em>. Every extraction binding downstream is optional-chained, so a wrong key never throws — it silently yields nothing, and the first symptom would be an empty field three blocks from now. That is exactly why this block ends with a checker.</li>
+<li><strong>Keys come from the payload, never from the form's labels.</strong> The model emits <code>TypeOfIncident</code>, not the printed <em>Type of Incident</em>. Every extraction binding downstream is optional-chained, so a wrong key never throws; it silently yields nothing, and the first symptom would be an empty field three blocks from now. That is why this block ends with a checker.</li>
 <li><strong>Confidence has three states</strong>, not two: confident, unconfident, and <em>absent</em>. A threshold rule that special-cases only one of them ends up flagging empty optional fields as data problems.</li>
-<li><strong>Payload sizes are a design input.</strong> About 5,000–5,600 characters per claim, ~500 per damage row, five rows maximum — numbers your entity columns and agent input budgets are sized against in the next blocks.</li>
+<li><strong>Payload sizes are a design input.</strong> About 5,000–5,600 characters per claim, ~500 per damage row, five rows maximum. Your entity columns and agent input budgets are sized against these numbers in the next blocks.</li>
 </ul>
 <div class="admonition note">
 <p class="admonition-title">Publishing is not deploying</p>
-<p>The shared model is <em>published</em> and callers pin its version — it needs no deployment into your folder at all. Two different verbs, two different lifecycles; keeping them apart will matter again at the app block.</p>
+<p>The shared model is <em>published</em> and callers pin its version, so it needs no deployment into your folder at all. Two different verbs, two different lifecycles; keeping them apart will matter again at the app block.</p>
 </div>
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span>3a-extraction/check_extraction_keys.py<span class="w"> </span>&lt;payload.json&gt;
 </code></pre></div>
-<p>It walks <strong>every extraction path your design reads</strong> against a real payload — the one class of defect that fails silently everywhere else.</p>
+<p>It walks <strong>every extraction path your design reads</strong> against a real payload. A wrong key is the one defect that fails silently everywhere else.</p>
 <h2 id="proof">Proof<a class="headerlink" href="#proof" title="Permanent link">&para;</a></h2>
-<p>Evidence from a real run of this block — a live extraction of claim <code>CLM-2026-397530</code>, all six field groups present, four damage rows. Here is the part the lesson keeps pointing at: the <code>ClaimDamageInventory</code> array, <strong>one object per damaged item</strong>, every field carrying its own confidence.</p>
+<p>Evidence from a real run of this block: a live extraction of claim <code>CLM-2026-397530</code>, all six field groups present, four damage rows. The part to look at is the <code>ClaimDamageInventory</code> array, <strong>one object per damaged item</strong>, every field carrying its own confidence.</p>
 <details class="example">
 <summary>The damage inventory, as the model returned it (expand)</summary>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">[</span>
@@ -1514,8 +1514,8 @@
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">]</span>
 </code></pre></div>
 </details>
-<p>Notice what the page has been telling you, now visible in the data: the keys are the <strong>model's</strong> (<code>RepairOrReplace</code>, not the form's printed label), the rows <strong>repeat per item</strong> instead of arriving as one blob, and confidence sits on <strong>every field separately</strong> — the structure your design binds to.</p>
-<p>And here are the same four rows as they sit on the claim form itself — compare <code>Repair / Replace</code> on paper with <code>RepairOrReplace</code> in the payload:</p>
+<p>The keys are the <strong>model's</strong> (<code>RepairOrReplace</code>, not the form's printed label), the rows <strong>repeat per item</strong> instead of arriving as one blob, and confidence sits on <strong>every field separately</strong>: the structure your design binds to.</p>
+<p>And here are the same four rows as they sit on the claim form itself; compare <code>Repair / Replace</code> on paper with <code>RepairOrReplace</code> in the payload:</p>
 <p><img alt="The claim form's damage-inventory table — the four rows the payload above was extracted from" class="screenshot" src="../1-extract-the-documents.images/claim-form-damage-inventory-W.png" width="900" /></p>
 <p>Two claim forms you have never seen come back with every field group populated, the damage rows repeating correctly, and every key your design reads confirmed against a real payload.</p>
 
