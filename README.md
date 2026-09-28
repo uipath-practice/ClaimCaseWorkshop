@@ -1,38 +1,48 @@
 # ClaimCase Workshop
 
-Participant handbook for the ClaimCase workshop: build an enterprise
-property-claims solution end-to-end with coding agents — design, plan, six
-build blocks, verification against planted problems, and handover.
+The participant guide for a hands-on workshop: build an enterprise property-claims solution end to end by directing a coding agent on the UiPath platform.
 
-**Status: structure only.** Pages are approved outlines awaiting the content
-pass. GitHub Pages is not enabled yet.
+**Read it at [uipath-practice.github.io/ClaimCaseWorkshop](https://uipath-practice.github.io/ClaimCaseWorkshop/).**
+
+One claim arrives as three PDF documents; a settled claim, or a decision from the right person, comes out. On the way you build an IXP extraction, a Data Fabric claim record, seven low-code Agents, a Maestro case with two human gates, a Coded Action App for the reviewers and a Coded Web App for the claims team lead. The audience is technical (level 300), and participants bring the coding agent they already use.
+
+## The path
+
+| Section | What happens |
+|---|---|
+| **Prepare** | Check the tools, learn how a block runs, get the exercise seed |
+| **Plan** | Read the business requirements (PDD); the agent generates the solution design (SDD) and the task list |
+| **Build** | Six blocks, one prompt each, each proven by a gate before the next starts |
+| **Verify** | Hunt planted problems in generated claims, then hand the solution over |
+| **App** | Build the process app: the portfolio view over every claim |
+| **Next Steps** | What transfers to your own process, and the references the course quotes |
 
 ## How this repo works
 
-- MkDocs Material site; content in `docs/`, one folder per workshop stage
-  (Prepare → Plan → Build → Verify), navigation in `mkdocs.yml`.
-- The exercise seed lives in its own repo,
-  [PropertyClaimsSeeds](https://github.com/uipath-practice/PropertyClaimsSeeds),
-  mounted here as the `seeds/` submodule. Lesson pages transclude the seed's
-  prompts at build time (`pymdownx.snippets`), so the course always shows the
-  exact prompt participants run. The pinned submodule commit is the frozen
-  seed version for a cohort.
-- Training-environment values (URL, tenant) are macros from `main.py`,
-  switched with `COURSE_ENV` (staging | prod).
-- Authoring rules and templates: `Master/` (see `CLAUDE.md` for the always-on
-  subset). Draft sections stay out of `mkdocs.yml` nav; preview them with
-  `mkdocs.local.yml`.
-- Localization is wired (`mkdocs-static-i18n`) but dormant — English only for
-  now.
+- **Site:** MkDocs Material. Pages live in `docs/`, one folder per section, and the navigation is in `mkdocs.yml`.
+- **The seed** is its own repository, [PropertyClaimsSeeds](https://github.com/uipath-practice/PropertyClaimsSeeds), mounted here as the `seeds/` submodule. Lesson pages transclude its prompts at build time (`pymdownx.snippets`), so the course always shows the exact prompt a participant runs. The pinned submodule commit is the seed version a cohort uses; `seeds/VERSION` names it.
+- **Seed excerpts by line range** (`--8<-- "seeds/PDD.md:380:391"`) do not fail the build when the seed moves; they render the wrong lines. After every `seeds/` bump, re-check them (`CLAUDE.md`, rule 3).
+- **Environment values** (training URL, tenant) are macros from `main.py`, switched with `COURSE_ENV` (`staging` or `prod`).
+- **Authoring rules and templates** live in `Master/`, and `CLAUDE.md` carries the always-on subset for coding agents. `Master/Language.md` covers voice, word choices and the patterns that make a page read as generated.
+- **Maintainer commands** for Claude Code (new, review and publish a lesson or exercise) are in `.claude/commands/`.
+- **Localization** is wired (`mkdocs-static-i18n`) but dormant: English only for now.
 
-## Local preview
+## Preview locally
 
 ```bash
+git clone --recurse-submodules https://github.com/uipath-practice/ClaimCaseWorkshop.git
+cd ClaimCaseWorkshop
 pip install -r requirements.txt
-git submodule update --init
-mkdocs serve -f mkdocs.local.yml   # includes draft sections
-mkdocs build                       # what CI deploys
+mkdocs serve                 # http://127.0.0.1:8000
+mkdocs build --strict        # run before every commit; a missing include fails it
 ```
 
-Deploy: GitHub Actions (`.github/workflows/deploy.yml`) publishes to the
-`gh-pages` branch on every push to `main`.
+In an existing clone, `git submodule update --init` fetches the seed. Draft pages stay out of `mkdocs.yml`; a maintainer previews them with a local, untracked `mkdocs.local.yml`.
+
+## Deploy
+
+Every push to `main` runs `.github/workflows/deploy.yml`, which builds with `COURSE_ENV=prod` and publishes to the `gh-pages` branch, so a push to `main` goes live.
+
+## Feedback
+
+Found something broken, unclear or out of date? [Open an issue](https://github.com/uipath-practice/ClaimCaseWorkshop/issues), or tell your instructor.
