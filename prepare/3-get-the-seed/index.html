@@ -1456,7 +1456,7 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>unzip<span class="w"> </span>seed.zip<span class="w"> </span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>mv<span class="w"> </span>PropertyClaimsSeeds-main<span class="w"> </span>ClaimCase-&lt;seat&gt;
 </code></pre></div>
-<p>Prefer the clone. With git, <code>git status</code> answers <em>what did I build</em> and <code>git diff</code> answers <em>what did I change</em> — the difference between writing up your build from evidence and writing it from memory. </p>
+<p>Prefer the clone. With git, <code>git status</code> answers <em>what did I build</em> and <code>git diff</code> answers <em>what did I change</em>, so you write up your build from evidence rather than from memory.</p>
 <h2 id="whats-inside">What's inside<a class="headerlink" href="#whats-inside" title="Permanent link">&para;</a></h2>
 <table>
 <thead>
@@ -1488,15 +1488,15 @@
 </tr>
 <tr>
 <td><code>method/</code></td>
-<td>The delivery method the blocks follow, and the PDD/SDD guides. These are templates/reference only and not used during the build.</td>
+<td>The delivery method the blocks follow, and the PDD and SDD guides: reference only, not used during the build.</td>
 </tr>
 <tr>
 <td><code>known-issues/</code></td>
-<td>Platform behaviours worth knowing, saves time to your agent.</td>
+<td>Platform behaviours worth knowing; they save your agent time.</td>
 </tr>
 <tr>
-<td><code>1-design/</code> … <code>5-ship/</code></td>
-<td>One folder per block: <code>prompt.md</code>, <code>cookbook.md</code>, sometimes a gate script is inside.</td>
+<td><code>1-design/</code> … <code>6-process-app/</code></td>
+<td>One folder per block: <code>prompt.md</code>, <code>cookbook.md</code>, and sometimes a gate script.</td>
 </tr>
 <tr>
 <td><code>log-finding.py</code></td>
@@ -1534,20 +1534,20 @@
 <a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>-rw-r--r--@ 1     38     4 Sep 14:16  VERSION
 </code></pre></div>
 <h2 id="provided-vs-built">Provided vs. built<a class="headerlink" href="#provided-vs-built" title="Permanent link">&para;</a></h2>
-<p>Your Orchestrator seat folder comes with few dependencies: mechanical RPA automations, Storage Buckets, reusable IXP project for claims. Tenant also exposes shared resources. Bind those, don't build your own. This way you will focus on build the thinking part and not basic scripts.</p>
+<p>Your Orchestrator seat folder comes with a few dependencies: mechanical RPA automations, storage buckets and a reusable IXP project for claims. The tenant also exposes shared resources. Bind those rather than building your own, so your time goes into the parts that need thinking, not basic scripts.</p>
 <h2 id="what-you-will-produce">What you will produce<a class="headerlink" href="#what-you-will-produce" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>sdd.md</code> and <code>tasks.md</code>: the plan (block 1 &amp; 2)</li>
-<li><code>Build/ClaimCase-&lt;seat&gt;/</code>: Solution: the Maestro Case and the seven Agents</li>
+<li><code>Build/ClaimCase-&lt;seat&gt;/</code>: the solution, holding the Maestro case and the seven Agents</li>
 <li><code>Build/claim-review-&lt;seat&gt;/</code>: the standalone Coded Action App</li>
 <li>a filled <code>PROGRESS.md</code>, your logged findings, and at the end the operator's <code>runbook.md</code></li>
 </ul>
 <h2 id="pre-flight">Pre-flight<a class="headerlink" href="#pre-flight" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip login status</code> — right tenant, right folder. Nearly every "not found" is a wrong tenant, wrong folder, or stale cache — build the habit now</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip --version</code> — the CLI self-updates, so knowing which version you ran matters later</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>python3 log-finding.py --identify</code> — declares your agent, model and CLI version once, so results are diagnosable</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Open <code>README.md</code> in the seed and read "The sequence" — five minutes, and the whole day makes sense</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip login status</code>: right tenant, right folder. Nearly every "not found" is a wrong tenant, a wrong folder or a stale cache, so build the habit now</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip --version</code>: the CLI self-updates, so knowing which version you ran matters later</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>python3 log-finding.py --identify</code>: declares your agent, model and CLI version once, so results are diagnosable</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Open <code>README.md</code> in the seed and read "The sequence"; it takes five minutes and explains the whole day</li>
 </ul>
 
 

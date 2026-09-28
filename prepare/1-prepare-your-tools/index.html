@@ -546,10 +546,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-a-coding-agent-changes-how-you-build" class="md-nav__link">
+  <a href="#what-the-agent-needs-to-build-on-uipath" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Why a coding agent changes how you build
+        What the agent needs to build on UiPath
       
     </span>
   </a>
@@ -629,10 +629,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#one-identity-your-identity" class="md-nav__link">
+  <a href="#identity-and-permissions" class="md-nav__link">
     <span class="md-ellipsis">
       
-        One identity, your identity
+        Identity and permissions
       
     </span>
   </a>
@@ -1510,22 +1510,22 @@
 <div class="admonition tip">
 <p class="admonition-title">Here is our plan for this lesson:</p>
 <ol>
-<li>Check what you already have — CLI, sign-in, skills.</li>
+<li>Check what you already have: CLI, sign-in, skills.</li>
 <li>Install whatever is missing.</li>
 <li>Verify that your agent recognizes UiPath tasks.</li>
 </ol>
 </div>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
 <p>A working setup before the exercise starts: the latest <code>uip</code> CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.</p>
-<h2 id="why-a-coding-agent-changes-how-you-build">Why a coding agent changes how you build<a class="headerlink" href="#why-a-coding-agent-changes-how-you-build" title="Permanent link">&para;</a></h2>
-<p>A coding agent already knows how to write code, out of the box. What it doesn't know is UiPath platform: CLI commands, components and UiPath code structures, and platform conventions. </p>
+<h2 id="what-the-agent-needs-to-build-on-uipath">What the agent needs to build on UiPath<a class="headerlink" href="#what-the-agent-needs-to-build-on-uipath" title="Permanent link">&para;</a></h2>
+<p>A coding agent already knows how to write code, out of the box. What it doesn't know is the UiPath platform: its CLI commands, components, code structures and conventions. </p>
 <div class="img-cols img-cols-50">
 <div>
 <p>Two pieces fix that:</p>
 <ul>
 <li><strong>UiPath CLI</strong> (<code>uip</code>) is the interface the agent uses to talk to the platform. A command-line interface turned out to be the most token-efficient way to expose UiPath to an agent.</li>
-<li><strong>Skills</strong> teach the agent to use that CLI well. Each one packs product context, commands, validation rules and best practices — so you ask for an outcome instead of memorizing command sequences.</li>
-<li>Together with your session and permissions, this wrapper around the agent is the <strong>harness</strong> — the controlled environment of <strong>context</strong>, <strong>tools</strong> and <strong>checkpoints</strong> an agent works inside. You are about to assemble one.
+<li><strong>Skills</strong> teach the agent to use that CLI well. Each one packs product context, commands, validation rules and best practices, so you can ask for an outcome instead of memorizing command sequences.</li>
+<li>Together with your session and permissions, this wrapper around the agent is the <strong>harness</strong>: the controlled environment of context, tools and checkpoints an agent works inside. You are about to assemble one.
   </li>
 </ul>
 </div>
@@ -1557,13 +1557,13 @@ CL --&gt; PL</code></pre>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>uip<span class="w"> </span>tools<span class="w"> </span>list
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>uip<span class="w"> </span>skills<span class="w"> </span>list
 </code></pre></div>
-<p>If all three answer sensibly, skip to step 5. Otherwise, do only the steps you're missing.</p>
+<p>If all four answer sensibly, skip to step 5. Otherwise, do only the steps you're missing.</p>
 <h3 id="2-install-the-uipath-cli">2. Install the UiPath CLI<a class="headerlink" href="#2-install-the-uipath-cli" title="Permanent link">&para;</a></h3>
 <p>Install the CLI globally. This gives you the <code>uip</code> command.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>@uipath/cli
 </code></pre></div>
 <h3 id="3-sign-in">3. Sign in<a class="headerlink" href="#3-sign-in" title="Permanent link">&para;</a></h3>
-<p>Authenticate once in browser. Your coding agent reuses this same session, so it acts as you on the platform.</p>
+<p>Authenticate once in the browser. Your coding agent reuses this same session, so it acts as you on the platform.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>uip<span class="w"> </span>login
 </code></pre></div>
 <h3 id="4-install-the-uipath-skills">4. Install the UiPath skills<a class="headerlink" href="#4-install-the-uipath-skills" title="Permanent link">&para;</a></h3>
@@ -1585,10 +1585,10 @@ CL --&gt; PL</code></pre>
 </div>
 </div>
 </div>
-<p>The installer walks you through selecting skill bundles. Pick the ones this workshop uses — the exact list is in the seed's <code>CONFIG.md</code>.</p>
+<p>The installer walks you through selecting skill bundles. Pick the ones this workshop uses; the seed's <code>CONFIG.md</code> has the exact list.</p>
 <div class="admonition info">
 <p class="admonition-title">Good to know</p>
-<p>The skills registry is <a href="https://github.com/UiPath/skills">public on GitHub</a>, so this step needs no login. You don't need to install platform tools first either — your agent auto-installs them on first use.</p>
+<p>The skills registry is <a href="https://github.com/UiPath/skills">public on GitHub</a>, so this step needs no login. You don't need to install platform tools first either: your agent installs them on first use.</p>
 </div>
 <p>A few commands to keep handy:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>uip<span class="w"> </span>login<span class="w"> </span>status
@@ -1599,7 +1599,7 @@ CL --&gt; PL</code></pre>
 </code></pre></div>
 <p><code>uip --help</code> and <code>uip &lt;command&gt; --help</code> are your best friends, right after your coding agent.</p>
 <h3 id="5-verify-the-setup">5. Verify the setup<a class="headerlink" href="#5-verify-the-setup" title="Permanent link">&para;</a></h3>
-<p>Run your agent with the skills installed and ask it for an outcome — not a command:</p>
+<p>Run your agent with the skills installed and ask it for an outcome, not a command:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>which uipath skills I can use? can you list tenants within environments I'm connected to?
 </code></pre></div>
 <div class="img-cols img-cols-30">
@@ -1612,14 +1612,14 @@ CL --&gt; PL</code></pre>
   </p>
 </div>
 </div>
-<h2 id="one-identity-your-identity">One identity, your identity<a class="headerlink" href="#one-identity-your-identity" title="Permanent link">&para;</a></h2>
+<h2 id="identity-and-permissions">Identity and permissions<a class="headerlink" href="#identity-and-permissions" title="Permanent link">&para;</a></h2>
 <div class="admonition info">
 <p class="admonition-title">Sessions, security, and what the agent may do</p>
-<p>Everything the agent does goes through the <code>uip</code> CLI, and the CLI is signed in as exactly <strong>one identity — yours</strong>. It cannot reach anything your account cannot reach; there is also no setting that makes it safer than your account. Three habits follow:</p>
+<p>Everything the agent does goes through the <code>uip</code> CLI, and the CLI is signed in as exactly one identity: <strong>yours</strong>. It cannot reach anything your account cannot reach, and no setting makes it safer than your account. Three habits follow:</p>
 <ul>
-<li><strong>Approve commands as they come.</strong> Avoid a blanket <strong>uip</strong> allow rule — it also covers destructive commands. Read/list prefixes are fine to approve permanently.</li>
+<li><strong>Approve commands as they come.</strong> Avoid a blanket <code>uip</code> allow rule, since it also covers destructive commands. Read/list prefixes are fine to approve permanently.</li>
 <li><strong>Keep secrets out of prompts and project files.</strong> Credentials belong in a secret store, never in the conversation.</li>
-<li><strong>Review before you deploy.</strong> A coding agent does not validate the compliance of generated code — that stays your job.</li>
+<li><strong>Review before you deploy.</strong> A coding agent does not validate the compliance of generated code; that stays your job.</li>
 </ul>
 <p>Some agents run commands in isolated environments and may not see your real session. If <code>uip login status</code> works in your terminal but the agent says otherwise, tell it: <em>"When using the UiPath CLI, prefer escalated execution because sandboxed commands may not reflect my real terminal session."</em></p>
 </div>
