@@ -107,6 +107,23 @@ After the first mention, use just the acronym: IXP.
 
 ---
 
+## Patterns that read as generated
+
+Text drafted with a coding agent falls into a few habits that make a page read as generated. Edit them out where the sentence is clearly better without them; they are not a reason to rewrite a page. Fix grammar on the way, and keep asides, humour and the transitions above ("Let's…", "Here's the structure:", "Done."). Never add a fact, number or source while editing for style. A closer that only restates its paragraph is redundant content, which *Don't remove explanatory content* already allows you to cut.
+
+| Pattern | Looks like | Instead | Keep it when |
+|---|---|---|---|
+| Em dash as the default connector | "That is deliberate — a plausible-looking result is not a result." | The punctuation the clause needs: a period, comma, colon, semicolon or parentheses | It is inside a quotation. En dashes in ranges (`20–45 min`) are not connectors |
+| Not X but Y | "A gate is a baseline or floor, not a perfect result." | State the claim | The negative half corrects what the reader would otherwise assume or do: "an outcome, not a command"; "expectations, not promises" |
+| One-line closers and trailing fragments | "That's exactly what the write-as-you-go discipline is for." · "…are the evidence. Especially on lighter models." | Fold it into the sentence before, or cut it | The line adds a fact the paragraph does not have |
+| Colon reveals | "One rhythm: a prompt goes in…" | A whole sentence: "Every block follows the same rhythm: a prompt goes in…" | The colon introduces a list, a label or a quote |
+| Sayings dressed as insight | "That judgement is the real work." · "Your review is where the value is." | The specific claim | It is a mnemonic the page teaches, in its one home |
+| Headings written for effect | "Context is a resource" | Name what the section holds: "Managing context between blocks" | The heading is the mnemonic the section teaches: "Gates: commands, not opinions" |
+| Telling the reader what to notice | "Worth a close look, because…" · "Note the boundary it sets:" | Show the thing and drop the lead-in | A Proof tab's "What to notice" pointer at a screenshot or payload |
+| Inflation and unsourced numbers | "…at enterprise scale 10x faster" | The plain fact; a number only with a public source | — |
+
+---
+
 ## Capitalisation
 
 ### Domain concepts

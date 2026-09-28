@@ -105,6 +105,7 @@ Read the relevant file before creating or reviewing content:
 - **Short sentences.** One idea per sentence. Paragraphs: 2–4 sentences max.
 - **Avoid:** "leverage", "utilize", "robust", "seamlessly", "In this section we will", "Please note that", "It is important to", "feel free to"
 - **Platform names:** Bold on first appearance per page. Exact names: **Maestro**, **IXP**, **Action Center**, **Studio Web**, **Data Fabric**, **Integration Service**, **Orchestrator**
+- **Write it plain:** no em dash as a connector, no not-X-but-Y slogans, no one-line closers, colon reveals or headings written for effect. Keep a contrast when it corrects what the reader would otherwise assume. Details and exceptions: `Master/Language.md`, *Patterns that read as generated*.
 
 ### Formatting essentials
 - **Code blocks:** Every copyable text in a fenced code block with a language identifier. Never bare ` ``` `.
