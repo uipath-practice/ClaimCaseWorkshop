@@ -1,15 +1,15 @@
 # Plan
 
-Before anything is built, three documents decide what gets built and how. This section walks you through them — the one you receive, and the two your agent generates.
+Before anything is built, three documents decide what gets built and how. This section walks you through them: the one you receive, and the two your agent generates.
 
-## Where the time goes now
+## Why planning gets a whole section
 
 <figure markdown="span">
   ![Two timelines. Before agents, six stages run at human speed and Build is the longest. After agents, Build shrinks to a sliver and the cycle time it frees is reclaimed.](index.images/sdlc-before-after-agents.png){ width="900" }
   <figcaption>"Build is no longer the constraint — the human-speed steps around it are." Figure: Anthropic, <a href="https://claude.com/blog/the-ai-native-sdlc-playbook"><i>The AI-Native SDLC playbook</i></a> (2026).</figcaption>
 </figure>
 
-When a coding agent builds, the build stops being the long pole. The stages around it — requirements, review, release — still run at human speed, and they decide whether the speed is usable. That is why this workshop spends a whole section on three documents before anything is built, and another on proving the result: **Plan** and **Design** are this section, **Build** is the six blocks, **Test** is Verify, **Deploy** is the hand-over, and **Maintain** starts with the runbook you leave behind.
+When a coding agent builds, the build stops being the long pole. The stages around it (requirements, review, release) still run at human speed, and they decide whether the speed is usable. That is why this workshop spends a whole section on three documents before anything is built, and another on proving the result: **Plan** and **Design** are this section, **Build** is the six blocks, **Test** is Verify, **Deploy** is the hand-over, and **Maintain** starts with the runbook you leave behind.
 
 ## The method: PDD → SDD → Tasks
 
@@ -28,12 +28,12 @@ flowchart LR
   BUILD -->|"4–5"| V["verify &<br>ship"]
 ```
 
-Each document exists so the next one has nothing to guess. The SDD is written once and pays off twice: it is the specification the build follows, and afterwards it is the description of what actually runs — which is why the last block brings it to *as-built* rather than archiving it.
+Each document exists so the next one has nothing to guess. The SDD is written once and pays off twice: it is the specification the build follows, and afterwards it is the description of what actually runs. That is why the last block brings it to *as-built* rather than archiving it.
 
-The public UiPath docs describe the same journey as a five-phase [automation lifecycle](https://docs.uipath.com/coding-agents/standalone/latest/user-guide/overview) — discovery and planning, building, verification, troubleshooting, running. This workshop skips the Discovery by providing PDD, then walks the same path with the documents made explicit.
+The public UiPath docs describe the same journey as a five-phase [automation lifecycle](https://docs.uipath.com/coding-agents/standalone/latest/user-guide/overview): discovery and planning, building, verification, troubleshooting and running. This workshop skips discovery by providing the PDD, then walks the same path with the documents made explicit.
 
 !!! info "Coming: a PDD that writes itself"
-    In this workshop the PDD is given. In a real engagement, drafting it is real work — and **UiPath Cartographer** does exactly that: feed it transcripts, SOPs or recordings, and it drafts the AS-IS and TO-BE process maps and generates the PDD, ready for the flow you are about to practice.
+    In this workshop the PDD is given. In a real engagement drafting it is real work, and **UiPath Cartographer** does exactly that: feed it transcripts, SOPs or recordings, and it drafts the AS-IS and TO-BE process maps and generates the PDD, ready for the flow you are about to practice.
 
 ## In this section
 
@@ -41,6 +41,6 @@ The public UiPath docs describe the same journey as a five-phase [automation lif
 |---|---|
 | [1. The Property Claims Case](1-the-property-claims-case.md) | The business problem, the documents, and what can be wrong with a claim |
 | [2. Read the PDD](2-read-the-pdd.md) | A guided tour: where the load-bearing details live |
-| [3. Design the Solution](3-design-the-solution.md) | Block 1 — your agent generates the SDD, and a gate checks it |
-| [4. Plan the Work](4-plan-the-work.md) | Block 2 — the SDD becomes an ordered task list |
+| [3. Design the Solution](3-design-the-solution.md) | Block 1: your agent generates the SDD, and a gate checks it |
+| [4. Plan the Work](4-plan-the-work.md) | Block 2: the SDD becomes an ordered task list |
 | [5. Architecture Overview](5-architecture-overview.md) | The whole solution on one diagram, before the build starts |
