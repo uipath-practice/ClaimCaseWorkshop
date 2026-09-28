@@ -1,6 +1,6 @@
 # Prepare Your Tools
 
-!!! tip "In this lesson"
+!!! tip "Here is our plan for this lesson:"
 
     1. Check what you already have: CLI, sign-in, skills.
     2. Install whatever is missing.
