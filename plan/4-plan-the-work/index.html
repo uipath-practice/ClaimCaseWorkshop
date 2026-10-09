@@ -1447,17 +1447,19 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">-</span><span class="w"> </span>Action App's <span class="ge">*contract*</span> (<span class="sb">`contracts/review-task.md`</span>): the case binds it, so it is registered before the case, and the screens come after a run. 
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">-</span><span class="w"> </span>Routing, not redescription. Each task names which skill builds it and which <span class="sb">`sdd.md`</span> sections to read. 
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">-</span><span class="w"> </span>Tasks document does not re-explain the architecture; that drifts, and then two documents disagree.
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>A <span class="sb">`Validate:`</span> step on every task that generates something, and a testing task before anything deploys.
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>Each later block sets the <span class="sb">`Status:`</span> line of the tasks it finishes, not only the sub-items — the status line is what a reader scans.
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="gs">**Done when:**</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">-</span><span class="w"> </span>someone could work the list top to bottom without opening the design to find out what comes next
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span>nothing in it is blocked by something further down.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>The case is one task: <span class="ge">*build the case from `sdd.md` — resolve, convert, close what convert leaves unresolved*</span>. Its stages, tasks and conditions are not listed here; <span class="sb">`sdd.md`</span> is the case's plan.
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>A <span class="sb">`Validate:`</span> step on every task that generates something, and a testing task before anything deploys.
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">-</span><span class="w"> </span>Each later block sets the <span class="sb">`Status:`</span> line of the tasks it finishes, not only the sub-items — the status line is what a reader scans.
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="gs">**Done when:**</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span>someone could work the list top to bottom without opening the design to find out what comes next
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">-</span><span class="w"> </span>nothing in it is blocked by something further down.
 </code></pre></div>
 <p>Steps:</p>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Load the uipath-planner skill</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Derive <code>tasks.md</code> from <code>sdd.md</code> at the seed root</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Keep the case as one task: build it from <code>sdd.md</code> (resolve, convert, close what convert leaves); its stages are not listed here</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Order the tasks leaves-first: entity, agents, app registration all before the case</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Put a <code>Validate:</code> step on every generating task and a test task before every deploy</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Review top-to-bottom: nothing blocked by something further down</li>

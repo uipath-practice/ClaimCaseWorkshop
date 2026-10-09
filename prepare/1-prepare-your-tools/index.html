@@ -1597,6 +1597,7 @@ CL --&gt; PL</code></pre>
 <a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>uip<span class="w"> </span>tools<span class="w"> </span>update
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>uip<span class="w"> </span>skills<span class="w"> </span>update
 </code></pre></div>
+<p><code>uip update</code> updates the tools and refreshes the installed skills too. Run it between blocks, never while your agent is working.</p>
 <p><code>uip --help</code> and <code>uip &lt;command&gt; --help</code> are your best friends, right after your coding agent.</p>
 <h3 id="5-verify-the-setup">5. Verify the setup<a class="headerlink" href="#5-verify-the-setup" title="Permanent link">&para;</a></h3>
 <p>Run your agent with the skills installed and ask it for an outcome, not a command:</p>
@@ -1617,7 +1618,7 @@ CL --&gt; PL</code></pre>
 <p class="admonition-title">Sessions, security, and what the agent may do</p>
 <p>Everything the agent does goes through the <code>uip</code> CLI, and the CLI is signed in as exactly one identity: <strong>yours</strong>. It cannot reach anything your account cannot reach, and no setting makes it safer than your account. Three habits follow:</p>
 <ul>
-<li><strong>Approve commands as they come.</strong> Avoid a blanket <code>uip</code> allow rule, since it also covers destructive commands. Read/list prefixes are fine to approve permanently.</li>
+<li><strong>Approve commands as they come, and allow the build loop once.</strong> Avoid a blanket <code>uip</code> allow rule, since it also covers destructive commands. Read/list prefixes are fine to approve permanently. Before block 3, allow the loop your agent repeats in every block (pack, publish, deploy, upload) and edits to your seat's own <code>caseplan.json</code> and <code>sdd.md</code>. An agent's safety check can refuse a plain edit of its own case file mid-block, and a block that stops to ask proves nothing.</li>
 <li><strong>Keep secrets out of prompts and project files.</strong> Credentials belong in a secret store, never in the conversation.</li>
 <li><strong>Review before you deploy.</strong> A coding agent does not validate the compliance of generated code; that stays your job.</li>
 </ul>

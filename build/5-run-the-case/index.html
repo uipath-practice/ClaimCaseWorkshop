@@ -1432,14 +1432,14 @@
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Aim each run with the case's own <span class="sb">`scenario`</span> / <span class="sb">`discrepancy`</span> inputs (and <span class="sb">`profileId`</span> to repeat a claimant) — they flow to the generator (<span class="sb">`contracts/provided-processes.md`</span>, <span class="ge">*Retrieve Property Claim*</span>); a scenario alone does not guarantee a route — pin a <span class="sb">`discrepancy`</span> with it, preferably an unambiguous breach (<span class="sb">`cookbook.md`</span>).
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Complete the Action Center tasks from the command line (<span class="sb">`uip tasks complete`</span>) — the Coded Action App has no screens yet, only the empty-page registration the case binds. A route that misbehaves now is a case defect; the point is to find case-plan issues before the app is live.
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Complete the Action Center tasks from the command line (<span class="sb">`uip tasks complete`</span>) — the Coded Action App has no screens yet, only the empty-page registration the case binds. A route that misbehaves now is a case defect; the point is to find case-plan issues before the app is live. Read the record while a gate task is still open, before you complete it: the reviewer sees what is on it then, and a write that lands only after the gate is hidden once the task is done.
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="gs">**Done when:**</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>a claim with nothing wrong with it goes in and a settled claim comes out, with no human touching it and no task ever raised. That is the run that proves the whole case (happy path), the Action Center task never appears. Read the Data Fabric record and the case instance's timeline instead.
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>four human routes proven: proceed and refuse at the first gate, approve and deny at the second. 
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Five runs in total. The Data Fabric record populated by the end of this block: the next block builds the Action App's screens against these payloads.
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>Five runs prove the block; a broken version costs more, so start one claim on each new version before the batch. The Data Fabric record populated by the end of this block: the next block builds the Action App's screens against these payloads.
 </code></pre></div>
 <p>Steps:</p>
 <ul class="task-list">
@@ -1457,6 +1457,8 @@
 <ul>
 <li><strong>The clean claim is the acceptance run.</strong> A claim with nothing wrong traverses the whole lifecycle unattended. No task ever appears. Read the <strong>Data Fabric</strong> record and the case instance's trace instead: the checks, the findings and the letter should all be there. A <em>flagged</em> clean claim means the Agents are wrong, not the case.</li>
 <li><strong>Four human routes, answered from the command line.</strong> The app has no screens yet and doesn't need them. A route that misbehaves now is a case defect, and finding it before the screens exist is the objective.</li>
+<li><strong>Read the record while a gate is open.</strong> Completing the task lets the next write fill the columns, which hides a missing write before the gate. Read what the reviewer would see, then answer.</li>
+<li><strong>One claim first on every new version.</strong> A broken version costs a whole batch; one claim through Analysis tells you in minutes.</li>
 <li><strong>One identity.</strong> A single claim number spans the case, the three documents, the letters and the record's key.</li>
 <li><strong>Letters are logged, never sent.</strong> No mail leaves the exercise: the notification process records every letter (claim, stage, recipient, subject, body) in a tenant-level entity. The reviewer's screen will later show the thread from it, and Verify will read decisions from it.</li>
 </ul>

@@ -1496,7 +1496,7 @@
 </tr>
 <tr>
 <td><code>1-design/</code> … <code>6-process-app/</code></td>
-<td>One folder per block: <code>prompt.md</code>, <code>cookbook.md</code>, and sometimes a gate script.</td>
+<td>One folder per block: <code>prompt.md</code>, <code>cookbook.md</code>, and sometimes a gate script or a helper (<code>4-verify/agent_inputs.py</code> fetches the inputs the case sent an agent).</td>
 </tr>
 <tr>
 <td><code>log-finding.py</code></td>
@@ -1545,7 +1545,7 @@
 <h2 id="pre-flight">Pre-flight<a class="headerlink" href="#pre-flight" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip login status</code>: right tenant, right folder. Nearly every "not found" is a wrong tenant, a wrong folder or a stale cache, so build the habit now</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip --version</code>: the CLI self-updates, so knowing which version you ran matters later</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip --version</code>: the CLI and each tool update themselves on their first use each day, within the version line <code>CONFIG.md</code> pins, so the version you ran can change between blocks. Note it at each block start.</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>python3 log-finding.py --identify</code>: declares your agent, model and CLI version once, so results are diagnosable</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Open <code>README.md</code> in the seed and read "The sequence"; it takes five minutes and explains the whole day</li>
 </ul>

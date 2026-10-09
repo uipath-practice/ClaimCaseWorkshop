@@ -1538,13 +1538,14 @@ The seed numbers the blocks and this guide groups them into its sections the sam
 <li><strong>Upload the solution at the end of every block.</strong> Everything the agent builds stays local until then, and the upload is what lets you <em>go and look</em> in Studio Web.</li>
 </ul>
 <h2 id="driving-your-agent-well">Driving your agent well<a class="headerlink" href="#driving-your-agent-well" title="Permanent link">&para;</a></h2>
-<p>Five habits, whatever agent you brought:</p>
+<p>Six habits, whatever agent you brought:</p>
 <ol>
 <li><strong>Be specific.</strong> A complete brief beats a long prompt; the seed's prompts show what one looks like.</li>
 <li><strong>Ask for a plan first</strong> on anything non-trivial; redirect before files change, not after.</li>
 <li><strong>Iterate.</strong> The first version is good; the second is usually better. Plan for two or three passes, not ten.</li>
 <li><strong>Course-correct early.</strong> Interrupt the moment you see a wrong turn; waiting costs a rebuild.</li>
 <li><strong>Verify outcomes yourself.</strong> The agent's "done" message is its opinion; the gate and your own eyes are the evidence, especially on lighter models.</li>
+<li><strong>Keep your agent in your seat folder.</strong> Other seats' folders are other participants' work. An agent that cannot find a shape will look for an example nearby; point it at the skill, <code>--help</code> and the validator instead.</li>
 </ol>
 <h2 id="agents-are-instructed-to-log-findings">Agents are instructed to log findings<a class="headerlink" href="#agents-are-instructed-to-log-findings" title="Permanent link">&para;</a></h2>
 <p>When something surprises them (a command that lies, a document that contradicts another, a step that only worked the second way), they log it with <code>log-finding.py</code>. It takes a second, and the findings are how the prompts keep up with new versions of the skills and tools.</p>
@@ -1582,37 +1583,37 @@ The seed numbers the blocks and this guide groups them into its sections the sam
 </tr>
 <tr>
 <td>3c · Agents</td>
-<td>45–75 min</td>
+<td>40–90 min</td>
 <td><strong>large</strong></td>
 </tr>
 <tr>
 <td>3d · Case</td>
-<td>30–60 min</td>
+<td>20–70 min</td>
 <td><strong>large</strong></td>
 </tr>
 <tr>
 <td>3e · Run</td>
-<td>30–75 min</td>
+<td>30–120 min</td>
 <td><strong>large</strong> (several deploy cycles are normal)</td>
 </tr>
 <tr>
 <td>3f · Screens</td>
-<td>45–75 min</td>
+<td>45–150 min</td>
 <td><strong>large</strong>, plus your review of the local screens</td>
 </tr>
 <tr>
 <td>4 · Verify</td>
-<td>1–2 h</td>
+<td>1.5–4 h</td>
 <td><strong>largest</strong> (three fix cycles, then one scored batch)</td>
 </tr>
 <tr>
 <td>5 · Ship</td>
-<td>15–30 min</td>
+<td>10–30 min</td>
 <td></td>
 </tr>
 <tr>
 <td>6 · Process App</td>
-<td>45–60 min</td>
+<td>45–90 min</td>
 <td>plus your signed-in check</td>
 </tr>
 </tbody>

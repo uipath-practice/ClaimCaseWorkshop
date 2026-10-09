@@ -1516,7 +1516,7 @@
 <h2 id="the-gate">The gate<a class="headerlink" href="#the-gate" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
 </code></pre></div>
-<p>The planner's own audit verifies the document's <em>shape</em>: sections present, tables well-formed. The script cross-check verifies it against the <em>process</em>: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. </p>
+<p>The planner checks the document's <em>shape</em> itself: sections present, tables well-formed. The script cross-check verifies it against the <em>process</em>: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. </p>
 <div class="admonition note">
 <p class="admonition-title">Remember</p>
 <ul>
@@ -1545,8 +1545,6 @@
 <p>And the gate:</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="gp">$ </span>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="go">0 failure(s), 5 warning(s), 0 note(s)</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="gp">$ </span>python3<span class="w"> </span>~/.agents/skills/uipath-planner/scripts/audit_sdd.py<span class="w"> </span>sdd.md
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="go">AUDIT OK: sdd.md template shape is clean</span>
 </code></pre></div>
 <!-- screenshot: sdd.md open in an editor at the stage list + the gate terminal — optional visual companion to the blocks above -->
 
