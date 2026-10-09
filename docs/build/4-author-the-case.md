@@ -6,6 +6,8 @@ The **Maestro Case Plan** binds everything you have built into one lifecycle, an
 
 ## First: register the Action App
 
+The case is generated, not written: the case skill converts `sdd.md` into the plan and leaves a list of what only you can fill.
+
 The two human gates are action tasks bound to the app's **known contract**. So the app is registered *now*: standalone, beside the solution, **an empty page plus its schema**. That is enough for the case to wire both gateways and prove every route from the command line; the screens replace the empty page at 3f and the case is never touched again.
 
 The App contract is settled once and not revisited, because changing it after the case binds **breaks the bindings at both gateways**. And the app build is a natural piece to delegate to a sub-agent: one contract file defines its entire I/O, and nothing about it needs this block's context.
@@ -19,8 +21,9 @@ The App contract is settled once and not revisited, because changing it after th
 Steps:
 
 - [x] Scaffold and deploy the Coded Action App `claim-review-<seat>` (beside the solution, stand-alone)
-- [x] Build the case plan (`caseplan.json`) from `sdd.md`
-- [x] Validate the case plan (`uip maestro case validate` + `check_caseplan.py`)
+- [x] Generate the case plan from `sdd.md`: `sdd resolve`, then `sdd convert`, then close what convert lists as unresolved
+- [x] Fix the shapes `check_caseplan.py` names
+- [x] Validate: `uip maestro case validate --strict --sdd sdd.md` + `check_caseplan.py`
 - [x] Upload the solution to Studio Web
 - [x] Update `PROGRESS.md`
 
@@ -43,12 +46,11 @@ Steps:
 ## The gates
 
 ```bash
-uip maestro case validate <path-to>/caseplan.json
 uip maestro case validate <path-to>/caseplan.json --strict --sdd sdd.md
 python3 3d-case/check_caseplan.py <path-to>/caseplan.json
 ```
 
-The full validator runs first, then the **strict profile** (which compares the plan against your own `sdd.md` and refuses a plain `Valid`), then the shipped checker. Run the script as it ships: reimplementing its rules is not the gate. 
+The **strict profile** compares the plan against your own `sdd.md` and refuses a plain `Valid`. The shipped checker then catches shapes the validator passes and the runtime rejects, so it runs after every convert. Run the script as it ships: reimplementing its rules is not the gate.
 
 The validator's errors are runtime failures spelled out in advance: a gate you route around does not go away; it fails later, at several minutes per deploy cycle.
 

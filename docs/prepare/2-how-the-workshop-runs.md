@@ -61,13 +61,14 @@ A coding agent's context window fills, and what was never written down does not 
 
 ## Driving your agent well
 
-Five habits, whatever agent you brought:
+Six habits, whatever agent you brought:
 
 1. **Be specific.** A complete brief beats a long prompt; the seed's prompts show what one looks like.
 2. **Ask for a plan first** on anything non-trivial; redirect before files change, not after.
 3. **Iterate.** The first version is good; the second is usually better. Plan for two or three passes, not ten.
 4. **Course-correct early.** Interrupt the moment you see a wrong turn; waiting costs a rebuild.
 5. **Verify outcomes yourself.** The agent's "done" message is its opinion; the gate and your own eyes are the evidence, especially on lighter models.
+6. **Keep your agent in your seat folder.** Other seats' folders are other participants' work. An agent that cannot find a shape will look for an example nearby; point it at the skill, `--help` and the validator instead.
 
 ## Agents are instructed to log findings
 
@@ -85,13 +86,13 @@ Expect your coding agent to run roughly this long per block, plus your own revie
 | 2 · Plan          | 5–15 min      |                                                          |
 | 3a · Extraction   | 5–15 min      |                                                          |
 | 3b · Claim record | 5–15 min      |                                                          |
-| 3c · Agents       | 45–75 min     | **large**                                                |
-| 3d · Case         | 30–60 min     | **large**                                                |
-| 3e · Run          | 30–75 min     | **large** (several deploy cycles are normal)             |
-| 3f · Screens      | 45–75 min     | **large**, plus your review of the local screens         |
-| 4 · Verify        | 1–2 h         | **largest** (three fix cycles, then one scored batch)    |
-| 5 · Ship          | 15–30 min     |                                                          |
-| 6 · Process App   | 45–60 min     | plus your signed-in check                                |
+| 3c · Agents       | 40–90 min     | **large**                                                |
+| 3d · Case         | 20–70 min     | **large**                                                |
+| 3e · Run          | 30–120 min    | **large** (several deploy cycles are normal)             |
+| 3f · Screens      | 45–150 min    | **large**, plus your review of the local screens         |
+| 4 · Verify        | 1.5–4 h       | **largest** (three fix cycles, then one scored batch)    |
+| 5 · Ship          | 10–30 min     |                                                          |
+| 6 · Process App   | 45–90 min     | plus your signed-in check                                |
 
 !!! note
     These are expectations, not promises. Agents evolve, models differ, and a block that hits a real defect runs longer.

@@ -24,6 +24,8 @@ Steps:
 
 - **The clean claim is the acceptance run.** A claim with nothing wrong traverses the whole lifecycle unattended. No task ever appears. Read the **Data Fabric** record and the case instance's trace instead: the checks, the findings and the letter should all be there. A *flagged* clean claim means the Agents are wrong, not the case.
 - **Four human routes, answered from the command line.** The app has no screens yet and doesn't need them. A route that misbehaves now is a case defect, and finding it before the screens exist is the objective.
+- **Read the record while a gate is open.** Completing the task lets the next write fill the columns, which hides a missing write before the gate. Read what the reviewer would see, then answer.
+- **One claim first on every new version.** A broken version costs a whole batch; one claim through Analysis tells you in minutes.
 - **One identity.** A single claim number spans the case, the three documents, the letters and the record's key.
 - **Letters are logged, never sent.** No mail leaves the exercise: the notification process records every letter (claim, stage, recipient, subject, body) in a tenant-level entity. The reviewer's screen will later show the thread from it, and Verify will read decisions from it.
 

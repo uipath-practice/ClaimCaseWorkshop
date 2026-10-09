@@ -20,7 +20,7 @@ Screens come last for a reason: by now your own runs have populated real records
 Steps:
 
 - [x] Read `PDD.md` §5.7, `contracts/review-task.md`, `3f-validation/layout.md` and `brand.md`; load the uipath-coded-apps skill
-- [x] Capture fixtures from the seat's own live records (the decided states verbatim, the waiting states rewound to the columns that exist at that gate), plus the real PDFs for the document overlay
+- [x] Capture fixtures from the seat's own live records (the decided states verbatim, the waiting states rewound to the columns that exist at that gate), plus the real PDFs for the document overlay; capture each open-gate fixture while its task is still open
 - [x] Derive the status→stage map from `caseplan.json` (a stage list typed into the app is forbidden; generate it)
 - [x] Build the two gate screens into the app registered at 3d: same name, same schema, contract untouched
 - [x] Serve locally inside an Action Center stand-in and pause: the reviewer walks the four states
@@ -70,6 +70,7 @@ Here is that review from a real run: the four states, served on the local Action
 - **A decision carries a reason, always.** The contract makes `reviewerNotes` required at both gates, because an inspected **decision with a reason teaches the system** which pattern failed; "a rubber-stamped click is theater" (*The Work That Remains*). If the screen makes the reason easy to skip, it built the wrong habit.
 - **One malformed field must not take down the screen.** Generated data varies. Pin shapes upstream where you can, but handle unexpected data in each panel so a "blank page" becomes one panel saying *"could not render the policy"* with the **decision still makeable**. 
 - **What survives task completion.** Completing a task in Action Center drops its inputs; only inOuts and outputs survive. That is why the app reads the claim from the Data Fabric entity, not from its input arguments: it still renders after the task is completed.
+- **Text a person reads is plain.** The screen shows agent reasons as the agent wrote them; the agents' house style (no field names, no JSON, no em dashes) is what makes that readable.
 
 ## The gate
 

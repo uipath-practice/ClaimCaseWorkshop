@@ -29,6 +29,8 @@ You just built in a day what the PDD budgeted at 25 person-days, and that first-
   uip tools update
   ```
 
+  The CLI and its tools also update themselves on first use each day within the line you pinned, and `uip update` refreshes the skills. Check `uip --version` when a build that worked yesterday behaves differently.
+
 - The [skills registry](https://github.com/UiPath/skills) is public: fork it and encode *your* organization's best practices the way this workshop's seed encoded these.
 - Start your next build the way this one started: a process document, a generated design, a gate. Do it on your own process, at your own company.
 

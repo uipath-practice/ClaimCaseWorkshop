@@ -12,6 +12,7 @@ Steps:
 
 - [x] Load the uipath-planner skill
 - [x] Derive `tasks.md` from `sdd.md` at the seed root
+- [x] Keep the case as one task: build it from `sdd.md` (resolve, convert, close what convert leaves); its stages are not listed here
 - [x] Order the tasks leaves-first: entity, agents, app registration all before the case
 - [x] Put a `Validate:` step on every generating task and a test task before every deploy
 - [x] Review top-to-bottom: nothing blocked by something further down

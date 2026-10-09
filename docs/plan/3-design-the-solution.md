@@ -46,7 +46,7 @@ The agent finishes in minutes; your review is what catches the defects. Four thi
 python3 1-design/check_sdd.py sdd.md --pdd PDD.md
 ```
 
-The planner's own audit verifies the document's *shape*: sections present, tables well-formed. The script cross-check verifies it against the *process*: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. 
+The planner checks the document's *shape* itself: sections present, tables well-formed. The script cross-check verifies it against the *process*: task types match the PDD's decision-nature column, one writer per data column, every variable that is read is produced by something, argument names are real. Run both, trust neither alone. 
 
 !!!note "Remember"
 	- Especially on large tasks, agents often report work as done after missing half of it. In this workshop we know what the SDD should contain and can check it with a script; on your next project, it's your eyes. Never jump to the next step assuming agents are perfect. Not just yet.
@@ -84,8 +84,6 @@ And the gate:
 ```console
 $ python3 1-design/check_sdd.py sdd.md --pdd PDD.md
 0 failure(s), 5 warning(s), 0 note(s)
-$ python3 ~/.agents/skills/uipath-planner/scripts/audit_sdd.py sdd.md
-AUDIT OK: sdd.md template shape is clean
 ```
 
 <!-- screenshot: sdd.md open in an editor at the stage list + the gate terminal — optional visual companion to the blocks above -->

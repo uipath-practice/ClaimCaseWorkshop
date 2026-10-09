@@ -30,7 +30,7 @@ Prefer the clone. With git, `git status` answers *what did I build* and `git dif
 | `contracts/`            | The pinned interfaces: the claim record schema, the component list, the review-task shape, the provided automations              |
 | `method/`               | The delivery method the blocks follow, and the PDD and SDD guides: reference only, not used during the build.                    |
 | `known-issues/`         | Platform behaviours worth knowing; they save your agent time.                                                                    |
-| `1-design/` … `6-process-app/` | One folder per block: `prompt.md`, `cookbook.md`, and sometimes a gate script.                                             |
+| `1-design/` … `6-process-app/` | One folder per block: `prompt.md`, `cookbook.md`, and sometimes a gate script or a helper (`4-verify/agent_inputs.py` fetches the inputs the case sent an agent). |
 | `log-finding.py`        | How build findings get logged                                                                                                    |
 
 ```text
@@ -77,6 +77,6 @@ Your Orchestrator seat folder comes with a few dependencies: mechanical RPA auto
 ## Pre-flight
 
 - [ ] `uip login status`: right tenant, right folder. Nearly every "not found" is a wrong tenant, a wrong folder or a stale cache, so build the habit now
-- [ ] `uip --version`: the CLI self-updates, so knowing which version you ran matters later
+- [ ] `uip --version`: the CLI and each tool update themselves on their first use each day, within the version line `CONFIG.md` pins, so the version you ran can change between blocks. Note it at each block start.
 - [ ] `python3 log-finding.py --identify`: declares your agent, model and CLI version once, so results are diagnosable
 - [ ] Open `README.md` in the seed and read "The sequence"; it takes five minutes and explains the whole day

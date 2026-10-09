@@ -31,10 +31,15 @@ Steps:
 - **A typed output field beats a paragraph of prompt.** When a payload must contain a fact, we declare it as a field in the output schema. A model fills a declared field reliably; prose asking it to be careful competes with every other sentence.
 - **One concern, one owner.** An Agent may cite another's finding as evidence; it may never re-raise it as its own. The reviewer sees every finding at once, and one problem reported by three Agents reads as three problems.
 - **PDF documents reach an Agent as job attachments, never as extracted text.** A policy's meaning lives in clause wording that flattening loses. Agents carry the built-in document reader for exactly this reason. 
+- **Field order is part of the prompt.** A model writes its output in order, so the fields that constrain a verdict come before the verdict. Rewording rarely fixes an agent that stops at the first rule; moving the constraining field first does.
+- **Never end in an error.** An agent that cannot read an input still returns every field, with `-1` for a figure it could not read, so the claim reaches a person instead of faulting the case.
+- **Text a person reads is plain.** Reasons and letters carry no field names, no JSON and no em dashes, and amounts carry thousands separators.
 
 ## The gate
 
 One real invocation per Agent, on a real claim, with `uip agent debug`: it must return what its §7 section says, **including nothing at all on a clean claim**. A grader's score is about structure and wording; only a run answers whether the agent does the thing.
+
+Every agent that computes a figure runs three times on identical inputs and returns the same figures each time, and each figure agrees with its own copies: claimed against the form, net against its envelope. Temperature 0 does not make an agent deterministic; the repeat run is how you find out.
 
 This workshop writes no evaluation sets for the Agents; Verify tests all seven end to end, on claims with planted problems. On a real project, give each Agent its own set: real inputs with their accepted outputs, re-run whenever its prompt or its model changes. It is [Verify's baseline](../verify/index.md#the-baseline-comes-from-the-process-owner), one Agent at a time.
 
