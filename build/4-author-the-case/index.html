@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1455,26 +1455,26 @@
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
 <div class="highlight"><span class="filename">Prompt — block 3d · The case</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build — the Maestro Case</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Use the <span class="gs">**`uipath-maestro-case`**</span> skill and build the case from <span class="sb">`sdd.md`</span> — as a project inside your existing solution in Build folder. <span class="gs">**Authoring `caseplan.json` here, do not run it**</span> — deploying and testing the case is the next block.
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Use the <span class="gs">**`uipath-maestro-case`**</span> skill and build the case from <span class="sb">`sdd.md`</span> — as a project inside your existing solution in Build folder. <span class="gs">**Authoring `caseplan.case` here, do not run it**</span> — deploying and testing the case is the next block.
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Generate the plan, do not write it: from inside the solution folder, <span class="sb">`uip maestro case init`</span> the project; <span class="sb">`uip maestro case sdd resolve sdd.md --out tasks/registry-resolved.json`</span>; <span class="sb">`uip maestro case sdd convert sdd.md --resolved tasks/registry-resolved.json --out &lt;project&gt;/caseplan.json`</span>. What convert lists under <span class="sb">`Data.Unresolved[]`</span> is the work left — close each entry the way the skill says, and nothing else by hand. Convert writes a few shapes that run wrong on this case; <span class="sb">`cookbook.md`</span> names them and <span class="sb">`check_caseplan.py`</span> flags them, so fix those in <span class="sb">`caseplan.json`</span>. Anything else convert gets wrong, log it; fix <span class="sb">`sdd.md`</span> and convert again only before any splice or hand edit — every one after it is redone. Diagram reads as the process: the decision path left to right, Denied below Approved on the right, Missing details below Intake and Awaiting inspection below Eligibility screening, nothing overlapping (<span class="sb">`cookbook.md`</span>, <span class="ge">*Canvas*</span>). 
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Generate the plan, do not write it: from inside the solution folder, <span class="sb">`uip maestro case init`</span> the project; <span class="sb">`uip maestro case sdd resolve sdd.md --out tasks/registry-resolved.json`</span>; <span class="sb">`uip maestro case sdd convert sdd.md --resolved tasks/registry-resolved.json --out &lt;project&gt;/caseplan.case`</span>. What convert lists under <span class="sb">`Data.Unresolved[]`</span> is the work left — close each entry the way the skill says, and nothing else by hand. Convert writes a few shapes that run wrong on this case; <span class="sb">`cookbook.md`</span> names them and <span class="sb">`check_caseplan.py`</span> flags them, so fix those in <span class="sb">`caseplan.case`</span>. Anything else convert gets wrong, log it; fix <span class="sb">`sdd.md`</span> and convert again only before any splice or hand edit — every one after it is redone. Diagram reads as the process: the decision path left to right, Denied below Approved on the right, Missing details below Intake and Awaiting inspection below Eligibility screening, nothing overlapping (<span class="sb">`cookbook.md`</span>, <span class="ge">*Canvas*</span>). 
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>The app and the case are two separate builds — if your agent can delegate to a subagent, build and register the app there and keep this context for the case; either way, write the app's name, deployment id and folder into <span class="sb">`PROGRESS.md`</span> before starting the case.
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Register the Coded Action App first, with the shape of <span class="gs">**`contracts/review-task.md`**</span> — the two human gateways are <span class="sb">`action`</span> tasks bound to it, and an empty page is enough to wire and prove them. Use <span class="sb">`uipath-coded-apps`</span>: scaffold it <span class="gs">**standalone, beside the solution**</span> (<span class="sb">`create-vite`</span>, the React + TypeScript template — <span class="sb">`-t Action`</span> belongs to <span class="sb">`publish`</span>, not to the scaffold), put the contract in <span class="sb">`action-schema.json`</span>, <span class="sb">`uip codedapp publish -t Action`</span>, <span class="sb">`uip codedapp deploy --folder-key &lt;your seat folder&gt;`</span>. If the publish hangs or fails at <span class="ge">*Registering coded app*</span>, it is a known tool defect, not your app — <span class="sb">`known-issues/cli-commands.md`</span>. Then author the case that binds it by name with that folder as its explicit <span class="sb">`folderPath`</span>. Its screens are built at <span class="sb">`3f`</span>, after a run has populated the record.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Register the Coded Action App first, with the shape of <span class="gs">**`contracts/review-task.md`**</span> — the two human gateways are <span class="sb">`action`</span> tasks bound to it, and an empty page is enough to wire and prove them. Use <span class="sb">`uipath-coded-apps`</span>: scaffold it <span class="gs">**standalone, beside the solution**</span> (<span class="sb">`create-vite`</span>, the React + TypeScript template — <span class="sb">`-t Action`</span> belongs to <span class="sb">`publish`</span>, not to the scaffold), put the contract in <span class="sb">`action-schema.json`</span>, <span class="sb">`uip codedapp publish -t Action`</span>, <span class="sb">`uip codedapp deploy --folder-key &lt;your seat folder&gt;`</span>. Then author the case that binds it by name with that folder as its explicit <span class="sb">`folderPath`</span>. Its screens are built at <span class="sb">`3f`</span>, after a run has populated the record.
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>Everything the case binds must already exist and be published — the six RPA processes, the Data Fabric entity, the seven Agents, the Action App's contract — which is what your task list ordered. The case skill keeps its own <span class="sb">`tasks/`</span> folder beside the plan (<span class="sb">`registry-resolved.json`</span>, its resolution ledger); that is not your <span class="sb">`tasks.md`</span>, and neither replaces the other.
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>Check it before you go any further:
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="sb">```bash</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>python3<span class="w"> </span>3d-case/check_caseplan.py<span class="w"> </span>&lt;path-to&gt;/caseplan.json
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>python3<span class="w"> </span>3d-case/check_caseplan.py<span class="w"> </span>&lt;path-to&gt;/caseplan.case
 <a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="sb">```</span>
 <a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
 <a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>Run the script as it ships — reimplementing its rules in another language is not the gate. Read the checker's rules even if it passes — each is a shape that packs, deploys and then fails on a live claim.
 <a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
 <a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="gs">**Done when:**</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">-</span><span class="w"> </span><span class="sb">`uip maestro case validate &lt;path-to&gt;/caseplan.json --strict --sdd sdd.md`</span> reports <span class="sb">`Valid`</span> — the <span class="gs">**full**</span> validator, not <span class="sb">`--skeleton-v2`</span>; every error it prints is a runtime failure waiting, not validator strictness
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">-</span><span class="w"> </span><span class="sb">`uip maestro case validate &lt;path-to&gt;/caseplan.case --strict --sdd sdd.md`</span> reports <span class="sb">`Valid`</span> — the <span class="gs">**full**</span> validator, not <span class="sb">`--skeleton-v2`</span>; every error it prints is a runtime failure waiting, not validator strictness
 <a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">-</span><span class="w"> </span>every entry convert listed under <span class="sb">`Data.Unresolved[]`</span> is closed
 <a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">-</span><span class="w"> </span><span class="sb">`python3 3d-case/check_caseplan.py`</span> reports no referential problems — it checks what the validator cannot: layout, argument-named outputs, connector inputs, skips on human gates
 <a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">-</span><span class="w"> </span>the plan opens in Studio Web: <span class="sb">`uip solution upload Build/ClaimCase-&lt;seat&gt;`</span> has run.
@@ -1506,8 +1506,8 @@
 <p>There will always be tasks larger than the largest context of the day; the craft is working so the limit doesn't matter.</p>
 </div>
 <h2 id="the-gates">The gates<a class="headerlink" href="#the-gates" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uip<span class="w"> </span>maestro<span class="w"> </span><span class="k">case</span><span class="w"> </span>validate<span class="w"> </span>&lt;path-to&gt;/caseplan.json<span class="w"> </span>--strict<span class="w"> </span>--sdd<span class="w"> </span>sdd.md
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python3<span class="w"> </span>3d-case/check_caseplan.py<span class="w"> </span>&lt;path-to&gt;/caseplan.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>uip<span class="w"> </span>maestro<span class="w"> </span><span class="k">case</span><span class="w"> </span>validate<span class="w"> </span>&lt;path-to&gt;/caseplan.case<span class="w"> </span>--strict<span class="w"> </span>--sdd<span class="w"> </span>sdd.md
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>python3<span class="w"> </span>3d-case/check_caseplan.py<span class="w"> </span>&lt;path-to&gt;/caseplan.case
 </code></pre></div>
 <p>The <strong>strict profile</strong> compares the plan against your own <code>sdd.md</code> and refuses a plain <code>Valid</code>. The shipped checker then catches shapes the validator passes and the runtime rejects, so it runs after every convert. Run the script as it ships: reimplementing its rules is not the gate.</p>
 <p>The validator's errors are runtime failures spelled out in advance: a gate you route around does not go away; it fails later, at several minutes per deploy cycle.</p>
@@ -1636,10 +1636,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
       

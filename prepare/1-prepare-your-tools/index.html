@@ -25,7 +25,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.8.0">
     
     
       
@@ -33,10 +33,10 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.57a0d79d.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.fb2fffe2.min.css">
       
       
 
@@ -1618,7 +1618,7 @@ CL --&gt; PL</code></pre>
 <p class="admonition-title">Sessions, security, and what the agent may do</p>
 <p>Everything the agent does goes through the <code>uip</code> CLI, and the CLI is signed in as exactly one identity: <strong>yours</strong>. It cannot reach anything your account cannot reach, and no setting makes it safer than your account. Three habits follow:</p>
 <ul>
-<li><strong>Approve commands as they come, and allow the build loop once.</strong> Avoid a blanket <code>uip</code> allow rule, since it also covers destructive commands. Read/list prefixes are fine to approve permanently. Before block 3, allow the loop your agent repeats in every block (pack, publish, deploy, upload) and edits to your seat's own <code>caseplan.json</code> and <code>sdd.md</code>. An agent's safety check can refuse a plain edit of its own case file mid-block, and a block that stops to ask proves nothing.</li>
+<li><strong>Approve commands as they come, and allow the build loop once.</strong> Avoid a blanket <code>uip</code> allow rule, since it also covers destructive commands. Read/list prefixes are fine to approve permanently. Before block 3, allow the loop your agent repeats in every block (pack, publish, deploy, upload) and edits to your seat's own <code>caseplan.case</code> and <code>sdd.md</code>. An agent's safety check can refuse a plain edit of its own case file mid-block, and a block that stops to ask proves nothing.</li>
 <li><strong>Keep secrets out of prompts and project files.</strong> Credentials belong in a secret store, never in the conversation.</li>
 <li><strong>Review before you deploy.</strong> A coding agent does not validate the compliance of generated code; that stays your job.</li>
 </ul>
@@ -1744,10 +1744,10 @@ CL --&gt; PL</code></pre>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.top", "navigation.footer", "toc.integrate", "search.highlight", "search.suggest", "content.code.copy", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.a7633da7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c21346df.min.js"></script>
       
         <script src="../../javascripts/extra.js"></script>
       
