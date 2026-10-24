@@ -133,7 +133,7 @@ A correctly set-up agent will use the tools and give you the answer. If it doesn
 !!! info "Sessions, security, and what the agent may do"
     Everything the agent does goes through the `uip` CLI, and the CLI is signed in as exactly one identity: **yours**. It cannot reach anything your account cannot reach, and no setting makes it safer than your account. Three habits follow:
 
-    - **Approve commands as they come, and allow the build loop once.** Avoid a blanket `uip` allow rule, since it also covers destructive commands. Read/list prefixes are fine to approve permanently. Before block 3, allow the loop your agent repeats in every block (pack, publish, deploy, upload) and edits to your seat's own `caseplan.json` and `sdd.md`. An agent's safety check can refuse a plain edit of its own case file mid-block, and a block that stops to ask proves nothing.
+    - **Approve commands as they come, and allow the build loop once.** Avoid a blanket `uip` allow rule, since it also covers destructive commands. Read/list prefixes are fine to approve permanently. Before block 3, allow the loop your agent repeats in every block (pack, publish, deploy, upload) and edits to your seat's own `caseplan.case` and `sdd.md`. An agent's safety check can refuse a plain edit of its own case file mid-block, and a block that stops to ask proves nothing.
     - **Keep secrets out of prompts and project files.** Credentials belong in a secret store, never in the conversation.
     - **Review before you deploy.** A coding agent does not validate the compliance of generated code; that stays your job.
 

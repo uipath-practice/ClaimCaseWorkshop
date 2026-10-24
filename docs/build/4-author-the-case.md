@@ -46,8 +46,8 @@ Steps:
 ## The gates
 
 ```bash
-uip maestro case validate <path-to>/caseplan.json --strict --sdd sdd.md
-python3 3d-case/check_caseplan.py <path-to>/caseplan.json
+uip maestro case validate <path-to>/caseplan.case --strict --sdd sdd.md
+python3 3d-case/check_caseplan.py <path-to>/caseplan.case
 ```
 
 The **strict profile** compares the plan against your own `sdd.md` and refuses a plain `Valid`. The shipped checker then catches shapes the validator passes and the runtime rejects, so it runs after every convert. Run the script as it ships: reimplementing its rules is not the gate.
@@ -65,7 +65,7 @@ Four case plans came from four different models and one PDD. The stages and gate
     From `3d-case/cookbook.md`, the picture every model laid its stages against:
 
     ```text
-    --8<-- "seeds/3d-case/cookbook.md:45:53"
+    --8<-- "seeds/3d-case/cookbook.md:44:52"
     ```
 
 === "Sonnet 5"

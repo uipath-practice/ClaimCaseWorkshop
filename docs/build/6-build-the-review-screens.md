@@ -21,7 +21,7 @@ Steps:
 
 - [x] Read `PDD.md` §5.7, `contracts/review-task.md`, `3f-validation/layout.md` and `brand.md`; load the uipath-coded-apps skill
 - [x] Capture fixtures from the seat's own live records (the decided states verbatim, the waiting states rewound to the columns that exist at that gate), plus the real PDFs for the document overlay; capture each open-gate fixture while its task is still open
-- [x] Derive the status→stage map from `caseplan.json` (a stage list typed into the app is forbidden; generate it)
+- [x] Derive the status→stage map from `caseplan.case` (a stage list typed into the app is forbidden; generate it)
 - [x] Build the two gate screens into the app registered at 3d: same name, same schema, contract untouched
 - [x] Serve locally inside an Action Center stand-in and pause: the reviewer walks the four states
 - [x] Apply the feedback; prove the shipped bundle carries no dev fixtures; pack → `publish -t Action` → deploy the app alone
