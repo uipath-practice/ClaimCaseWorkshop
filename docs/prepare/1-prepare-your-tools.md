@@ -53,7 +53,7 @@ uip tools list
 uip skills list
 ```
 
-If all four answer sensibly, skip to step 5. Otherwise, do only the steps you're missing.
+If all four answer sensibly, run the three `uip config`/`uip update` lines from step 2, then skip to step 5. Otherwise, do only the steps you're missing.
 
 ### 2. Install the UiPath CLI
 
@@ -62,6 +62,16 @@ Install the CLI globally. This gives you the `uip` command.
 ```bash
 npm install -g @uipath/cli
 ```
+
+Then point it at the preview line this workshop is built on, and update to its latest version:
+
+```bash
+uip config set version 1.205
+uip config set updateChannel preview
+uip update
+```
+
+Already have the CLI? Run these three anyway, so you're on the same line as the seed.
 
 ### 3. Sign in
 
