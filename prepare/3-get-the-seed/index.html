@@ -624,6 +624,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#register-your-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Register your build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-you-will-produce" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1535,6 +1546,11 @@
 </code></pre></div>
 <h2 id="provided-vs-built">Provided vs. built<a class="headerlink" href="#provided-vs-built" title="Permanent link">&para;</a></h2>
 <p>Your Orchestrator seat folder comes with a few dependencies: mechanical RPA automations, storage buckets and a reusable IXP project for claims. The tenant also exposes shared resources. Bind those rather than building your own, so your time goes into the parts that need thinking, not basic scripts.</p>
+<h2 id="register-your-build">Register your build<a class="headerlink" href="#register-your-build" title="Permanent link">&para;</a></h2>
+<p>Your trainer gives you a seat name. Use it for the folder you cloned (<code>ClaimCase-&lt;seat&gt;</code>), then, from inside that folder and before your first prompt, tell the build who is building it:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3<span class="w"> </span>log-finding.py<span class="w"> </span>--identify<span class="w"> </span><span class="s2">"&lt;your agent&gt;"</span><span class="w"> </span><span class="s2">"&lt;your model&gt;"</span><span class="w"> </span>--effort<span class="w"> </span><span class="s2">"&lt;your effort tier&gt;"</span>
+</code></pre></div>
+<p>For example <code>--identify "Claude Code" "Opus 5.5" --effort medium</code>. The seat comes from the folder name; agent, model and effort are the three things the script cannot detect. They are stamped on every finding your build logs, so results from different agents and models can be compared. Run it once: <em>identity recorded</em> echoes the seat back, so check it is yours. Not sure of a value? Write <code>unknown</code>.</p>
 <h2 id="what-you-will-produce">What you will produce<a class="headerlink" href="#what-you-will-produce" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>sdd.md</code> and <code>tasks.md</code>: the plan (block 1 &amp; 2)</li>
@@ -1546,7 +1562,7 @@
 <ul class="task-list">
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip login status</code>: right tenant, right folder. Nearly every "not found" is a wrong tenant, a wrong folder or a stale cache, so build the habit now</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>uip --version</code>: the CLI and each tool update themselves on their first use each day, within the version line <code>CONFIG.md</code> pins, so the version you ran can change between blocks. Note it at each block start.</li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>python3 log-finding.py --identify</code>: declares your agent, model and CLI version once, so results are diagnosable</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <code>python3 log-finding.py --identify</code>: done once, as in <em>Register your build</em> above; it also records your CLI version, so results are diagnosable</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> Open <code>README.md</code> in the seed and read "The sequence"; it takes five minutes and explains the whole day</li>
 </ul>
 
