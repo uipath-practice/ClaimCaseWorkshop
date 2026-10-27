@@ -67,6 +67,16 @@ drwxr-xr-x@ 7     224    4 Sep 14:16  method
 
 Your Orchestrator seat folder comes with a few dependencies: mechanical RPA automations, storage buckets and a reusable IXP project for claims. The tenant also exposes shared resources. Bind those rather than building your own, so your time goes into the parts that need thinking, not basic scripts.
 
+## Register your build
+
+Your trainer gives you a seat name. Use it for the folder you cloned (`ClaimCase-<seat>`), then, from inside that folder and before your first prompt, tell the build who is building it:
+
+```bash
+python3 log-finding.py --identify "<your agent>" "<your model>" --effort "<your effort tier>"
+```
+
+For example `--identify "Claude Code" "Opus 5.5" --effort medium`. The seat comes from the folder name; agent, model and effort are the three things the script cannot detect. They are stamped on every finding your build logs, so results from different agents and models can be compared. Run it once: *identity recorded* echoes the seat back, so check it is yours. Not sure of a value? Write `unknown`.
+
 ## What you will produce
 
 - `sdd.md` and `tasks.md`: the plan (block 1 & 2)
@@ -78,5 +88,5 @@ Your Orchestrator seat folder comes with a few dependencies: mechanical RPA auto
 
 - [ ] `uip login status`: right tenant, right folder. Nearly every "not found" is a wrong tenant, a wrong folder or a stale cache, so build the habit now
 - [ ] `uip --version`: the CLI and each tool update themselves on their first use each day, within the version line `CONFIG.md` pins, so the version you ran can change between blocks. Note it at each block start.
-- [ ] `python3 log-finding.py --identify`: declares your agent, model and CLI version once, so results are diagnosable
+- [ ] `python3 log-finding.py --identify`: done once, as in *Register your build* above; it also records your CLI version, so results are diagnosable
 - [ ] Open `README.md` in the seed and read "The sequence"; it takes five minutes and explains the whole day
