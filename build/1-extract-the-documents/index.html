@@ -1466,12 +1466,8 @@
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Read and validate a payload beside its form: six field groups present, damage rows repeating one per item</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Pin field-key spellings from the live payload; correct <code>sdd.md</code> where any binding differs</li>
 <li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Run the gate: <code>python3 3a-extraction/check_extraction_keys.py &lt;payload.json&gt;</code></li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Record the project name and model version in <code>PROGRESS.md</code></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> Record the IXP project and the model tag in <code>PROGRESS.md</code></li>
 </ul>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Prefer to train your own extraction model instead? <code>3a-extraction/prompt-build.md</code> in the seed is the supported second route: same output shape, about an hour of labelling.</p>
-</div>
 <h2 id="what-the-agent-will-review">What the agent will review<a class="headerlink" href="#what-the-agent-will-review" title="Permanent link">&para;</a></h2>
 <ul>
 <li><strong>Why two claims.</strong> One claim proves the fields exist; the second proves the key set does not vary and the damage inventory repeats one row per item, not one blob.</li>
