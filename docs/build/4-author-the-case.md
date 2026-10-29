@@ -58,6 +58,15 @@ The validator's errors are runtime failures spelled out in advance: a gate you r
 
 **The diagram is a deliverable.** A case plan a business user cannot follow is a case plan nobody signs. Open it in **Studio Web** and read it as they would.
 
+This check is yours: the agent validates the plan's files but never sees the canvas, so it hands you the designer link at the end of the block. Look before 3e deploys it, because a stage in the wrong place on the canvas is cheap to move now and confusing in every run trace after.
+
+| Look for | Why |
+|---|---|
+| The decision path reads left to right, Intake to Approved | A reviewer follows a claim the way the PDD tells it |
+| Denied sits below Approved on the right; Missing details below Intake; Awaiting inspection below Eligibility screening | The side lanes sit next to the stage they leave from, so an exit reads as a branch, not a jump |
+| Nothing overlaps, every stage has a readable name | Overlapping stages hide a lane, and a hidden lane is a route nobody reviews |
+| Every gate stage shows its review task | A gate with no visible task is the shape that later raises nothing |
+
 Four case plans came from four different models and one PDD. The stages and gates the process requires are in every one of them, and everything else differs. The first tab is what they were all asked for: the seed cookbook's own mock of the diagram.
 
 === "The spec"

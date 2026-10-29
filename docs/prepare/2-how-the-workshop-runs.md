@@ -63,7 +63,7 @@ A coding agent's context window fills, and what was never written down does not 
 
 Six habits, whatever agent you brought:
 
-1. **Be specific.** A complete brief beats a long prompt; the seed's prompts show what one looks like.
+1. **Be specific.** A complete brief beats a long prompt; the seed's prompts show what one looks like: the goal, the steps, the guidelines that matter and when it is done, in your own words. The commands and traps sit in each block's cookbook, which your agent reads on its own. On your own process, that cookbook is what you write as you learn.
 2. **Ask for a plan first** on anything non-trivial; redirect before files change, not after.
 3. **Iterate.** The first version is good; the second is usually better. Plan for two or three passes, not ten.
 4. **Course-correct early.** Interrupt the moment you see a wrong turn; waiting costs a rebuild.

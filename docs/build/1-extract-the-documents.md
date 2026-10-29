@@ -17,10 +17,7 @@ Steps:
 - [x] Read and validate a payload beside its form: six field groups present, damage rows repeating one per item
 - [x] Pin field-key spellings from the live payload; correct `sdd.md` where any binding differs
 - [x] Run the gate: `python3 3a-extraction/check_extraction_keys.py <payload.json>`
-- [x] Record the project name and model version in `PROGRESS.md`
-
-!!!note
-	Prefer to train your own extraction model instead? `3a-extraction/prompt-build.md` in the seed is the supported second route: same output shape, about an hour of labelling.
+- [x] Record the IXP project and the model tag in `PROGRESS.md`
 
 ## What the agent will review
 
