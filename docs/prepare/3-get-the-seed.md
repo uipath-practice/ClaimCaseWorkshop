@@ -30,7 +30,7 @@ Prefer the clone. With git, `git status` answers *what did I build* and `git dif
 | `contracts/`            | The pinned interfaces: the claim record schema, the component list, the review-task shape, the provided automations              |
 | `method/`               | The delivery method the blocks follow, and the PDD and SDD guides: reference only, not used during the build.                    |
 | `known-issues/`         | Platform behaviours worth knowing; they save your agent time.                                                                    |
-| `1-design/` … `6-process-app/` | One folder per block: `prompt.md`, `cookbook.md`, and sometimes a gate script or a helper (`4-verify/agent_inputs.py` fetches the inputs the case sent an agent). |
+| `1-design/` … `6-process-app/` | One folder per block: `prompt.md` (what you ask for), `cookbook.md` (how it is built here: the commands, checks and traps your agent reads before it starts), and sometimes a gate script or a helper (`4-verify/agent_inputs.py` fetches the inputs the case sent an agent). |
 | `log-finding.py`        | How build findings get logged                                                                                                    |
 
 ```text
