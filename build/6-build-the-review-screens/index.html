@@ -1506,35 +1506,33 @@
 <li><strong>The rest is yours</strong>, and you have to state it to your agent explicitly. Asked for "a screen that shows a claim," an agent produces a correct form generated from a schema. <strong>Taste is a requirement you have to state</strong>: what is visible before scrolling, what opens on demand, how the width is used. Everything else in a spec is checkable; this one it will silently skip.</li>
 </ul>
 <h2 id="the-prompt">The prompt<a class="headerlink" href="#the-prompt" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">Prompt — block 3f · Action App</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Build the Coded Action App</span>
+<div class="highlight"><span class="filename">Prompt — block 3f · Action App</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># The review screens</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="sb">`PDD.md`</span> §5.7 says what each of the two reviewers must be able to see. Build the <span class="gs">**Coded Action App**</span> the Maestro case raises its <span class="sb">`action`</span> tasks against in Action Center.
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Build the two review screens in the <span class="gs">**Coded Action App**</span> the case raises its gate tasks against, with the <span class="gs">**`uipath-coded-apps`**</span> skill. The app already exists from the case block, with its contract and an empty page. Replace the page and redeploy <span class="gs">**the app alone**</span>; leave the solution and the case untouched.
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Use the <span class="gs">**`uipath-coded-apps`**</span> skill. The app already exists — created at <span class="sb">`3d`</span> <span class="gs">**beside**</span> the solution with its contract and an empty page, and deployed into your seat folder. This block replaces the empty page with the two screens and redeploys <span class="gs">**the app alone**</span> — <span class="sb">`uip codedapp pack`</span> → <span class="sb">`publish -t Action`</span> → <span class="sb">`deploy --folder-key &lt;seat folder&gt; --client-id &lt;the shared registration&gt;`</span> — the solution and the case untouched.
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>The client id for the app is what lets the screen read the Data Fabric record (<span class="sb">`CONFIG.md`</span>, <span class="ge">*The Coded Action App signs in through a shared registration*</span>); <span class="gs">**`contracts/review-task.md` is the shape you implement**</span>, the case already binds it, so don't change it. It reads the Data Fabric entity and returns a decision.
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Two gates, one app:
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Eligibility check**</span>: the five screening checks, no assessments yet.
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Claim review**</span>: everything the Agents produced.
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="gs">**Requirements:**</span> 
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">-</span><span class="w"> </span>What each reviewer must see, may change and decides — <span class="sb">`PDD.md`</span> §5.7 (the stages the claim is at, the checks with passes included, the settlement line by line, the three documents, two outcomes with a written reason)
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>What the app hands back — <span class="sb">`contracts/review-task.md`</span>. 
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>Where each of those sits on the page — <span class="sb">`3f-validation/layout.md`</span>. Fixes the regions of both screens based on business user's requirements — header, where the claim is, the decision, the at-a-glance cards, the checks, the documents — with a wireframe and what each region must carry. <span class="gs">**The layout is decided; the styling is yours.**</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">-</span><span class="w"> </span>How it looks — <span class="sb">`3f-validation/brand.md`</span>. Carries the palette, type and CSS tokens — use these as official company style.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>Requirements:
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">-</span><span class="w"> </span>What each reviewer sees, may change and decides: <span class="sb">`PDD.md`</span> §5.7.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>What the app hands back: <span class="sb">`contracts/review-task.md`</span>. The case already binds it, so don't change it.
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>Where each part sits on the page: <span class="sb">`3f-validation/layout.md`</span>. The layout is decided; the styling is yours.
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">-</span><span class="w"> </span>How it looks: <span class="sb">`3f-validation/brand.md`</span>, the company style.
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="gs">**Build it against payloads your own Agents actually produced**</span>, not against payloads you imagined. Use claims from previous run to read what landed on the Data Fabric record, and capture each open-gate fixture while its task is still open — that record is what the reviewer will see.
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="gs">**Pause for a human before the first publish.**</span> Serve the app locally on fixtures captured from your own records — development-only, never shipped — and ask your reviewer to open <span class="sb">`http://127.0.0.1:&lt;port&gt;`</span> with <span class="sb">`?gate=eligibility`</span>, <span class="sb">`?gate=eligibility&amp;state=decided`</span>, <span class="sb">`?gate=review`</span>, <span class="sb">`?gate=review&amp;state=decided`</span> — one screen state each, the decided review carrying a real settlement override. Apply what they find, then publish once.
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="gs">**After the deploy, prove the write-back once per gateway without a browser**</span>: raise a fresh claim, complete its task with <span class="sb">`uip tasks complete`</span>, read the record back — a task decided before a fix proves nothing (<span class="sb">`contracts/review-task.md`</span>). Validating the deployed screens inside Action Center is the reviewer's own optional check.
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>Two gates handled by single app. 
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="k">-</span><span class="w"> </span>First: <span class="gs">**Eligibility Check**</span> gate has five checks and no assessments. 
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">-</span><span class="w"> </span>Second: <span class="gs">**Claim Review**</span> will have all payloads. 
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="gs">**Done when**</span> 
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">-</span><span class="w"> </span>your reviewer has approved all four localhost states. 
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">-</span><span class="w"> </span>the app is republished alone and upgraded in place. 
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">-</span><span class="w"> </span>a fresh task per gateway, completed from the command line, lands its decision on the Data Fabric record and moves the case on. 
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">-</span><span class="w"> </span>a completed task still carries all its data when read back.
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>Steps:
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">1.</span> Leave a claim waiting at each gate, and build against what your own Agents wrote on those records, not against data you imagined.
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">2.</span> <span class="gs">**Pause for me before the first publish.**</span> Serve the app locally on the records you captured and ask me to check four states: each gate open and decided, with a real settlement change on the decided review. Give me the four addresses and what each should show, and wait for my answer. Apply what I find.
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">3.</span> Publish and deploy the app once.
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">4.</span> Prove each gate writes back: a fresh claim per gate, its task completed from the command line, the decision read back from the record.
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">5.</span> Leave one fresh claim waiting at each gate, so I can check the screens in Action Center.
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="gs">**Done when:**</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="k">-</span><span class="w"> </span>I have approved all four local states
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">-</span><span class="w"> </span>the app is republished on its own and upgraded in place
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">-</span><span class="w"> </span>a fresh task per gate, completed from the command line, lands its decision on the record and moves the case on
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">-</span><span class="w"> </span>a completed task still shows all its data
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">-</span><span class="w"> </span>a claim waits at each gate for me.
 </code></pre></div>
 <p>Steps:</p>
 <ul class="task-list">
@@ -1575,6 +1573,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Be there when it pauses</p>
+<p>This review needs a person at a browser, and the agent waits for you. Plan for it: know roughly when block 3f reaches its pause, and if someone else reviews for you (a colleague, the instructor), book them for that moment. An agent with no browser of its own cannot open the stand-in for you: it hands over the four URLs, the port it served on, and what each state should show, and waits for your answer. Tell it what you saw in plain words; <em>"approved"</em> is an answer too.</p>
+</div>
 <p>Reading is half of it; <strong>use the controls too</strong>, because the stand-in runs the same form code the deployed app will:</p>
 <ul>
 <li><strong>Every PDF opens</strong> in the document view: the claim form, the policy and the assessor report, each with a readable first page, not a blank frame</li>

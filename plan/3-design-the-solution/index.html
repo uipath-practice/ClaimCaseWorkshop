@@ -1468,32 +1468,27 @@
 <p>Copy it into your coding agent, started in the seed folder:</p>
 <div class="highlight"><span class="filename">Prompt — block 1 · Design</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="gh"># Design</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Read:
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">-</span><span class="w"> </span><span class="sb">`PDD.md`</span> — property claims department manager has described how property claims are handled. 
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="k">-</span><span class="w"> </span><span class="sb">`CONFIG.md`</span> - describes environment and settings.
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">-</span><span class="w"> </span><span class="sb">`contracts/`</span> - some technical specs and description of automation blocks that already exist (use what is deployed instead of designing a replacement for it).
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>Use the <span class="gs">**`uipath-planner`**</span> skill and design the solution from the PDD. Run <span class="gs">**autonomous**</span> — do not pause for confirmation. <span class="gs">**Design only: write the design to `sdd.md` at the seed's root, beside `PDD.md`, and stop**</span> — with <span class="sb">`Tasks file: tasks.md`</span> in its handoff header, which is where <span class="sb">`2-plan`</span> writes. No task list, nothing built, nothing deployed — <span class="sb">`2-plan`</span> derives the tasks next.
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>Design the solution for the property claims process with the <span class="gs">**`uipath-planner`**</span> skill, and write it to <span class="sb">`sdd.md`</span> beside <span class="sb">`PDD.md`</span>. Work on your own; everything you would ask me is in the files below.
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Read first:
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">-</span><span class="w"> </span><span class="sb">`PDD.md`</span>: how the claims department handles a property claim today, written by its manager.
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">-</span><span class="w"> </span><span class="sb">`CONFIG.md`</span>: the environment you build in.
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">-</span><span class="w"> </span><span class="sb">`contracts/`</span>: what is already deployed and the shapes everything must keep. Use what exists instead of designing a replacement.
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="sb">`sdd.md`</span> describes what the solution <span class="gs">**is**</span> when it runs. It outlives the build and everything downstream binds to it.
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>Three things I care about:
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Take every task's type from the PDD's §5.3 decision-nature column**</span>, not from whatever the tenant happens to hold — and name the step in each task's <span class="ge">*Design Rationale*</span> (<span class="sb">`PDD step 4.3`</span>), which is how the checker verifies it.
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Build only what `contracts/components.md` lists**</span> — seven agents and one Action app, no tools, no evaluation sets. How you shape the case — stages, ordering, conditions, SLAs — is yours.
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span><span class="gs">**Add the two sections in `method/sdd-addendum.md`**</span> after Section 4, headings as written: the claim entity with its write-ownership matrix, and what the design fed back to the PDD.
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>Then check your own work and fix what it finds:
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="sb">```bash</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>python3<span class="w"> </span><span class="m">1</span>-design/check_sdd.py<span class="w"> </span>sdd.md<span class="w"> </span>--pdd<span class="w"> </span>PDD.md
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="sb">```</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>One command, both checks: it runs the planner's shape audit and then checks the design against the process — task types against the PDD, one writer per column, every read variable produced, real argument names, tables that render. Read its rules when a failure is unclear — each one is a shape that built and then failed.
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="gs">**Done when a solution architect could hand this to a developer and walk away**</span> — every stage, task, rule and human decision described well enough to build from, with nothing left to guess. The checker exiting 0 is the floor, not the finish.
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>If a check fires on something you believe is right, say so and leave it — a wrong rule in the checker is worth more to us than a file edited to satisfy it.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>Steps:
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">1.</span> Map the process onto the platform: which steps need judgement and become Agents, which follow a rule, and where a person decides.
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">2.</span> Write the design. It describes what the solution <span class="gs">**is**</span> when it runs; everything built later binds to it.
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">3.</span> Check it with the design checker and fix what it finds.
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">4.</span> Stop after the design. The task list is the next block.
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>Guidelines:
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">-</span><span class="w"> </span>Let the PDD decide what each step is. It says which steps are judgement and which are rules; what the tenant happens to hold does not.
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">-</span><span class="w"> </span>Build only the components the contracts list. How you shape the case (stages, order, conditions, SLAs) is your call.
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">-</span><span class="w"> </span>Design the smallest case the PDD allows. Every task and variable you add is one more thing to build, test and keep right; a design that guards against everything is the slowest to make work.
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="k">-</span><span class="w"> </span>Describe the claim record (which step writes each column), and write down where the design changes the process, so the PDD's owner sees it.
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">-</span><span class="w"> </span>If a check fires on something you believe is right, tell me and leave it.
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="gs">**Done when**</span> a solution architect could hand <span class="sb">`sdd.md`</span> to a developer and walk away: every stage, task, rule and human decision described well enough to build from, nothing left to guess. The checker passing is the floor, not the finish.
 </code></pre></div>
 <p>The prompt stops the agent after the design, and the task list comes in the next block. One document answers one question; a design that also explains the build order becomes two documents describing the same thing, and the copy nobody edits is the one that goes stale.</p>
 <p>Steps:</p>

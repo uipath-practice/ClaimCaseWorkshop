@@ -1441,19 +1441,18 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>You have a design that says what the solution is. Turn it into the order things get built in.
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Use <span class="gs">**`uipath-planner`**</span> again and derive the implementation task list from <span class="sb">`sdd.md`</span> into <span class="sb">`tasks.md`</span>, which says what gets built, in what order, by which skill, and where you stop to check. Store it at the folder's root; it is consumed during the build.
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>Use <span class="gs">**`uipath-planner`**</span> again to derive the task list from <span class="sb">`sdd.md`</span> into <span class="sb">`tasks.md`</span> at the folder's root: what gets built, in what order, by which skill, and where you stop to check.
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">-</span><span class="w"> </span>Anything referenced by name has to exist and be published first: models, workflows, processes used as tools, the claim entity, the solution the case and the Agents are scaffolded inside, the standalone Action App deployed into the seat folder. Nothing binds to something unbuilt. 
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">-</span><span class="w"> </span>Action App's <span class="ge">*contract*</span> (<span class="sb">`contracts/review-task.md`</span>): the case binds it, so it is registered before the case, and the screens come after a run. 
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">-</span><span class="w"> </span>Routing, not redescription. Each task names which skill builds it and which <span class="sb">`sdd.md`</span> sections to read. 
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">-</span><span class="w"> </span>Tasks document does not re-explain the architecture; that drifts, and then two documents disagree.
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>The case is one task: <span class="ge">*build the case from `sdd.md` — resolve, convert, close what convert leaves unresolved*</span>. Its stages, tasks and conditions are not listed here; <span class="sb">`sdd.md`</span> is the case's plan.
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>A <span class="sb">`Validate:`</span> step on every task that generates something, and a testing task before anything deploys.
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">-</span><span class="w"> </span>Each later block sets the <span class="sb">`Status:`</span> line of the tasks it finishes, not only the sub-items — the status line is what a reader scans. Hand-over (<span class="sb">`5-ship`</span>) closes every task before it; the process app's tasks come after it and stay open there.
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="gs">**Done when:**</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span>someone could work the list top to bottom without opening the design to find out what comes next
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">-</span><span class="w"> </span>nothing in it is blocked by something further down.
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>Guidelines:
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="k">-</span><span class="w"> </span>Nothing binds to something unbuilt. Whatever is referenced by name comes first: the models, the automations, the claim entity, the solution the case and the Agents live in, the review app.
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="k">-</span><span class="w"> </span>The review app's contract comes before the case, because the case binds it; its screens come after a run.
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="k">-</span><span class="w"> </span>Route, don't redescribe. Each task names its skill and the parts of <span class="sb">`sdd.md`</span> to read; the list never re-explains the architecture.
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="k">-</span><span class="w"> </span>The case is one task. Its stages, tasks and conditions are in <span class="sb">`sdd.md`</span>, not here.
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>Every task that generates something has a check, and testing comes before anything deploys.
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="gs">**Done when:**</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">-</span><span class="w"> </span>someone could work the list top to bottom without opening the design to find out what comes next
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span>nothing in it is blocked by something further down.
 </code></pre></div>
 <p>Steps:</p>
 <ul class="task-list">

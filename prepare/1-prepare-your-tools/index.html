@@ -546,6 +546,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#which-coding-agent-to-bring" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Which coding agent to bring
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#what-the-agent-needs-to-build-on-uipath" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -613,10 +624,21 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#5-verify-the-setup" class="md-nav__link">
+  <a href="#5-set-up-your-agents-shell" class="md-nav__link">
     <span class="md-ellipsis">
       
-        5. Verify the setup
+        5. Set up your agent's shell
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-verify-the-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Verify the setup
       
     </span>
   </a>
@@ -1517,6 +1539,30 @@
 </div>
 <h2 id="goal">Goal<a class="headerlink" href="#goal" title="Permanent link">&para;</a></h2>
 <p>A working setup before the exercise starts: the latest <code>uip</code> CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.</p>
+<h2 id="which-coding-agent-to-bring">Which coding agent to bring<a class="headerlink" href="#which-coding-agent-to-bring" title="Permanent link">&para;</a></h2>
+<p>Any coding agent that runs shell commands can do this exercise; the workshop environment comes with one. If you have your own, bring it. In our full test builds, <strong>Claude Code with Opus 5.5</strong> finished with fewer repair cycles and a cleaner result than the other agents we tried: the same planted problems caught, and no clean claim sent to a person for no reason.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>What it changes for you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Quality</td>
+<td>The fewer repair cycles, the more of the afternoon goes on the parts that teach something: the case, the review screens, Verify</td>
+</tr>
+<tr>
+<td>Speed</td>
+<td>Mostly decided by your machine: a sandbox that blocks the CLI or a Windows console that cannot print UTF-8 costs more time than the model does. Step 5 below removes both</td>
+</tr>
+<tr>
+<td>Your own agent</td>
+<td>Same seed, same steps. Install the skills for it in step 4 and set up its shell in step 5</td>
+</tr>
+</tbody>
+</table>
 <h2 id="what-the-agent-needs-to-build-on-uipath">What the agent needs to build on UiPath<a class="headerlink" href="#what-the-agent-needs-to-build-on-uipath" title="Permanent link">&para;</a></h2>
 <p>A coding agent already knows how to write code, out of the box. What it doesn't know is the UiPath platform: its CLI commands, components, code structures and conventions. </p>
 <div class="img-cols img-cols-50">
@@ -1605,9 +1651,31 @@ CL --&gt; PL</code></pre>
 </code></pre></div>
 <p><code>uip update</code> updates the tools and refreshes the installed skills too. Run it between blocks, never while your agent is working.</p>
 <p><code>uip --help</code> and <code>uip &lt;command&gt; --help</code> are your best friends, right after your coding agent.</p>
-<h3 id="5-verify-the-setup">5. Verify the setup<a class="headerlink" href="#5-verify-the-setup" title="Permanent link">&para;</a></h3>
+<h3 id="5-set-up-your-agents-shell">5. Set up your agent's shell<a class="headerlink" href="#5-set-up-your-agents-shell" title="Permanent link">&para;</a></h3>
+<p>Do this before block 1. An agent that cannot run <code>uip</code> the way your terminal does loses its sign-in half-way through a block, and the error says <em>refresh token invalid</em> although your login is fine.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Claude Code</label><label for="__tabbed_2_2">Codex</label><label for="__tabbed_2_3">OpenCode</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Claude Code can sandbox its shell. Exclude <code>uip</code> from the sandbox, in your seat folder's <code>.claude/settings.local.json</code>:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="p">{</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span><span class="nt">"sandbox"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">"excludedCommands"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"uip"</span><span class="p">]</span><span class="w"> </span><span class="p">}</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="p">}</span>
+</code></pre></div>
+<p>The agent should call <code>uip</code> directly: a script that calls <code>uip</code> for it still runs inside the sandbox.</p>
+</div>
+<div class="tabbed-block">
+<p>With full access (<code>sandbox_mode: danger-full-access</code>) Codex runs <code>uip</code> as your terminal does, and nothing else is needed. In a sandboxed mode, tell it once, at the start: <em>"When using the UiPath CLI, prefer escalated execution because sandboxed commands may not reflect my real terminal session."</em></p>
+<p>On Windows, the agent runs Python as <code>python -X utf8</code>, writes JSON files with Python rather than PowerShell, and starts dev servers with <code>npm.cmd</code>. The seed's <code>CONFIG.md</code>, <em>Windows</em>, has the full list; the agent reads it, but it helps to know why the first block's commands look the way they do.</p>
+</div>
+<div class="tabbed-block">
+<p>If your setup sandboxes commands, let <code>uip</code> run outside the sandbox, the same way as for the other agents. On Windows, the same notes as under Codex apply.</p>
+</div>
+</div>
+</div>
+<p>Also keep port <strong>5173</strong> free on your machine: it is the only local sign-in address the workshop's apps are registered for (block 6).</p>
+<h3 id="6-verify-the-setup">6. Verify the setup<a class="headerlink" href="#6-verify-the-setup" title="Permanent link">&para;</a></h3>
 <p>Run your agent with the skills installed and ask it for an outcome, not a command:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>which uipath skills I can use? can you list tenants within environments I'm connected to?
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>which uipath skills I can use? can you list tenants within environments I'm connected to?
 </code></pre></div>
 <div class="img-cols img-cols-30">
 <div>
@@ -1628,7 +1696,7 @@ CL --&gt; PL</code></pre>
 <li><strong>Keep secrets out of prompts and project files.</strong> Credentials belong in a secret store, never in the conversation.</li>
 <li><strong>Review before you deploy.</strong> A coding agent does not validate the compliance of generated code; that stays your job.</li>
 </ul>
-<p>Some agents run commands in isolated environments and may not see your real session. If <code>uip login status</code> works in your terminal but the agent says otherwise, tell it: <em>"When using the UiPath CLI, prefer escalated execution because sandboxed commands may not reflect my real terminal session."</em></p>
+<p>Some agents run commands in isolated environments and may not see your real session. If <code>uip login status</code> works in your terminal but the agent says otherwise, its sandbox is in the way: step 5.</p>
 </div>
 <h2 id="read-more">Read more<a class="headerlink" href="#read-more" title="Permanent link">&para;</a></h2>
 <table>
