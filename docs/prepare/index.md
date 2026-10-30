@@ -30,6 +30,9 @@ A seat is your own folder in the training tenant. It arrives with the shared inf
 
 What you build on top: the claim record, the seven Agents, the Maestro case, and the Action App.
 
+??? info "Using your own environment to build the Property Insurance Claims solution"
+    You can build the same solution in your own organisation and tenant instead of ours. The [own-environment pack](../assets/downloads/claimcase-own-environment-2026-10-30.zip) holds the six dependency packages, scripts that prepare the tenant layer and a seat the way we do, an inventory of everything both consist of, and a short checklist; you create and label your own IXP project from generator samples. The tenant needs Orchestrator, Data Fabric, Integration Service, Maestro, Action Center, IXP, Agents and Apps, with Agent Units for several hundred Agent runs per build, AI Units and a serverless runtime budget, and you need org-admin rights. The pack was written against our hosted tenant and has not been tested elsewhere. Expect to solve a few things with your coding agent, and tell us what was missing.
+
 ## Prerequisites
 
 - [ ] A laptop you have admin rights on
