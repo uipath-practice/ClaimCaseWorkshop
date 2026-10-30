@@ -13,7 +13,7 @@ The column that drives your architecture more than any other is **decision natur
 ??? quote "PDD §5.3, Stage 2: five checks"
     [Open §5.3 in the full document ↗](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#53-detailed-step-table) 
 
-    --8<-- "seeds/PDD.md:380:391"
+    --8<-- "seeds/PDD.md:381:392"
 
 ## The tour: where the detail lives
 
@@ -41,7 +41,7 @@ The column that drives your architecture more than any other is **decision natur
 - **Mind the vocabulary.** The [glossary](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#glossary-and-operational-vocabulary) at the top fixes the business's exact words: ***claim***, never *case* or *ticket*; ***assessor report***, never *survey*. Synonym drift in a design turns into wrong stage and outcome names downstream, so the same discipline applies to everything you and your agent write.
 
 ??? quote "See it in the original: the glossary and the verbatim labels"
-    --8<-- "seeds/PDD.md:65:85"
+    --8<-- "seeds/PDD.md:66:86"
 
 !!! tip "When documents disagree, that's a finding"
     The seed also ships `contracts/`: pinned technical interfaces that keep every solution inside a testable frame. If the PDD and a contract ever seem to disagree, the contract wins for anything at a component boundary, and the disagreement is worth logging. You'll meet this again at the design gate.
