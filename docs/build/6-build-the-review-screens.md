@@ -39,6 +39,9 @@ Coded Apps can be served locally and previewed before publishing to Orchestrator
 | `…?gate=review`                             | Every finding side by side, the recommendation with its reasons, the settlement line by line, the documents |
 | `…?gate=review&state=decided`               | The confirmed figures carrying a real settlement override, not just the recommended numbers                 |
 
+!!! tip "Be there when it pauses"
+    This review needs a person at a browser, and the agent waits for you. Plan for it: know roughly when block 3f reaches its pause, and if someone else reviews for you (a colleague, the instructor), book them for that moment. An agent with no browser of its own cannot open the stand-in for you: it hands over the four URLs, the port it served on, and what each state should show, and waits for your answer. Tell it what you saw in plain words; *"approved"* is an answer too.
+
 Reading is half of it; **use the controls too**, because the stand-in runs the same form code the deployed app will:
 
 - **Every PDF opens** in the document view: the claim form, the policy and the assessor report, each with a readable first page, not a blank frame

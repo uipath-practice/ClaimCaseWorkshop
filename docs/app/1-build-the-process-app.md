@@ -7,7 +7,7 @@ It comes after the hand-over for a reason. This app **reads what every other blo
 ??? quote "PDD §11: the five views, verbatim"
     [Open §11 in the full document ↗](https://github.com/uipath-practice/PropertyClaimsSeeds/blob/main/PDD.md#11-reporting-and-monitoring-requirements)
 
-    --8<-- "seeds/PDD.md:903:911"
+    --8<-- "seeds/PDD.md:905:913"
 
 ## Decided for us
 
@@ -40,7 +40,7 @@ Steps:
 
 ## Your checks, on the deployed URL
 
-The agent proves the arithmetic without a browser: it runs the app's own aggregation over the rows the CLI read and diffs the two against an independent count. That reconciliation is a gate, and [every gate is a floor](../verify/index.md#testing-a-long-running-process). What the agent cannot do is sign in; a signed-in browser is a human's. So four checks are yours, and they close the block:
+The agent proves the arithmetic without a browser: it runs the app's own aggregation over the rows the CLI read and diffs the two against an independent count. That reconciliation is a gate, and [every gate is a floor](../verify/index.md#testing-a-long-running-process). What the agent cannot do is sign in; a signed-in browser is a human's. So four checks are yours, and they close the block. The agent hands over the deployed URL and the reconciliation it expects you to see, and waits; if someone else checks for you, book them for the end of the block:
 
 | Check                                                                                                  | What you should see                                                                                                                                                                                                                                  |
 | ------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

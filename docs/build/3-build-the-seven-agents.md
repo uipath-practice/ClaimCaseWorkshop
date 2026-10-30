@@ -20,7 +20,7 @@ Steps:
 - [x] Build the **SettlementCalculation** agent (BR-20–BR-29)
 - [x] Build the **CredibilityAssessment** agent (BR-30–BR-33)
 - [x] Build the **DecisionRecommendation** agent (BR-40–BR-45, BR-60–BR-62)
-- [x] Build the **ClaimantCorrespondence** agent (BR-50–BR-52)
+- [x] Build the **ClaimantCorrespondence** agent (BR-50–BR-53)
 - [x] Test each agent with `uip agent debug`
 - [x] Upload the solution to Studio Web
 - [x] Update `PROGRESS.md`
