@@ -22,7 +22,7 @@ One claim arrives as three PDF documents. What comes out is a settled claim, or 
 - a **Coded Web App**: the portfolio view the claims team lead has never had, with every claim, its stage and its deadline
 
 !!! tip "Training Environment"
-    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**. Your instructor will invite you and assign you a seat, your own folder where everything you build lives.
+    Log in at **[{{ training_url }}]({{ training_url }})** using tenant **{{ training_tenant }}**. Your instructor will invite you and assign you a seat, your own folder where everything you build lives. To build in your own organisation instead, see *Using your own environment* in [Prepare › Your seat](prepare/index.md#your-seat).
 ## The path
 
 1. **[Prepare](prepare/index.md)**: check your tools, learn the workshop rhythm, get the exercise seed.
