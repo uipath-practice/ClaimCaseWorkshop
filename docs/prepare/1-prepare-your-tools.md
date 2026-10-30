@@ -10,6 +10,16 @@
 
 A working setup before the exercise starts: the latest `uip` CLI installed and authenticated, the UiPath skills added to your coding agent, and one quick check that proves the agent knows how to build with UiPath. If you have done a UiPath coding-agents session before, this page is a five-minute checkup.
 
+## Which coding agent to bring
+
+Any coding agent that runs shell commands can do this exercise; the workshop environment comes with one. If you have your own, bring it. In our full test builds, **Claude Code with Opus 5.5** finished with fewer repair cycles and a cleaner result than the other agents we tried: the same planted problems caught, and no clean claim sent to a person for no reason.
+
+| | What it changes for you |
+|---|---|
+| Quality | The fewer repair cycles, the more of the afternoon goes on the parts that teach something: the case, the review screens, Verify |
+| Speed | Mostly decided by your machine: a sandbox that blocks the CLI or a Windows console that cannot print UTF-8 costs more time than the model does. Step 5 below removes both |
+| Your own agent | Same seed, same steps. Install the skills for it in step 4 and set up its shell in step 5 |
+
 ## What the agent needs to build on UiPath
 
 A coding agent already knows how to write code, out of the box. What it doesn't know is the UiPath platform: its CLI commands, components, code structures and conventions. 
@@ -124,7 +134,35 @@ uip skills update
 
 `uip --help` and `uip <command> --help` are your best friends, right after your coding agent.
 
-### 5. Verify the setup
+### 5. Set up your agent's shell
+
+Do this before block 1. An agent that cannot run `uip` the way your terminal does loses its sign-in half-way through a block, and the error says *refresh token invalid* although your login is fine.
+
+=== "Claude Code"
+
+    Claude Code can sandbox its shell. Exclude `uip` from the sandbox, in your seat folder's `.claude/settings.local.json`:
+
+    ```json
+    {
+      "sandbox": { "excludedCommands": ["uip"] }
+    }
+    ```
+
+    The agent should call `uip` directly: a script that calls `uip` for it still runs inside the sandbox.
+
+=== "Codex"
+
+    With full access (`sandbox_mode: danger-full-access`) Codex runs `uip` as your terminal does, and nothing else is needed. In a sandboxed mode, tell it once, at the start: *"When using the UiPath CLI, prefer escalated execution because sandboxed commands may not reflect my real terminal session."*
+
+    On Windows, the agent runs Python as `python -X utf8`, writes JSON files with Python rather than PowerShell, and starts dev servers with `npm.cmd`. The seed's `CONFIG.md`, *Windows*, has the full list; the agent reads it, but it helps to know why the first block's commands look the way they do.
+
+=== "OpenCode"
+
+    If your setup sandboxes commands, let `uip` run outside the sandbox, the same way as for the other agents. On Windows, the same notes as under Codex apply.
+
+Also keep port **5173** free on your machine: it is the only local sign-in address the workshop's apps are registered for (block 6).
+
+### 6. Verify the setup
 
 Run your agent with the skills installed and ask it for an outcome, not a command:
 
@@ -147,7 +185,7 @@ A correctly set-up agent will use the tools and give you the answer. If it doesn
     - **Keep secrets out of prompts and project files.** Credentials belong in a secret store, never in the conversation.
     - **Review before you deploy.** A coding agent does not validate the compliance of generated code; that stays your job.
 
-    Some agents run commands in isolated environments and may not see your real session. If `uip login status` works in your terminal but the agent says otherwise, tell it: *"When using the UiPath CLI, prefer escalated execution because sandboxed commands may not reflect my real terminal session."*
+    Some agents run commands in isolated environments and may not see your real session. If `uip login status` works in your terminal but the agent says otherwise, its sandbox is in the way: step 5.
 
 ## Read more
 
